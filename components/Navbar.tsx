@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Code, Brain, Share2, Book, Rocket, FileText } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -30,13 +31,13 @@ export default function Navbar() {
               <NavigationMenuTrigger>Features</NavigationMenuTrigger>
               <NavigationMenuContent className="dark:bg-black dark:text-white">
                 <ul className="w-96 p-4">
-                  <ListItem href="#" title="Interactive Problems">
+                  <ListItem href="#" title="Interactive Problems" icon={<Code className="w-4 h-4" />}>
                     Solve coding challenges with instant feedback.
                   </ListItem>
-                  <ListItem href="#" title="MiniScript+">
+                  <ListItem href="#" title="MiniScript+" icon={<Brain className="w-4 h-4" />}>
                     Simple language built for learning.
                   </ListItem>
-                  <ListItem href="#" title="Code Sharing">
+                  <ListItem href="#" title="Code Sharing" icon={<Share2 className="w-4 h-4" />}>
                     Share solutions and learn from others.
                   </ListItem>
                 </ul>
@@ -47,13 +48,13 @@ export default function Navbar() {
               <NavigationMenuTrigger>Docs</NavigationMenuTrigger>
               <NavigationMenuContent className="dark:bg-black dark:text-white">
                 <ul className="w-96 p-4">
-                  <ListItem href="#" title="Introduction">
+                  <ListItem href="#" title="Introduction" icon={<Book className="w-4 h-4" />}>
                     Learn the basics of ScripticX.
                   </ListItem>
-                  <ListItem href="#" title="Getting Started">
+                  <ListItem href="#" title="Getting Started" icon={<Rocket className="w-4 h-4" />}>
                     Setup your first project.
                   </ListItem>
-                  <ListItem href="#" title="Examples">
+                  <ListItem href="#" title="Examples" icon={<FileText className="w-4 h-4" />}>
                     Explore real code examples.
                   </ListItem>
                 </ul>
@@ -93,15 +94,19 @@ function ListItem({
   title,
   children,
   href,
+  icon,
   ...props
-}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
+}: React.ComponentPropsWithoutRef<"li"> & { href: string; icon?: React.ReactNode }) {
   return (
     <li {...props}>
       <NavigationMenuLink asChild>
         <Link href={href}>
-          <div className="flex flex-col gap-1 text-sm">
-            <div className="leading-none font-medium text-white">{title}</div>
-            <div className="line-clamp-2 text-white/60">{children}</div>
+          <div className="flex items-start gap-3 text-sm">
+            {icon && <div className="mt-0.5 text-white/80">{icon}</div>}
+            <div className="flex flex-col gap-1">
+              <div className="leading-none font-medium text-white">{title}</div>
+              <div className="line-clamp-2 text-white/60">{children}</div>
+            </div>
           </div>
         </Link>
       </NavigationMenuLink>

@@ -20,17 +20,17 @@ export default function Showcase() {
 
       <Tabs defaultValue="problems" className="w-full">
 
-        <TabsList className="flex gap-2 justify-center mb-10 bg-white/5 backdrop-blur-md p-1 rounded-full border border-white/10 mx-auto w-fit">
-          <TabsTrigger value="problems" className="px-4 py-2 rounded-full text-muted-foreground hover:text-white transition data-[state=active]:bg-white data-[state=active]:text-black">
+        <TabsList className="flex gap-2 mb-10 bg-white/5 backdrop-blur-md p-1 rounded-full border border-white/10 mx-auto w-full max-w-full overflow-x-auto no-scrollbar justify-start sm:justify-center">
+          <TabsTrigger value="problems" className="px-4 py-2 whitespace-nowrap rounded-full text-muted-foreground hover:text-white transition data-[state=active]:bg-white data-[state=active]:text-black shrink-0">
             Problems
           </TabsTrigger>
-          <TabsTrigger value="sharing" className="px-4 py-2 rounded-full text-muted-foreground hover:text-white transition data-[state=active]:bg-white data-[state=active]:text-black">
+          <TabsTrigger value="sharing" className="px-4 py-2 whitespace-nowrap rounded-full text-muted-foreground hover:text-white transition data-[state=active]:bg-white data-[state=active]:text-black shrink-0">
             Sharing
           </TabsTrigger>
-          <TabsTrigger value="execution" className="px-4 py-2 rounded-full text-muted-foreground hover:text-white transition data-[state=active]:bg-white data-[state=active]:text-black">
+          <TabsTrigger value="execution" className="px-4 py-2 whitespace-nowrap rounded-full text-muted-foreground hover:text-white transition data-[state=active]:bg-white data-[state=active]:text-black shrink-0">
             Execution
           </TabsTrigger>
-          <TabsTrigger value="progress" className="px-4 py-2 rounded-full text-muted-foreground hover:text-white transition data-[state=active]:bg-white data-[state=active]:text-black">
+          <TabsTrigger value="progress" className="px-4 py-2 whitespace-nowrap rounded-full text-muted-foreground hover:text-white transition data-[state=active]:bg-white data-[state=active]:text-black shrink-0">
             Progress
           </TabsTrigger>
         </TabsList>
@@ -48,7 +48,6 @@ END`}
             </PreviewCard>
           </TabsContent>
 
-          {/* 💻 SHARING */}
           <TabsContent value="sharing">
             <PreviewCard>
               <div className="space-y-3">
