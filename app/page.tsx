@@ -1,8 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import CodeExample from "@/components/CodeExample";
 import CodeSection from "@/components/CodeSection";
-import Features from "@/components/Features";
 import FeatureGrid from "@/components/FeaturesGrid";
 import CTA from "@/components/CTA";
 import HowItWorks from "@/components/HowItWorks";
@@ -15,10 +13,8 @@ export default function Page() {
     <div className="min-h-screen bg-black text-white">
       <Navbar />
       <Hero />
-      {/* <CodeExample /> */}
       <CodeSection />
       <FeatureGrid />
-      {/* <Features /> */}
       <HowItWorks />
       <Testimonials />
       <Showcase />
