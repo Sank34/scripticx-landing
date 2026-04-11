@@ -2,6 +2,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 
 const testimonials = [
   { user: "@alex_dev", text: "This platform made learning programming actually fun. The instant feedback is addictive." },
@@ -16,22 +17,23 @@ const testimonials = [
 
 export default function Testimonials() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("Testimonials");
 
   return (
     <section className="py-32 px-6 max-w-6xl mx-auto relative overflow-hidden">
 
       <div className="text-center mb-20">
-        <h2 className="text-3xl font-semibold text-white">
-          Join the community
+        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
+          {t("title")}
         </h2>
-        <p className="text-muted-foreground mt-4">
-          Discover what others are saying about ScripticX
+        <p className="text-muted-foreground mt-3 text-base">
+          {t("description")}
         </p>
       </div>
 
       {/* fade edges */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
 
       {/* rows */}
       <div className="space-y-6 group">
@@ -44,13 +46,13 @@ export default function Testimonials() {
           {[...testimonials, ...testimonials].map((t, i) => (
             <Card
               key={i}
-              className="min-w-[300px] max-w-[300px] bg-black/40 backdrop-blur-md border border-white/10 hover:border-green-500/40 transition-all duration-300 hover:shadow-[0_0_40px_rgba(34,197,94,0.15)] hover:-translate-y-1"
+              className="min-w-[300px] max-w-[300px] rounded-2xl border bg-background/80 backdrop-blur transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 hover:scale-[1.02] hover:border-black/30"
             >
-              <CardContent className="p-5 space-y-3">
-                <p className="text-sm text-muted-foreground leading-relaxed">
+              <CardContent className="p-6 space-y-4">
+                <p className="text-base leading-relaxed text-foreground/80">
                   {t.text}
                 </p>
-                <p className="text-xs text-green-400">
+                <p className="text-xs font-medium text-foreground/70">
                   {t.user}
                 </p>
               </CardContent>
@@ -65,13 +67,13 @@ export default function Testimonials() {
           {[...testimonials, ...testimonials].map((t, i) => (
             <Card
               key={i}
-              className="min-w-[300px] max-w-[300px] bg-black/40 backdrop-blur-md border border-white/10 hover:border-green-500/40 transition-all duration-300 hover:shadow-[0_0_40px_rgba(34,197,94,0.15)] hover:-translate-y-1"
+              className="min-w-[300px] max-w-[300px] rounded-2xl border bg-background/80 backdrop-blur transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 hover:scale-[1.02] hover:border-black/30"
             >
-              <CardContent className="p-5 space-y-3">
-                <p className="text-sm text-muted-foreground leading-relaxed">
+              <CardContent className="p-6 space-y-4">
+                <p className="text-base leading-relaxed text-foreground/80">
                   {t.text}
                 </p>
-                <p className="text-xs text-green-400">
+                <p className="text-xs font-medium text-foreground/70">
                   {t.user}
                 </p>
               </CardContent>
@@ -81,8 +83,7 @@ export default function Testimonials() {
 
       </div>
 
-      {/* animation */}
-      <style jsx>{`
+      <style jsx global>{`
         @keyframes scroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -98,7 +99,6 @@ export default function Testimonials() {
           animation: scrollReverse 30s linear infinite;
         }
       `}</style>
-
     </section>
   );
 }

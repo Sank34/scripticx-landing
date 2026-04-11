@@ -5,19 +5,24 @@ import FeatureGrid from "@/components/FeaturesGrid";
 import CTA from "@/components/CTA";
 import HowItWorks from "@/components/HowItWorks";
 import Testimonials from "@/components/Testimonials";
-import Showcase from "@/components/Showcase";
 import Footer from "@/components/Footer";
+import Showcasing from "@/components/Showcasing";
+import ShowcaseTabs from "@/components/ShowcaseTabs";
+import MiniScriptSection from "@/components/MiniScriptSection";
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <Hero />
       <CodeSection />
       <FeatureGrid />
+      <Showcasing />
+      <ShowcaseTabs />
+      <MiniScriptSection />
       <HowItWorks />
       <Testimonials />
-      <Showcase />
+      {/* <Showcase /> */}
       <CTA />
       <Footer />
     </div>

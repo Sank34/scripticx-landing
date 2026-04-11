@@ -3,16 +3,19 @@
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 import { siGithub, siX, siYoutube } from "simple-icons";
+import { useTranslations } from "next-intl";
 
 export default function Footer() {
+  const t = useTranslations("Footer");
+
   return (
-    <footer className="border-t border-white/10 mt-32">
+    <footer className="border-t mt-32">
 
       {/* top security bar */}
-      <div className="py-6 text-center text-sm text-muted-foreground border-b border-white/10">
-        <span>We protect your data.</span>{" "}
-        <span className="text-green-400 cursor-pointer hover:underline">
-          More on Security
+      <div className="py-6 text-center text-sm text-muted-foreground border-b">
+        <span>{t("security.protect")}</span>{" "}
+        <span className="text-foreground cursor-pointer hover:underline transition">
+          {t("security.more")}
         </span>
         <span className="mx-4">•</span>
         <span>✔ SOC2 Type 2 Certified</span>
@@ -27,7 +30,7 @@ export default function Footer() {
 
           {/* logo + socials */}
           <div>
-            <h2 className="text-xl font-semibold text-white mb-4">
+            <h2 className="text-xl font-semibold mb-4">
               ScripticX
             </h2>
 
@@ -38,7 +41,7 @@ export default function Footer() {
                 height="20"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="hover:text-white cursor-pointer transition"
+                className="cursor-pointer transition hover:text-foreground hover:scale-110"
               >
                 <path d={siGithub.path} />
               </svg>
@@ -49,13 +52,13 @@ export default function Footer() {
                 height="20"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="hover:text-white cursor-pointer transition"
+                className="cursor-pointer transition hover:text-foreground hover:scale-110"
               >
                 <path d={siX.path} />
               </svg>
 
               {/* Discord / Chat */}
-              <MessageCircle className="w-5 h-5 hover:text-white cursor-pointer transition" />
+              <MessageCircle className="w-5 h-5 cursor-pointer transition hover:text-foreground hover:scale-110" />
 
               {/* YouTube */}
               <svg
@@ -63,7 +66,7 @@ export default function Footer() {
                 height="20"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="hover:text-white cursor-pointer transition"
+                className="cursor-pointer transition hover:text-foreground hover:scale-110"
               >
                 <path d={siYoutube.path} />
               </svg>
@@ -74,52 +77,52 @@ export default function Footer() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-10 text-sm">
 
             <div>
-              <h3 className="text-white mb-3">Product</h3>
+              <h3 className="font-medium mb-3">{t("sections.product")}</h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li><Link href="#">Problems</Link></li>
-                <li><Link href="#">Editor</Link></li>
-                <li><Link href="#">Community</Link></li>
-                <li><Link href="#">Pricing</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.problems")}</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.editor")}</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.community")}</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.pricing")}</Link></li>
               </ul>
             </div>
 
             <div>
-              <h3 className="text-white mb-3">Solutions</h3>
+              <h3 className="font-medium mb-3">{t("sections.solutions")}</h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li><Link href="#">Students</Link></li>
-                <li><Link href="#">Teachers</Link></li>
-                <li><Link href="#">Beginners</Link></li>
-                <li><Link href="#">Teams</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.students")}</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.teachers")}</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.beginners")}</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.teams")}</Link></li>
               </ul>
             </div>
 
             <div>
-              <h3 className="text-white mb-3">Resources</h3>
+              <h3 className="font-medium mb-3">{t("sections.resources")}</h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li><Link href="#">Docs</Link></li>
-                <li><Link href="#">Blog</Link></li>
-                <li><Link href="#">Support</Link></li>
-                <li><Link href="#">Status</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.docs")}</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.blog")}</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.support")}</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.status")}</Link></li>
               </ul>
             </div>
 
             <div>
-              <h3 className="text-white mb-3">Developers</h3>
+              <h3 className="font-medium mb-3">{t("sections.developers")}</h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li><Link href="#">API</Link></li>
-                <li><Link href="#">Open Source</Link></li>
-                <li><Link href="#">Changelog</Link></li>
-                <li><Link href="#">Contributing</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.api")}</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.openSource")}</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.changelog")}</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.contributing")}</Link></li>
               </ul>
             </div>
 
             <div>
-              <h3 className="text-white mb-3">Company</h3>
+              <h3 className="font-medium mb-3">{t("sections.company")}</h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li><Link href="#">About</Link></li>
-                <li><Link href="#">Privacy</Link></li>
-                <li><Link href="#">Terms</Link></li>
-                <li><Link href="#">Contact</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.about")}</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.privacy")}</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.terms")}</Link></li>
+                <li><Link href="#" className="hover:text-foreground transition">{t("links.contact")}</Link></li>
               </ul>
             </div>
 
@@ -127,8 +130,8 @@ export default function Footer() {
         </div>
 
         {/* bottom */}
-        <div className="border-t border-white/10 mt-16 pt-6 flex items-center justify-between text-sm text-muted-foreground">
-          <span>© {new Date().getFullYear()} ScripticX</span>
+        <div className="border-t mt-16 pt-6 flex items-center justify-between text-sm text-muted-foreground">
+          <span>© {new Date().getFullYear()} {t("copyright")}</span>
         </div>
 
       </div>

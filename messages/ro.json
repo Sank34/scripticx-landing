@@ -1,0 +1,209 @@
+{
+  "Navbar": {
+    "logo": "ScripticX",
+    "features": "Funcționalități",
+    "docs": "Documentație",
+    "blog": "Blog",
+    "login": "Autentificare",
+    "getStarted": "Începe",
+
+    "features_items": {
+      "interactive": {
+        "title": "Probleme interactive",
+        "desc": "Rezolvă exerciții cu feedback instant."
+      },
+      "miniscript": {
+        "title": "MiniScript+",
+        "desc": "Limbaj simplu creat pentru învățare."
+      },
+      "sharing": {
+        "title": "Partajare cod",
+        "desc": "Împarte soluții și învață de la alții."
+      }
+    },
+
+    "docs_items": {
+      "intro": {
+        "title": "Introducere",
+        "desc": "Învață bazele ScripticX."
+      },
+      "gettingStarted": {
+        "title": "Primii pași",
+        "desc": "Configurează primul tău proiect."
+      },
+      "examples": {
+        "title": "Exemple",
+        "desc": "Explorează exemple reale de cod."
+      }
+    }
+  },
+  "Hero": {
+    "badge": "Platforma MiniScript+",
+    "titleLine1": "Învață programare",
+    "titleLine2": "într-un mod inteligent",
+    "description": "Rezolvă probleme, împărtășește soluții și progresează mai rapid.",
+    "primaryCta": "Începe să codezi",
+    "secondaryCta": "Vezi exemple",
+    "trust": "De încredere pentru dezvoltatori din întreaga lume"
+  },
+  "CodeSection": {
+    "title": "Scrie cod. Vezi rezultatele instant.",
+    "description": "MiniScript+ este creat pentru a fi simplu, rapid și distractiv."
+  },
+  "Features": {
+    "title": "Tot ce ai nevoie pentru a progresa",
+    "description": "Creat pentru învățare, colaborare și evoluție rapidă",
+    "items": {
+      "interactive": {
+        "title": "Probleme interactive",
+        "desc": "Rezolvă provocări reale cu feedback instant."
+      },
+      "miniscript": {
+        "title": "MiniScript+",
+        "desc": "Un limbaj simplu și puternic pentru învățare."
+      },
+      "sharing": {
+        "title": "Partajare cod",
+        "desc": "Împarte soluții și învață de la alții."
+      },
+      "progress": {
+        "title": "Progres",
+        "desc": "Vezi cum evoluezi și îmbunătățește-te constant."
+      },
+      "community": {
+        "title": "Comunitate",
+        "desc": "Conectează-te cu alți dezvoltatori."
+      },
+      "execution": {
+        "title": "Execuție rapidă",
+        "desc": "Rulează cod instant în browser."
+      }
+    }
+  },
+  "Showcasing": {
+    "title1": "Creat pentru învățare",
+    "title2": "și progres real.",
+    "description": "Tot ce ai nevoie pentru a învăța programare mai rapid, de la rezolvarea problemelor până la urmărirea progresului.",
+    "features": [
+      "Rezolvă probleme instant",
+      "Urmărește progresul",
+      "Împarte soluțiile tale",
+      "Creat pentru clase",
+      "Execuție rapidă",
+      "Limbaj simplu de învățare"
+    ]
+  },
+  "ShowcaseTabs": {
+    "title": "Totul într-un singur loc",
+    "tabs": {
+      "editor": "Editor",
+      "live": "Live Code",
+      "classes": "Clase",
+      "socials": "Social",
+      "dashboard": "Dashboard"
+    },
+    "classes": {
+      "title": "Introducere în programare",
+      "teacher": "Profesor: sanke",
+      "assignments": "Teme",
+      "due": "Scadent mâine",
+      "open": "Deschide"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "problems": "Probleme rezolvate",
+      "score": "Scor total",
+      "streak": "Streak",
+      "leaderboard": "Clasament",
+      "activity": "Activitate"
+    },
+    "socials": {
+      "post": "Postează",
+      "send": "Trimite",
+      "create": "Creează postare",
+      "typing": "Construiesc ceva tare",
+      "finished": "Finalizat!"
+    }
+  },
+  "MiniScript": {
+    "title1": "Învață programare",
+    "title2": "fără complexitate",
+    "description": "MiniScript+ elimină sintaxa inutilă ca să te poți concentra pe logică, rezolvarea problemelor și înțelegere reală.",
+    "bullets": [
+      "Fără sintaxă complicată",
+      "Feedback instant",
+      "Creat pentru învățare"
+    ],
+    "examples": {
+      "loops": "Bucle simplificate",
+      "conditions": "Condiții",
+      "input": "Input utilizator"
+    }
+  },
+  "HowItWorks": {
+    "title": "Cum funcționează",
+    "description": "Un workflow simplu care te ajută să înveți mai rapid",
+    "steps": {
+      "solve": {
+        "title": "Rezolvă probleme",
+        "desc": "Începe cu exerciții interactive create pentru a-ți îmbunătăți abilitățile."
+      },
+      "share": {
+        "title": "Distribuie codul",
+        "desc": "Publică soluțiile tale și învață de la ceilalți din comunitate."
+      },
+      "track": {
+        "title": "Urmărește progresul",
+        "desc": "Vezi cum evoluezi în timp și rămâi constant."
+      }
+    }
+  },
+   "Testimonials": {
+    "title": "Apreciat de cursanți",
+    "description": "Vezi cum ScripticX ajută oamenii să învețe programare mai rapid"
+  },
+   "CTA": {
+    "badge": "Open source încă din prima zi",
+    "title": "Construiește mai rapid, învață mai inteligent",
+    "description": "Alătură-te ScripticX și îmbunătățește-ți abilitățile de programare cu feedback în timp real, învățare în comunitate și execuție instant.",
+    "primary": "Începe acum",
+    "secondary": "Explorează platforma",
+    "openSource": "Open source"
+  },
+  "Footer": {
+    "security": {
+      "protect": "Îți protejăm datele.",
+      "more": "Mai multe despre securitate"
+    },
+    "sections": {
+      "product": "Produs",
+      "solutions": "Soluții",
+      "resources": "Resurse",
+      "developers": "Dezvoltatori",
+      "company": "Companie"
+    },
+    "links": {
+      "problems": "Probleme",
+      "editor": "Editor",
+      "community": "Comunitate",
+      "pricing": "Prețuri",
+      "students": "Studenți",
+      "teachers": "Profesori",
+      "beginners": "Începători",
+      "teams": "Echipe",
+      "docs": "Documentație",
+      "blog": "Blog",
+      "support": "Suport",
+      "status": "Status",
+      "api": "API",
+      "openSource": "Open Source",
+      "changelog": "Actualizări",
+      "contributing": "Contribuie",
+      "about": "Despre",
+      "privacy": "Confidențialitate",
+      "terms": "Termeni",
+      "contact": "Contact"
+    },
+    "copyright": "ScripticX"
+  }
+}

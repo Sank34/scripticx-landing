@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useTranslations } from "next-intl";
 
 const lines = [
   'PRINT "Hello World"',
-  "LET score = 85",
+  "score = 80",
   "IF score > 80 THEN",
   '  PRINT "Great job!"',
   "ELSE",
@@ -14,17 +15,20 @@ const lines = [
 ];
 
 export default function CodeSection() {
-  const [visibleLines, setVisibleLines] = useState<string[]>([]);
+  const t = useTranslations("CodeSection");
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    let i = 0;
+    setIndex(0);
+
     const interval = setInterval(() => {
-      if (i >= lines.length) {
-        clearInterval(interval);
-        return;
-      }
-      setVisibleLines((prev) => [...prev, lines[i]]);
-      i++;
+      setIndex((prev) => {
+        if (prev >= lines.length) {
+          clearInterval(interval);
+          return prev;
+        }
+        return prev + 1;
+      });
     }, 400);
 
     return () => clearInterval(interval);
@@ -34,18 +38,16 @@ export default function CodeSection() {
     <section className="py-32 px-6">
       <div className="max-w-4xl mx-auto text-center mb-12">
         <h2 className="text-3xl font-semibold">
-          Write code. See results instantly.
+          {t("title")}
         </h2>
 
         <p className="text-muted-foreground mt-4">
-          MiniScript+ is designed to be simple, fast, and fun.
+          {t("description")}
         </p>
       </div>
 
       <div className="max-w-4xl mx-auto">
-        <Card className="relative bg-black/40 border border-white/10 backdrop-blur overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.1),transparent_70%)]" />
-
+        <Card className="relative border bg-muted/30 overflow-hidden">
           <CardContent className="p-6 relative">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-3 h-3 rounded-full bg-red-500" />
@@ -53,13 +55,13 @@ export default function CodeSection() {
               <div className="w-3 h-3 rounded-full bg-green-500" />
             </div>
 
-            <pre className="text-sm font-mono leading-relaxed text-green-400 h-[160px] overflow-hidden">
-              {visibleLines.filter(Boolean).map((line, idx) => (
+            <pre className="text-sm font-mono leading-relaxed text-foreground min-h-[160px]">
+              {lines.slice(0, index).map((line, idx) => (
                 <div
                   key={idx}
                   className={
                     line.startsWith("IF")
-                      ? "bg-green-500/10 px-2 rounded"
+                      ? "bg-muted px-2 rounded"
                       : ""
                   }
                 >
@@ -67,7 +69,9 @@ export default function CodeSection() {
                 </div>
               ))}
 
-              <span className="inline-block w-[8px] h-[16px] bg-green-400 ml-1 animate-pulse" />
+              <div className="flex items-center">
+                <span className="inline-block w-[8px] h-[16px] bg-foreground animate-pulse mt-1" />
+              </div>
             </pre>
           </CardContent>
         </Card>

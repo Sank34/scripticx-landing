@@ -2,65 +2,64 @@
 
 import { Button } from "@/components/ui/button";
 import { siGithub } from "simple-icons";
+import { useTranslations } from "next-intl";
 
 export default function CTA() {
+  const t = useTranslations("CTA");
   return (
     <section className="py-32 px-6 text-center relative overflow-hidden">
-
-      {/* subtle background glow */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.15),transparent_70%)]" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-black/5 to-transparent" />
 
       <div className="relative max-w-3xl mx-auto">
 
         {/* open source label */}
-        <p className="text-sm text-green-400 mb-4">
-          Open source from day one
+        <p className="text-sm text-muted-foreground mb-4">
+          {t("badge")}
         </p>
 
         {/* main title */}
-        <h2 className="text-4xl font-semibold text-white leading-tight">
-          Build faster, learn smarter
+        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-tight">
+          {t("title")}
         </h2>
 
         {/* subtitle */}
-        <p className="text-muted-foreground mt-4">
-          Join ScripticX and improve your coding skills with real-time feedback,
-          community learning, and instant execution.
+        <p className="text-muted-foreground mt-5 text-lg">
+          {t("description")}
         </p>
 
         {/* buttons */}
         <div className="mt-8 flex items-center justify-center gap-4 flex-wrap">
           <Button
             size="lg"
-            className="bg-green-600 hover:bg-green-700 text-white shadow-lg shadow-green-500/20"
+            className="bg-black text-white hover:bg-black/90 shadow-lg"
           >
-            Get started
+            {t("primary")}
           </Button>
 
           <Button
             size="lg"
             variant="outline"
-            className="border-white/20 text-black bg-white/90 hover:bg-white/10 hover:text-white"
+            className="border hover:bg-muted"
           >
-            Explore platform
+            {t("secondary")}
           </Button>
         </div>
 
         {/* github badge */}
         <div className="mt-8 flex justify-center">
-          <div className="flex items-center gap-2 text-sm bg-white/5 border border-white/10 rounded-full px-4 py-2 backdrop-blur-md">
+          <div className="flex items-center gap-2 text-sm border bg-background rounded-full px-4 py-2">
             <svg
               width="16"
               height="16"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="text-white"
+              className="text-foreground"
             >
               <path d={siGithub.path} />
             </svg>
             <span>@scripticx</span>
             <span className="text-muted-foreground">•</span>
-            <span>Open source</span>
+            <span>{t("openSource")}</span>
           </div>
         </div>
 

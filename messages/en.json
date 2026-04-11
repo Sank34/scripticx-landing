@@ -1,0 +1,209 @@
+{
+  "Navbar": {
+    "logo": "ScripticX",
+    "features": "Features",
+    "docs": "Docs",
+    "blog": "Blog",
+    "login": "Login",
+    "getStarted": "Get Started",
+
+    "features_items": {
+      "interactive": {
+        "title": "Interactive Problems",
+        "desc": "Solve coding challenges with instant feedback."
+      },
+      "miniscript": {
+        "title": "MiniScript+",
+        "desc": "Simple language built for learning."
+      },
+      "sharing": {
+        "title": "Code Sharing",
+        "desc": "Share solutions and learn from others."
+      }
+    },
+
+    "docs_items": {
+      "intro": {
+        "title": "Introduction",
+        "desc": "Learn the basics of ScripticX."
+      },
+      "gettingStarted": {
+        "title": "Getting Started",
+        "desc": "Setup your first project."
+      },
+      "examples": {
+        "title": "Examples",
+        "desc": "Explore real code examples."
+      }
+    }
+  },
+  "Hero": {
+    "badge": "MiniScript+ platform",
+    "titleLine1": "Learn programming",
+    "titleLine2": "the smart way",
+    "description": "Solve problems, share solutions, and improve faster.",
+    "primaryCta": "Start Coding",
+    "secondaryCta": "View Examples",
+    "trust": "Trusted by developers learning faster worldwide"
+  },
+  "CodeSection": {
+    "title": "Write code. See results instantly.",
+    "description": "MiniScript+ is designed to be simple, fast, and fun."
+  },
+  "Features": {
+    "title": "Everything you need to improve",
+    "description": "Built for learning, sharing, and growing faster",
+    "items": {
+      "interactive": {
+        "title": "Interactive problems",
+        "desc": "Solve real-world coding challenges with instant feedback."
+      },
+      "miniscript": {
+        "title": "MiniScript+",
+        "desc": "A simple and powerful language built for learning."
+      },
+      "sharing": {
+        "title": "Code sharing",
+        "desc": "Share your solutions and learn from others."
+      },
+      "progress": {
+        "title": "Track progress",
+        "desc": "See your growth and improve consistently."
+      },
+      "community": {
+        "title": "Community",
+        "desc": "Connect with other developers."
+      },
+      "execution": {
+        "title": "Fast execution",
+        "desc": "Run code instantly in your browser."
+      }
+    }
+  },
+  "Showcasing": {
+    "title1": "Built for learning",
+    "title2": "and real progress.",
+    "description": "Everything you need to learn programming faster, from solving problems to tracking your growth.",
+    "features": [
+      "Solve problems instantly",
+      "Track your progress",
+      "Share your solutions",
+      "Built for classrooms",
+      "Fast execution engine",
+      "Simple learning language"
+    ]
+  },
+  "ShowcaseTabs": {
+    "title": "Everything in one place",
+    "tabs": {
+      "editor": "Editor",
+      "live": "Live Code",
+      "classes": "Classes",
+      "socials": "Socials",
+      "dashboard": "Dashboard"
+    },
+    "classes": {
+      "title": "Intro to Programming",
+      "teacher": "Teacher: sanke",
+      "assignments": "Assignments",
+      "due": "Due tomorrow",
+      "open": "Open"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "problems": "Problems solved",
+      "score": "Total score",
+      "streak": "Streak",
+      "leaderboard": "Leaderboard",
+      "activity": "Activity"
+    },
+    "socials": {
+      "post": "Post",
+      "send": "Send",
+      "create": "Create Post",
+      "typing": "Building something cool",
+      "finished": "Finished!"
+    }
+  },
+  "MiniScript": {
+    "title1": "Learn programming",
+    "title2": "without the complexity",
+    "description": "MiniScript+ removes unnecessary syntax so you can focus on logic, problem-solving, and real understanding.",
+    "bullets": [
+      "No confusing syntax",
+      "Instant feedback",
+      "Built for learning"
+    ],
+    "examples": {
+      "loops": "Loops made simple",
+      "conditions": "Conditions",
+      "input": "User input"
+    }
+  },
+  "HowItWorks": {
+    "title": "How it works",
+    "description": "A simple workflow to help you learn faster",
+    "steps": {
+      "solve": {
+        "title": "Solve problems",
+        "desc": "Start with interactive coding challenges designed to improve your skills."
+      },
+      "share": {
+        "title": "Share your code",
+        "desc": "Post your solutions and learn from others in the community."
+      },
+      "track": {
+        "title": "Track progress",
+        "desc": "See your improvement over time and stay consistent."
+      }
+    }
+  },
+   "Testimonials": {
+    "title": "Loved by learners",
+    "description": "See how ScripticX is helping people learn programming faster"
+  },
+  "CTA": {
+    "badge": "Open source from day one",
+    "title": "Build faster, learn smarter",
+    "description": "Join ScripticX and improve your coding skills with real-time feedback, community learning, and instant execution.",
+    "primary": "Get started",
+    "secondary": "Explore platform",
+    "openSource": "Open source"
+  },
+   "Footer": {
+    "security": {
+      "protect": "We protect your data.",
+      "more": "More on Security"
+    },
+    "sections": {
+      "product": "Product",
+      "solutions": "Solutions",
+      "resources": "Resources",
+      "developers": "Developers",
+      "company": "Company"
+    },
+    "links": {
+      "problems": "Problems",
+      "editor": "Editor",
+      "community": "Community",
+      "pricing": "Pricing",
+      "students": "Students",
+      "teachers": "Teachers",
+      "beginners": "Beginners",
+      "teams": "Teams",
+      "docs": "Docs",
+      "blog": "Blog",
+      "support": "Support",
+      "status": "Status",
+      "api": "API",
+      "openSource": "Open Source",
+      "changelog": "Changelog",
+      "contributing": "Contributing",
+      "about": "About",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "contact": "Contact"
+    },
+    "copyright": "ScripticX"
+  }
+}
