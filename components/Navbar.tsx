@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Code, Brain, Share2, Book, Rocket, FileText } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -23,8 +24,9 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="font-semibold text-lg">
+        <Link href="/" className="font-semibold text-lg flex items-center justify-baseline">
           {t("logo")}
+          <Image src="/logoSCX.svg" alt="Scripticx" width={30} height={30} />
         </Link>
 
         {/* Navigation */}
