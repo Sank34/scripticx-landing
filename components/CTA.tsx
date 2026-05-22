@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 export default function CTA() {
   const t = useTranslations("CTA");
   return (
-    <section className="py-32 px-6 text-center relative overflow-hidden">
+    <section className="py-20 sm:py-32 px-4 sm:px-6 text-center relative overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-black/5 to-transparent" />
 
       <div className="relative max-w-3xl mx-auto">
@@ -18,20 +18,20 @@ export default function CTA() {
         </p>
 
         {/* main title */}
-        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-tight">
           {t("title")}
         </h2>
 
         {/* subtitle */}
-        <p className="text-muted-foreground mt-5 text-lg">
+        <p className="text-muted-foreground mt-5 text-base sm:text-lg">
           {t("description")}
         </p>
 
         {/* buttons */}
-        <div className="mt-8 flex items-center justify-center gap-4 flex-wrap">
+        <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 sm:flex-wrap">
           <Button
             size="lg"
-            className="bg-black text-white hover:bg-black/90 shadow-lg"
+            className="bg-black text-white hover:bg-black/90 shadow-lg w-full sm:w-auto"
           >
             {t("primary")}
           </Button>
@@ -39,7 +39,7 @@ export default function CTA() {
           <Button
             size="lg"
             variant="outline"
-            className="border hover:bg-muted"
+            className="border hover:bg-muted w-full sm:w-auto"
           >
             {t("secondary")}
           </Button>
@@ -47,7 +47,7 @@ export default function CTA() {
 
         {/* github badge */}
         <div className="mt-8 flex justify-center">
-          <div className="flex items-center gap-2 text-sm border bg-background rounded-full px-4 py-2">
+          <div className="flex items-center gap-2 text-xs sm:text-sm border bg-background rounded-full px-3 sm:px-4 py-2">
             <svg
               width="16"
               height="16"

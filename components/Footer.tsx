@@ -9,21 +9,25 @@ export default function Footer() {
   const t = useTranslations("Footer");
 
   return (
-    <footer className="border-t mt-32">
+    <footer className="border-t mt-20 sm:mt-32">
 
       {/* top security bar */}
-      <div className="py-6 text-center text-sm text-muted-foreground border-b">
-        <span>{t("security.protect")}</span>{" "}
-        <span className="text-foreground cursor-pointer hover:underline transition">
-          {t("security.more")}
-        </span>
-        <span className="mx-4">•</span>
-        <span>✔ SOC2 Type 2 Certified</span>
-        <span className="mx-4">•</span>
-        <span>✔ HIPAA Compliant</span>
+      <div className="py-6 px-4 text-center text-xs sm:text-sm text-muted-foreground border-b">
+        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+          <span>
+            {t("security.protect")}{" "}
+            <span className="text-foreground cursor-pointer hover:underline transition">
+              {t("security.more")}
+            </span>
+          </span>
+          <span className="hidden sm:inline">•</span>
+          <span>✔ SOC2 Type 2 Certified</span>
+          <span className="hidden sm:inline">•</span>
+          <span>✔ HIPAA Compliant</span>
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
 
         {/* top row */}
         <div className="flex flex-col md:flex-row justify-between gap-10">
@@ -74,7 +78,7 @@ export default function Footer() {
           </div>
 
           {/* links grid */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-10 text-sm">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 sm:gap-10 text-sm">
 
             <div>
               <h3 className="font-medium mb-3">{t("sections.product")}</h3>
@@ -130,7 +134,7 @@ export default function Footer() {
         </div>
 
         {/* bottom */}
-        <div className="border-t mt-16 pt-6 flex items-center justify-between text-sm text-muted-foreground">
+        <div className="border-t mt-12 sm:mt-16 pt-6 flex items-center justify-between text-xs sm:text-sm text-muted-foreground">
           <span>© {new Date().getFullYear()} {t("copyright")}</span>
         </div>
 

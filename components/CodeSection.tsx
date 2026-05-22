@@ -35,27 +35,27 @@ export default function CodeSection() {
   }, []);
 
   return (
-    <section className="py-32 px-6">
-      <div className="max-w-4xl mx-auto text-center mb-12">
-        <h2 className="text-3xl font-semibold">
+    <section className="py-20 sm:py-32 px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-12">
+        <h2 className="text-2xl sm:text-3xl font-semibold">
           {t("title")}
         </h2>
 
-        <p className="text-muted-foreground mt-4">
+        <p className="text-muted-foreground mt-4 text-sm sm:text-base">
           {t("description")}
         </p>
       </div>
 
       <div className="max-w-4xl mx-auto">
         <Card className="relative border bg-muted/30 overflow-hidden">
-          <CardContent className="p-6 relative">
+          <CardContent className="p-4 sm:p-6 relative">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-3 h-3 rounded-full bg-red-500" />
               <div className="w-3 h-3 rounded-full bg-yellow-500" />
               <div className="w-3 h-3 rounded-full bg-green-500" />
             </div>
 
-            <pre className="text-sm font-mono leading-relaxed text-foreground min-h-[160px]">
+            <pre className="text-xs sm:text-sm font-mono leading-relaxed text-foreground min-h-[160px] overflow-x-auto">
               {lines.slice(0, index).map((line, idx) => (
                 <div
                   key={idx}

@@ -48,18 +48,18 @@ export default function FeatureGrid() {
   ];
 
   return (
-    <section className="py-32 px-6 max-w-6xl mx-auto">
+    <section className="py-20 sm:py-32 px-4 sm:px-6 max-w-6xl mx-auto">
 
-      <div className="text-center mb-16">
-        <h2 className="text-3xl font-semibold">
+      <div className="text-center mb-12 sm:mb-16">
+        <h2 className="text-2xl sm:text-3xl font-semibold">
           {t("title")}
         </h2>
-        <p className="text-muted-foreground mt-4">
+        <p className="text-muted-foreground mt-4 text-sm sm:text-base">
           {t("description")}
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
 
         {features.map((f, i) => (
           <Card

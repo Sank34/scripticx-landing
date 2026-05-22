@@ -21,12 +21,12 @@ export default function Navbar() {
 
   return (
     <div className="fixed top-0 left-0 w-full z-50 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-2">
 
         {/* Logo */}
-        <Link href="/" className="font-semibold text-lg flex items-center justify-baseline">
+        <Link href="/" className="font-semibold text-base sm:text-lg flex items-center justify-baseline shrink-0">
           {t("logo")}
-          <Image src="/logoSCX.svg" alt="Scripticx" width={30} height={30} />
+          <Image src="/logoSCX.svg" alt="Scripticx" width={28} height={28} className="sm:w-[30px] sm:h-[30px]" />
         </Link>
 
         {/* Navigation */}
@@ -77,16 +77,16 @@ export default function Navbar() {
         </NavigationMenu>
 
         {/* Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <LanguageSwitcher />
-          <Link href="https://platform.scripticx.com/login">
+          <Link href="https://platform.scripticx.com/login" className="hidden sm:inline-flex">
             <Button variant="ghost" className="text-muted-foreground">
               {t("login")}
             </Button>
           </Link>
 
           <Link href="https://platform.scripticx.com">
-            <Button className="bg-black text-white hover:bg-black/90">
+            <Button size="sm" className="bg-black text-white hover:bg-black/90 sm:h-9 sm:px-4 sm:text-sm">
               {t("getStarted")}
             </Button>
           </Link>

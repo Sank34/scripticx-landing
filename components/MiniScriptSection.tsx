@@ -45,12 +45,12 @@ export default function MiniScriptSection() {
   const scale = useTransform(scrollYProgress, [0, 0.3, 1], [0.95, 1, 1]);
 
   return (
-    <section ref={ref} className="py-32 px-6 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        
+    <section ref={ref} className="py-20 sm:py-32 px-4 sm:px-6 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+
         {/* LEFT TEXT */}
         <div>
-          <h2 className="text-4xl font-semibold leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-semibold leading-tight">
             {t("title1")}
             <br />
             <span className="text-muted-foreground">
@@ -58,14 +58,14 @@ export default function MiniScriptSection() {
             </span>
           </h2>
 
-          <p className="mt-6 text-muted-foreground max-w-md">
+          <p className="mt-5 sm:mt-6 text-muted-foreground max-w-md">
             {t("description")}
           </p>
 
           <div className="mt-6 space-y-3 text-sm">
             {(t.raw("bullets") as string[]).map((text, i) => (
               <div key={i} className="flex items-center gap-2">
-                <Check size={16} className="text-green-500" />
+                <Check size={16} className="text-green-500 shrink-0" />
                 <span>{text}</span>
               </div>
             ))}
@@ -73,25 +73,25 @@ export default function MiniScriptSection() {
         </div>
 
         {/* RIGHT FLOATING CARDS */}
-        <div className="relative h-[420px]">
-          
+        <div className="relative h-[360px] sm:h-[420px] max-w-[420px] mx-auto md:mx-0 w-full">
+
           <motion.div
             style={{ y: y1, opacity, scale }}
-            className="absolute top-0 left-0 w-[260px]"
+            className="absolute top-0 left-0 w-[220px] sm:w-[260px]"
           >
             <CodeCard {...examples[0]} />
           </motion.div>
 
           <motion.div
             style={{ y: y2, opacity, scale }}
-            className="absolute top-24 right-0 w-[260px]"
+            className="absolute top-24 right-0 w-[220px] sm:w-[260px]"
           >
             <CodeCard {...examples[1]} />
           </motion.div>
 
           <motion.div
             style={{ y: y1, opacity, scale }}
-            className="absolute bottom-0 left-1/4 w-[260px]"
+            className="absolute bottom-0 left-1/4 w-[220px] sm:w-[260px]"
           >
             <CodeCard {...examples[2]} />
           </motion.div>

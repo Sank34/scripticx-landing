@@ -20,20 +20,20 @@ export default function Testimonials() {
   const t = useTranslations("Testimonials");
 
   return (
-    <section className="py-32 px-6 max-w-6xl mx-auto relative overflow-hidden">
+    <section className="py-20 sm:py-32 px-4 sm:px-6 max-w-6xl mx-auto relative overflow-hidden">
 
-      <div className="text-center mb-20">
-        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
+      <div className="text-center mb-14 sm:mb-20">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight">
           {t("title")}
         </h2>
-        <p className="text-muted-foreground mt-3 text-base">
+        <p className="text-muted-foreground mt-3 text-sm sm:text-base">
           {t("description")}
         </p>
       </div>
 
       {/* fade edges */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-32 bg-gradient-to-r from-background to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-32 bg-gradient-to-l from-background to-transparent z-10" />
 
       {/* rows */}
       <div className="space-y-6 group">
@@ -46,10 +46,10 @@ export default function Testimonials() {
           {[...testimonials, ...testimonials].map((t, i) => (
             <Card
               key={i}
-              className="min-w-[300px] max-w-[300px] rounded-2xl border bg-background/80 backdrop-blur transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 hover:scale-[1.02] hover:border-black/30"
+              className="min-w-[260px] max-w-[260px] sm:min-w-[300px] sm:max-w-[300px] rounded-2xl border bg-background/80 backdrop-blur transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 hover:scale-[1.02] hover:border-black/30"
             >
-              <CardContent className="p-6 space-y-4">
-                <p className="text-base leading-relaxed text-foreground/80">
+              <CardContent className="p-5 sm:p-6 space-y-4">
+                <p className="text-sm sm:text-base leading-relaxed text-foreground/80">
                   {t.text}
                 </p>
                 <p className="text-xs font-medium text-foreground/70">
@@ -67,10 +67,10 @@ export default function Testimonials() {
           {[...testimonials, ...testimonials].map((t, i) => (
             <Card
               key={i}
-              className="min-w-[300px] max-w-[300px] rounded-2xl border bg-background/80 backdrop-blur transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 hover:scale-[1.02] hover:border-black/30"
+              className="min-w-[260px] max-w-[260px] sm:min-w-[300px] sm:max-w-[300px] rounded-2xl border bg-background/80 backdrop-blur transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 hover:scale-[1.02] hover:border-black/30"
             >
-              <CardContent className="p-6 space-y-4">
-                <p className="text-base leading-relaxed text-foreground/80">
+              <CardContent className="p-5 sm:p-6 space-y-4">
+                <p className="text-sm sm:text-base leading-relaxed text-foreground/80">
                   {t.text}
                 </p>
                 <p className="text-xs font-medium text-foreground/70">

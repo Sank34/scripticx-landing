@@ -23,18 +23,18 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="py-32 px-6 max-w-5xl mx-auto">
+    <section className="py-20 sm:py-32 px-4 sm:px-6 max-w-5xl mx-auto">
 
-      <div className="text-center mb-20">
-        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
+      <div className="text-center mb-14 sm:mb-20">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight">
           {t("title")}
         </h2>
-        <p className="text-muted-foreground mt-3 text-base">
+        <p className="text-muted-foreground mt-3 text-sm sm:text-base">
           {t("description")}
         </p>
       </div>
 
-      <div className="relative grid md:grid-cols-3 gap-12">
+      <div className="relative grid md:grid-cols-3 gap-10 md:gap-12">
 
         <div className="hidden md:block absolute top-[28px] left-0 right-0 h-px bg-border" />
 

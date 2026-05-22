@@ -7,22 +7,22 @@ export default function Showcasing() {
   const features = t.raw("features") as string[];
 
   return (
-    <section className="py-32 px-6 max-w-6xl mx-auto">
+    <section className="py-20 sm:py-32 px-4 sm:px-6 max-w-6xl mx-auto">
 
       {/* Header */}
-      <div className="max-w-3xl mb-12">
-        <h2 className="text-4xl font-bold leading-tight">
+      <div className="max-w-3xl mb-10 sm:mb-12">
+        <h2 className="text-3xl sm:text-4xl font-bold leading-tight">
           {t("title1")} <br />
           {t("title2")}
         </h2>
 
-        <p className="text-muted-foreground mt-4">
+        <p className="text-muted-foreground mt-4 text-sm sm:text-base">
           {t("description")}
         </p>
       </div>
 
       {/* Grid */}
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
 
         {/* LEFT: Features list */}
         <div className="space-y-6">
