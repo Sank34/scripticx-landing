@@ -76,17 +76,28 @@ export default function Navbar() {
           </NavigationMenuList>
         </NavigationMenu>
 
+<<<<<<< HEAD
         {/* Actions */}
         <div className="flex items-center gap-2 sm:gap-3">
           <LanguageSwitcher />
           <Link href="https://platform.scripticx.com/login" className="hidden sm:inline-flex">
+=======
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher />
+          <Link href="http://localhost:3000/login">
+>>>>>>> 1e2d0e8 (smol change)
             <Button variant="ghost" className="text-muted-foreground">
               {t("login")}
             </Button>
           </Link>
 
+<<<<<<< HEAD
           <Link href="https://platform.scripticx.com">
             <Button size="sm" className="bg-black text-white hover:bg-black/90 sm:h-9 sm:px-4 sm:text-sm">
+=======
+          <Link href="http://localhost:3000/login">
+            <Button className="bg-black text-white hover:bg-black/90">
+>>>>>>> 1e2d0e8 (smol change)
               {t("getStarted")}
             </Button>
           </Link>
