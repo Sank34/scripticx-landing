@@ -79,13 +79,13 @@ export default function Navbar() {
         {/* Actions */}
         <div className="flex items-center gap-2 sm:gap-3">
           <LanguageSwitcher />
-          <Link href="https://platform.scripticx.com/login" className="hidden sm:inline-flex">
+          <Link href="https://platform.scripticx.org/login" className="hidden sm:inline-flex">
             <Button variant="ghost" className="text-muted-foreground">
               {t("login")}
             </Button>
           </Link>
 
-          <Link href="https://platform.scripticx.com">
+          <Link href="https://platform.scripticx.org">
             <Button size="sm" className="bg-black text-white hover:bg-black/90 sm:h-9 sm:px-4 sm:text-sm">
               {t("getStarted")}
             </Button>
