@@ -43,7 +43,7 @@ export default function Showcasing() {
         <div className="relative flex justify-center">
 
           <Image
-            src="/mockup1.png"
+            src="/mockup_new.png"
             alt="Platform preview"
             width={1400}
             height={900}
