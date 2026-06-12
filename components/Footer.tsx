@@ -16,9 +16,9 @@ export default function Footer() {
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
           <span>
             {t("security.protect")}{" "}
-            <span className="text-foreground cursor-pointer hover:underline transition">
+            <Link href="/forum" className="text-foreground hover:underline transition">
               {t("security.more")}
-            </span>
+            </Link>
           </span>
           <span className="hidden sm:inline">•</span>
           <span>✔ SOC2 Type 2 Certified</span>

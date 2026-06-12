@@ -42,12 +42,12 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-8">
-          <Button size="lg" className="bg-black text-white hover:bg-black/90 w-full sm:w-auto">
-            {t("primaryCta")}
+          <Button size="lg" className="bg-black text-white hover:bg-black/90 w-full sm:w-auto" asChild>
+            <a href="https://platform.scripticx.org/">{t("primaryCta")}</a>
           </Button>
 
-          <Button size="lg" variant="outline" className="w-full sm:w-auto">
-            {t("secondaryCta")}
+          <Button size="lg" variant="outline" className="w-full sm:w-auto" asChild>
+            <a href="https://platform.scripticx.org/examples">{t("secondaryCta")}</a>
           </Button>
         </div>
 

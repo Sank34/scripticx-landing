@@ -32,16 +32,18 @@ export default function CTA() {
           <Button
             size="lg"
             className="bg-black text-white hover:bg-black/90 shadow-lg w-full sm:w-auto"
+            asChild
           >
-            {t("primary")}
+            <a href="https://github.com/Sank34/scripticx">{t("primary")}</a>
           </Button>
 
           <Button
             size="lg"
             variant="outline"
             className="border hover:bg-muted w-full sm:w-auto"
+            asChild
           >
-            {t("secondary")}
+            <a href="https://platform.scripticx.org">{t("secondary")}</a>
           </Button>
         </div>
 

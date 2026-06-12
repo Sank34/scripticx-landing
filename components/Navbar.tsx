@@ -37,13 +37,13 @@ export default function Navbar() {
               <NavigationMenuTrigger>{t("features")}</NavigationMenuTrigger>
               <NavigationMenuContent className="bg-white">
                 <ul className="w-96 p-4">
-                  <ListItem href="#" title={t("features_items.interactive.title")} icon={<Code className="w-4 h-4" />}>
+                  <ListItem href="https://platform.scripticx.org/problems" title={t("features_items.interactive.title")} icon={<Code className="w-4 h-4" />}>
                     {t("features_items.interactive.desc")}
                   </ListItem>
-                  <ListItem href="#" title={t("features_items.miniscript.title")} icon={<Brain className="w-4 h-4" />}>
+                  <ListItem href="https://platform.scripticx.org/learn" title={t("features_items.miniscript.title")} icon={<Brain className="w-4 h-4" />}>
                     {t("features_items.miniscript.desc")}
                   </ListItem>
-                  <ListItem href="#" title={t("features_items.sharing.title")} icon={<Share2 className="w-4 h-4" />}>
+                  <ListItem href="https://platform.scripticx.org/feed" title={t("features_items.sharing.title")} icon={<Share2 className="w-4 h-4" />}>
                     {t("features_items.sharing.desc")}
                   </ListItem>
                 </ul>
@@ -54,13 +54,13 @@ export default function Navbar() {
               <NavigationMenuTrigger>{t("docs")}</NavigationMenuTrigger>
               <NavigationMenuContent className="bg-white">
                 <ul className="w-96 p-4">
-                  <ListItem href="#" title={t("docs_items.intro.title")} icon={<Book className="w-4 h-4" />}>
+                  <ListItem href="https://platform.scripticx.org/learn/basics" title={t("docs_items.intro.title")} icon={<Book className="w-4 h-4" />}>
                     {t("docs_items.intro.desc")}
                   </ListItem>
-                  <ListItem href="#" title={t("docs_items.gettingStarted.title")} icon={<Rocket className="w-4 h-4" />}>
+                  <ListItem href="https://platform.scripticx.org/editor" title={t("docs_items.gettingStarted.title")} icon={<Rocket className="w-4 h-4" />}>
                     {t("docs_items.gettingStarted.desc")}
                   </ListItem>
-                  <ListItem href="#" title={t("docs_items.examples.title")} icon={<FileText className="w-4 h-4" />}>
+                  <ListItem href="https://platform.scripticx.org/examples" title={t("docs_items.examples.title")} icon={<FileText className="w-4 h-4" />}>
                     {t("docs_items.examples.desc")}
                   </ListItem>
                 </ul>
@@ -69,7 +69,7 @@ export default function Navbar() {
 
             <NavigationMenuItem>
               <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link href="#">{t("blog")}</Link>
+                <Link href="/forum">{t("blog")}</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
 
