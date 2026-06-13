@@ -13,7 +13,7 @@ const configuredUrl =
 export const siteConfig = {
   name: "ScripticX",
   url: configuredUrl,
-  logo: "/icons/icon-512.png",
+  logo: "/icons/notification-icon-512.png",
   socialImage: "/icons/social-card.png",
   descriptions: {
     ro: "Învață programare interactiv cu exerciții, MiniScript+, feedback instant și o comunitate creată pentru progres real.",

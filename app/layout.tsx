@@ -59,25 +59,20 @@ export async function generateMetadata(): Promise<Metadata> {
     icons: {
       icon: [
         {
-          url: "/icon.png",
-          sizes: "32x32",
+          url: "/icons/notification-icon-72.png",
+          sizes: "72x70",
           type: "image/png",
         },
         {
-          url: "/icons/icon-192.png",
-          sizes: "192x192",
-          type: "image/png",
-        },
-        {
-          url: "/icons/icon-512.png",
-          sizes: "512x512",
+          url: "/icons/notification-icon-512.png",
+          sizes: "512x499",
           type: "image/png",
         },
       ],
       apple: [
         {
-          url: "/apple-icon.png",
-          sizes: "180x180",
+          url: "/icons/notification-icon-512.png",
+          sizes: "512x499",
           type: "image/png",
         },
       ],

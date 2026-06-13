@@ -15,22 +15,16 @@ export default function manifest(): MetadataRoute.Manifest {
     categories: ["education", "developer tools", "productivity"],
     icons: [
       {
-        src: "/icons/icon-192.png",
-        sizes: "192x192",
+        src: "/icons/notification-icon-72.png",
+        sizes: "72x70",
         type: "image/png",
         purpose: "any",
       },
       {
-        src: "/icons/icon-512.png",
-        sizes: "512x512",
+        src: "/icons/notification-icon-512.png",
+        sizes: "512x499",
         type: "image/png",
         purpose: "any",
-      },
-      {
-        src: "/icons/icon-maskable-512.png",
-        sizes: "512x512",
-        type: "image/png",
-        purpose: "maskable",
       },
     ],
   };
