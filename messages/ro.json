@@ -4,6 +4,7 @@
     "features": "Funcționalități",
     "docs": "Documentație",
     "blog": "Blog",
+    "knowledge": "Centrul Knowledge",
     "login": "Autentificare",
     "getStarted": "Începe",
 
@@ -24,16 +25,16 @@
 
     "docs_items": {
       "intro": {
-        "title": "Introducere",
-        "desc": "Învață bazele ScripticX."
+        "title": "Primii pași",
+        "desc": "Află cum funcționează platforma ScripticX."
       },
       "gettingStarted": {
-        "title": "Primii pași",
-        "desc": "Configurează primul tău proiect."
+        "title": "Bazele MiniScript+",
+        "desc": "Învață variabile, condiții, bucle și input."
       },
       "examples": {
-        "title": "Exemple",
-        "desc": "Explorează exemple reale de cod."
+        "title": "Prezentare API",
+        "desc": "Explorează direcția viitorului API public."
       }
     }
   },
@@ -173,8 +174,11 @@
   "Footer": {
     "security": {
       "protect": "Îți protejăm datele.",
-      "more": "Mai multe despre securitate"
+      "more": "Mai multe despre securitate",
+      "openSource": "Open source",
+      "disclosure": "Raportare responsabilă"
     },
+    "tagline": "Un loc modern în care înveți programare, exersezi intenționat și evoluezi alături de ceilalți.",
     "sections": {
       "product": "Produs",
       "solutions": "Soluții",
@@ -187,14 +191,17 @@
       "editor": "Editor",
       "community": "Comunitate",
       "pricing": "Prețuri",
+      "knowledge": "Knowledge Center",
       "students": "Studenți",
       "teachers": "Profesori",
       "beginners": "Începători",
       "teams": "Echipe",
       "docs": "Documentație",
       "blog": "Blog",
+      "trust": "Încredere și securitate",
       "support": "Suport",
       "status": "Status",
+      "acceptableUse": "Utilizare acceptabilă",
       "api": "API",
       "openSource": "Open Source",
       "changelog": "Actualizări",

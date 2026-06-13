@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 "use client";
 
 import { useState } from "react";
@@ -21,12 +20,10 @@ const tabs: Tab[] = [
 export default function ShowcaseTabs() {
   const t = useTranslations("ShowcaseTabs");
   const [active, setActive] = useState(tabs[0]);
-  const [displayed, setDisplayed] = useState(tabs[0]);
 
   const handleChange = (tab:Tab) => {
     if (tab.id === active.id) return;
     setActive(tab);
-    setDisplayed(tab);
   };
 
   return (

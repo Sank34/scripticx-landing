@@ -3,7 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Code, Brain, Share2, Book, Rocket, FileText } from "lucide-react";
+import {
+  BookOpen,
+  Brain,
+  Code,
+  Code2,
+  Library,
+  Share2,
+} from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import {
   NavigationMenu,
@@ -26,7 +33,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="font-semibold text-base sm:text-lg flex items-center justify-baseline shrink-0">
           {t("logo")}
-          <Image src="/logoSCX.svg" alt="Scripticx" width={28} height={28} className="sm:w-[30px] sm:h-[30px]" />
+          <Image src="/logoSCX.svg" alt="Scripticx" width={28} height={28} className="h-auto w-7 sm:w-[30px]" />
         </Link>
 
         {/* Navigation */}
@@ -54,13 +61,13 @@ export default function Navbar() {
               <NavigationMenuTrigger>{t("docs")}</NavigationMenuTrigger>
               <NavigationMenuContent className="bg-white">
                 <ul className="w-96 p-4">
-                  <ListItem href="https://platform.scripticx.org/learn/basics" title={t("docs_items.intro.title")} icon={<Book className="w-4 h-4" />}>
+                  <ListItem href="/docs" title={t("docs_items.intro.title")} icon={<BookOpen className="w-4 h-4" />}>
                     {t("docs_items.intro.desc")}
                   </ListItem>
-                  <ListItem href="https://platform.scripticx.org/editor" title={t("docs_items.gettingStarted.title")} icon={<Rocket className="w-4 h-4" />}>
+                  <ListItem href="/docs/miniscript" title={t("docs_items.gettingStarted.title")} icon={<Code className="w-4 h-4" />}>
                     {t("docs_items.gettingStarted.desc")}
                   </ListItem>
-                  <ListItem href="https://platform.scripticx.org/examples" title={t("docs_items.examples.title")} icon={<FileText className="w-4 h-4" />}>
+                  <ListItem href="/docs/api" title={t("docs_items.examples.title")} icon={<Code2 className="w-4 h-4" />}>
                     {t("docs_items.examples.desc")}
                   </ListItem>
                 </ul>
@@ -69,7 +76,10 @@ export default function Navbar() {
 
             <NavigationMenuItem>
               <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link href="/forum">{t("blog")}</Link>
+                <Link href="/knowledge">
+                  <Library className="size-4" />
+                  {t("knowledge")}
+                </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
 

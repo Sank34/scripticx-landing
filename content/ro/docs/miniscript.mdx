@@ -1,0 +1,62 @@
+import { HighlightedCodeBlock } from "@/components/knowledge/HighlightedCodeBlock";
+
+<Callout title="Învață modificând exemplele">
+  Rulează fiecare exemplu în editor, schimbă o valoare și încearcă să prezici
+  rezultatul înainte de următoarea rulare.
+</Callout>
+
+MiniScript+ păstrează sintaxa compactă, astfel încât începătorii să se poată
+concentra pe logică și rezolvarea problemelor.
+
+<h2 id="valori-si-variabile">Valori și variabile</h2>
+
+Variabilele păstrează valori care pot fi refolosite sau modificate:
+
+<HighlightedCodeBlock code={`nume = "Ana"
+scor = 10
+
+PRINT nume
+PRINT scor`} />
+
+Textele folosesc ghilimele, iar numerele pot fi utilizate direct în calcule.
+
+<h2 id="conditii">Condiții</h2>
+
+Condițiile permit programului să aleagă ce execută:
+
+<HighlightedCodeBlock code={`scor = 80
+
+IF scor >= 50 THEN
+  PRINT "Admis"
+ELSE
+  PRINT "Mai încearcă"
+END`} />
+
+Instrucțiunile dintre `IF` și `END` sunt executate în funcție de rezultatul
+condiției.
+
+<h2 id="bucle">Bucle</h2>
+
+Buclele repetă un bloc de instrucțiuni:
+
+<HighlightedCodeBlock code={`numar = 1
+
+WHILE numar <= 5
+  PRINT numar
+  numar = numar + 1
+END`} />
+
+Condiția trebuie să devină falsă la un moment dat; altfel bucla poate continua
+la nesfârșit.
+
+<h2 id="intrare-si-iesire">Intrare și ieșire</h2>
+
+Folosește input pentru a primi o valoare și output pentru a afișa un rezultat:
+
+<HighlightedCodeBlock code={`INPUT nume
+PRINT "Salut, " + nume`} />
+
+<Callout title="Sintaxa evoluează">
+  MiniScript+ este dezvoltat activ. Editorul și instrucțiunile exercițiului sunt
+  sursa corectă pentru sintaxa disponibilă în prezent.
+</Callout>

@@ -4,6 +4,7 @@
     "features": "Features",
     "docs": "Docs",
     "blog": "Blog",
+    "knowledge": "Knowledge",
     "login": "Login",
     "getStarted": "Get Started",
 
@@ -24,16 +25,16 @@
 
     "docs_items": {
       "intro": {
-        "title": "Introduction",
-        "desc": "Learn the basics of ScripticX."
+        "title": "Getting started",
+        "desc": "Learn how the ScripticX platform works."
       },
       "gettingStarted": {
-        "title": "Getting Started",
-        "desc": "Setup your first project."
+        "title": "MiniScript+ basics",
+        "desc": "Learn variables, conditions, loops, and input."
       },
       "examples": {
-        "title": "Examples",
-        "desc": "Explore real code examples."
+        "title": "API overview",
+        "desc": "Explore the direction of the public API."
       }
     }
   },
@@ -173,8 +174,11 @@
    "Footer": {
     "security": {
       "protect": "We protect your data.",
-      "more": "More on Security"
+      "more": "More on security",
+      "openSource": "Open source",
+      "disclosure": "Responsible disclosure"
     },
+    "tagline": "A modern place to learn programming, practice deliberately, and grow with others.",
     "sections": {
       "product": "Product",
       "solutions": "Solutions",
@@ -187,14 +191,17 @@
       "editor": "Editor",
       "community": "Community",
       "pricing": "Pricing",
+      "knowledge": "Knowledge Center",
       "students": "Students",
       "teachers": "Teachers",
       "beginners": "Beginners",
       "teams": "Teams",
       "docs": "Docs",
       "blog": "Blog",
+      "trust": "Trust & Security",
       "support": "Support",
       "status": "Status",
+      "acceptableUse": "Acceptable Use",
       "api": "API",
       "openSource": "Open Source",
       "changelog": "Changelog",

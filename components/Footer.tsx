@@ -1,8 +1,6 @@
-"use client";
-
 import Link from "next/link";
-import { MessageCircle } from "lucide-react";
-import { siGithub, siX, siYoutube } from "simple-icons";
+import { Check } from "lucide-react";
+import { siGithub, siYoutube } from "simple-icons";
 import { useTranslations } from "next-intl";
 
 export default function Footer() {
@@ -16,14 +14,20 @@ export default function Footer() {
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
           <span>
             {t("security.protect")}{" "}
-            <Link href="/forum" className="text-foreground hover:underline transition">
+            <Link href="/trust" className="text-foreground hover:underline transition">
               {t("security.more")}
             </Link>
           </span>
           <span className="hidden sm:inline">•</span>
-          <span>✔ SOC2 Type 2 Certified</span>
+          <span className="flex items-center gap-1.5">
+            <Check className="size-3.5 text-green-600" />
+            {t("security.openSource")}
+          </span>
           <span className="hidden sm:inline">•</span>
-          <span>✔ HIPAA Compliant</span>
+          <span className="flex items-center gap-1.5">
+            <Check className="size-3.5 text-green-600" />
+            {t("security.disclosure")}
+          </span>
         </div>
       </div>
 
@@ -38,42 +42,34 @@ export default function Footer() {
               ScripticX
             </h2>
 
-            <div className="flex gap-4 text-muted-foreground">
-              {/* GitHub */}
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="cursor-pointer transition hover:text-foreground hover:scale-110"
-              >
-                <path d={siGithub.path} />
-              </svg>
+            <p className="mb-5 max-w-xs text-sm leading-6 text-muted-foreground">
+              {t("tagline")}
+            </p>
 
-              {/* Twitter */}
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="cursor-pointer transition hover:text-foreground hover:scale-110"
+            <div className="flex gap-3 text-muted-foreground">
+              <a
+                href="https://github.com/Sank34/scripticx"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="ScripticX on GitHub"
+                className="flex size-9 items-center justify-center rounded-lg border transition hover:border-foreground/20 hover:bg-muted hover:text-foreground"
               >
-                <path d={siX.path} />
-              </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d={siGithub.path} />
+                </svg>
+              </a>
 
-              {/* Discord / Chat */}
-              <MessageCircle className="w-5 h-5 cursor-pointer transition hover:text-foreground hover:scale-110" />
-
-              {/* YouTube */}
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="cursor-pointer transition hover:text-foreground hover:scale-110"
+              <a
+                href="https://www.youtube.com/@scripticx"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="ScripticX on YouTube"
+                className="flex size-9 items-center justify-center rounded-lg border transition hover:border-foreground/20 hover:bg-muted hover:text-foreground"
               >
-                <path d={siYoutube.path} />
-              </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d={siYoutube.path} />
+                </svg>
+              </a>
             </div>
           </div>
 
@@ -83,50 +79,50 @@ export default function Footer() {
             <div>
               <h3 className="font-medium mb-3">{t("sections.product")}</h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.problems")}</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.editor")}</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.community")}</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.pricing")}</Link></li>
+                <li><Link href="https://platform.scripticx.org/problems" className="hover:text-foreground transition">{t("links.problems")}</Link></li>
+                <li><Link href="https://platform.scripticx.org/editor" className="hover:text-foreground transition">{t("links.editor")}</Link></li>
+                <li><Link href="https://platform.scripticx.org/feed" className="hover:text-foreground transition">{t("links.community")}</Link></li>
+                <li><Link href="/knowledge" className="hover:text-foreground transition">{t("links.knowledge")}</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-medium mb-3">{t("sections.solutions")}</h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.students")}</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.teachers")}</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.beginners")}</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.teams")}</Link></li>
+                <li><Link href="https://platform.scripticx.org/problems" className="hover:text-foreground transition">{t("links.students")}</Link></li>
+                <li><Link href="https://platform.scripticx.org/classes" className="hover:text-foreground transition">{t("links.teachers")}</Link></li>
+                <li><Link href="/docs" className="hover:text-foreground transition">{t("links.beginners")}</Link></li>
+                <li><Link href="https://platform.scripticx.org/classes" className="hover:text-foreground transition">{t("links.teams")}</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-medium mb-3">{t("sections.resources")}</h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.docs")}</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.blog")}</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.support")}</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.status")}</Link></li>
+                <li><Link href="/docs" className="hover:text-foreground transition">{t("links.docs")}</Link></li>
+                <li><Link href="/trust" className="hover:text-foreground transition">{t("links.trust")}</Link></li>
+                <li><a href="mailto:support@scripticx.org" className="hover:text-foreground transition">{t("links.support")}</a></li>
+                <li><Link href="/legal/acceptable-use" className="hover:text-foreground transition">{t("links.acceptableUse")}</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-medium mb-3">{t("sections.developers")}</h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.api")}</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.openSource")}</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.changelog")}</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.contributing")}</Link></li>
+                <li><Link href="/docs/api" className="hover:text-foreground transition">{t("links.api")}</Link></li>
+                <li><a href="https://github.com/Sank34/scripticx" target="_blank" rel="noreferrer" className="hover:text-foreground transition">{t("links.openSource")}</a></li>
+                <li><a href="https://github.com/Sank34/scripticx/commits" target="_blank" rel="noreferrer" className="hover:text-foreground transition">{t("links.changelog")}</a></li>
+                <li><a href="https://github.com/Sank34/scripticx" target="_blank" rel="noreferrer" className="hover:text-foreground transition">{t("links.contributing")}</a></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-medium mb-3">{t("sections.company")}</h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.about")}</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.privacy")}</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.terms")}</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition">{t("links.contact")}</Link></li>
+                <li><Link href="/knowledge" className="hover:text-foreground transition">{t("links.about")}</Link></li>
+                <li><Link href="/legal/privacy" className="hover:text-foreground transition">{t("links.privacy")}</Link></li>
+                <li><Link href="/legal/terms" className="hover:text-foreground transition">{t("links.terms")}</Link></li>
+                <li><a href="mailto:support@scripticx.org" className="hover:text-foreground transition">{t("links.contact")}</a></li>
               </ul>
             </div>
 

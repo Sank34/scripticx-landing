@@ -1,0 +1,47 @@
+<Callout type="warning" title="The public API is not available yet">
+  This page describes the direction of the ScripticX API. It is not a promise
+  that the listed endpoints or capabilities are currently available.
+</Callout>
+
+## API status
+
+ScripticX does not currently expose a stable public API. We are designing the
+developer experience before publishing credentials, endpoints, or a versioning
+commitment.
+
+Keeping this documentation inside the main ScripticX site means future API
+guides will share the same navigation, search, and visual language as the rest
+of the product.
+
+## Design principles
+
+The future API is expected to follow a few core principles:
+
+- predictable resource-oriented URLs;
+- versioned contracts and documented changes;
+- scoped authentication credentials;
+- clear rate-limit and error responses;
+- examples for cURL, JavaScript, and Python.
+
+## Planned resources
+
+Early resources may include read-only access to:
+
+| Resource | Potential use |
+| --- | --- |
+| Profile | Display a learner's public profile |
+| Problems | List public programming challenges |
+| Submissions | Inspect a user's own submission history |
+| Classes | Integrate classroom workflows |
+
+Authentication, private classroom data, and code execution require additional
+safety review before they can be exposed.
+
+## Updates
+
+API availability and breaking changes will be announced in this Knowledge
+Center. Until then, do not build integrations against undocumented internal
+endpoints.
+
+For integration questions, contact
+[support@scripticx.org](mailto:support@scripticx.org).

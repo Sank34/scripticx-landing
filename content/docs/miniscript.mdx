@@ -1,0 +1,62 @@
+import { HighlightedCodeBlock } from "@/components/knowledge/HighlightedCodeBlock";
+
+<Callout title="Learn by changing the examples">
+  Run each example in the ScripticX editor, then change one value and predict
+  the result before running it again.
+</Callout>
+
+MiniScript+ keeps syntax intentionally compact so beginners can focus on
+reasoning and problem solving.
+
+## Values and variables
+
+Variables store values that can be reused or changed:
+
+<HighlightedCodeBlock code={`name = "Ana"
+score = 10
+
+PRINT name
+PRINT score`} />
+
+Text values use quotation marks. Numbers can be used directly in calculations.
+
+## Conditions
+
+Conditions let a program choose what to do:
+
+<HighlightedCodeBlock code={`score = 80
+
+IF score >= 50 THEN
+  PRINT "Passed"
+ELSE
+  PRINT "Try again"
+END`} />
+
+The statements between `IF` and `END` run according to whether the condition is
+true or false.
+
+## Loops
+
+Loops repeat a block of instructions:
+
+<HighlightedCodeBlock code={`number = 1
+
+WHILE number <= 5
+  PRINT number
+  number = number + 1
+END`} />
+
+Make sure the condition eventually becomes false. Otherwise, the loop can
+continue indefinitely.
+
+## Input and output
+
+Use input to receive a value and output to show a result:
+
+<HighlightedCodeBlock code={`INPUT name
+PRINT "Hello " + name`} />
+
+<Callout type="info" title="Syntax evolves">
+  MiniScript+ is actively developed. The editor and exercise instructions are
+  the source of truth for currently supported syntax.
+</Callout>

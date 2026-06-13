@@ -19,8 +19,6 @@ export default function CodeSection() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    setIndex(0);
-
     const interval = setInterval(() => {
       setIndex((prev) => {
         if (prev >= lines.length) {
