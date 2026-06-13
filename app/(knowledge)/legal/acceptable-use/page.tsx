@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 
 import { ArticlePage } from "@/components/knowledge/ArticlePage";
 import ContentEn from "@/content/legal/acceptable-use.mdx";
 import ContentRo from "@/content/ro/legal/acceptable-use.mdx";
+import { createKnowledgeArticleMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Acceptable Use Policy | ScripticX",
-  description: "Rules that keep ScripticX safe and useful for everyone.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return createKnowledgeArticleMetadata(
+    "/legal/acceptable-use",
+    await getLocale()
+  );
+}
 
 export default function AcceptableUsePage() {
   return (

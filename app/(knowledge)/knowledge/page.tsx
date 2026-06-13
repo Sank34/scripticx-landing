@@ -15,12 +15,27 @@ import {
   getKnowledgeArticles,
   getKnowledgeSections,
 } from "@/lib/knowledge-data";
+import {
+  absoluteUrl,
+  createPageMetadata,
+  siteConfig,
+} from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Knowledge Center | ScripticX",
-  description:
-    "Documentation, developer resources, security guidance, and legal policies for ScripticX.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  return createPageMetadata({
+    locale,
+    path: "/knowledge",
+    title: {
+      ro: "Knowledge Center",
+      en: "Knowledge Center",
+    },
+    description: {
+      ro: "Documentație, resurse pentru dezvoltatori, securitate și politici juridice pentru ScripticX.",
+      en: "Documentation, developer resources, security guidance, and legal policies for ScripticX.",
+    },
+  });
+}
 
 const sectionIcons = {
   Learn: BookOpen,
@@ -34,9 +49,30 @@ export default async function KnowledgePage() {
   const isRomanian = locale === "ro";
   const knowledgeArticles = getKnowledgeArticles(locale);
   const knowledgeSections = getKnowledgeSections(locale);
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "ScripticX Knowledge Center",
+    url: absoluteUrl("/knowledge"),
+    description: isRomanian
+      ? "Documentație, securitate și politici pentru ScripticX."
+      : "Documentation, security guidance, and policies for ScripticX.",
+    inLanguage: isRomanian ? "ro" : "en",
+    isPartOf: {
+      "@type": "WebSite",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+  };
 
   return (
     <main className="min-w-0 flex-1 pb-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
       <section className="relative overflow-hidden rounded-3xl border bg-gradient-to-br from-green-100/90 via-background to-green-50 px-6 py-12 sm:px-10 sm:py-16">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.035)_1px,transparent_1px)] bg-[size:32px_32px]" />
         <div className="relative max-w-2xl">

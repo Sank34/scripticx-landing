@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 
 import { ArticlePage } from "@/components/knowledge/ArticlePage";
 import ContentEn from "@/content/legal/cookies.mdx";
 import ContentRo from "@/content/ro/legal/cookies.mdx";
+import { createKnowledgeArticleMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Cookie Policy | ScripticX",
-  description: "What cookies ScripticX uses and why.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return createKnowledgeArticleMetadata("/legal/cookies", await getLocale());
+}
 
 export default function CookiePolicyPage() {
   return (

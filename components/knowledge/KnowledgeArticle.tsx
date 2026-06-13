@@ -15,6 +15,7 @@ import {
   getKnowledgeArticles,
   type KnowledgeArticleMeta,
 } from "@/lib/knowledge-data";
+import { absoluteUrl, siteConfig } from "@/lib/metadata";
 
 export function KnowledgeArticle({
   article,
@@ -35,9 +36,43 @@ export function KnowledgeArticle({
     index < knowledgeArticles.length - 1
       ? knowledgeArticles[index + 1]
       : undefined;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description,
+    url: absoluteUrl(article.href),
+    datePublished: "2026-06-13",
+    dateModified: "2026-06-13",
+    inLanguage: isRomanian ? "ro" : "en",
+    author: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl(siteConfig.logo),
+      },
+    },
+    isPartOf: {
+      "@type": "WebSite",
+      name: "ScripticX Knowledge Center",
+      url: absoluteUrl("/knowledge"),
+    },
+  };
 
   return (
     <div className="min-w-0 flex-1">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
       <Breadcrumb className="mb-8">
         <BreadcrumbList>
           <BreadcrumbItem>

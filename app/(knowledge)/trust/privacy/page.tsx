@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 
 import { ArticlePage } from "@/components/knowledge/ArticlePage";
 import ContentEn from "@/content/trust/privacy-principles.mdx";
 import ContentRo from "@/content/ro/trust/privacy-principles.mdx";
+import { createKnowledgeArticleMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Privacy principles | ScripticX",
-  description:
-    "The principles guiding how ScripticX treats personal information.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return createKnowledgeArticleMetadata("/trust/privacy", await getLocale());
+}
 
 export default function PrivacyPrinciplesPage() {
   return (

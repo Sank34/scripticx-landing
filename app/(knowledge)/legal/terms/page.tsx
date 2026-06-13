@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 
 import { ArticlePage } from "@/components/knowledge/ArticlePage";
 import ContentEn from "@/content/legal/terms.mdx";
 import ContentRo from "@/content/ro/legal/terms.mdx";
+import { createKnowledgeArticleMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Terms of Service | ScripticX",
-  description: "The terms that apply when using ScripticX.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return createKnowledgeArticleMetadata("/legal/terms", await getLocale());
+}
 
 export default function TermsPage() {
   return (

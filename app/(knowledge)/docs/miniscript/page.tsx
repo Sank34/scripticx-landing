@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 
 import { ArticlePage } from "@/components/knowledge/ArticlePage";
 import ContentEn from "@/content/docs/miniscript.mdx";
 import ContentRo from "@/content/ro/docs/miniscript.mdx";
+import { createKnowledgeArticleMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "MiniScript+ basics | ScripticX Docs",
-  description: "Learn variables, conditions, loops, and input in MiniScript+.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return createKnowledgeArticleMetadata("/docs/miniscript", await getLocale());
+}
 
 export default function MiniScriptDocsPage() {
   return (
