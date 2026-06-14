@@ -4,15 +4,20 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
 
-const testimonials = [
-  { user: "@alex_dev", text: "This platform made learning programming actually fun. The instant feedback is addictive." },
-  { user: "@maria_codes", text: "I improved more in 2 weeks here than months elsewhere." },
-  { user: "@devguy", text: "Clean UI, fast execution, and a great community." },
-  { user: "@codewizard", text: "Sharing solutions and learning from others is insanely valuable." },
-  { user: "@learner01", text: "MiniScript+ is surprisingly powerful and easy to use." },
-  { user: "@prodev", text: "Feels like a modern coding playground built right." },
-  { user: "@frontendking", text: "The UI is insanely clean and everything feels instant." },
-  { user: "@backendnerd", text: "Honestly one of the best platforms I've used for learning." },
+type Testimonials = {
+  user: string,
+  text: string
+}
+
+const testimonials:Testimonials[] = [
+  { user: "Eric Littau", text: "I always wished for a platform where i could easily learn CS." },
+  { user: "Catalina Nedelea", text: "The lessons are clear and easy to understand!" },
+  { user: "Maria Blagoci", text: "The interactive problems make learning more engaging." },
+  { user: "Maia Pricop", text: "The UI is pretty, i love it :)" },
+  { user: "Andreea Bobotan", text: "I really liked the overall experience." },
+  { user: "Vlad Ene", text: "Easy to use and very user-friendly platform." },
+  { user: "Dragos Gatan", text: "Excelent for anyone starting their coding journey." },
+  { user: "Serban Daria", text: "Needs a mascot, but apart from that i loved the experience." },
 ];
 
 export default function Testimonials() {
