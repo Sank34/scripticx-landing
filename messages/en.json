@@ -45,7 +45,7 @@
     "description": "Solve problems, share solutions, and improve faster.",
     "primaryCta": "Get Started",
     "secondaryCta": "View Examples",
-    "trust": "Google Sign-In only requests your basic profile and email"
+    "trust": "Clear data practices and privacy controls"
   },
   "CodeSection": {
     "title": "Write code. See results instantly.",
@@ -159,24 +159,24 @@
       }
     }
   },
-  "GoogleDataDisclosure": {
-    "eyebrow": "Clear and limited access",
-    "title": "Google Sign-In and your data",
-    "description": "You can use Google to create or access your ScripticX account. We request only the standard OpenID, email, and profile permissions needed for authentication.",
-    "noAccess": "ScripticX does not request access to Gmail, Google Drive, Calendar, contacts, or your Google password.",
+  "DataUsageDisclosure": {
+    "eyebrow": "Privacy and transparency",
+    "title": "How we process your data",
+    "description": "We collect only the information needed to provide the learning platform, save your progress, keep accounts secure, and improve ScripticX.",
+    "noAccess": "We do not sell personal information or use it for third-party advertising.",
     "privacyLink": "Read the full Privacy Policy",
     "items": {
       "data": {
-        "title": "Data we receive",
-        "description": "Your Google account identifier, primary email address, and basic profile information such as your name and profile picture."
+        "title": "What we collect and why",
+        "description": "We use account details, learning activity, technical information, and messages you send us to operate the platform, save progress, secure accounts, and provide support."
       },
-      "purpose": {
-        "title": "Why we use it",
-        "description": "To create your account, sign you in securely, identify your ScripticX profile, and communicate essential account information."
+      "google": {
+        "title": "Optional Google Sign-In",
+        "description": "If you choose Google Sign-In, we receive only your account identifier, email, name, and profile picture. We do not access Gmail, Drive, Calendar, contacts, or your password."
       },
       "control": {
         "title": "Your control",
-        "description": "You can revoke Google access at any time and request deletion of your ScripticX account and associated personal data."
+        "description": "You can revoke connected account access and request access to, correction of, or deletion of your ScripticX data."
       }
     }
   },

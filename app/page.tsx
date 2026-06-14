@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import Showcasing from "@/components/Showcasing";
 import ShowcaseTabs from "@/components/ShowcaseTabs";
 import MiniScriptSection from "@/components/MiniScriptSection";
-import GoogleDataDisclosure from "@/components/GoogleDataDisclosure";
+import DataUsageDisclosure from "@/components/DataUsageDisclosure";
 
 export default function Page() {
   return (
@@ -22,7 +22,7 @@ export default function Page() {
       <ShowcaseTabs />
       <MiniScriptSection />
       <HowItWorks />
-      <GoogleDataDisclosure />
+      <DataUsageDisclosure />
       <Testimonials />
       {/* <Showcase /> */}
       <CTA />

@@ -1,21 +1,26 @@
 import Link from "next/link";
-import { Check, ShieldCheck, Trash2, UserRound } from "lucide-react";
+import {
+  Check,
+  KeyRound,
+  ShieldCheck,
+  Trash2,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Card, CardContent } from "@/components/ui/card";
 
-export default function GoogleDataDisclosure() {
-  const t = useTranslations("GoogleDataDisclosure");
+export default function DataUsageDisclosure() {
+  const t = useTranslations("DataUsageDisclosure");
   const items = [
     {
-      icon: UserRound,
+      icon: ShieldCheck,
       title: t("items.data.title"),
       description: t("items.data.description"),
     },
     {
-      icon: ShieldCheck,
-      title: t("items.purpose.title"),
-      description: t("items.purpose.description"),
+      icon: KeyRound,
+      title: t("items.google.title"),
+      description: t("items.google.description"),
     },
     {
       icon: Trash2,
@@ -28,10 +33,7 @@ export default function GoogleDataDisclosure() {
     <section className="px-4 py-20 sm:px-6 sm:py-32">
       <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl border bg-gradient-to-br from-green-50 via-background to-background p-6 sm:p-10">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.4fr] lg:items-start">
-          <div>
-            <div className="mb-5 flex size-12 items-center justify-center rounded-xl border bg-white text-xl font-semibold shadow-sm">
-              G
-            </div>
+          <div className="lg:self-center">
             <p className="text-sm font-medium text-green-700">{t("eyebrow")}</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
               {t("title")}
@@ -44,7 +46,7 @@ export default function GoogleDataDisclosure() {
               <span>{t("noAccess")}</span>
             </div>
             <Link
-              href="/legal/privacy#google-sign-in"
+              href="/legal/privacy"
               className="mt-6 inline-flex text-sm font-medium underline underline-offset-4"
             >
               {t("privacyLink")}

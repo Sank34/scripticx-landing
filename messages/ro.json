@@ -45,7 +45,7 @@
     "description": "Rezolvă probleme, împărtășește soluții și progresează mai rapid.",
     "primaryCta": "Începe acum",
     "secondaryCta": "Vezi exemple",
-    "trust": "Autentificarea Google solicită doar profilul de bază și adresa de email"
+    "trust": "Practici clare privind datele și controlul confidențialității"
   },
   "CodeSection": {
     "title": "Scrie cod. Vezi rezultatele instant.",
@@ -159,24 +159,24 @@
       }
     }
   },
-  "GoogleDataDisclosure": {
-    "eyebrow": "Acces clar și limitat",
-    "title": "Autentificarea Google și datele tale",
-    "description": "Poți folosi Google pentru a crea sau accesa contul ScripticX. Solicităm doar permisiunile standard OpenID, email și profil necesare autentificării.",
-    "noAccess": "ScripticX nu solicită acces la Gmail, Google Drive, Calendar, contacte sau parola contului tău Google.",
+  "DataUsageDisclosure": {
+    "eyebrow": "Confidențialitate și transparență",
+    "title": "Cum folosim datele tale",
+    "description": "Colectăm doar informațiile necesare pentru a furniza platforma educațională, a salva progresul, a proteja conturile și a îmbunătăți ScripticX.",
+    "noAccess": "Nu vindem date personale și nu le folosim pentru publicitate oferită de terți.",
     "privacyLink": "Citește Politica de confidențialitate",
     "items": {
       "data": {
-        "title": "Datele pe care le primim",
-        "description": "Identificatorul contului Google, adresa principală de email și informațiile de bază ale profilului, precum numele și fotografia."
+        "title": "Ce colectăm și de ce",
+        "description": "Folosim date despre cont, activitatea de învățare, informații tehnice și mesajele trimise pentru funcționarea platformei, salvarea progresului, securitate și suport."
       },
-      "purpose": {
-        "title": "De ce le folosim",
-        "description": "Pentru a crea contul, a te autentifica în siguranță, a identifica profilul ScripticX și a comunica informații esențiale despre cont."
+      "google": {
+        "title": "Autentificare Google opțională",
+        "description": "Dacă alegi Google Sign-In, primim doar identificatorul contului, adresa de email, numele și fotografia. Nu accesăm Gmail, Drive, Calendar, contactele sau parola."
       },
       "control": {
         "title": "Controlul îți aparține",
-        "description": "Poți revoca accesul Google oricând și poți solicita ștergerea contului ScripticX și a datelor personale asociate."
+        "description": "Poți revoca accesul conturilor conectate și poți solicita accesarea, corectarea sau ștergerea datelor tale ScripticX."
       }
     }
   },
