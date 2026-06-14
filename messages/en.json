@@ -45,7 +45,7 @@
     "description": "Solve problems, share solutions, and improve faster.",
     "primaryCta": "Get Started",
     "secondaryCta": "View Examples",
-    "trust": "Trusted by developers learning faster worldwide"
+    "trust": "Google Sign-In only requests your basic profile and email"
   },
   "CodeSection": {
     "title": "Write code. See results instantly.",
@@ -159,7 +159,28 @@
       }
     }
   },
-   "Testimonials": {
+  "GoogleDataDisclosure": {
+    "eyebrow": "Clear and limited access",
+    "title": "Google Sign-In and your data",
+    "description": "You can use Google to create or access your ScripticX account. We request only the standard OpenID, email, and profile permissions needed for authentication.",
+    "noAccess": "ScripticX does not request access to Gmail, Google Drive, Calendar, contacts, or your Google password.",
+    "privacyLink": "Read the full Privacy Policy",
+    "items": {
+      "data": {
+        "title": "Data we receive",
+        "description": "Your Google account identifier, primary email address, and basic profile information such as your name and profile picture."
+      },
+      "purpose": {
+        "title": "Why we use it",
+        "description": "To create your account, sign you in securely, identify your ScripticX profile, and communicate essential account information."
+      },
+      "control": {
+        "title": "Your control",
+        "description": "You can revoke Google access at any time and request deletion of your ScripticX account and associated personal data."
+      }
+    }
+  },
+  "Testimonials": {
     "title": "Loved by learners",
     "description": "See how ScripticX is helping people learn programming faster"
   },
