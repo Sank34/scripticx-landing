@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Check } from "lucide-react";
 import { siGithub, siYoutube } from "simple-icons";
 import { useTranslations } from "next-intl";
@@ -38,9 +39,19 @@ export default function Footer() {
 
           {/* logo + socials */}
           <div>
-            <h2 className="text-xl font-semibold mb-4">
-              ScripticX
-            </h2>
+            <Link
+              href="/"
+              className="mb-4 flex w-fit items-center justify-baseline text-xl font-semibold"
+            >
+              Scriptic
+              <Image
+                src="/logoSCX.svg"
+                alt="ScripticX"
+                width={32}
+                height={32}
+                className="h-auto w-8"
+              />
+            </Link>
 
             <p className="mb-5 max-w-xs text-sm leading-6 text-muted-foreground">
               {t("tagline")}
