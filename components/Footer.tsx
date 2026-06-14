@@ -60,7 +60,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://www.youtube.com/@scripticx"
+                href="https://www.youtube.com/@ScripticXLessons"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="ScripticX on YouTube"
@@ -101,7 +101,7 @@ export default function Footer() {
               <ul className="space-y-2 text-muted-foreground">
                 <li><Link href="/docs" className="hover:text-foreground transition">{t("links.docs")}</Link></li>
                 <li><Link href="/trust" className="hover:text-foreground transition">{t("links.trust")}</Link></li>
-                <li><a href="mailto:support@scripticx.org" className="hover:text-foreground transition">{t("links.support")}</a></li>
+                <li><a href="https://platform.scripticx.org/contact" className="hover:text-foreground transition">{t("links.support")}</a></li>
                 <li><Link href="/legal/acceptable-use" className="hover:text-foreground transition">{t("links.acceptableUse")}</Link></li>
               </ul>
             </div>
@@ -122,7 +122,7 @@ export default function Footer() {
                 <li><Link href="/knowledge" className="hover:text-foreground transition">{t("links.about")}</Link></li>
                 <li><Link href="/legal/privacy" className="hover:text-foreground transition">{t("links.privacy")}</Link></li>
                 <li><Link href="/legal/terms" className="hover:text-foreground transition">{t("links.terms")}</Link></li>
-                <li><a href="mailto:support@scripticx.org" className="hover:text-foreground transition">{t("links.contact")}</a></li>
+                <li><a href="https://platform.scripticx.org/contact" className="hover:text-foreground transition">{t("links.contact")}</a></li>
               </ul>
             </div>
 
