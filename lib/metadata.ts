@@ -15,6 +15,7 @@ export const siteConfig = {
   url: configuredUrl,
   logo: "/icons/notification-icon-512.png",
   socialImage: "/icons/social-card.png",
+  knowledgeSocialImage: "/icons/social-card-knowledge.png",
   descriptions: {
     ro: "Învață programare interactiv cu exerciții, MiniScript+, feedback instant și o comunitate creată pentru progres real.",
     en: "Learn programming interactively with practical exercises, MiniScript+, instant feedback, and a community built for real progress.",
@@ -48,12 +49,14 @@ export function createPageMetadata({
   title,
   description,
   type = "website",
+  socialImage = siteConfig.socialImage,
 }: {
   locale: string;
   path: string;
   title: LocalizedText;
   description: LocalizedText;
   type?: "website" | "article";
+  socialImage?: string;
 }): Metadata {
   const normalized = normalizeKnowledgeLocale(locale);
   const pageTitle = title[normalized];
@@ -76,10 +79,13 @@ export function createPageMetadata({
       type,
       images: [
         {
-          url: absoluteUrl(siteConfig.socialImage),
+          url: absoluteUrl(socialImage),
           width: 1200,
           height: 630,
-          alt: "ScripticX - Learn programming interactively",
+          alt:
+            socialImage === siteConfig.knowledgeSocialImage
+              ? "ScripticX Knowledge Center"
+              : "ScripticX - Learn programming interactively",
         },
       ],
     },
@@ -87,7 +93,7 @@ export function createPageMetadata({
       card: "summary_large_image",
       title: pageTitle,
       description: pageDescription,
-      images: [absoluteUrl(siteConfig.socialImage)],
+      images: [absoluteUrl(socialImage)],
     },
   };
 }
@@ -119,5 +125,6 @@ export function createKnowledgeArticleMetadata(href: string, locale: string) {
           : getArticleMeta(href, "ro")!.description,
     },
     type: "article",
+    socialImage: siteConfig.knowledgeSocialImage,
   });
 }
