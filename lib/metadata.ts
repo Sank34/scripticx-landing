@@ -8,11 +8,21 @@ import {
 
 const configuredUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://scripticx.org";
+  "https://www.scripticx.org";
+
+function getCanonicalSiteUrl(url: string) {
+  const parsedUrl = new URL(url);
+
+  if (parsedUrl.hostname === "scripticx.org") {
+    parsedUrl.hostname = "www.scripticx.org";
+  }
+
+  return parsedUrl.toString().replace(/\/$/, "");
+}
 
 export const siteConfig = {
   name: "ScripticX",
-  url: configuredUrl,
+  url: getCanonicalSiteUrl(configuredUrl),
   logo: "/icons/notification-icon-512.png",
   socialImage: "/icons/social-card.png",
   knowledgeSocialImage: "/icons/social-card-knowledge.png",

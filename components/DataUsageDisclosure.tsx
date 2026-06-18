@@ -46,7 +46,7 @@ export default function DataUsageDisclosure() {
               <span>{t("noAccess")}</span>
             </div>
             <Link
-              href="/legal/privacy"
+              href="https://www.scripticx.org/legal/privacy"
               className="mt-6 inline-flex text-sm font-medium underline underline-offset-4"
             >
               {t("privacyLink")}

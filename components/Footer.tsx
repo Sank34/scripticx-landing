@@ -131,8 +131,8 @@ export default function Footer() {
               <h3 className="font-medium mb-3">{t("sections.company")}</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li><Link href="/knowledge" className="hover:text-foreground transition">{t("links.about")}</Link></li>
-                <li><Link href="/legal/privacy" className="hover:text-foreground transition">{t("links.privacy")}</Link></li>
-                <li><Link href="/legal/terms" className="hover:text-foreground transition">{t("links.terms")}</Link></li>
+                <li><Link href="https://www.scripticx.org/legal/privacy" className="hover:text-foreground transition">{t("links.privacy")}</Link></li>
+                <li><Link href="https://www.scripticx.org/legal/terms" className="hover:text-foreground transition">{t("links.terms")}</Link></li>
                 <li><a href="https://platform.scripticx.org/contact" className="hover:text-foreground transition">{t("links.contact")}</a></li>
               </ul>
             </div>
