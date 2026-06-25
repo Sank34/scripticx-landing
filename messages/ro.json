@@ -180,6 +180,26 @@
       }
     }
   },
+  "Team": {
+    "eyebrow": "Oamenii din spatele ScripticX",
+    "title": "Cunoaște echipa",
+    "description": "O echipă multidisciplinară care lucrează în dezvoltare, educație, design, comunicare și evenimente pentru a face programarea mai ușor de învățat.",
+    "roles": {
+      "communications": "Comunicare",
+      "problemWriting": "Scriere probleme",
+      "marketing": "Marketing",
+      "finance": "Finanțe",
+      "development": "Dezvoltare",
+      "developmentLead": "Coordonare dezvoltare",
+      "publicRelationsEvents": "PR și evenimente",
+      "designScientific": "Design și scriere probleme",
+      "events": "Evenimente",
+      "uiux": "UI/UX",
+      "uiuxScientific": "UI/UX și scriere probleme",
+      "uiuxResearch": "UI/UX și cercetare",
+      "graphics": "Design vizual"
+    }
+  },
   "Testimonials": {
     "title": "Apreciat de cursanți",
     "description": "Vezi cum ScripticX ajută oamenii să învețe programare mai rapid"

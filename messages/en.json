@@ -180,6 +180,26 @@
       }
     }
   },
+  "Team": {
+    "eyebrow": "The people behind ScripticX",
+    "title": "Meet our team",
+    "description": "A multidisciplinary team working across engineering, education, design, communication, and events to make programming easier to learn.",
+    "roles": {
+      "communications": "Communications",
+      "problemWriting": "Problem writing",
+      "marketing": "Marketing",
+      "finance": "Finance",
+      "development": "Development",
+      "developmentLead": "Development lead",
+      "publicRelationsEvents": "PR & events",
+      "designScientific": "Design & problem writing",
+      "events": "Events",
+      "uiux": "UI/UX",
+      "uiuxScientific": "UI/UX & problem writing",
+      "uiuxResearch": "UI/UX & research",
+      "graphics": "Visual design"
+    }
+  },
   "Testimonials": {
     "title": "Loved by learners",
     "description": "See how ScripticX is helping people learn programming faster"

@@ -280,7 +280,7 @@ export default function ShowcaseTabs() {
                 </div>
 
                 {/* Main content */}
-                <div className="flex-1 p-3 sm:p-6 space-y-3 sm:space-y-6 min-w-0 overflow-y-auto">
+                <div className="flex-1 min-w-0 overflow-hidden p-3 sm:p-6 space-y-3 sm:space-y-6">
 
                   {/* Class header */}
                   <div className="h-14 sm:h-24 rounded-lg sm:rounded-xl bg-gradient-to-r from-gray-800 to-gray-600 p-2 sm:p-4 text-left text-white flex flex-col justify-end">
@@ -323,7 +323,7 @@ export default function ShowcaseTabs() {
                 </div>
 
                 {/* Main Dashboard */}
-                <div className="flex-1 p-3 sm:p-6 space-y-3 sm:space-y-6 min-w-0 overflow-y-auto">
+                <div className="flex-1 min-w-0 overflow-hidden p-3 sm:p-6 space-y-3 sm:space-y-6">
 
                   {/* Header */}
                   <div className="text-left">
