@@ -141,6 +141,46 @@
       "input": "User input"
     }
   },
+  "Events": {
+    "eyebrow": "Events and workshops",
+    "title": "Learning also happens together",
+    "description": "A preview of the workshops, hands-on sessions, and fun learning activities hosted by the ScripticX team.",
+    "details": {
+      "date": "Date",
+      "location": "Location",
+      "audience": "Audience"
+    },
+    "tags": {
+      "workshop": "Workshop",
+      "programming": "Programming",
+      "miniscript": "MiniScript+",
+      "community": "Community"
+    },
+    "suggestEvent": "Suggest an event",
+    "comingSoon": "Coming soon",
+    "sideCard": {
+      "badge": "More moments soon",
+      "title": "Built around curiosity",
+      "description": "Our activities make programming more fun and engaging for children through playful challenges, teamwork, and projects they can actually test.",
+      "items": {
+        "learn": "Learn programming in a fun way",
+        "build": "Project-based learning",
+        "share": "Build community through fun activities"
+      }
+    },
+    "items": {
+      "programmingWorkshop": {
+        "eyebrow": "Programming workshop",
+        "title": "MiniScript+ Programming Workshop",
+        "description": "Children learned programming basics with MiniScript+, explored the platform, and tested their algorithms through playful activities.",
+        "longDescription": "Children learned the basics of programming through MiniScript+, discovered how to use the ScripticX platform, and had the chance to test their algorithms with a small LEGO robot. We also used CS Unplugged activities to make core computer science ideas easier to understand, and the students really enjoyed both the unplugged challenges and the hands-on robot experiments.",
+        "date": "1-3 July 2026",
+        "location": "ScripticX workshop classroom",
+        "audience": "Middle school children, ages 10-14",
+        "galleryAlt": "Programming workshop photo {index}"
+      }
+    }
+  },
   "HowItWorks": {
     "title": "How it works",
     "description": "A simple workflow to help you learn faster",

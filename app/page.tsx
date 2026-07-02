@@ -11,6 +11,7 @@ import ShowcaseTabs from "@/components/ShowcaseTabs";
 import MiniScriptSection from "@/components/MiniScriptSection";
 import DataUsageDisclosure from "@/components/DataUsageDisclosure";
 import TeamSection from "@/components/TeamSection";
+import EventsSection from "@/components/EventsSection";
 
 export default function Page() {
   return (
@@ -22,6 +23,7 @@ export default function Page() {
       <Showcasing />
       <ShowcaseTabs />
       <MiniScriptSection />
+      <EventsSection />
       <DataUsageDisclosure />
       <HowItWorks />
       <TeamSection />

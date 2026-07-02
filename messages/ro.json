@@ -141,6 +141,46 @@
       "input": "Input utilizator"
     }
   },
+  "Events": {
+    "eyebrow": "Evenimente și workshop-uri",
+    "title": "Învățarea se întâmplă și împreună",
+    "description": "Un preview al workshop-urilor, sesiunilor practice și activităților fun susținute de echipa ScripticX.",
+    "details": {
+      "date": "Data",
+      "location": "Locația",
+      "audience": "Participanți"
+    },
+    "tags": {
+      "workshop": "Workshop",
+      "programming": "Programare",
+      "miniscript": "MiniScript+",
+      "community": "Comunitate"
+    },
+    "suggestEvent": "Sugerează un eveniment",
+    "comingSoon": "În curând",
+    "sideCard": {
+      "badge": "Mai multe momente curând",
+      "title": "Construit în jurul curiozității",
+      "description": "Activitățile noastre fac programarea mai distractivă și mai engaging pentru copii prin provocări jucăușe, lucru în echipă și proiecte pe care le pot testa pe loc.",
+      "items": {
+        "learn": "Înveți programare într-un mod distractiv",
+        "build": "Învățare prin proiecte",
+        "share": "Comunitate prin activități fun"
+      }
+    },
+    "items": {
+      "programmingWorkshop": {
+        "eyebrow": "Workshop de programare",
+        "title": "Workshop de programare MiniScript+",
+        "description": "Copiii au învățat bazele programării cu MiniScript+, au explorat platforma și și-au testat algoritmii prin activități jucăușe.",
+        "longDescription": "Copiii au învățat bazele programării prin MiniScript+, au descoperit cum să folosească platforma ScripticX și au avut ocazia să își testeze algoritmii cu un roboțel LEGO. Am folosit și activități de tip CS Unplugged pentru a explica mai ușor concepte de informatică, iar participanților le-au plăcut atât provocările unplugged, cât și experimentele practice cu robotul.",
+        "date": "1-3 iulie 2026",
+        "location": "Sala de workshop ScripticX",
+        "audience": "Copii de gimnaziu, cu vârste între 10 și 14 ani",
+        "galleryAlt": "Fotografie din workshop-ul de programare {index}"
+      }
+    }
+  },
   "HowItWorks": {
     "title": "Cum funcționează",
     "description": "Un workflow simplu care te ajută să înveți mai rapid",
