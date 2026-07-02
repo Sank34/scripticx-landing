@@ -181,6 +181,69 @@
       }
     }
   },
+  "VerifyCertificate": {
+    "badge": "Certificate verification",
+    "title": "Verify a ScripticX certificate",
+    "description": "Enter the number printed on a ScripticX certificate to check whether it is valid and view its public details.",
+    "trust": {
+      "official": {
+        "title": "Official record",
+        "description": "Designed to confirm certificates issued by ScripticX."
+      },
+      "public": {
+        "title": "Public lookup",
+        "description": "No account is required to check a certificate code."
+      },
+      "private": {
+        "title": "Limited details",
+        "description": "Only public certificate details are shown after verification."
+      }
+    },
+    "form": {
+      "title": "Enter certificate number",
+      "description": "Certificate numbers are printed with leading zeroes, for example 0001.",
+      "label": "Certificate number",
+      "placeholder": "0001",
+      "submit": "Verify",
+      "checking": "Checking..."
+    },
+    "result": {
+      "loading": {
+        "title": "Checking certificate",
+        "description": "We are looking up this number in the official ScripticX certificate database."
+      },
+      "idle": {
+        "title": "Ready to verify",
+        "description": "Type a certificate code above to see whether it matches an issued ScripticX certificate."
+      },
+      "invalid": {
+        "title": "We could not verify this certificate",
+        "description": "The number {code} does not match a valid public ScripticX certificate. Check the number and try again."
+      },
+      "error": {
+        "title": "Verification is temporarily unavailable",
+        "description": "We could not reach the certificate database right now. Please try again later."
+      },
+      "valid": {
+        "title": "This certificate is valid",
+        "description": "This certificate matches an official ScripticX record.",
+        "badge": "Verified",
+        "fields": {
+          "recipient": "Recipient",
+          "award": "Certificate",
+          "event": "Event",
+          "issuedAt": "Issued on",
+          "code": "Verification code"
+        },
+        "demo": {
+          "recipient": "Demo Student",
+          "award": "MiniScript+ Programming Workshop",
+          "event": "ScripticX Workshop",
+          "issuedAt": "3 July 2026"
+        }
+      }
+    }
+  },
   "HowItWorks": {
     "title": "How it works",
     "description": "A simple workflow to help you learn faster",
@@ -278,6 +341,7 @@
       "beginners": "Beginners",
       "teams": "Teams",
       "docs": "Docs",
+      "verify": "Verify certificate",
       "blog": "Blog",
       "trust": "Trust & Security",
       "support": "Support",

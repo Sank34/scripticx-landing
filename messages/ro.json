@@ -181,6 +181,69 @@
       }
     }
   },
+  "VerifyCertificate": {
+    "badge": "Verificare certificat",
+    "title": "Verifică un certificat ScripticX",
+    "description": "Introdu numărul de pe un certificat ScripticX pentru a verifica dacă este valid și pentru a vedea detaliile publice.",
+    "trust": {
+      "official": {
+        "title": "Înregistrare oficială",
+        "description": "Creat pentru confirmarea certificatelor emise de ScripticX."
+      },
+      "public": {
+        "title": "Verificare publică",
+        "description": "Nu ai nevoie de cont pentru a verifica un cod de certificat."
+      },
+      "private": {
+        "title": "Detalii limitate",
+        "description": "După verificare sunt afișate doar detaliile publice ale certificatului."
+      }
+    },
+    "form": {
+      "title": "Introdu numărul certificatului",
+      "description": "Numerele certificatelor sunt tipărite cu zerouri la început, de exemplu 0001.",
+      "label": "Număr certificat",
+      "placeholder": "0001",
+      "submit": "Verifică",
+      "checking": "Se verifică..."
+    },
+    "result": {
+      "loading": {
+        "title": "Verificăm certificatul",
+        "description": "Căutăm acest număr în baza oficială de certificate ScripticX."
+      },
+      "idle": {
+        "title": "Gata de verificare",
+        "description": "Scrie un cod de certificat mai sus pentru a vedea dacă se potrivește cu un certificat ScripticX emis."
+      },
+      "invalid": {
+        "title": "Nu am putut verifica acest certificat",
+        "description": "Numărul {code} nu se potrivește cu un certificat ScripticX public valid. Verifică numărul și încearcă din nou."
+      },
+      "error": {
+        "title": "Verificarea este temporar indisponibilă",
+        "description": "Nu am putut contacta baza de date cu certificate momentan. Te rugăm să încerci din nou mai târziu."
+      },
+      "valid": {
+        "title": "Acest certificat este valid",
+        "description": "Acest certificat se potrivește cu o înregistrare oficială ScripticX.",
+        "badge": "Verificat",
+        "fields": {
+          "recipient": "Participant",
+          "award": "Certificat",
+          "event": "Eveniment",
+          "issuedAt": "Emis la",
+          "code": "Cod de verificare"
+        },
+        "demo": {
+          "recipient": "Participant Demo",
+          "award": "Workshop de programare MiniScript+",
+          "event": "Workshop ScripticX",
+          "issuedAt": "3 iulie 2026"
+        }
+      }
+    }
+  },
   "HowItWorks": {
     "title": "Cum funcționează",
     "description": "Un workflow simplu care te ajută să înveți mai rapid",
@@ -278,6 +341,7 @@
       "beginners": "Începători",
       "teams": "Echipe",
       "docs": "Documentație",
+      "verify": "Verifică certificat",
       "blog": "Blog",
       "trust": "Încredere și securitate",
       "support": "Suport",
