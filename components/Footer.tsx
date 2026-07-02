@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Check } from "lucide-react";
-import { siGithub, siYoutube } from "simple-icons";
+import { siGithub, siYoutube, siInstagram } from "simple-icons";
 import { useTranslations } from "next-intl";
 
 export default function Footer() {
@@ -79,6 +79,18 @@ export default function Footer() {
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d={siYoutube.path} />
+                </svg>
+              </a>
+
+              <a
+                href="https://www.instagram.com/scripticx/" /*link insta*/
+                target="_blank"
+                rel="noreferrer"
+                aria-label="ScripticX on Instagram"
+                className="flex size-9 items-center justify-center rounded-lg border transition hover:border-foreground/20 hover:bg-muted hover:text-foreground"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d={siInstagram.path} />
                 </svg>
               </a>
             </div>
