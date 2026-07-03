@@ -18,6 +18,15 @@ const testimonials:Testimonials[] = [
   { user: "Vlad Ene", text: "Easy to use and very user-friendly platform." },
   { user: "Dragos Gatan", text: "Excelent for anyone starting their coding journey." },
   { user: "Serban Daria", text: "Needs a mascot, but apart from that i loved the experience." },
+  {user: "@mitzi", text: "Cea mai bună platformă pentru niște copii care nu aveau habar ce înseamnă input sau vreo comandă. W platformă!"},
+  {user: "@ardeicususan", text:"O platformă foarte interesantă și foarte ușor de utilizat :)))"},
+  {user: "@odaicurares", text:"Îmi place foarte mult!"},
+  {user: "@alex", text:"Este o platformă foarte interesantă."},
+  {user:"@c1lin", text:"Mie mi-a plăcut și îmi place acest site. Este unul foarte folositor."},
+  {user:"@alex_cojocariu_14", text:"Foarte bun!"},
+  {user:"@razvansusanu", text: "Îmi place."},
+  {user:"@christiangheo", text:"Foarte bună platforma, probabil o voi folosi și în viitor."},
+  {user:"@erick", text:"Foarte bun, îmi place!"}
 ];
 
 export default function Testimonials() {
