@@ -45,7 +45,7 @@
     "description": "Rezolvă probleme, împărtășește soluții și progresează mai rapid.",
     "primaryCta": "Începe acum",
     "secondaryCta": "Vezi exemple",
-    "trust": "Practici clare privind datele și controlul confidențialității"
+    "trust": "Welcome to the ScripticX community! :)"
   },
   "CodeSection": {
     "title": "Scrie cod. Vezi rezultatele instant.",
@@ -175,7 +175,7 @@
         "description": "Copiii au învățat bazele programării cu MiniScript+, au explorat platforma și și-au testat algoritmii prin activități jucăușe.",
         "longDescription": "Copiii au învățat bazele programării prin MiniScript+, au descoperit cum să folosească platforma ScripticX și au avut ocazia să își testeze algoritmii cu un roboțel LEGO. Am folosit și activități de tip CS Unplugged pentru a explica mai ușor concepte de informatică, iar participanților le-au plăcut atât provocările unplugged, cât și experimentele practice cu robotul.",
         "date": "1-3 iulie 2026",
-        "location": "Sala de workshop ScripticX",
+        "location": "BJPIBR",
         "audience": "Copii de gimnaziu, cu vârste între 10 și 14 ani",
         "galleryAlt": "Fotografie din workshop-ul de programare {index}"
       }

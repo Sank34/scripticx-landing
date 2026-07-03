@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { CalendarDays, MapPin, UsersRound } from "lucide-react";
-import { type WheelEvent, useState } from "react";
+import { type WheelEvent, useEffect, useRef, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -33,6 +33,7 @@ const events: EventItem[] = [
       "/events/workshops/programming-1-3-july-26/IMG_1047.jpg",
       "/events/workshops/programming-1-3-july-26/IMG_1060.jpg",
       "/events/workshops/programming-1-3-july-26/IMG_1094.jpg",
+      "/events/workshops/programming-1-3-july-26/IMG_1180.jpg",
       "/events/workshops/programming-1-3-july-26/IMG_1103.jpg",
       "/events/workshops/programming-1-3-july-26/IMG_1107.jpg",
       "/events/workshops/programming-1-3-july-26/IMG_1115.jpg",
@@ -41,7 +42,6 @@ const events: EventItem[] = [
       "/events/workshops/programming-1-3-july-26/IMG_1128.jpg",
       "/events/workshops/programming-1-3-july-26/IMG_1131.jpg",
       "/events/workshops/programming-1-3-july-26/IMG_1137.jpg",
-
       "/events/workshops/programming-1-3-july-26/IMG_1139.jpg",
       "/events/workshops/programming-1-3-july-26/IMG_1146.jpg",
       "/events/workshops/programming-1-3-july-26/IMG_1153.jpg",
@@ -130,9 +130,11 @@ function EventCard({
 
 function EventDialog({
   event,
+  open,
   onOpenChange,
 }: {
   event: EventItem | null;
+  open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
   const t = useTranslations("Events");
@@ -151,16 +153,16 @@ function EventDialog({
 
   return (
     <Dialog
-      open={Boolean(event)}
-      onOpenChange={(open) => {
-        if (open) {
+      open={open}
+      onOpenChange={(nextOpen) => {
+        if (nextOpen) {
           setActiveImage(event.cover);
         }
-        onOpenChange(open);
+        onOpenChange(nextOpen);
       }}
     >
-      <DialogContent className="h-[92vh] max-h-[760px] overflow-hidden rounded-[2rem] p-0 sm:max-w-5xl">
-        <div className="grid h-full min-h-0 lg:grid-cols-[1.15fr_0.85fr]">
+      <DialogContent className="h-[92vh] w-[min(calc(100vw-2rem),1280px)] max-h-[820px] overflow-hidden rounded-[2rem] p-0 sm:max-w-none">
+        <div className="grid h-full min-h-0 lg:grid-cols-[1.65fr_0.85fr]">
           <div className="relative h-[320px] bg-black lg:h-full">
             <Image
               src={selectedImage}
@@ -273,6 +275,36 @@ function EventDialog({
 export default function EventsSection() {
   const t = useTranslations("Events");
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null);
+  const [renderedEvent, setRenderedEvent] = useState<EventItem | null>(null);
+  const closeTimer = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) {
+        window.clearTimeout(closeTimer.current);
+      }
+    };
+  }, []);
+
+  function handleOpenEvent(event: EventItem) {
+    if (closeTimer.current) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+
+    setRenderedEvent(event);
+    setSelectedEvent(event);
+  }
+
+  function handleDialogOpenChange(open: boolean) {
+    if (open) return;
+
+    setSelectedEvent(null);
+    closeTimer.current = window.setTimeout(() => {
+      setRenderedEvent(null);
+      closeTimer.current = null;
+    }, 560);
+  }
 
   return (
     <section className="px-4 py-20 sm:px-6 sm:py-32">
@@ -289,7 +321,7 @@ export default function EventsSection() {
 
         <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           {events.map((event) => (
-            <EventCard key={event.id} event={event} onOpen={setSelectedEvent} />
+            <EventCard key={event.id} event={event} onOpen={handleOpenEvent} />
           ))}
 
           <div className="relative overflow-hidden rounded-[2rem] border bg-gradient-to-br from-green-100 via-white to-emerald-50 p-8 shadow-sm">
@@ -320,12 +352,9 @@ export default function EventsSection() {
       </div>
 
       <EventDialog
-        event={selectedEvent}
-        onOpenChange={(open) => {
-          if (!open) {
-            setSelectedEvent(null);
-          }
-        }}
+        event={renderedEvent}
+        open={Boolean(selectedEvent)}
+        onOpenChange={handleDialogOpenChange}
       />
     </section>
   );
