@@ -26,7 +26,7 @@ type EventItem = {
 const events: EventItem[] = [
   {
     id: "programmingWorkshop",
-    cover: "/events/workshops/programming-1-3-july-26/IMG_1103.jpg",
+    cover: "/events/workshops/programming-1-3-july-26/IMG_1180.jpg",
     gallery: [
       "/events/workshops/programming-1-3-july-26/IMG_1029.jpg",
       "/events/workshops/programming-1-3-july-26/IMG_1003.jpg",
@@ -41,6 +41,12 @@ const events: EventItem[] = [
       "/events/workshops/programming-1-3-july-26/IMG_1128.jpg",
       "/events/workshops/programming-1-3-july-26/IMG_1131.jpg",
       "/events/workshops/programming-1-3-july-26/IMG_1137.jpg",
+
+      "/events/workshops/programming-1-3-july-26/IMG_1139.jpg",
+      "/events/workshops/programming-1-3-july-26/IMG_1146.jpg",
+      "/events/workshops/programming-1-3-july-26/IMG_1153.jpg",
+      "/events/workshops/programming-1-3-july-26/IMG_1174.jpg",
+      "/events/workshops/programming-1-3-july-26/IMG_1178.jpg",
     ],
     tags: ["workshop", "programming", "miniscript", "community"],
   },
