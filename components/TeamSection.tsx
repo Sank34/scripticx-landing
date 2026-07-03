@@ -29,7 +29,7 @@ const team: TeamMember[] = [
   {
     name: "Maia Pricop",
     roles: ["development", "uiuxScientific"],
-    image: "/team/Maia-Pricop.jpg",
+    image: "/team/Maia-Pricop-new.jpg",
   },
   {
     name: "Andreea Bobotan",
