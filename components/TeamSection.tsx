@@ -23,7 +23,7 @@ const team: TeamMember[] = [
   },
   {
     name: "Andrei Lascu",
-    roles: ["developmentLead", "publicRelationsEvents", "designScientific"],
+    roles: ["development", "publicRelationsEvents", "designScientific"],
     image: "/team/Andrei-Lascu-new.png",
   },
   {
