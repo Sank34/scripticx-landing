@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function FeedbackPage() {
-  redirect("https://forms.gle/T1sqKSPVyMzpYDSV9");
+  permanentRedirect("https://forms.gle/T1sqKSPVyMzpYDSV9");
 }
