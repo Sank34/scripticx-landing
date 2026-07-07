@@ -7,7 +7,6 @@
     "knowledge": "Knowledge",
     "login": "Login",
     "getStarted": "Get Started",
-
     "features_items": {
       "interactive": {
         "title": "Interactive Problems",
@@ -22,7 +21,6 @@
         "desc": "Share solutions and learn from others."
       }
     },
-
     "docs_items": {
       "intro": {
         "title": "Getting started",
@@ -303,6 +301,11 @@
       "graphics": "Visual design"
     }
   },
+  "Sponsors": {
+    "eyebrow": "Backed by great partners",
+    "title": "Our sponsors",
+    "description": "We're grateful to the organizations and partners who support ScripticX and help us make programming easier to learn."
+  },
   "Testimonials": {
     "title": "Loved by learners",
     "description": "See how ScripticX is helping people learn programming faster"
@@ -315,7 +318,7 @@
     "secondary": "Explore platform",
     "openSource": "Open source"
   },
-   "Footer": {
+  "Footer": {
     "security": {
       "protect": "We protect your data.",
       "more": "More on security",

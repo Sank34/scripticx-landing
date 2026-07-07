@@ -7,7 +7,6 @@
     "knowledge": "Centrul Knowledge",
     "login": "Autentificare",
     "getStarted": "Începe",
-
     "features_items": {
       "interactive": {
         "title": "Probleme interactive",
@@ -22,7 +21,6 @@
         "desc": "Împarte soluții și învață de la alții."
       }
     },
-
     "docs_items": {
       "intro": {
         "title": "Primii pași",
@@ -303,11 +301,16 @@
       "graphics": "Design vizual"
     }
   },
+  "Sponsors": {
+    "eyebrow": "Susținuți de parteneri de încredere",
+    "title": "Sponsorii noștri",
+    "description": "Le mulțumim organizațiilor și partenerilor care susțin ScripticX și ne ajută să facem programarea mai ușor de învățat."
+  },
   "Testimonials": {
     "title": "Apreciat de cursanți",
     "description": "Vezi cum ScripticX ajută oamenii să învețe programare mai rapid"
   },
-   "CTA": {
+  "CTA": {
     "badge": "Open source încă din prima zi",
     "title": "Construiește mai rapid, învață mai inteligent",
     "description": "Alătură-te ScripticX și îmbunătățește-ți abilitățile de programare cu feedback în timp real, învățare în comunitate și execuție instant.",
