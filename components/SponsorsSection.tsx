@@ -1,11 +1,27 @@
 import Image from "next/image";
+import Link from "next/link";
 import { readdir } from "fs/promises";
 import path from "path";
 import { getTranslations } from "next-intl/server";
 
 const imageExtensions = new Set([".png", ".jpg", ".jpeg", ".webp", ".svg", ".avif"]);
 
+const sponsorNames: Record<string, string> = {
+  "logo-cngmm.webp": "Colegiul Național Gheorghe Munteanu Murgoci Brăila",
+  "logo_bjpi.png": "Biblioteca Județeană Panait Istrati Brăila",
+};
+
+const sponsorUrls: Record<string, string> = {
+  "logo_az.png": "https://astrozen-photography.vercel.app/",
+  "logo_bjpi.png": "https://bjbraila.ro",
+  "logo-cngmm.webp": "https://cngmm.ro",
+};
+
 function toName(file: string) {
+  if (sponsorNames[file]) {
+    return sponsorNames[file];
+  }
+
   return file
     .replace(/\.[^.]+$/, "")
     .replace(/[-_]+/g, " ")
@@ -22,7 +38,11 @@ async function getSponsors() {
     return files
       .filter((file) => imageExtensions.has(path.extname(file).toLowerCase()))
       .sort((a, b) => a.localeCompare(b))
-      .map((file) => ({ name: toName(file), src: `/sponsors/${file}` }));
+      .map((file) => ({
+        name: toName(file),
+        src: `/sponsors/${file}`,
+        url: sponsorUrls[file],
+      }));
   } catch {
     return [];
   }
@@ -52,18 +72,22 @@ export default async function SponsorsSection() {
 
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             {sponsors.map((sponsor) => (
-              <div
+              <Link
                 key={sponsor.src}
-                className="group/sponsor flex h-28 w-[calc(50%-0.5rem)] items-center justify-center rounded-2xl border border-white/90 bg-white/70 p-6 shadow-[0_12px_35px_rgba(22,101,52,0.12)] ring-1 ring-black/10 backdrop-blur transition duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-[0_18px_42px_rgba(22,101,52,0.2)] sm:h-32 sm:w-52 sm:p-8"
+                href={sponsor.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Visit ${sponsor.name}`}
+                className="group/sponsor flex h-28 w-[calc(50%-0.5rem)] cursor-pointer items-center justify-center rounded-2xl border border-white/90 bg-white/70 p-6 shadow-[0_12px_35px_rgba(22,101,52,0.12)] ring-1 ring-black/10 backdrop-blur transition duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-[0_18px_42px_rgba(22,101,52,0.2)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-500/25 sm:h-32 sm:w-52 sm:p-8"
               >
                 <Image
                   src={sponsor.src}
                   alt={sponsor.name}
                   width={220}
                   height={110}
-                  className="max-h-full w-auto object-contain opacity-80 grayscale transition duration-300 group-hover/sponsor:opacity-100 group-hover/sponsor:grayscale-0"
+                  className="pointer-events-none max-h-full w-auto object-contain opacity-80 grayscale transition duration-300 group-hover/sponsor:opacity-100 group-hover/sponsor:grayscale-0"
                 />
-              </div>
+              </Link>
             ))}
           </div>
         </div>
