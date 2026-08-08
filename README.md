@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+<img src="https://media.discordapp.net/attachments/1495347070654218342/1532703552160399360/logo-github.png?ex=6a71c56b&is=6a7073eb&hm=205ec8d045d7f3321b8b87810d10fa7e56165b634561680f87c59adee5a6fa61&=&format=webp&quality=lossless" alt="logo" width="200"><br>
+<br>
+Learn programming the smart way. <br><br>
 
-## Getting Started
+[![GitHub stars](https://img.shields.io/github/stars/Sank34/scripticx?style=social)](https://github.com/Sank34/scripticx/stargazers)
+[![License](https://img.shields.io/github/license/Sank34/scripticx)](https://github.com/Sank34/scripticx/blob/main/LICENSE)
+[![Version](https://img.shields.io/github/package-json/v/Sank34/scripticx)](https://github.com/Sank34/scripticx/blob/main/package.json)
+[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-red)](https://buymeacoffee.com/scripticx)
 
-First, run the development server:
+<br><br>ScripticX is a modern programming learning platform built around MiniScript+, a language built specifically for beginners, avoiding technical barriers. It features an in-browser code editor, auto-graded problems, classes & lessons, live coding sessions, and a full community feed for students to share their progress. The platform is fully bilingual (RO/EN) and runs entirely client-side (private code execution).
+</div>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Main Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<img src="https://api.iconify.design/lucide:code.svg?color=%2386efac" width="20" height="20" /> **In-browser Editor** <br>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+<img src="https://api.iconify.design/lucide:check-circle.svg?color=%2386efac" width="20" height="20" /> **Auto-graded Problems** <br>
 
-## Learn More
+<img src="https://api.iconify.design/lucide:school.svg?color=%2386efac" width="20" height="20" /> **Classes & Lessons**<br>
 
-To learn more about Next.js, take a look at the following resources:
+<img src="https://api.iconify.design/lucide:radio.svg?color=%2386efac" width="20" height="20" /> **Livecode**<br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<img src="https://api.iconify.design/lucide:message-circle.svg?color=%2386efac" width="20" height="20" /> **Community Feed**<br>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<img src="https://api.iconify.design/lucide:trending-up.svg?color=%2386efac" width="20" height="20" /> **Progress Tracking**<br>
 
-## Deploy on Vercel
+<img src="https://api.iconify.design/lucide:user.svg?color=%2386efac" width="20" height="20" /> **Profiles** <br>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<div align="center">
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Sneak Peek
+<img src="https://media.discordapp.net/attachments/1479338345367601254/1533885103086895206/image.png?ex=6a721d52&is=6a70cbd2&hm=a3a768d36119a7d5322cb828cd5334d099f81185789dbcd19f66f3a8f4891415&=&format=webp&quality=lossless&width=1536&height=818" alt="logo"><br>
+<br>
+<img src="https://media.discordapp.net/attachments/1479338345367601254/1533895257773703341/image.png?ex=6a7226c7&is=6a70d547&hm=fe8c08f911f48a69e4143fd184ab07e14f85e8c21ed384b8f6f51d933062af27&=&format=webp&quality=lossless&width=1536&height=818" alt="logo"><br>
+<br>
+
+### Tech Stack
+![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-06B6D4?logo=tailwindcss&logoColor=white)
+
+</div>
