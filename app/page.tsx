@@ -13,11 +13,13 @@ import DataUsageDisclosure from "@/components/DataUsageDisclosure";
 import TeamSection from "@/components/TeamSection";
 import EventsSection from "@/components/EventsSection";
 import SponsorsSection from "@/components/SponsorsSection";
+import MaintenanceNotice from "@/components/MaintenanceNotice";
 
 export default function Page() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
+      <MaintenanceNotice />
       <Hero />
       <CodeSection />
       <FeatureGrid />

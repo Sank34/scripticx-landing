@@ -45,6 +45,11 @@
     "secondaryCta": "View Examples",
     "trust": "Welcome to the ScripticX community! :)"
   },
+  "MaintenanceNotice": {
+    "label": "Platform maintenance notice",
+    "title": "We’re improving the ScripticX platform",
+    "description": "We’re currently migrating parts of the platform to our database. Some features may be temporarily unavailable while we complete this work. Thank you for your patience!"
+  },
   "CodeSection": {
     "title": "Write code. See results instantly.",
     "description": "MiniScript+ is designed to be simple, fast, and fun."

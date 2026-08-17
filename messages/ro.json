@@ -45,6 +45,11 @@
     "secondaryCta": "Vezi exemple",
     "trust": "Welcome to the ScripticX community! :)"
   },
+  "MaintenanceNotice": {
+    "label": "Notificare privind lucrările la platformă",
+    "title": "Lucrăm la îmbunătățirea platformei ScripticX",
+    "description": "În această perioadă migrăm anumite componente ale platformei în baza de date. Unele funcționalități pot fi temporar indisponibile până finalizăm lucrările. Îți mulțumim pentru răbdare!"
+  },
   "CodeSection": {
     "title": "Scrie cod. Vezi rezultatele instant.",
     "description": "MiniScript+ este creat pentru a fi simplu, rapid și distractiv."
