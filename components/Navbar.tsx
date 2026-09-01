@@ -1,132 +1,111 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import {
-  BookOpen,
-  Brain,
-  Code,
-  Code2,
-  Library,
-  Share2,
-} from "lucide-react";
-import LanguageSwitcher from "./LanguageSwitcher";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+import { usePathname } from "next/navigation";
+import { ArrowUpRight, Menu } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { BrandMark } from "@/components/BrandMark";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+
+const navItems = [
+  { href: "/education", key: "education" },
+  { href: "/development", key: "development" },
+  { href: "/platform", key: "platform" },
+  { href: "/partners", key: "partners" },
+  { href: "/knowledge", key: "resources" },
+] as const;
+
 export default function Navbar() {
-  const t = useTranslations("Navbar");
+  const t = useTranslations("MarketingNav");
+  const pathname = usePathname();
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-2">
+    <header className="fixed inset-x-0 top-0 z-50 border-b bg-background shadow-[0_1px_0_rgba(15,23,42,.025)]">
+      <div className="mx-auto flex h-16 max-w-[var(--sx-max-content)] items-center gap-5 px-4 sm:px-6 lg:px-8">
+        <BrandMark className="text-lg" />
 
-        {/* Logo */}
-        <Link href="/" className="font-semibold text-base sm:text-lg flex items-center justify-baseline shrink-0">
-          {t("logo")}
-          <Image src="/logoSCX.svg" alt="Scripticx" width={28} height={28} className="h-auto w-7 sm:w-[30px]" />
-        </Link>
+        <nav className="hidden items-center gap-1 lg:flex" aria-label={t("ariaLabel")}>
+          {navItems.map((item) => {
+            const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground",
+                  active && "bg-muted text-foreground",
+                )}
+              >
+                {t(item.key)}
+              </Link>
+            );
+          })}
+        </nav>
 
-        {/* Navigation */}
-        <NavigationMenu className="hidden md:flex">
-          <NavigationMenuList>
-
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>{t("features")}</NavigationMenuTrigger>
-              <NavigationMenuContent className="bg-white">
-                <ul className="w-96 p-4">
-                  <ListItem href="https://platform.scripticx.org/problems" title={t("features_items.interactive.title")} icon={<Code className="w-4 h-4" />}>
-                    {t("features_items.interactive.desc")}
-                  </ListItem>
-                  <ListItem href="https://platform.scripticx.org/learn" title={t("features_items.miniscript.title")} icon={<Brain className="w-4 h-4" />}>
-                    {t("features_items.miniscript.desc")}
-                  </ListItem>
-                  <ListItem href="https://platform.scripticx.org/feed" title={t("features_items.sharing.title")} icon={<Share2 className="w-4 h-4" />}>
-                    {t("features_items.sharing.desc")}
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>{t("docs")}</NavigationMenuTrigger>
-              <NavigationMenuContent className="bg-white">
-                <ul className="w-96 p-4">
-                  <ListItem href="/docs" title={t("docs_items.intro.title")} icon={<BookOpen className="w-4 h-4" />}>
-                    {t("docs_items.intro.desc")}
-                  </ListItem>
-                  <ListItem href="/docs/miniscript" title={t("docs_items.gettingStarted.title")} icon={<Code className="w-4 h-4" />}>
-                    {t("docs_items.gettingStarted.desc")}
-                  </ListItem>
-                  <ListItem href="/docs/api" title={t("docs_items.examples.title")} icon={<Code2 className="w-4 h-4" />}>
-                    {t("docs_items.examples.desc")}
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link href="/knowledge">
-                  <Library className="size-4" />
-                  {t("knowledge")}
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-
-          </NavigationMenuList>
-        </NavigationMenu>
-
-        {/* Actions */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="ml-auto hidden items-center gap-2 lg:flex">
           <LanguageSwitcher />
-          <Link href="https://platform.scripticx.org/login" className="hidden sm:inline-flex">
-            <Button variant="ghost" className="text-muted-foreground">
-              {t("login")}
-            </Button>
-          </Link>
-
-          <Link href="https://platform.scripticx.org">
-            <Button size="sm" className="bg-black text-white hover:bg-black/90 sm:h-9 sm:px-4 sm:text-sm">
-              {t("getStarted")}
-            </Button>
-          </Link>
+          <Button variant="ghost" asChild>
+            <Link href="https://platform.scripticx.org/login">{t("login")}</Link>
+          </Button>
+          <Button asChild>
+            <Link href="https://platform.scripticx.org">
+              {t("openPlatform")}
+              <ArrowUpRight />
+            </Link>
+          </Button>
         </div>
 
+        <div className="ml-auto flex items-center gap-2 lg:hidden">
+          <LanguageSwitcher />
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon" aria-label={t("openMenu")}>
+                <Menu />
+              </Button>
+            </SheetTrigger>
+            <SheetContent className="w-[min(88vw,360px)] p-0">
+              <SheetHeader className="border-b p-5 text-left">
+                <SheetTitle>
+                  <BrandMark className="text-lg" />
+                </SheetTitle>
+                <SheetDescription>{t("menuDescription")}</SheetDescription>
+              </SheetHeader>
+              <nav className="grid gap-1 p-4" aria-label={t("ariaLabel")}>
+                {navItems.map((item) => (
+                  <SheetClose asChild key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="rounded-lg px-3 py-3 text-base font-medium transition-colors hover:bg-muted"
+                    >
+                      {t(item.key)}
+                    </Link>
+                  </SheetClose>
+                ))}
+              </nav>
+              <div className="mt-auto grid gap-2 border-t p-4">
+                <Button variant="outline" asChild>
+                  <Link href="https://platform.scripticx.org/login">{t("login")}</Link>
+                </Button>
+                <Button asChild>
+                  <Link href="https://platform.scripticx.org">{t("openPlatform")}</Link>
+                </Button>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
-    </div>
+    </header>
   );
-}
-
-function ListItem({
-  title,
-  children,
-  href,
-  icon,
-  ...props
-}: React.ComponentPropsWithoutRef<"li"> & { href: string; icon?: React.ReactNode }) {
-  return (
-    <li {...props}>
-      <NavigationMenuLink asChild>
-        <Link href={href}>
-          <div className="flex items-start gap-3 text-sm">
-            {icon && <div className="mt-0.5 text-muted-foreground">{icon}</div>}
-            <div className="flex flex-col gap-1">
-              <div className="leading-none font-medium">{title}</div>
-              <div className="line-clamp-2 text-muted-foreground">{children}</div>
-            </div>
-          </div>
-        </Link>
-      </NavigationMenuLink>
-    </li>
-  )
 }

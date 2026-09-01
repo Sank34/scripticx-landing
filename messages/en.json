@@ -290,6 +290,41 @@
     "eyebrow": "The people behind ScripticX",
     "title": "Meet our team",
     "description": "A multidisciplinary team working across engineering, education, design, communication, and events to make programming easier to learn.",
+    "viewProfile": "View profile",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "contactMember": "Contact through ScripticX",
+    "profile": {
+      "back": "Back to our team",
+      "eyebrow": "ScripticX team member",
+      "about": "About",
+      "contact": "Contact",
+      "contactDescription": "Contact me directly.",
+      "contactFallback": "Personal contact details are published only with the team member's approval. Until then, the ScripticX team can forward your message.",
+      "teamEyebrow": "Our team",
+      "teamTitle": "Meet the rest of the team",
+      "teamDescription": "ScripticX is built by people working across education, engineering, communication, research and design."
+    },
+    "members": {
+      "eric-littau": {
+        "bio": "I like turning complicated ideas into language that feels simple and useful. At ScripticX, I work on communication and shape programming problems that help learners know what to try next."
+      },
+      "catalina-nedelea": {
+        "bio": "I keep one eye on how ScripticX communicates and the other on how it grows. My work connects marketing with finance so good ideas have a clear, sustainable path forward."
+      },
+      "andrei-lascu": {
+        "bio": "I enjoy taking an idea from an early sketch to something people can actually use. I work across development, product design, events and educational content—wherever the pieces need to come together."
+      },
+      "maia-pricop": {
+        "bio": "I care about the small details that make an interface feel natural. I combine development, UI/UX and problem writing to make learning feel clear from the first click to the final solution."
+      },
+      "andreea-bobotan": {
+        "bio": "I’m curious about how people experience a product, not just how it looks. Through UI/UX research and events, I turn feedback and real conversations into a more welcoming ScripticX."
+      },
+      "daria-serban": {
+        "bio": "I love giving ideas a visual identity that feels clear and memorable. I work on graphic design and UI/UX, shaping the details that make ScripticX feel unmistakably ours."
+      }
+    },
     "roles": {
       "communications": "Communications",
       "problemWriting": "Problem writing",
@@ -365,5 +400,44 @@
       "contact": "Contact"
     },
     "copyright": "ScripticX"
+  },
+  "MarketingNav": {
+    "education": "Education",
+    "development": "Development",
+    "platform": "Platform",
+    "partners": "Partners",
+    "resources": "Resources",
+    "login": "Sign in",
+    "openPlatform": "Open platform",
+    "openMenu": "Open navigation",
+    "ariaLabel": "Primary navigation",
+    "menuDescription": "Explore the ScripticX company, services and platform."
+  },
+  "MarketingFooter": {
+    "description": "A modern place to learn programming, practice deliberately, and grow with others.",
+    "contact": "Contact ScripticX",
+    "socials": "Our socials",
+    "registered": "Education · Development · Platform",
+    "groups": {
+      "company": "Company",
+      "resources": "Resources",
+      "legal": "Legal"
+    },
+    "links": {
+      "about": "About ScripticX",
+      "education": "Education Center",
+      "development": "Development",
+      "platform": "Platform",
+      "team": "Our team",
+      "partners": "Partners & sponsors",
+      "knowledge": "Knowledge Center",
+      "docs": "Documentation",
+      "trust": "Trust & security",
+      "verify": "Verify certificate",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "cookies": "Cookies",
+      "acceptableUse": "Acceptable use"
+    }
   }
 }

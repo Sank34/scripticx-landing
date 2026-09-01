@@ -9,8 +9,8 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import { Reveal } from "@/components/marketing/Reveal";
+import { Button } from "@/components/ui/button";
 import {
   getKnowledgeArticles,
   getKnowledgeSections,
@@ -45,11 +45,21 @@ const sectionIcons = {
   Legal: FileText,
 };
 
+const sectionNumbers = {
+  Learn: "01",
+  Developers: "02",
+  Trust: "03",
+  Legal: "04",
+};
+
 export default async function KnowledgePage() {
   const locale = await getLocale();
   const isRomanian = locale === "ro";
   const knowledgeArticles = getKnowledgeArticles(locale);
   const knowledgeSections = getKnowledgeSections(locale);
+  const featuredArticles = ["/docs", "/trust", "/legal/privacy"]
+    .map((href) => knowledgeArticles.find((article) => article.href === href))
+    .filter((article) => article !== undefined);
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -67,106 +77,166 @@ export default async function KnowledgePage() {
   };
 
   return (
-    <main className="min-w-0 flex-1 pb-16">
+    <main className="min-w-0 pb-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
         }}
       />
-      <section className="relative overflow-hidden rounded-3xl border bg-gradient-to-br from-green-100/90 via-background to-green-50 px-6 py-12 sm:px-10 sm:py-16">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.035)_1px,transparent_1px)] bg-[size:32px_32px]" />
-        <div className="relative max-w-2xl">
-          <Badge
-            variant="outline"
-            className="border-green-700/20 bg-white/70 text-green-800"
-          >
-            ScripticX Knowledge Center
-          </Badge>
-          <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-6xl">
-            {isRomanian
-              ? "Răspunsuri, ghiduri și politici clare."
-              : "Answers, guidance, and clear policies."}
-          </h1>
-          <p className="mt-5 text-lg leading-8 text-muted-foreground">
-            {isRomanian
-              ? "Învață să folosești platforma, explorează resursele pentru dezvoltatori și descoperă cum abordează ScripticX securitatea și confidențialitatea."
-              : "Learn the platform, explore developer resources, and understand how ScripticX approaches security, privacy, and trust."}
-          </p>
-        </div>
-      </section>
 
-      <section className="mt-12 grid gap-5 md:grid-cols-2">
-        {knowledgeSections.map((section) => {
-          const Icon = sectionIcons[section.id];
-          const articles = knowledgeArticles.filter(
-            (article) => article.section === section.id
-          );
+      <Reveal>
+        <section className="relative isolate overflow-hidden border bg-background">
+          <div className="sx-hero-aura absolute inset-0 -z-20 opacity-70" />
+          <div className="sx-grid-fade absolute inset-0 -z-10 opacity-70" />
+          <div className="grid lg:min-h-[31rem] lg:grid-cols-[minmax(0,1.45fr)_minmax(18rem,.55fr)]">
+            <div className="flex flex-col justify-end px-6 py-14 sm:px-10 sm:py-16 lg:px-12 lg:py-20 xl:px-16">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                ScripticX / Knowledge Center
+              </p>
+              <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-6xl xl:text-7xl">
+                {isRomanian ? (
+                  <>
+                    Răspunsuri clare pentru a merge{" "}
+                    <span className="sx-gradient-text">mai departe.</span>
+                  </>
+                ) : (
+                  <>
+                    Clear answers for what comes{" "}
+                    <span className="sx-gradient-text">next.</span>
+                  </>
+                )}
+              </h1>
+              <p className="mt-7 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+                {isRomanian
+                  ? "Explorează ghidurile platformei, resursele tehnice și principiile după care construim un spațiu sigur pentru învățare."
+                  : "Explore platform guides, technical resources, and the principles behind a safe, focused learning environment."}
+              </p>
+            </div>
 
-          return (
-            <Card
-              key={section.id}
-              className="group border bg-background py-0 transition hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md"
-            >
-              <CardContent className="p-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex size-11 items-center justify-center rounded-xl bg-green-100 text-green-800">
-                    <Icon className="size-5" />
+            <div className="flex flex-col justify-end border-t bg-background/55 p-6 backdrop-blur-sm sm:p-8 lg:border-l lg:border-t-0 lg:p-10">
+              <div className="mb-auto flex items-center justify-between pb-10 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                <span>{isRomanian ? "Începe de aici" : "Start here"}</span>
+                <span>{String(knowledgeArticles.length).padStart(2, "0")} docs</span>
+              </div>
+              <div className="divide-y border-y">
+                {featuredArticles.map((article, index) => (
+                  <Link
+                    key={article.href}
+                    href={article.href}
+                    className="group flex items-center gap-4 py-4 text-sm transition-colors hover:text-muted-foreground"
+                  >
+                    <span className="font-mono text-[10px] text-muted-foreground">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-medium">{article.title}</span>
+                    <ArrowRight className="ml-auto size-4 transition-transform duration-200 group-hover:translate-x-1" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      <Reveal className="mt-16" delay={0.05}>
+        <section aria-labelledby="knowledge-directory-title">
+          <div className="mb-8 grid gap-4 md:grid-cols-2 md:items-end">
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                {isRomanian ? "Biblioteca ScripticX" : "ScripticX library"}
+              </p>
+              <h2
+                id="knowledge-directory-title"
+                className="mt-3 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl"
+              >
+                {isRomanian ? "Explorează după subiect" : "Explore by topic"}
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-6 text-muted-foreground md:justify-self-end md:text-base">
+              {isRomanian
+                ? "Tot ce ai nevoie pentru a învăța platforma, a planifica integrări și a înțelege politicile ScripticX."
+                : "Everything you need to learn the platform, plan integrations, and understand ScripticX policies."}
+            </p>
+          </div>
+
+          <div className="grid overflow-hidden border-l border-t md:grid-cols-2">
+            {knowledgeSections.map((section) => {
+              const Icon = sectionIcons[section.id];
+              const articles = knowledgeArticles.filter(
+                (article) => article.section === section.id
+              );
+
+              return (
+                <article
+                  key={section.id}
+                  className="group flex min-h-[25rem] flex-col border-b border-r bg-background p-6 transition-colors duration-300 hover:bg-muted/25 sm:p-8 xl:p-10"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex size-10 items-center justify-center border bg-background">
+                      <Icon className="size-4" />
+                    </div>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                      {sectionNumbers[section.id]} / {articles.length}{" "}
+                      {isRomanian
+                        ? articles.length === 1
+                          ? "articol"
+                          : "articole"
+                        : articles.length === 1
+                          ? "article"
+                          : "articles"}
+                    </span>
                   </div>
-                  <span className="text-xs text-muted-foreground">
-                    {articles.length}{" "}
-                    {isRomanian
-                      ? articles.length === 1
-                        ? "articol"
-                        : "articole"
-                      : articles.length === 1
-                        ? "article"
-                        : "articles"}
-                  </span>
-                </div>
-                <h2 className="mt-5 text-xl font-semibold">{section.title}</h2>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  {section.description}
-                </p>
-                <div className="mt-6 space-y-1 border-t pt-4">
-                  {articles.map((article) => (
-                    <Link
-                      key={article.href}
-                      href={article.href}
-                      className="flex items-center justify-between rounded-lg px-2 py-2 text-sm transition hover:bg-muted"
-                    >
-                      {article.title}
-                      <ArrowRight className="size-4 text-muted-foreground transition group-hover:translate-x-0.5" />
-                    </Link>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </section>
+                  <h3 className="mt-8 text-2xl font-semibold tracking-[-0.025em]">
+                    {section.title}
+                  </h3>
+                  <p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">
+                    {section.description}
+                  </p>
+                  <div className="mt-auto divide-y border-y pt-8">
+                    {articles.map((article) => (
+                      <Link
+                        key={article.href}
+                        href={article.href}
+                        className="group/link flex items-center justify-between gap-4 py-3.5 text-sm transition-colors hover:text-muted-foreground"
+                      >
+                        <span>{article.title}</span>
+                        <ArrowRight className="size-4 shrink-0 transition-transform duration-200 group-hover/link:translate-x-1" />
+                      </Link>
+                    ))}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+      </Reveal>
 
-      <section className="mt-12 rounded-2xl border bg-muted/30 p-6 sm:flex sm:items-center sm:justify-between sm:gap-8">
-        <div>
-          <h2 className="font-semibold">
-            {isRomanian
-              ? "Nu ai găsit ce căutai?"
-              : "Couldn’t find what you need?"}
-          </h2>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {isRomanian
-              ? "Knowledge Center crește împreună cu ScripticX."
-              : "The Knowledge Center is growing alongside ScripticX."}
-          </p>
-        </div>
-        <a
-          href="https://platform.scripticx.org/contact"
-          className="mt-4 inline-flex items-center gap-2 text-sm font-medium hover:underline sm:mt-0"
-        >
-          {isRomanian ? "Contactează suportul" : "Contact support"}
-          <ArrowRight className="size-4" />
-        </a>
-      </section>
+      <Reveal className="mt-16" delay={0.08}>
+        <section className="grid gap-8 border-y px-1 py-10 sm:px-8 md:grid-cols-[1fr_auto] md:items-center lg:px-10">
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+              ScripticX Support
+            </p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight">
+              {isRomanian
+                ? "Nu ai găsit răspunsul potrivit?"
+                : "Still looking for an answer?"}
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
+              {isRomanian
+                ? "Trimite-ne întrebarea ta, iar echipa o va direcționa către persoana potrivită."
+                : "Send us your question and our team will route it to the right person."}
+            </p>
+          </div>
+          <Button asChild>
+            <a href="https://platform.scripticx.org/contact">
+              {isRomanian ? "Contactează suportul" : "Contact support"}
+              <ArrowRight />
+            </a>
+          </Button>
+        </section>
+      </Reveal>
     </main>
   );
 }

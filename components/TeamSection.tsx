@@ -1,141 +1,94 @@
-"use client";
-
 import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { type CSSProperties, type MouseEvent } from "react";
+import Link from "next/link";
+import { ArrowUpRight, Mail } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
-type TeamMember = {
-  name: string;
-  roles: string[];
-  image?: string;
-};
+import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
+import { Reveal } from "@/components/marketing/Reveal";
+import { teamMembers } from "@/lib/team-data";
 
-const team: TeamMember[] = [
-  {
-    name: "Eric Littau",
-    roles: ["communications", "problemWriting"],
-    image: "/team/Eric-Littau-new.jpg",
-  },
-  {
-    name: "Catalina Nedelea",
-    roles: ["marketing", "finance"],
-    image: "/team/Catalina-Nedelea.jpg",
-  },
-  {
-    name: "Andrei Lascu",
-    roles: ["development", "publicRelationsEvents", "designScientific"],
-    image: "/team/Andrei-Lascu-new.png",
-  },
-  {
-    name: "Maia Pricop",
-    roles: ["development", "uiuxScientific"],
-    image: "/team/Maia-Pricop-new.jpg",
-  },
-  {
-    name: "Andreea Bobotan",
-    roles: ["uiuxResearch", "events"],
-    image: "/team/Andreea-Bobotan-new.jpg",
-  },
-  {
-    name: "Daria Serban",
-    roles: ["graphics", "uiux"],
-    image: "/team/Daria-Serban.png",
-  },
-];
-
-function getInitials(name: string) {
-  return name
-    .split(" ")
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-}
-
-function TeamMemberVisual({ member }: { member: TeamMember }) {
-  return (
-    <>
-      <div className="flex h-full items-center justify-center bg-white/70 text-3xl font-semibold tracking-tight text-green-950/75">
-        {getInitials(member.name)}
-      </div>
-      {member.image && (
-        <Image
-          src={member.image}
-          alt={member.name}
-          fill
-          sizes="160px"
-          className="z-10 object-cover transition duration-500 group-hover/member:scale-105"
-          onError={(event) => {
-            event.currentTarget.style.display = "none";
-          }}
-        />
-      )}
-    </>
-  );
-}
-
-export default function TeamSection() {
-  const t = useTranslations("Team");
-
-  function handlePointerMove(event: MouseEvent<HTMLElement>) {
-    const bounds = event.currentTarget.getBoundingClientRect();
-
-    event.currentTarget.style.setProperty(
-      "--team-pointer-x",
-      `${event.clientX - bounds.left}px`
-    );
-    event.currentTarget.style.setProperty(
-      "--team-pointer-y",
-      `${event.clientY - bounds.top}px`
-    );
-  }
+export default async function TeamSection() {
+  const t = await getTranslations("Team");
 
   return (
-    <section className="px-4 py-20 sm:px-6 sm:py-32">
-      <div
-        onMouseMove={handlePointerMove}
-        className="group/team relative mx-auto max-w-7xl overflow-hidden rounded-3xl border bg-gradient-to-br from-green-200 via-white to-green-100 px-6 py-14 sm:px-10 sm:py-20"
-        style={
-          {
-            "--team-pointer-x": "50%",
-            "--team-pointer-y": "50%",
-          } as CSSProperties
-        }
-      >
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.075)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.075)_1px,transparent_1px)] bg-[size:40px_40px] opacity-80 transition-opacity duration-700 group-hover/team:opacity-45" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_190px_at_var(--team-pointer-x)_var(--team-pointer-y),rgba(255,255,255,0.92),rgba(255,255,255,0.35)_48%,transparent_78%)] opacity-0 transition-opacity duration-500 group-hover/team:opacity-100" />
-        <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[min(760px,90vw)] -translate-x-1/2 rounded-full bg-green-300/35 blur-[110px]" />
-
-        <div className="relative z-10">
-          <div className="mx-auto mb-14 max-w-2xl text-center sm:mb-16">
-            <p className="text-sm font-medium text-green-800">{t("eyebrow")}</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+    <section id="team" className="scroll-mt-20 border-b py-20 sm:py-24">
+      <div className="mx-auto max-w-[var(--sx-max-content)] px-4 sm:px-6 lg:px-8">
+        <Reveal className="grid gap-6 border-b pb-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:pb-12">
+          <div>
+            <p className="text-sm font-medium text-muted-foreground">{t("eyebrow")}</p>
+            <h2 className="mt-4 max-w-2xl text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
               {t("title")}
             </h2>
-            <p className="mt-4 leading-7 text-muted-foreground">
-              {t("description")}
-            </p>
           </div>
+          <p className="max-w-2xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg lg:justify-self-end">
+            {t("description")}
+          </p>
+        </Reveal>
 
-          <div className="grid grid-cols-2 gap-x-5 gap-y-12 sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-6">
-            {team.map((member) => (
-              <div
-                key={member.name}
-                className="group/member flex min-w-0 flex-col items-center text-center"
-              >
-                <div className="relative size-28 overflow-hidden rounded-full border-2 border-white/90 bg-white/60 shadow-[0_12px_35px_rgba(22,101,52,0.15)] ring-1 ring-black/10 transition duration-300 group-hover/member:-translate-y-1 group-hover/member:shadow-[0_18px_42px_rgba(22,101,52,0.22)] sm:size-32 xl:size-36">
-                  <TeamMemberVisual member={member} />
+        <div className="grid border-l sm:grid-cols-2 lg:grid-cols-3">
+          {teamMembers.map((member, index) => (
+            <Reveal key={member.name} delay={index * 0.055} distance={16}>
+              <article className="group border-b border-r bg-background p-3 sm:p-4">
+                <Link href={`/members/${member.slug}`} className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                  <div className="relative aspect-[5/4] overflow-hidden bg-muted">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="will-change-transform object-cover object-top grayscale transition-[filter,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04] group-hover:grayscale-0 motion-reduce:transition-none"
+                    />
+                  </div>
+                </Link>
+                <div className="flex min-h-28 flex-col justify-between gap-4 px-1 pb-2 pt-5 sm:min-h-32 sm:px-2">
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="text-xl font-medium tracking-[-0.025em] sm:text-2xl">
+                      <Link href={`/members/${member.slug}`} className="underline-offset-4 hover:underline">
+                        {member.name}
+                      </Link>
+                    </h3>
+                    <div className="flex shrink-0 items-center gap-1">
+                      {member.linkedin && (
+                        <Link
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${t("linkedin")} — ${member.name}`}
+                          title={t("linkedin")}
+                          className="flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                        >
+                          <LinkedInIcon className="size-4" />
+                        </Link>
+                      )}
+                      <Link
+                        href={
+                          member.email
+                            ? `mailto:${member.email}`
+                            : `https://platform.scripticx.org/contact?member=${member.slug}`
+                        }
+                        aria-label={`${member.email ? t("email") : t("contactMember")} — ${member.name}`}
+                        title={member.email ? t("email") : t("contactMember")}
+                        className="flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                      >
+                        <Mail className="size-4" />
+                      </Link>
+                      <Link
+                        href={`/members/${member.slug}`}
+                        aria-label={`${t("viewProfile")} — ${member.name}`}
+                        title={t("viewProfile")}
+                        className="flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                      >
+                        <ArrowUpRight className="size-4" />
+                      </Link>
+                    </div>
+                  </div>
+                  <p className="text-sm leading-6 text-muted-foreground">
+                    {member.roles.map((role) => t(`roles.${role}`)).join(" · ")}
+                  </p>
                 </div>
-
-                <h3 className="mt-5 text-sm font-semibold sm:text-base">
-                  {member.name}
-                </h3>
-                <p className="mt-1.5 max-w-[180px] text-xs leading-5 text-muted-foreground">
-                  {member.roles.map((role) => t(`roles.${role}`)).join(" · ")}
-                </p>
-              </div>
-            ))}
-          </div>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

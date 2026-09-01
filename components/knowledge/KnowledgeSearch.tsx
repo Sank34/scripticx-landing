@@ -53,12 +53,14 @@ export function KnowledgeSearch() {
     <>
       <Button
         variant="outline"
-        className="h-9 w-full justify-start gap-2 bg-background text-muted-foreground shadow-none sm:w-64"
+        size="sm"
+        aria-label={isRomanian ? "Caută în centrul de cunoștințe" : "Search the Knowledge Center"}
+        className="h-9 w-9 justify-center gap-2 bg-background px-0 text-muted-foreground shadow-none sm:w-64 sm:justify-start sm:px-3"
         onClick={() => setOpen(true)}
       >
         <Search className="size-4" />
-        <span className="flex-1 text-left">
-          {isRomanian ? "Caută în Knowledge" : "Search knowledge"}
+        <span className="hidden flex-1 text-left sm:inline">
+          {isRomanian ? "Caută în centru" : "Search knowledge"}
         </span>
         <kbd className="hidden rounded border bg-muted px-1.5 py-0.5 font-mono text-[10px] sm:inline">
           ⌘ K

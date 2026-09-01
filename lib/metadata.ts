@@ -27,8 +27,8 @@ export const siteConfig = {
   socialImage: "/icons/social-card.png",
   knowledgeSocialImage: "/icons/social-card-knowledge.png",
   descriptions: {
-    ro: "Învață programare interactiv cu exerciții, MiniScript+, feedback instant și o comunitate creată pentru progres real.",
-    en: "Learn programming interactively with practical exercises, MiniScript+, instant feedback, and a community built for real progress.",
+    ro: "Educație în informatică, dezvoltare software și o platformă completă pentru învățare, proiecte și colaborare.",
+    en: "Informatics education, software development and one platform for learning, projects and collaboration.",
   },
   keywords: [
     "ScripticX",
@@ -40,6 +40,10 @@ export const siteConfig = {
     "interactive coding",
     "coding exercises",
     "education",
+    "software development",
+    "web development",
+    "product design",
+    "IT consulting",
   ],
 } as const;
 
@@ -52,6 +56,10 @@ export function getSiteDescription(locale: string) {
 }
 
 type LocalizedText = Record<KnowledgeLocale, string>;
+
+function withoutTrailingBrand(title: string) {
+  return title.replace(/\s*(?:\||—|-)\s*ScripticX\s*$/i, "").trim();
+}
 
 export function createPageMetadata({
   locale,
@@ -69,9 +77,10 @@ export function createPageMetadata({
   socialImage?: string;
 }): Metadata {
   const normalized = normalizeKnowledgeLocale(locale);
-  const pageTitle = title[normalized];
+  const pageTitle = withoutTrailingBrand(title[normalized]);
   const pageDescription = description[normalized];
   const canonical = absoluteUrl(path);
+  const socialTitle = `${pageTitle} | ${siteConfig.name}`;
 
   return {
     title: pageTitle,
@@ -80,7 +89,7 @@ export function createPageMetadata({
       canonical,
     },
     openGraph: {
-      title: pageTitle,
+      title: socialTitle,
       description: pageDescription,
       url: canonical,
       siteName: siteConfig.name,
@@ -94,14 +103,14 @@ export function createPageMetadata({
           height: 630,
           alt:
             socialImage === siteConfig.knowledgeSocialImage
-              ? "ScripticX Knowledge Center"
-              : "ScripticX - Learn programming interactively",
+              ? `${pageTitle} | ScripticX Knowledge Center`
+              : socialTitle,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: pageTitle,
+      title: socialTitle,
       description: pageDescription,
       images: [absoluteUrl(socialImage)],
     },

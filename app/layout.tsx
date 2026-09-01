@@ -4,6 +4,7 @@ import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 
+import Navbar from "@/components/Navbar";
 import {
   absoluteUrl,
   getSiteDescription,
@@ -31,8 +32,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const isRomanian = locale === "ro";
   const title = isRomanian
-    ? "ScripticX | Învață programare interactiv"
-    : "ScripticX | Learn programming interactively";
+    ? "ScripticX — Educație și tehnologie"
+    : "ScripticX — Education & Technology";
   const description = getSiteDescription(locale);
 
   return {
@@ -47,7 +48,7 @@ export async function generateMetadata(): Promise<Metadata> {
     authors: [{ name: "ScripticX Team", url: siteConfig.url }],
     creator: "ScripticX",
     publisher: "ScripticX",
-    category: "education",
+    category: "technology",
     alternates: {
       canonical: "/",
     },
@@ -91,7 +92,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: absoluteUrl(siteConfig.socialImage),
           width: 1200,
           height: 630,
-          alt: "ScripticX - Learn programming interactively",
+          alt: title,
         },
       ],
     },
@@ -152,12 +153,24 @@ export default async function RootLayout({
           "https://github.com/Sank34/scripticx",
           "https://www.youtube.com/@scripticx",
         ],
+        department: [
+          {
+            "@type": "EducationalOrganization",
+            name: "ScripticX Education Center",
+            url: absoluteUrl("/education"),
+          },
+          {
+            "@type": "Organization",
+            name: "ScripticX Development",
+            url: absoluteUrl("/development"),
+          },
+        ],
       },
       {
         "@type": "SoftwareApplication",
         name: siteConfig.name,
         alternateName: "Platforma ScripticX",
-        url: siteConfig.url,
+        url: absoluteUrl("/platform"),
         description,
         applicationCategory: "EducationalApplication",
         operatingSystem: "Any",
@@ -197,6 +210,7 @@ export default async function RootLayout({
           }}
         />
         <NextIntlClientProvider>
+          <Navbar />
           {children}
         </NextIntlClientProvider>
       </body>

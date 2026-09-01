@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const components: MDXComponents = {
   a: ({ className, href = "", ...props }) => {
     const styles = cn(
-      "font-medium text-foreground underline decoration-green-500/50 underline-offset-4 transition hover:decoration-green-500",
+      "font-medium text-foreground underline decoration-foreground/30 underline-offset-4 transition hover:decoration-foreground",
       className
     );
 
@@ -28,7 +28,7 @@ const components: MDXComponents = {
   h2: ({ className, ...props }) => (
     <h2
       className={cn(
-        "mt-12 scroll-m-24 border-b pb-3 text-2xl font-semibold tracking-tight",
+        "mt-12 scroll-m-36 border-b pb-3 text-2xl font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -37,7 +37,7 @@ const components: MDXComponents = {
   h3: ({ className, ...props }) => (
     <h3
       className={cn(
-        "mt-8 scroll-m-24 text-xl font-semibold tracking-tight",
+        "mt-8 scroll-m-36 text-xl font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -52,7 +52,7 @@ const components: MDXComponents = {
   ul: ({ className, ...props }) => (
     <ul
       className={cn(
-        "mt-5 ml-6 list-disc space-y-2 text-foreground/80 marker:text-green-600",
+        "mt-5 ml-6 list-disc space-y-2 text-foreground/80 marker:text-muted-foreground",
         className
       )}
       {...props}
@@ -70,7 +70,7 @@ const components: MDXComponents = {
   blockquote: ({ className, ...props }) => (
     <blockquote
       className={cn(
-        "mt-6 border-l-2 border-green-500 pl-5 text-foreground/70 italic",
+        "mt-6 border-l-2 border-foreground/30 pl-5 text-foreground/70 italic",
         className
       )}
       {...props}

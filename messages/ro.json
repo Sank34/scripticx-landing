@@ -290,6 +290,41 @@
     "eyebrow": "Oamenii din spatele ScripticX",
     "title": "Cunoaște echipa",
     "description": "O echipă multidisciplinară care lucrează în dezvoltare, educație, design, comunicare și evenimente pentru a face programarea mai ușor de învățat.",
+    "viewProfile": "Vezi profilul",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "contactMember": "Contactează prin ScripticX",
+    "profile": {
+      "back": "Înapoi la echipă",
+      "eyebrow": "Membru al echipei ScripticX",
+      "about": "Despre",
+      "contact": "Contact",
+      "contactDescription": "Contactează-mă direct.",
+      "contactFallback": "Datele personale de contact sunt publicate doar cu acordul membrului echipei. Până atunci, echipa ScripticX poate redirecționa mesajul tău.",
+      "teamEyebrow": "Echipa noastră",
+      "teamTitle": "Cunoaște restul echipei",
+      "teamDescription": "ScripticX este construit de oameni care lucrează în educație, inginerie, comunicare, cercetare și design."
+    },
+    "members": {
+      "eric-littau": {
+        "bio": "Îmi place să transform ideile complicate în explicații simple și utile. La ScripticX mă ocup de comunicare și creez probleme de programare care îi ajută pe cursanți să știe mereu care este următorul pas."
+      },
+      "catalina-nedelea": {
+        "bio": "Am grijă atât la felul în care comunică ScripticX, cât și la modul în care crește. Îmbin marketingul cu partea financiară pentru ca ideile bune să aibă și un drum clar, sustenabil."
+      },
+      "andrei-lascu": {
+        "bio": "Îmi place să duc o idee de la prima schiță până la ceva pe care oamenii îl pot folosi cu adevărat. Lucrez la dezvoltare, design de produs, evenimente și conținut educațional—oriunde trebuie legate piesele între ele."
+      },
+      "maia-pricop": {
+        "bio": "Țin mult la detaliile mici care fac o interfață să pară firească. Îmbin dezvoltarea, UI/UX-ul și scrierea de probleme pentru ca învățarea să fie clară de la primul click până la soluția finală."
+      },
+      "andreea-bobotan": {
+        "bio": "Sunt curioasă cum se simte un produs pentru oameni, nu doar cum arată. Prin cercetare UI/UX și evenimente, transform feedbackul și conversațiile reale într-o experiență ScripticX mai primitoare."
+      },
+      "daria-serban": {
+        "bio": "Îmi place să dau ideilor o identitate vizuală clară și memorabilă. Lucrez la graphic design și UI/UX, conturând detaliile care fac ScripticX să se simtă cu adevărat al nostru."
+      }
+    },
     "roles": {
       "communications": "Comunicare",
       "problemWriting": "Scriere probleme",
@@ -365,5 +400,44 @@
       "contact": "Contact"
     },
     "copyright": "ScripticX"
+  },
+  "MarketingNav": {
+    "education": "Educație",
+    "development": "Development",
+    "platform": "Platformă",
+    "partners": "Parteneri",
+    "resources": "Resurse",
+    "login": "Autentificare",
+    "openPlatform": "Deschide platforma",
+    "openMenu": "Deschide navigația",
+    "ariaLabel": "Navigație principală",
+    "menuDescription": "Explorează compania, serviciile și platforma ScripticX."
+  },
+  "MarketingFooter": {
+    "description": "Un loc modern în care înveți programare, exersezi intenționat și evoluezi alături de ceilalți.",
+    "contact": "Contactează ScripticX",
+    "socials": "Rețelele noastre",
+    "registered": "Educație · Development · Platformă",
+    "groups": {
+      "company": "Companie",
+      "resources": "Resurse",
+      "legal": "Legal"
+    },
+    "links": {
+      "about": "Despre ScripticX",
+      "education": "Education Center",
+      "development": "Development",
+      "platform": "Platformă",
+      "team": "Echipa noastră",
+      "partners": "Parteneri și sponsori",
+      "knowledge": "Knowledge Center",
+      "docs": "Documentație",
+      "trust": "Încredere și securitate",
+      "verify": "Verifică un certificat",
+      "privacy": "Confidențialitate",
+      "terms": "Termeni",
+      "cookies": "Cookies",
+      "acceptableUse": "Utilizare acceptabilă"
+    }
   }
 }

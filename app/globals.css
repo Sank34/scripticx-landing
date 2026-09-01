@@ -81,6 +81,17 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --sx-max-content: 86rem;
+  --sx-max-reading: 48rem;
+  --sx-radius-control: 0.625rem;
+  --sx-radius-card: 0.875rem;
+  --sx-radius-panel: 1.25rem;
+  --sx-motion-fast: 120ms;
+  --sx-motion-base: 200ms;
+  --sx-motion-slow: 280ms;
+  --sx-scrollbar-size: 0.625rem;
+  --sx-scrollbar-thumb: color-mix(in oklab, var(--foreground) 18%, transparent);
+  --sx-scrollbar-thumb-hover: color-mix(in oklab, var(--foreground) 32%, transparent);
 }
 
 .dark {
@@ -115,22 +126,216 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --sx-scrollbar-thumb: color-mix(in oklab, var(--foreground) 24%, transparent);
+  --sx-scrollbar-thumb-hover: color-mix(in oklab, var(--foreground) 42%, transparent);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    scrollbar-color: var(--sx-scrollbar-thumb) transparent;
+    scrollbar-width: thin;
+  }
+  *::-webkit-scrollbar {
+    width: var(--sx-scrollbar-size);
+    height: var(--sx-scrollbar-size);
+  }
+  *::-webkit-scrollbar-track,
+  *::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    min-height: 2.75rem;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-color: var(--sx-scrollbar-thumb);
+    background-clip: padding-box;
+    transition: background-color var(--sx-motion-base) ease;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--sx-scrollbar-thumb-hover);
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+    scroll-padding-top: 5rem;
+  }
+}
+
+@keyframes sx-gradient-drift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes sx-constellation-drift {
+  0% { transform: translate3d(-0.8%, 1.2%, 0) scale(1.015); }
+  50% { transform: translate3d(0.7%, -0.7%, 0) scale(1.025); }
+  100% { transform: translate3d(1.1%, 0.4%, 0) scale(1.018); }
+}
+
+@keyframes sx-constellation-dust-drift {
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-18px, 10px, 0); }
+  100% { transform: translate3d(-36px, 0, 0); }
+}
+
+@keyframes sx-constellation-pulse {
+  0%, 100% { opacity: 0.22; transform: scale(0.72); }
+  48% { opacity: 0.95; transform: scale(1.35); }
+  68% { opacity: 0.5; transform: scale(0.9); }
+}
+
+@keyframes sx-constellation-trace {
+  0%, 100% { opacity: 0.18; stroke-dashoffset: 0; }
+  50% { opacity: 0.52; stroke-dashoffset: -22; }
+}
+
+@keyframes sx-education-hero-cycle {
+  0% {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  5% {
+    opacity: 1;
+    transform: scale(1.025);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1.055);
+  }
+  32%, 100% {
+    opacity: 0;
+    transform: scale(1.07);
+  }
+}
+
+@layer utilities {
+  .sx-gradient-text {
+    color: transparent;
+    background-image: linear-gradient(100deg, #0f766e 0%, #2563eb 38%, #7c3aed 68%, #d9468f 100%);
+    background-size: 180% 180%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: sx-gradient-drift 9s ease-in-out infinite;
+  }
+
+  .sx-gradient-text-dark {
+    color: transparent;
+    background-image: linear-gradient(100deg, #8be8d3 0%, #8eb8ff 48%, #d8a7ff 100%);
+    background-size: 180% 180%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: sx-gradient-drift 9s ease-in-out infinite;
+  }
+
+  .sx-hero-aura {
+    background:
+      radial-gradient(circle at 22% 28%, color-mix(in oklab, #56d6c2 20%, transparent) 0, transparent 27%),
+      radial-gradient(circle at 78% 18%, color-mix(in oklab, #7c8cff 18%, transparent) 0, transparent 29%),
+      radial-gradient(circle at 50% 38%, color-mix(in oklab, #e5a3d5 13%, transparent) 0, transparent 34%);
+  }
+
+  .sx-grid-fade {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--foreground) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 5%, transparent) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: linear-gradient(to bottom, black 0%, transparent 70%);
+  }
+
+  .sx-story-grid {
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size: 34px 34px;
+    mask-image: linear-gradient(to bottom right, black, transparent 78%);
+  }
+
+  .sx-constellation-field {
+    opacity: 0.9;
+    mask-image: linear-gradient(to top, black 3%, rgba(0, 0, 0, 0.94) 42%, rgba(0, 0, 0, 0.28) 78%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to top, black 3%, rgba(0, 0, 0, 0.94) 42%, rgba(0, 0, 0, 0.28) 78%, transparent 100%);
+  }
+
+  .sx-constellation-plane {
+    animation: sx-constellation-drift 34s ease-in-out infinite alternate;
+    transform-origin: center bottom;
+    will-change: transform;
+  }
+
+  .sx-constellation-dust {
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.72) 0 0.7px, transparent 1.1px),
+      radial-gradient(circle, rgba(158, 215, 255, 0.42) 0 0.8px, transparent 1.25px),
+      radial-gradient(circle, rgba(167, 243, 208, 0.38) 0 0.6px, transparent 1px);
+    background-position: 18px 24px, 74px 91px, 131px 42px;
+    background-size: 137px 157px, 223px 197px, 311px 277px;
+    opacity: 0.42;
+    animation: sx-constellation-dust-drift 46s linear infinite;
+    will-change: transform;
+  }
+
+  .sx-constellation-star {
+    animation: sx-constellation-pulse 5.8s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .sx-constellation-line {
+    animation: sx-constellation-trace 13s ease-in-out infinite;
+    stroke-dasharray: 2 8;
+  }
+
+  .sx-dot-grid {
+    background-image: radial-gradient(currentColor 0.7px, transparent 0.7px);
+    background-size: 15px 15px;
+    color: currentColor;
+  }
+
+  .sx-education-hero-frame {
+    opacity: 0;
+    animation: sx-education-hero-cycle 28s ease-in-out infinite;
+    will-change: opacity, transform;
+  }
+
+  .sx-education-hero-frame-first {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .sx-gradient-text,
+  .sx-gradient-text-dark,
+  .sx-constellation-plane,
+  .sx-constellation-dust,
+  .sx-constellation-star,
+  .sx-constellation-line,
+  .sx-education-hero-frame {
+    animation: none;
+  }
+
+  .sx-education-hero-frame {
+    opacity: 0;
+    transform: none;
+  }
+
+  .sx-education-hero-frame-first {
+    opacity: 1;
   }
 }
 
 @layer components {
   .knowledge-prose > h2 {
-    @apply mt-12 scroll-m-24 border-b pb-3 text-2xl font-semibold tracking-tight;
+    @apply mt-12 scroll-m-36 border-b pb-3 text-2xl font-semibold tracking-tight;
   }
 }

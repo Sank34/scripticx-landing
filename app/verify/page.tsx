@@ -2,7 +2,6 @@ import { getLocale } from "next-intl/server";
 
 import CertificateVerification from "@/components/CertificateVerification";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 import { createPageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata() {
@@ -25,7 +24,6 @@ export async function generateMetadata() {
 export default function VerifyPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
       <CertificateVerification />
       <Footer />
     </div>

@@ -21,9 +21,10 @@ export function Callout({
   return (
     <Alert
       className={cn(
-        "mt-6 gap-x-3 rounded-xl px-4 py-4",
-        type === "security" && "border-green-500/30 bg-green-50/70",
-        type === "warning" && "border-amber-500/30 bg-amber-50/70"
+        "mt-6 gap-x-3 rounded-[var(--sx-radius-card)] px-4 py-4 shadow-none",
+        type === "info" && "bg-muted/35",
+        type === "security" && "border-emerald-600/25 bg-emerald-50/45",
+        type === "warning" && "border-amber-500/30 bg-amber-50/55"
       )}
     >
       <Icon className="mt-0.5 size-4" />
