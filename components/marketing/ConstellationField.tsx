@@ -26,19 +26,28 @@ const constellations = [
   "M48 91 L64 84 L76 90 L87 76",
 ] as const;
 
-export function ConstellationField() {
+const compactY = (value: number) => Number(((value - 40) * 0.45).toFixed(2));
+
+function compactPath(path: string) {
+  return path.replace(/(\d+)\s+(\d+)/g, (_match, x: string, y: string) => `${x} ${compactY(Number(y))}`);
+}
+
+export function ConstellationField({ compact = false }: { compact?: boolean }) {
   return (
-    <div className="sx-constellation-field pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      <div className="absolute inset-x-[8%] bottom-[-18rem] h-[34rem] rounded-[50%] bg-[radial-gradient(circle,rgba(79,209,178,0.11),rgba(72,118,255,0.055)_40%,transparent_72%)] blur-3xl" />
+    <div
+      className={compact ? "pointer-events-none absolute inset-0 overflow-hidden opacity-80" : "sx-constellation-field pointer-events-none absolute inset-0 overflow-hidden"}
+      aria-hidden="true"
+    >
+      <div className={`absolute inset-x-[8%] rounded-[50%] bg-[radial-gradient(circle,rgba(79,209,178,0.11),rgba(72,118,255,0.055)_40%,transparent_72%)] blur-3xl ${compact ? "-bottom-48 h-96" : "bottom-[-18rem] h-[34rem]"}`} />
       <div className="sx-constellation-dust absolute inset-0" />
       <svg
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        className="sx-constellation-plane absolute -inset-x-[3%] bottom-[-4%] h-[92%] w-[106%]"
+        viewBox={compact ? "0 0 100 24" : "0 0 100 100"}
+        preserveAspectRatio={compact ? "xMidYMid slice" : "none"}
+        className={`sx-constellation-plane absolute ${compact ? "inset-0 size-full" : "-inset-x-[3%] bottom-[-4%] h-[92%] w-[106%]"}`}
       >
         <g fill="none" stroke="currentColor" strokeWidth="0.095" className="text-sky-200/22">
           {constellations.map((path) => (
-            <path key={path} d={path} className="sx-constellation-line" />
+            <path key={path} d={compact ? compactPath(path) : path} className="sx-constellation-line" vectorEffect="non-scaling-stroke" />
           ))}
         </g>
         <g className="text-white/70">
@@ -46,7 +55,7 @@ export function ConstellationField() {
             <circle
               key={`${star.x}-${star.y}`}
               cx={star.x}
-              cy={star.y}
+              cy={compact ? compactY(star.y) : star.y}
               r={star.radius * 0.095}
               fill="currentColor"
               className="sx-constellation-star"
@@ -56,9 +65,9 @@ export function ConstellationField() {
           ))}
         </g>
         <g fill="currentColor" className="text-emerald-200/80">
-          <circle cx="25" cy="69" r="0.22" className="sx-constellation-star" style={{ animationDelay: "-2.8s" }} />
-          <circle cx="59" cy="49" r="0.18" className="sx-constellation-star" style={{ animationDelay: "-4.6s" }} />
-          <circle cx="87" cy="76" r="0.2" className="sx-constellation-star" style={{ animationDelay: "-1.7s" }} />
+          <circle cx="25" cy={compact ? compactY(69) : 69} r="0.22" className="sx-constellation-star" style={{ animationDelay: "-2.8s" }} />
+          <circle cx="59" cy={compact ? compactY(49) : 49} r="0.18" className="sx-constellation-star" style={{ animationDelay: "-4.6s" }} />
+          <circle cx="87" cy={compact ? compactY(76) : 76} r="0.2" className="sx-constellation-star" style={{ animationDelay: "-1.7s" }} />
         </g>
       </svg>
     </div>

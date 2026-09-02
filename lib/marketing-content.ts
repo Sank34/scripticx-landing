@@ -94,11 +94,7 @@ export const marketingContent = {
       ],
     },
     showcase: {
-      eyebrow: "Platform showcase",
-      title: "One workspace. Different ways to make progress.",
-      description:
-        "The platform adapts to learners, teachers and independent builders without splitting their work across disconnected tools.",
-      open: "Open ScripticX Platform",
+      title: "Explore ScripticX by workspace.",
       tabs: [
         {
           key: "editor",
@@ -118,21 +114,189 @@ export const marketingContent = {
         },
         {
           key: "workspaces",
-          label: "Workspaces",
-          title: "The right tools for every role.",
+          label: "Home",
+          title: "Your school workspace at a glance.",
           description:
-            "Students organize notes and assignments while teachers manage classes, projects, tests and performance.",
-          points: ["Student notes and calendar", "Teacher class management", "Role-aware navigation"],
+            "Start the week with upcoming work, learning activity and roadmap progress collected in one student home.",
+          points: ["Weekly learning overview", "Upcoming assignments and deadlines", "Roadmap progress"],
+        },
+        {
+          key: "planner",
+          label: "Planner",
+          title: "Turn the week into a clear plan.",
+          description:
+            "Organize learning sessions, classes and deadlines in the student planner, then check off work as it is completed.",
+          points: ["Weekly schedule", "Tasks and study sessions", "Deadlines and completion states"],
+        },
+        {
+          key: "notes",
+          label: "Notes",
+          title: "Keep explanations next to the practice.",
+          description:
+            "Write and organize study notes for algorithms, languages and class material without leaving the student workspace.",
+          points: ["Organized note folders", "Formatted text and code", "Shareable learning material"],
+        },
+        {
+          key: "whiteboard",
+          label: "Whiteboard",
+          title: "Make an idea visible before coding it.",
+          description:
+            "Sketch a solution, arrange notes and connect steps freely on a visual canvas built into the student workspace.",
+          points: ["Freeform canvas", "Notes and connectors", "Visual problem planning"],
+        },
+        {
+          key: "graphs",
+          label: "Graphs",
+          title: "Understand graph algorithms by seeing them run.",
+          description:
+            "Create vertices and edges, inspect graph structure and follow an algorithm traversal visually.",
+          points: ["Interactive vertices and edges", "Graph properties", "Algorithm traversal"],
+        },
+        {
+          key: "classes",
+          label: "Classes",
+          title: "A shared hub for every class.",
+          description:
+            "Teachers create class spaces and follow student progress, while learners join with an invitation code and keep assignments and resources together.",
+          points: ["Create or join with an invitation code", "Assignments, resources and deadlines", "Student counts and average progress"],
+        },
+        {
+          key: "problems",
+          label: "Problems",
+          title: "Practice with feedback that is easy to act on.",
+          description:
+            "Open a problem, write and run a solution, inspect test results and keep the best submitted score.",
+          points: ["Difficulty and localized statements", "Integrated runner and test results", "Submission history and best score"],
+        },
+        {
+          key: "teacherDashboard",
+          label: "Dashboard",
+          title: "See the classroom at a glance.",
+          description:
+            "Review enrolled students, active classes, average completion, upcoming deadlines and recent submissions from one teacher dashboard.",
+          points: ["Students and active classes", "Completion and assignment totals", "Deadlines and recent activity"],
+        },
+        {
+          key: "students",
+          label: "Students",
+          title: "Follow every learner from one roster.",
+          description:
+            "Review students across classes, compare progress and open an individual learner when more context is needed.",
+          points: ["Cross-class student roster", "Individual completion progress", "Direct learner access"],
+        },
+        {
+          key: "assignments",
+          label: "Assignments & tests",
+          title: "Keep coursework measurable.",
+          description:
+            "Create assignments from a class, filter them by status and follow deadlines, completed solutions and completion rates.",
+          points: ["Upcoming, past-due and open-ended work", "Deadlines and class context", "Completion and solution counts"],
+        },
+        {
+          key: "calendar",
+          label: "Calendar",
+          title: "Every class deadline, organized by month.",
+          description:
+            "View assignment deadlines across classes in a monthly calendar and open the corresponding work directly.",
+          points: ["Monthly class schedule", "Assignment deadlines and times", "Direct links to coursework"],
+        },
+        {
+          key: "analytics",
+          label: "Analytics",
+          title: "Know where support is needed.",
+          description:
+            "Compare class completion, identify students who are on track and find learners with assigned work and low progress.",
+          points: ["Overall and per-class completion", "Students above or below thresholds", "Needs-attention view"],
+        },
+        {
+          key: "personalDashboard",
+          label: "Dashboard",
+          title: "Pick up exactly where you left off.",
+          description:
+            "See your learning streak, reward balance, solved problems and the next activity from the personal dashboard.",
+          points: ["Daily challenge and streak", "Reward points", "Learning and problem progress"],
+        },
+        {
+          key: "search",
+          label: "Search",
+          title: "Find the right next step quickly.",
+          description:
+            "Search across platform content and jump into relevant problems, learning material and community spaces.",
+          points: ["Unified platform search", "Filtered result types", "Direct links to results"],
         },
         {
           key: "collaboration",
-          label: "Collaboration",
-          title: "Build and explain ideas together.",
+          label: "Live Share",
+          title: "Code together, live.",
           description:
-            "Use Live Share, whiteboards, graph tools, groups and shared projects without leaving the workspace.",
-          points: ["Live coding sessions", "Whiteboards and graphs", "Groups and invitations"],
+            "Start a Live Share session from the editor, share the project workspace and keep every participant on the same version as changes are made.",
+          points: ["Real-time code and project sync", "Participant presence", "Session links and invitations"],
+        },
+        {
+          key: "groups",
+          label: "Groups",
+          title: "Focused spaces for every study group.",
+          description:
+            "Create public or private groups with channels, invite members and keep conversations, mentions and file attachments organized.",
+          points: ["Public and private groups", "Channels, mentions and pinned messages", "Invitations, attachments and member roles"],
+        },
+        {
+          key: "rewards",
+          label: "Rewards",
+          title: "Progress becomes part of your profile.",
+          description:
+            "Earn reward points from problems and daily challenges, then use them in the shop for profile items you can equip.",
+          points: ["Separate reward-points balance", "Frames, decorations, backgrounds and titles", "Inventory and equipped profile items"],
+        },
+        {
+          key: "competitions",
+          label: "Competitions",
+          title: "Practice under real competition conditions.",
+          description:
+            "Join published coding competitions, solve timed problems and follow the live leaderboard when the organizer enables it.",
+          points: ["Timed problem sets", "Saved submissions and best scores", "Live rankings and competition phases"],
+        },
+        {
+          key: "leaderboard",
+          label: "Leaderboard",
+          title: "See how consistent practice adds up.",
+          description:
+            "Compare earned points with the community and follow the learners building momentum across the platform.",
+          points: ["Community ranking", "Accumulated points", "Visible progress milestones"],
+        },
+        {
+          key: "feed",
+          label: "Feed",
+          title: "Share progress with the community.",
+          description:
+            "Post learning milestones and code discoveries, then follow useful activity from other ScripticX members.",
+          points: ["Community posts", "Learning and code updates", "Reactions and replies"],
+        },
+        {
+          key: "documentation",
+          label: "Documentation",
+          title: "Reference the language while you build.",
+          description:
+            "Browse MiniScript+ concepts, syntax and examples in structured documentation connected to the learning experience.",
+          points: ["Structured language reference", "Syntax examples", "Practical guidance"],
+        },
+        {
+          key: "examples",
+          label: "Examples",
+          title: "Start from code that already runs.",
+          description:
+            "Browse practical examples by topic and difficulty, then open one as a starting point for your own project.",
+          points: ["Examples by difficulty", "Multiple programming topics", "Open directly in the editor"],
         },
       ],
+    },
+    audiences: {
+      switchLabel: "Choose a ScripticX workspace",
+      tabs: {
+        student: "For students",
+        teacher: "For teachers",
+        personal: "Personal",
+      },
     },
     gallery: {
       eyebrow: "Learning in the real world",
@@ -240,11 +404,7 @@ export const marketingContent = {
       ],
     },
     showcase: {
-      eyebrow: "Platform showcase",
-      title: "Un singur workspace. Mai multe moduri de a progresa.",
-      description:
-        "Platforma se adaptează elevilor, profesorilor și dezvoltatorilor independenți fără să le împartă munca între instrumente separate.",
-      open: "Deschide platforma ScripticX",
+      title: "Explorează ScripticX pe workspace-uri.",
       tabs: [
         {
           key: "editor",
@@ -264,21 +424,189 @@ export const marketingContent = {
         },
         {
           key: "workspaces",
-          label: "Workspaces",
-          title: "Instrumentele potrivite pentru fiecare rol.",
+          label: "Acasă",
+          title: "Workspace-ul pentru școală, dintr-o privire.",
           description:
-            "Elevii organizează notițe și teme, iar profesorii gestionează clase, proiecte, teste și performanță.",
-          points: ["Notițe și calendar pentru elevi", "Managementul claselor", "Navigație adaptată rolului"],
+            "Începe săptămâna cu temele viitoare, activitatea de învățare și progresul din roadmap reunite în pagina principală a elevului.",
+          points: ["Privire de ansamblu asupra săptămânii", "Teme și deadline-uri viitoare", "Progres în roadmap"],
+        },
+        {
+          key: "planner",
+          label: "Planner",
+          title: "Transformă săptămâna într-un plan clar.",
+          description:
+            "Organizează sesiunile de învățare, clasele și deadline-urile în planner-ul elevului, apoi bifează activitățile finalizate.",
+          points: ["Program săptămânal", "Task-uri și sesiuni de studiu", "Deadline-uri și stări de completare"],
+        },
+        {
+          key: "notes",
+          label: "Notițe",
+          title: "Păstrează explicațiile lângă exerciții.",
+          description:
+            "Scrie și organizează notițe pentru algoritmi, limbaje și materiale de clasă fără să ieși din workspace-ul elevului.",
+          points: ["Foldere pentru notițe", "Text formatat și cod", "Materiale de studiu partajabile"],
+        },
+        {
+          key: "whiteboard",
+          label: "Whiteboard",
+          title: "Fă ideea vizibilă înainte să o codezi.",
+          description:
+            "Schițează o soluție, aranjează notițe și conectează pașii liber pe un canvas vizual integrat în workspace.",
+          points: ["Canvas liber", "Notițe și conexiuni", "Planificare vizuală a soluției"],
+        },
+        {
+          key: "graphs",
+          label: "Grafuri",
+          title: "Înțelege algoritmii pe grafuri văzându-i în acțiune.",
+          description:
+            "Creează noduri și muchii, inspectează structura grafului și urmărește vizual parcurgerea unui algoritm.",
+          points: ["Noduri și muchii interactive", "Proprietăți ale grafului", "Parcurgere vizuală"],
+        },
+        {
+          key: "classes",
+          label: "Clase",
+          title: "Un spațiu comun pentru fiecare clasă.",
+          description:
+            "Profesorii creează clase și urmăresc progresul elevilor, iar cursanții intră cu un cod de invitație și găsesc temele și resursele în același loc.",
+          points: ["Creare sau înscriere prin cod de invitație", "Teme, resurse și deadline-uri", "Număr de elevi și progres mediu"],
+        },
+        {
+          key: "problems",
+          label: "Probleme",
+          title: "Practică însoțită de feedback clar.",
+          description:
+            "Deschide o problemă, scrie și rulează soluția, verifică rezultatele testelor și păstrează cel mai bun scor trimis.",
+          points: ["Dificultate și enunțuri localizate", "Runner și rezultate integrate", "Istoric de submisii și cel mai bun scor"],
+        },
+        {
+          key: "teacherDashboard",
+          label: "Dashboard",
+          title: "Vezi situația claselor dintr-o privire.",
+          description:
+            "Urmărește elevii înscriși, clasele active, progresul mediu, deadline-urile viitoare și submisiile recente din dashboard-ul profesorului.",
+          points: ["Elevi și clase active", "Progres și număr de teme", "Deadline-uri și activitate recentă"],
+        },
+        {
+          key: "students",
+          label: "Elevi",
+          title: "Urmărește fiecare elev dintr-o singură listă.",
+          description:
+            "Vezi elevii din toate clasele, compară progresul și deschide profilul unui cursant când ai nevoie de mai mult context.",
+          points: ["Listă de elevi din toate clasele", "Progres individual", "Acces direct la elev"],
+        },
+        {
+          key: "assignments",
+          label: "Teme și teste",
+          title: "Păstrează evaluarea ușor de urmărit.",
+          description:
+            "Creează teme într-o clasă, filtrează-le după stare și urmărește deadline-urile, soluțiile finalizate și rata de completare.",
+          points: ["Teme viitoare, restante sau fără deadline", "Deadline-uri și contextul clasei", "Număr de soluții și progres"],
+        },
+        {
+          key: "calendar",
+          label: "Calendar",
+          title: "Toate deadline-urile claselor, organizate lunar.",
+          description:
+            "Vezi deadline-urile temelor din toate clasele într-un calendar lunar și deschide direct activitatea corespunzătoare.",
+          points: ["Program lunar pentru clase", "Deadline-uri și ore", "Acces direct la activități"],
+        },
+        {
+          key: "analytics",
+          label: "Analiză",
+          title: "Află unde este nevoie de ajutor.",
+          description:
+            "Compară progresul claselor, identifică elevii care țin pasul și găsește cursanții cu teme alocate și progres scăzut.",
+          points: ["Progres general și pe clase", "Elevi peste sau sub praguri", "Listă pentru intervenții"],
+        },
+        {
+          key: "personalDashboard",
+          label: "Dashboard",
+          title: "Continuă exact de unde ai rămas.",
+          description:
+            "Vezi seria de zile, punctele reward, problemele rezolvate și următoarea activitate din dashboard-ul personal.",
+          points: ["Daily challenge și streak", "Puncte reward", "Progres la lecții și probleme"],
+        },
+        {
+          key: "search",
+          label: "Căutare",
+          title: "Găsește rapid următorul pas potrivit.",
+          description:
+            "Caută în conținutul platformei și treci direct la probleme, materiale de învățare sau spații din comunitate.",
+          points: ["Căutare unificată", "Filtre pe tipuri de rezultate", "Acces direct la rezultate"],
         },
         {
           key: "collaboration",
-          label: "Colaborare",
-          title: "Construiește și explică idei împreună.",
+          label: "Live Share",
+          title: "Scrieți cod împreună, live.",
           description:
-            "Folosește Live Share, whiteboard-uri, grafuri, grupuri și proiecte partajate fără să părăsești workspace-ul.",
-          points: ["Sesiuni live de programare", "Whiteboard și grafuri", "Grupuri și invitații"],
+            "Pornește o sesiune Live Share direct din editor, partajează proiectul și păstrează aceeași versiune pentru toți participanții pe măsură ce apar modificări.",
+          points: ["Sincronizare live pentru cod și proiect", "Prezența participanților", "Linkuri de sesiune și invitații"],
+        },
+        {
+          key: "groups",
+          label: "Grupuri",
+          title: "Spații dedicate fiecărui grup de studiu.",
+          description:
+            "Creează grupuri publice sau private cu canale, invită membri și organizează conversațiile, mențiunile și fișierele atașate.",
+          points: ["Grupuri publice și private", "Canale, mențiuni și mesaje fixate", "Invitații, atașamente și roluri"],
+        },
+        {
+          key: "rewards",
+          label: "Recompense",
+          title: "Progresul devine parte din profilul tău.",
+          description:
+            "Câștigă puncte de recompensă din probleme și daily challenges, apoi folosește-le în shop pentru obiecte de profil pe care le poți echipa.",
+          points: ["Sold separat de puncte reward", "Rame, decorații, fundaluri și titluri", "Inventar și obiecte echipate pe profil"],
+        },
+        {
+          key: "competitions",
+          label: "Competiții",
+          title: "Exersează în condiții reale de concurs.",
+          description:
+            "Înscrie-te în competiții publicate, rezolvă probleme contra cronometru și urmărește clasamentul live atunci când organizatorul îl activează.",
+          points: ["Seturi de probleme cronometrate", "Submisii salvate și cel mai bun scor", "Clasamente live și etape de concurs"],
+        },
+        {
+          key: "leaderboard",
+          label: "Clasament",
+          title: "Vezi cum se adună practica făcută consecvent.",
+          description:
+            "Compară punctele obținute cu comunitatea și urmărește cursanții care construiesc constant progres pe platformă.",
+          points: ["Clasament al comunității", "Puncte acumulate", "Etape de progres vizibile"],
+        },
+        {
+          key: "feed",
+          label: "Feed",
+          title: "Împărtășește progresul cu comunitatea.",
+          description:
+            "Publică momente de progres și descoperiri din cod, apoi urmărește activitatea utilă a celorlalți membri ScripticX.",
+          points: ["Postări în comunitate", "Update-uri de învățare și cod", "Reacții și răspunsuri"],
+        },
+        {
+          key: "documentation",
+          label: "Documentație",
+          title: "Consultă limbajul în timp ce construiești.",
+          description:
+            "Explorează conceptele, sintaxa și exemplele MiniScript+ într-o documentație structurată și conectată la învățare.",
+          points: ["Referință structurată a limbajului", "Exemple de sintaxă", "Recomandări practice"],
+        },
+        {
+          key: "examples",
+          label: "Exemple",
+          title: "Pornește de la cod care deja rulează.",
+          description:
+            "Explorează exemple practice după subiect și dificultate, apoi deschide unul ca punct de pornire pentru propriul proiect.",
+          points: ["Exemple după dificultate", "Mai multe subiecte de programare", "Deschidere directă în editor"],
         },
       ],
+    },
+    audiences: {
+      switchLabel: "Alege un workspace ScripticX",
+      tabs: {
+        student: "Pentru elevi",
+        teacher: "Pentru profesori",
+        personal: "Personal",
+      },
     },
     gallery: {
       eyebrow: "Învățare în lumea reală",

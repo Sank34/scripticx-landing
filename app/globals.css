@@ -215,6 +215,16 @@
   }
 }
 
+@keyframes sx-mascot-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-0.75deg);
+  }
+  50% {
+    transform: translate3d(0, -7px, 0) rotate(0.75deg);
+  }
+}
+
 @layer utilities {
   .sx-gradient-text {
     color: transparent;
@@ -307,6 +317,18 @@
   .sx-education-hero-frame-first {
     opacity: 1;
   }
+
+  .sx-mascot-float {
+    animation: sx-mascot-float 6.8s ease-in-out infinite;
+    filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.14));
+    transform-origin: 50% 88%;
+    will-change: transform;
+  }
+
+  .sx-mascot-glow {
+    mask-image: linear-gradient(to top, black 0%, black 36%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to top, black 0%, black 36%, transparent 100%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -320,7 +342,8 @@
   .sx-constellation-dust,
   .sx-constellation-star,
   .sx-constellation-line,
-  .sx-education-hero-frame {
+  .sx-education-hero-frame,
+  .sx-mascot-float {
     animation: none;
   }
 
