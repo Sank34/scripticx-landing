@@ -37,7 +37,8 @@ function SidebarContent({ closeOnSelect = false }: { closeOnSelect?: boolean }) 
   const pathname = usePathname();
   const locale = useLocale();
   const articles = getKnowledgeArticles(locale);
-  const sections = getKnowledgeSections(locale);
+  // Navigation chrome stays English; only article titles follow the locale.
+  const sections = getKnowledgeSections("en");
 
   return (
     <nav aria-label="Knowledge Center navigation" className="space-y-8">
@@ -54,7 +55,7 @@ function SidebarContent({ closeOnSelect = false }: { closeOnSelect?: boolean }) 
               )}
             >
               <LayoutGrid className="size-3.5" />
-              {locale === "ro" ? "Prezentare generală" : "Overview"}
+              Overview
             </Link>
           </SheetClose>
         ) : (
@@ -68,7 +69,7 @@ function SidebarContent({ closeOnSelect = false }: { closeOnSelect?: boolean }) 
             )}
           >
             <LayoutGrid className="size-3.5" />
-            {locale === "ro" ? "Prezentare generală" : "Overview"}
+            Overview
           </Link>
         )}
       </div>
@@ -129,9 +130,6 @@ export function KnowledgeSidebar() {
 }
 
 export function KnowledgeMobileNavigation() {
-  const locale = useLocale();
-  const isRomanian = locale === "ro";
-
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -139,23 +137,21 @@ export function KnowledgeMobileNavigation() {
           variant="outline"
           size="sm"
           className="h-9 px-2.5 lg:hidden"
-          aria-label={isRomanian ? "Deschide navigarea" : "Open navigation"}
+          aria-label="Open navigation"
         >
           <Menu className="size-4" />
           <span className="hidden sm:inline">
-            {isRomanian ? "Răsfoiește" : "Browse"}
+            Browse
           </span>
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="w-[min(88vw,330px)] p-0">
         <SheetHeader className="border-b">
           <SheetTitle>
-            {isRomanian ? "Centrul de cunoștințe" : "Knowledge Center"}
+            Knowledge Center
           </SheetTitle>
           <SheetDescription className="sr-only">
-            {isRomanian
-              ? "Navighează prin ghidurile și politicile ScripticX."
-              : "Browse ScripticX guides and policies."}
+            Browse ScripticX guides and policies.
           </SheetDescription>
         </SheetHeader>
         <ScrollArea className="flex-1 px-5 py-6">

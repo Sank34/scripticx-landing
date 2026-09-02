@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ] as const;
   const knowledgeRoutes = getKnowledgeArticles("en").map((article) => ({
     url: absoluteUrl(article.href),
-    lastModified,
+    lastModified: new Date(`${article.updatedIso}T00:00:00.000Z`),
     changeFrequency: "monthly" as const,
     priority: article.section === "Learn" ? 0.8 : 0.6,
   }));

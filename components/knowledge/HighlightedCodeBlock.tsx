@@ -1,7 +1,6 @@
 "use client";
 
 import { Check, Copy } from "lucide-react";
-import { useLocale } from "next-intl";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -113,7 +112,6 @@ export function HighlightedCodeBlock({
   code: string;
   languageLabel?: string;
 }) {
-  const locale = useLocale();
   const [copied, setCopied] = useState(false);
   const lines = code.replace(/\s+$/, "").split("\n");
 
@@ -146,7 +144,7 @@ export function HighlightedCodeBlock({
           onClick={handleCopy}
         >
           {copied ? <Check size={13} /> : <Copy size={13} />}
-          {copied ? (locale === "ro" ? "Copiat" : "Copied") : locale === "ro" ? "Copiază" : "Copy"}
+          {copied ? "Copied" : "Copy"}
         </Button>
       </div>
       <pre className="max-h-[360px] overflow-auto p-0 font-mono text-[13px] leading-7 [scrollbar-width:thin]">

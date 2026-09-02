@@ -336,6 +336,14 @@
 
 @layer components {
   .knowledge-prose > h2 {
-    @apply mt-12 scroll-m-36 border-b pb-3 text-2xl font-semibold tracking-tight;
+    @apply mt-12 border-b pb-3 text-2xl font-semibold tracking-tight;
+  }
+
+  /* Where an anchor link lands. Knowledge pages stack a 4rem fixed navbar on
+     top of a 3.5rem sticky header, plus their 1px borders. `html` already
+     contributes 5rem of scroll-padding-top for the rest of the site, so only
+     the remainder and a 1rem breathing gap belong here. */
+  .knowledge-prose > :is(h2, h3) {
+    scroll-margin-top: calc(4rem + 3.5rem + 2px + 1rem - 5rem);
   }
 }

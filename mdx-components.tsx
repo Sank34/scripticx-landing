@@ -6,6 +6,19 @@ import { cn } from "@/lib/utils";
 
 const components: MDXComponents = {
   a: ({ className, href = "", ...props }) => {
+    // rehype-autolink-headings wraps each heading's text in a "#id" anchor.
+    // That anchor has to inherit the heading's own type styles instead of
+    // picking up the underline and weight of a body link.
+    if (href.startsWith("#")) {
+      return (
+        <a
+          href={href}
+          className={cn("text-inherit no-underline", className)}
+          {...props}
+        />
+      );
+    }
+
     const styles = cn(
       "font-medium text-foreground underline decoration-foreground/30 underline-offset-4 transition hover:decoration-foreground",
       className
@@ -28,7 +41,7 @@ const components: MDXComponents = {
   h2: ({ className, ...props }) => (
     <h2
       className={cn(
-        "mt-12 scroll-m-36 border-b pb-3 text-2xl font-semibold tracking-tight",
+        "mt-12 border-b pb-3 text-2xl font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -37,7 +50,7 @@ const components: MDXComponents = {
   h3: ({ className, ...props }) => (
     <h3
       className={cn(
-        "mt-8 scroll-m-36 text-xl font-semibold tracking-tight",
+        "mt-8 text-xl font-semibold tracking-tight",
         className
       )}
       {...props}

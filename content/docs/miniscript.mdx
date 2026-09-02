@@ -2,27 +2,245 @@ import { HighlightedCodeBlock } from "@/components/knowledge/HighlightedCodeBloc
 
 <Callout title="Learn by changing the examples">
   Run each example in the ScripticX editor, then change one value and predict
-  the result before running it again.
+  the result before running it again. Every program on this page was executed
+  against the MiniScript+ interpreter, and the outputs shown are the real ones.
 </Callout>
 
-MiniScript+ keeps syntax intentionally compact so beginners can focus on
-reasoning and problem solving.
+MiniScript+ (`.msp`) is the teaching language built into ScripticX. It keeps
+syntax intentionally compact so beginners can focus on reasoning and problem
+solving instead of punctuation.
+
+The whole language is seven statements: `PRINT`, `INPUT`, assignment, `IF`,
+`ELSE`, `END`, `WHILE`, plus expressions. There are no arrays and no
+user-defined functions (coming soon :>).
+
+## How a program runs
+
+A program is a list of lines, read top to bottom. **One source line is always
+exactly one instruction**, including blank lines and comment lines. The
+interpreter keeps a pointer to the current line, executes it, and moves on.
+Loops and conditionals work by moving that pointer somewhere else.
+
+<HighlightedCodeBlock code={`total = 0
+total = total + 5
+PRINT total`} />
+
+```text
+5
+```
+
+Assignment produces no output on its own. Only `PRINT` writes to the console.
+
+The editor gives you two ways to run this:
+
+| Action | What it does |
+| --- | --- |
+| **Run** | Executes until the program ends, an error is thrown, or `INPUT` asks for a value |
+| **Step** | Executes exactly one instruction, then stops so you can inspect the variables panel |
+
+Stepping is the fastest way to understand a loop: watch the pointer jump from
+`END` back up to `WHILE`, and watch the counter change as it goes.
+
+<Callout type="info" title="State is global and flat">
+  There is one single set of variables for the whole program. A variable created inside a loop body is still readable after
+  the loop finishes.
+</Callout>
+
+## Syntax rules
+
+**One statement per line.** There is no statement separator. `x = 1 PRINT x` is
+not two statements, but it is an error.
+
+**Keywords must be UPPERCASE.** `PRINT`, `INPUT`, `IF`, `THEN`, `ELSE`, `END`,
+`WHILE`, `AND`, `OR`, `NOT`, `DIV`, `MOD`. Writing `print x` fails with
+`Unknown instruction "print x"`. Two things *are* case-insensitive: the literals
+`TRUE`/`FALSE`, and built-in function names, `abs(-4)` works. Variable names
+are case-sensitive, so `total`, `Total`, and `TOTAL` are three different
+variables.
+
+**`END` is always bare.** `END IF` and `END WHILE` are not valid.
+
+**Comments start with `#`,** either on their own line or after code. `//` is not
+a comment (`x = 5 // 2` fails).
+
+<HighlightedCodeBlock code={`# Work out the final score
+base = 80
+bonus = 10  # awarded for speed
+PRINT base + bonus`} />
+
+```text
+90
+```
+
+<Callout type="warning" title="Avoid # and : inside text">
+  The interpreter strips comments and a stray colon before it looks at quotes,
+  so both characters break strings that contain them: `PRINT "a#b"` prints `a`,
+  and `PRINT "a:b"` prints `ab`. Keep `#` and `:` out of your text values.
+</Callout>
 
 ## Values and variables
 
-Variables store values that can be reused or changed:
+There are three types, and no way to declare one: a variable springs into
+existence on first assignment and takes the type of whatever it holds.
+
+| Type | Examples | Notes |
+| --- | --- | --- |
+| Number | `42`, `3.14`, `-7` | One numeric type; `/` can produce decimals |
+| Text | `"hello"` | Straight double quotes only |
+| Boolean | `TRUE`, `FALSE` | Also produced by every comparison |
 
 <HighlightedCodeBlock code={`name = "Ana"
 score = 10
+passed = score >= 5
 
 PRINT name
-PRINT score`} />
+PRINT score
+PRINT passed`} />
 
-Text values use quotation marks. Numbers can be used directly in calculations.
+```text
+Ana
+10
+true
+```
+
+Booleans print lowercase as `true` and `false`, which is why they read
+differently from the `TRUE` you type.
+
+Names must start with a letter or `_` and may contain letters, digits, and `_`
+after that. Reading a variable you never assigned stops the program with
+`Variable "x" is not defined`. 
+
+A variable can change type freely. The right-hand side is evaluated first, then
+the result replaces the old value, which is what makes counters work:
+
+<HighlightedCodeBlock code={`count = 1
+count = count + 1
+count = "done"
+PRINT count`} />
+
+```text
+done
+```
+
+## Expressions and operators
+
+Operators are listed from loosest to tightest binding. Anything higher in the
+table is evaluated later than anything below it.
+
+| Level | Operators | Notes |
+| --- | --- | --- |
+| 1 | `OR` | |
+| 2 | `AND` | |
+| 3 | `<` `>` `<=` `>=` `==` `!=` | |
+| 4 | `+` `-` | |
+| 5 | `*` `/` `%` `DIV` `MOD` | |
+| 6 | `NOT` `-` `+` (unary) | |
+
+Parentheses override all of it, so `2 + 3 * 4` is `14` but `(2 + 3) * 4` is `20`.
+
+**Arithmetic.** `/` is ordinary division and can give decimals. `DIV` is integer
+division that truncates toward zero, and `MOD` (or `%`) is the remainder.
+
+<HighlightedCodeBlock code={`PRINT 7 / 2
+PRINT 7 DIV 2
+PRINT 7 MOD 2
+PRINT -7 DIV 2`} />
+
+```text
+3.5
+3
+1
+-3
+```
+
+Dividing or taking a remainder by zero stops the program with
+`Division by zero is not allowed` or `Modulo by zero is not allowed`.
+
+**`+` does double duty.** If either side is text, both sides become text and are
+joined. Otherwise it is addition. Every other arithmetic operator is
+numbers-only and reports `Operator - can only be used with numbers`.
+
+<HighlightedCodeBlock code={`PRINT "Score " + 10
+PRINT 3 + 4`} />
+
+```text
+Score 10
+7
+```
+
+**Comparisons.** `<`, `>`, `<=`, and `>=` work on numbers only! Comparing text
+with them fails. `==` and `!=` work on any two values and compare both value and
+type, so `1 == "1"` is `false`.
+
+**Logic.** `AND`, `OR`, and `NOT` treat their operands as true or false and
+always return a boolean. Empty text and `0` count as false.
+
+<Callout type="info" title="A single = works inside a condition">
+  Inside an `IF` or `WHILE` condition, a spaced `=` is read as `==`, so
+  `IF x = 5 THEN` behaves like `IF x == 5 THEN`. Writing `==` everywhere is the
+  clearer habit, since `=` means assignment in every other position.
+</Callout>
+
+## Built-in functions
+
+Five functions exist. Arguments must be numbers, and names are
+case-insensitive.
+
+| Call | Result | Example |
+| --- | --- | --- |
+| `INT(x)` | Truncates toward zero | `INT(-2.7)` → `-2` |
+| `TRUNC(x)` | Identical to `INT` | `TRUNC(2.7)` → `2` |
+| `FLOOR(x)` | Rounds down | `FLOOR(-2.7)` → `-3` |
+| `ROUND(x)` | Nearest integer, halves go up | `ROUND(2.5)` → `3` |
+| `ROUND(x, d)` | Rounds to `d` decimals | `ROUND(2 / 3, 2)` → `0.67` |
+| `ABS(x)` | Absolute value | `ABS(-4)` → `4` |
+
+Calls nest and combine with operators like any other expression, so
+`PRINT ABS(INT(-9.7) + 2)` prints `7`.
+
+<Callout type="warning" title="Some names are highlighted but not implemented">
+  The editor colours `SQRT`, `CEIL`, `MIN`, and `MAX` as functions, but the
+  interpreter does not define them. Calling one fails with
+  `Unknown function "SQRT"`. Compute those yourself: `MAX` with an `IF`, and an
+  integer square root with a `WHILE` loop.
+</Callout>
+
+## Output and input
+
+`PRINT` takes exactly one expression and writes one line per call. To label a
+value, join it with `+`.
+
+<HighlightedCodeBlock code={`total = 12
+PRINT "Total " + total`} />
+
+```text
+Total 12
+```
+
+`INPUT name` pauses the program and stores what you type. The editor converts
+what looks like a number into a number and `true`/`false` into a boolean;
+anything else stays text. Submitting an empty box gives `0`.
+
+<HighlightedCodeBlock code={`INPUT age
+IF age >= 18 THEN
+  PRINT "Adult"
+ELSE
+  PRINT "Minor"
+END`} />
+
+With `20` typed in, this prints `Adult`.
+
+<Callout type="info" title="Read every value the exercise sends">
+  Graded problems feed inputs in a fixed order, one per `INPUT`. Asking for
+  fewer values than the test provides leaves the extras unread; asking for more
+  stops the run. Match the count in the problem statement exactly.
+</Callout>
 
 ## Conditions
 
-Conditions let a program choose what to do:
+An `IF` block runs its body only when the condition is true, and always closes
+with `END`. `THEN` is required, leaving it out fails with
+`Missing THEN in IF statement`.
 
 <HighlightedCodeBlock code={`score = 80
 
@@ -32,12 +250,44 @@ ELSE
   PRINT "Try again"
 END`} />
 
-The statements between `IF` and `END` run according to whether the condition is
-true or false.
+```text
+Passed
+```
+
+`ELSE` is optional, and a block may contain at most one. Indentation is purely
+for readability. The interpreter matches `IF` to `END` by counting blocks, not
+by looking at spaces.
+
+Conditions nest freely, which is how you build a multi-way choice:
+
+<HighlightedCodeBlock code={`grade = 7
+
+IF grade >= 9 THEN
+  PRINT "Excellent"
+ELSE
+  IF grade >= 5 THEN
+    PRINT "Pass"
+  ELSE
+    PRINT "Fail"
+  END
+END`} />
+
+```text
+Pass
+```
+
+<Callout type="warning" title="There is no ELSE IF">
+  `ELSE IF x == 1 THEN` is not recognised as a branch. It does not report an
+  error either. The interpreter quietly reads it as something else and the
+  branch simply never runs, which makes it a hard mistake to spot. Nest a second
+  `IF` inside `ELSE`, as above.
+</Callout>
 
 ## Loops
 
-Loops repeat a block of instructions:
+`WHILE` checks its condition before every pass. When the condition is false the
+pointer jumps past the matching `END`; when the body finishes, `END` sends the
+pointer back up to re-check.
 
 <HighlightedCodeBlock code={`number = 1
 
@@ -46,17 +296,88 @@ WHILE number <= 5
   number = number + 1
 END`} />
 
-Make sure the condition eventually becomes false. Otherwise, the loop can
-continue indefinitely.
+```text
+1
+2
+3
+4
+5
+```
 
-## Input and output
+Three things have to line up for a loop to finish: a counter that starts
+somewhere, a condition that can become false, and a body that actually changes
+the counter. Forgetting the third is the usual cause of a loop that never ends.
 
-Use input to receive a value and output to show a result:
+Loops nest, and the inner loop runs completely for every single pass of the
+outer one:
 
-<HighlightedCodeBlock code={`INPUT name
-PRINT "Hello " + name`} />
+<HighlightedCodeBlock code={`row = 1
 
-<Callout type="info" title="Syntax evolves">
-  MiniScript+ is actively developed. The editor and exercise instructions are
-  the source of truth for currently supported syntax.
-</Callout>
+WHILE row <= 3
+  column = 1
+  WHILE column <= 3
+    PRINT row * column
+    column = column + 1
+  END
+  row = row + 1
+END`} />
+
+A loop can also read until it sees a marker value, rather than counting:
+
+<HighlightedCodeBlock code={`total = 0
+INPUT value
+
+WHILE value != 0
+  total = total + value
+  INPUT value
+END
+
+PRINT "Sum " + total`} />
+
+Note the shape: read once before the loop, then read again at the end of the
+body. That way the condition always has a fresh value to test.
+
+## Errors and limits
+
+**A program may execute at most 1000 instructions.** Passing that stops the run
+with `Possible infinite loop detected`. A simple counting loop spends about
+three instructions per pass, so roughly 330 iterations is the ceiling. 
+
+Errors report the line that failed. The most common ones:
+
+| Message | Cause |
+| --- | --- |
+| `Unknown instruction "…"` | A lowercase keyword, `END IF`, or two statements on one line |
+| `Variable "x" is not defined` | Read before it was ever assigned / check the spelling and the capitals |
+| `Missing THEN in IF statement` | `THEN` left off the `IF` line |
+| `Missing END for IF statement` | A block was opened and never closed |
+| `END without matching block` | One `END` too many |
+| `ELSE without matching IF` | `ELSE` outside a block, or after the `END` that closed it |
+| `Operator < can only be used with numbers` | Comparing text with `<`, `>`, `<=`, or `>=` |
+| `Division by zero is not allowed` | A divisor reached `0`! Guard it with an `IF` |
+| `Possible infinite loop detected` | The condition never became false |
+| `Unknown function "SQRT"` | Only `INT`, `TRUNC`, `FLOOR`, `ROUND`, and `ABS` exist |
+
+When a result is wrong but nothing errors, switch from **Run** to **Step** and
+watch the variables panel. Nearly every logic bug shows up as one variable
+holding a value you did not expect, one pass earlier than where you were looking.
+
+## Quick reference
+
+| Statement | Form |
+| --- | --- |
+| Output | `PRINT expression` |
+| Input | `INPUT variable` |
+| Assignment | `variable = expression` |
+| Condition | `IF condition THEN` … `ELSE` … `END` |
+| Loop | `WHILE condition` … `END` |
+| Comment | `# text` |
+
+| Instead of | Write |
+| --- | --- |
+| `ELSE IF` | A nested `IF` inside `ELSE` |
+| `END IF`, `ENDWHILE` | Bare `END` |
+| `//` comments | `#` |
+| `FUNCTION`, `RETURN` | Inline the code |
+| Arrays, `FOR` loops | A `WHILE` loop over a counter |
+| `SQRT`, `CEIL`, `MIN`, `MAX` | An `IF` or a `WHILE` you write yourself |

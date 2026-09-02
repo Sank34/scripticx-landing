@@ -42,8 +42,8 @@ export function KnowledgeArticle({
     headline: article.title,
     description: article.description,
     url: absoluteUrl(article.href),
-    datePublished: "2026-06-13",
-    dateModified: "2026-06-13",
+    datePublished: article.updatedIso,
+    dateModified: article.updatedIso,
     inLanguage: isRomanian ? "ro" : "en",
     author: {
       "@type": "Organization",
@@ -82,7 +82,7 @@ export function KnowledgeArticle({
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>{article.sectionLabel}</BreadcrumbPage>
+            <BreadcrumbPage>{article.section}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
@@ -91,7 +91,7 @@ export function KnowledgeArticle({
         <article className="min-w-0 max-w-3xl">
           <header>
             <div className="mb-4 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              ScripticX / {article.sectionLabel}
+              ScripticX / {article.section}
             </div>
             <h1 className="text-4xl font-semibold leading-[1.02] tracking-[-0.045em] sm:text-5xl lg:text-6xl">
               {article.title}
@@ -102,7 +102,7 @@ export function KnowledgeArticle({
             <div className="mt-6 flex flex-wrap gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5">
                 <CalendarDays className="size-4" />
-                {isRomanian ? "Actualizat" : "Updated"} {article.updated}
+                Updated {article.updated}
               </span>
               <span className="flex items-center gap-1.5">
                 <Clock3 className="size-4" />
@@ -128,7 +128,7 @@ export function KnowledgeArticle({
               >
                 <div className="flex items-center gap-1 text-xs text-muted-foreground">
                   <ArrowLeft className="size-3.5 transition group-hover:-translate-x-0.5" />
-                  {isRomanian ? "Anterior" : "Previous"}
+                  Previous
                 </div>
                 <div className="mt-2 font-medium">{previous.title}</div>
               </Link>
@@ -141,7 +141,7 @@ export function KnowledgeArticle({
                 className="group border p-5 text-right transition-colors hover:bg-muted/40"
               >
                 <div className="flex items-center justify-end gap-1 text-xs text-muted-foreground">
-                  {isRomanian ? "Următorul" : "Next"}
+                  Next
                   <ArrowRight className="size-3.5 transition group-hover:translate-x-0.5" />
                 </div>
                 <div className="mt-2 font-medium">{next.title}</div>
@@ -150,9 +150,9 @@ export function KnowledgeArticle({
           </nav>
         </article>
 
-        <aside className="sticky top-36 hidden h-fit border-t pt-4 xl:block">
+        <aside className="sticky top-36 hidden h-fit max-h-[calc(100svh-11rem)] overflow-y-auto border-t pt-4 xl:block">
           <div className="mb-4 font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-            {isRomanian ? "Pe această pagină" : "On this page"}
+            On this page
           </div>
           <nav className="space-y-3 border-l pl-4 text-sm">
             {article.headings.map((heading) => (
