@@ -6,8 +6,10 @@ import type { Metadata } from "next";
 
 import Footer from "@/components/Footer";
 import { DevelopmentDetails } from "@/components/marketing/DevelopmentDetails";
+import DevelopmentSpotlight from "@/components/marketing/DevelopmentSpotlight";
 import { EducationDetails } from "@/components/marketing/EducationDetails";
 import { EducationIndividualDetails } from "@/components/marketing/EducationIndividualDetails";
+import PlatformShowcase from "@/components/marketing/PlatformShowcase";
 import { Reveal } from "@/components/marketing/Reveal";
 import { Button } from "@/components/ui/button";
 import { divisionContent, getMarketingLocale } from "@/lib/marketing-content";
@@ -172,7 +174,7 @@ function PlatformVisual() {
   return (
     <div className="relative flex h-full min-h-[28rem] items-center justify-center overflow-hidden bg-[#eef0f3] p-3 sm:min-h-[34rem]">
       <div className="absolute inset-0 sx-dot-grid opacity-45" />
-      <Image src="/mockup_new.png" alt="ScripticX Platform on a laptop" width={4096} height={2498} priority className="relative z-10 h-auto w-[115%] max-w-none drop-shadow-[0_25px_40px_rgba(15,23,42,.2)]" />
+      <Image src="/scripticx-mac-mockup-new.png" alt="ScripticX Platform on a laptop" width={3304} height={1999} priority className="relative z-10 h-auto w-[115%] max-w-none drop-shadow-[0_25px_40px_rgba(15,23,42,.2)]" />
     </div>
   );
 }
@@ -263,6 +265,8 @@ export default async function DivisionPage({ division }: { division: DivisionKey
           </div>
         </section>
 
+        {division === "development" ? <DevelopmentSpotlight /> : null}
+
         {!isEducationDetail ? <section id="capabilities" className="border-b py-24 sm:py-32">
           <div className="px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
             <Reveal className="max-w-2xl"><p className="text-sm font-medium text-muted-foreground">{content.eyebrow}</p><h2 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">{sectionTitle}</h2><p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg">{sectionDescription}</p></Reveal>
@@ -279,6 +283,7 @@ export default async function DivisionPage({ division }: { division: DivisionKey
         {division === "education" ? <EducationDetails locale={locale} /> : null}
         {isEducationDetail ? <EducationIndividualDetails page={division} locale={locale} /> : null}
         {division === "development" ? <DevelopmentDetails locale={locale} /> : null}
+        {isPlatform ? <PlatformShowcase /> : null}
 
         <section className="py-20 sm:py-28">
           <div className="px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
