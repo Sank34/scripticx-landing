@@ -7,8 +7,9 @@ import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import { DevelopmentDetails } from "@/components/marketing/DevelopmentDetails";
 import DevelopmentSpotlight from "@/components/marketing/DevelopmentSpotlight";
+import { DevelopmentWork } from "@/components/marketing/DevelopmentWork";
+import { DivisionApproach } from "@/components/marketing/DivisionApproach";
 import { EducationDetails } from "@/components/marketing/EducationDetails";
-import { EducationIndividualDetails } from "@/components/marketing/EducationIndividualDetails";
 import PlatformShowcase from "@/components/marketing/PlatformShowcase";
 import { Reveal } from "@/components/marketing/Reveal";
 import { Button } from "@/components/ui/button";
@@ -19,13 +20,7 @@ export type DivisionKey = keyof (typeof divisionContent)["en"];
 
 const divisionPaths: Record<DivisionKey, string> = {
   education: "/education",
-  informatics: "/education/informatics",
-  machineLearning: "/education/machine-learning",
-  workshops: "/education/workshops",
   development: "/development",
-  webServices: "/development/web-services",
-  design: "/development/design",
-  consulting: "/development/consulting",
   platform: "/platform",
 };
 
@@ -37,53 +32,11 @@ const divisionMetadata = {
       ro: "Grupe de informatică și machine learning, mentorat și workshop-uri practice pentru copii și adolescenți.",
     },
   },
-  informatics: {
-    title: { en: "Informatics Courses", ro: "Pregătire la informatică" },
-    description: {
-      en: "Structured informatics preparation covering programming foundations, algorithms, data structures and competitions.",
-      ro: "Pregătire structurată la informatică: bazele programării, algoritmi, structuri de date și concursuri.",
-    },
-  },
-  machineLearning: {
-    title: { en: "Machine Learning Courses", ro: "Cursuri de machine learning" },
-    description: {
-      en: "Practical machine learning courses covering Python, data, model evaluation and applied projects.",
-      ro: "Cursuri practice de machine learning cu Python, date, evaluarea modelelor și proiecte aplicate.",
-    },
-  },
-  workshops: {
-    title: { en: "Programming Workshops", ro: "Workshop-uri de programare" },
-    description: {
-      en: "Free hands-on programming, machine learning and robotics activities organised with ScripticX partners.",
-      ro: "Activități practice gratuite de programare, machine learning și robotică, organizate alături de partenerii ScripticX.",
-    },
-  },
   development: {
     title: { en: "Software Development", ro: "Dezvoltare software" },
     description: {
       en: "Product strategy, UX design and modern web engineering for clear, reliable digital products.",
       ro: "Strategie de produs, design UX și inginerie web modernă pentru produse digitale clare și fiabile.",
-    },
-  },
-  webServices: {
-    title: { en: "Web Development", ro: "Dezvoltare web" },
-    description: {
-      en: "Fast, accessible websites and web applications built around real product and business goals.",
-      ro: "Website-uri și aplicații web rapide și accesibile, construite pentru obiective reale de produs și business.",
-    },
-  },
-  design: {
-    title: { en: "Product & UX Design", ro: "Product & UX Design" },
-    description: {
-      en: "Research, UX architecture, interface design and reusable design systems for digital products.",
-      ro: "Research, arhitectură UX, design de interfață și design systems reutilizabile pentru produse digitale.",
-    },
-  },
-  consulting: {
-    title: { en: "IT Consulting", ro: "Consultanță IT" },
-    description: {
-      en: "Practical guidance for software architecture, technology decisions, implementation and delivery.",
-      ro: "Direcție practică pentru arhitectură software, alegerea tehnologiilor, implementare și livrare.",
     },
   },
   platform: {
@@ -180,7 +133,7 @@ function PlatformVisual() {
 }
 
 function RouteVisual({ division }: { division: DivisionKey }) {
-  if (division === "education" || division === "informatics" || division === "machineLearning" || division === "workshops") return <EducationVisual />;
+  if (division === "education") return <EducationVisual />;
   if (division === "platform") return <PlatformVisual />;
   return <DevelopmentVisual />;
 }
@@ -189,11 +142,11 @@ export default async function DivisionPage({ division }: { division: DivisionKey
   const locale = getMarketingLocale(await getLocale());
   const content = divisionContent[locale][division];
   const isPlatform = division === "platform";
-  const isEducation = division === "education" || division === "informatics" || division === "machineLearning" || division === "workshops";
-  const isEducationDetail = division === "informatics" || division === "machineLearning" || division === "workshops";
-  const isDevelopment = division === "development" || division === "webServices" || division === "design" || division === "consulting";
-  const sectionTitle = isPlatform ? (locale === "ro" ? "Platforma în practică" : "The platform in practice") : isEducation ? (locale === "ro" ? "Cum învățăm" : "How learning works") : (locale === "ro" ? "Cum putem ajuta" : "How we can help");
-  const sectionDescription = isPlatform ? (locale === "ro" ? "Instrumente conectate pentru întregul traseu de programare." : "Connected tools for the complete programming journey.") : isEducation ? (locale === "ro" ? "Structură clară, practică intenționată și feedback constant." : "Clear structure, deliberate practice and consistent feedback.") : (locale === "ro" ? "Servicii clare, construite în jurul rezultatului de care ai nevoie." : "Clear capabilities built around the outcome you need.");
+  const isEducation = division === "education";
+  const isDevelopment = division === "development";
+  const services = "services" in content ? [...content.services] : [];
+  const sectionTitle = locale === "ro" ? "Platforma în practică" : "The platform in practice";
+  const sectionDescription = locale === "ro" ? "Instrumente conectate pentru întregul traseu de programare." : "Connected tools for the complete programming journey.";
   const ctaContent = isDevelopment
     ? locale === "ro"
       ? {
@@ -208,19 +161,7 @@ export default async function DivisionPage({ division }: { division: DivisionKey
             "The first conversation is free. We’ll help clarify scope, feasibility and next steps. If we work together, you’ll get a clear proposal, defined milestones and updates in your client portal.",
           action: "Discuss your project",
         }
-    : division === "workshops"
-      ? locale === "ro"
-        ? {
-            title: "Vrei să organizăm o activitate împreună? Hai să o facem posibilă.",
-            description: "Spune-ne ce comunitate vrei să aduci împreună și ce resurse poți oferi. Noi construim formatul educațional și activitatea potrivită.",
-            action: "Discută un parteneriat",
-          }
-        : {
-            title: "Want to organise an activity together? Let’s make it possible.",
-            description: "Tell us about the community you want to bring together and the resources you can offer. We’ll shape the right educational format and activity.",
-            action: "Discuss a partnership",
-          }
-      : isEducation
+    : isEducation
       ? locale === "ro"
         ? {
             title: "Nu știi ce grupă ți se potrivește? Te ajutăm noi.",
@@ -267,22 +208,22 @@ export default async function DivisionPage({ division }: { division: DivisionKey
 
         {division === "development" ? <DevelopmentSpotlight /> : null}
 
-        {!isEducationDetail ? <section id="capabilities" className="border-b py-24 sm:py-32">
+        {division === "platform" ? <section id="capabilities" className="border-b py-24 sm:py-32">
           <div className="px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
             <Reveal className="max-w-2xl"><p className="text-sm font-medium text-muted-foreground">{content.eyebrow}</p><h2 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">{sectionTitle}</h2><p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg">{sectionDescription}</p></Reveal>
             <div className="mt-12 grid gap-3 lg:grid-cols-3">
-              {content.services.map((service, index) => {
+              {services.map((service, index) => {
                 const Icon = [Globe2, Code2, FileCode2][index];
                 const external = service.href.startsWith("http");
                 return <Reveal key={service.title} delay={index * 0.07} className="h-full"><Link href={service.href} className="group flex min-h-[19rem] h-full flex-col rounded-[14px] border bg-card p-6 transition-[transform,border-color,background-color] hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-muted/25"><div className="flex items-start justify-between"><span className="flex size-10 items-center justify-center rounded-[10px] border bg-background"><Icon className="size-4.5" /></span><span className="font-mono text-xs text-muted-foreground">0{index + 1}</span></div><h3 className="mt-auto text-2xl font-semibold tracking-[-0.03em]">{service.title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p><span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium">{locale === "ro" ? "Vezi detalii" : "View details"}<ArrowUpRight className={`size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${external ? "" : ""}`} /></span></Link></Reveal>;
               })}
             </div>
           </div>
-        </section> : null}
+        </section> : <DivisionApproach division={division} locale={locale} />}
 
-        {division === "education" ? <EducationDetails locale={locale} /> : null}
-        {isEducationDetail ? <EducationIndividualDetails page={division} locale={locale} /> : null}
-        {division === "development" ? <DevelopmentDetails locale={locale} /> : null}
+        {isEducation ? <EducationDetails locale={locale} /> : null}
+        {isDevelopment ? <DevelopmentWork locale={locale} /> : null}
+        {isDevelopment ? <DevelopmentDetails locale={locale} /> : null}
         {isPlatform ? <PlatformShowcase /> : null}
 
         <section className="py-20 sm:py-28">

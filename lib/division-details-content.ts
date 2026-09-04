@@ -69,6 +69,7 @@ export const divisionDetailsContent: Record<MarketingLocale, {
   };
   development: {
     capabilities: { eyebrow: string; title: string; description: string; items: Array<{ key: string; title: string; description: string; points: string[] }> };
+    work: { eyebrow: string; title: string; description: string; note: string; items: Array<{ key: string; name: string; domain: string; category: string; year: string; description: string; cover?: string }> };
     process: { eyebrow: string; title: string; description: string; items: Array<{ number: string; title: string; description: string; note: string }> };
     portal: { eyebrow: string; title: string; description: string; points: string[]; mock: { project: string; status: string; milestone: string; update: string; invoice: string } };
     pricing: { eyebrow: string; title: string; description: string; contact: string; items: Array<{ title: string; price: string; cadence: string; description: string; features: string[] }> };
@@ -221,6 +222,23 @@ export const divisionDetailsContent: Record<MarketingLocale, {
           { key: "integrations", title: "Integrations and automation", description: "Connect data, authentication, payments and operational tools without creating fragile workflows.", points: ["APIs", "Authentication", "Automation"] },
           { key: "quality", title: "Quality and performance", description: "Improve accessibility, speed, reliability and maintainability before they become expensive problems.", points: ["Accessibility", "Performance", "Testing"] },
           { key: "support", title: "Ongoing product support", description: "Continue iterating after launch with transparent priorities and documented updates.", points: ["Monitoring", "Iterations", "Maintenance"] },
+        ],
+      },
+      work: {
+        eyebrow: "Portfolio",
+        title: "Selected work we have designed, built and deployed.",
+        description: "A look at products currently live in production.",
+        note: "More case studies available on request.",
+        items: [
+          {
+            key: "platform",
+            name: "ScripticX Platform",
+            domain: "platform.scripticx.org",
+            category: "Learning platform",
+            year: "2026",
+            description: "Our own product: lessons, problems, projects and classes in one workspace, designed and operated in house.",
+            cover: "/mockup_new.png",
+          },
         ],
       },
       process: {
@@ -401,6 +419,23 @@ export const divisionDetailsContent: Record<MarketingLocale, {
           { key: "integrations", title: "Integrări și automatizare", description: "Conectăm date, autentificare, plăți și instrumente operaționale fără fluxuri fragile.", points: ["API-uri", "Autentificare", "Automatizare"] },
           { key: "quality", title: "Calitate și performanță", description: "Îmbunătățim accesibilitatea, viteza, fiabilitatea și mentenabilitatea înainte să devină probleme costisitoare.", points: ["Accesibilitate", "Performanță", "Testare"] },
           { key: "support", title: "Suport continuu de produs", description: "Continuăm după lansare cu priorități transparente și actualizări documentate.", points: ["Monitorizare", "Iterații", "Mentenanță"] },
+        ],
+      },
+      work: {
+        eyebrow: "Portofoliu",
+        title: "Proiecte pe care le-am proiectat, construit și lansat.",
+        description: "O selecție de produse aflate acum în producție.",
+        note: "Alte studii de caz, la cerere.",
+        items: [
+          {
+            key: "platform",
+            name: "Platforma ScripticX",
+            domain: "platform.scripticx.org",
+            category: "Platformă de învățare",
+            year: "2026",
+            description: "Produsul nostru: lecții, probleme, proiecte și clase într-un singur workspace, proiectat și administrat intern.",
+            cover: "/mockup_new.png",
+          },
         ],
       },
       process: {

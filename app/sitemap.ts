@@ -8,14 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date("2026-08-26T00:00:00.000Z");
   const marketingRoutes = [
     ["/education", 0.9],
-    ["/education/informatics", 0.8],
-    ["/education/machine-learning", 0.8],
-    ["/education/workshops", 0.8],
     ["/events", 0.85],
     ["/development", 0.9],
-    ["/development/web-services", 0.8],
-    ["/development/design", 0.8],
-    ["/development/consulting", 0.8],
     ["/platform", 0.95],
     ["/partners", 0.8],
   ] as const;
