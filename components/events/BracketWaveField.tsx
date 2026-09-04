@@ -19,6 +19,15 @@ const motif: readonly BracketGlyph[] = [
   "{", "{", "[", "[", "(", "(", "<", "<", ">", ">", ")", ")", "]", "]", "}", "}",
 ];
 
+const glyphPixels = Object.fromEntries(
+  Object.entries(glyphs).map(([glyph, rows]) => [
+    glyph,
+    rows.flatMap((row, rowIndex) =>
+      [...row].flatMap((pixel, columnIndex) => pixel === "1" ? [[columnIndex, rowIndex] as const] : []),
+    ),
+  ]),
+);
+
 function modulo(value: number, divisor: number) {
   return ((value % divisor) + divisor) % divisor;
 }
@@ -32,9 +41,7 @@ function drawGlyph(
   color: string,
   reveal: number,
 ) {
-  const activePixels = glyphs[glyph].flatMap((row, rowIndex) =>
-    [...row].flatMap((pixel, columnIndex) => pixel === "1" ? [[columnIndex, rowIndex] as const] : []),
-  );
+  const activePixels = glyphPixels[glyph];
   const visiblePixels = Math.ceil(activePixels.length * reveal);
 
   context.fillStyle = color;
@@ -49,7 +56,7 @@ function drawGlyph(
   }
 }
 
-export function BracketWaveField() {
+export function BracketWaveField({ theme = "dark" }: { theme?: "light" | "dark" }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -59,7 +66,11 @@ export function BracketWaveField() {
     const context = canvas.getContext("2d");
     if (!context) return;
 
+    const light = theme === "light";
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const revealDuration = light ? 0.42 : 0.52;
+    const fadeStart = light ? 1.1 : 0.52;
+    const fadeEnd = light ? 3.6 : 2.25;
     let width = 0;
     let height = 0;
     let frame = 0;
@@ -80,13 +91,17 @@ export function BracketWaveField() {
     const draw = (timestamp: number) => {
       context.clearRect(0, 0, width, height);
 
-      const elapsed = reduceMotion ? 2.4 : (timestamp - startedAt) / 1000;
+      // Start the light hero mid-wave so it is visible as soon as the page opens.
+      const elapsed = reduceMotion ? 2.4 : (timestamp - startedAt) / 1000 + (light ? 1.6 : 0);
       const pixelSize = width < 480 ? 4 : width < 760 ? 5 : 6;
       const cellWidth = pixelSize * 7;
       const cellHeight = pixelSize * 9;
       const columns = Math.ceil(width / cellWidth) + 3;
       const rows = Math.ceil(height / cellHeight) + 3;
-      const cycle = Math.max(6.4, columns * 0.13 + 4.2);
+      // Light backgrounds need a longer visible trail and less time between waves.
+      const cycle = light
+        ? Math.max(4.8, columns * 0.1 + 2.7)
+        : Math.max(5.6, columns * 0.13 + 3.4);
 
       for (let row = -1; row < rows; row += 1) {
         const reverse = row % 2 !== 0;
@@ -94,21 +109,24 @@ export function BracketWaveField() {
 
         for (let column = -1; column < columns; column += 1) {
           const flowColumn = reverse ? columns - column : column;
-          const rawPhase = elapsed - flowColumn * 0.1 - row * 0.075;
+          const rawPhase = elapsed - flowColumn * (light ? 0.075 : 0.1) - row * (light ? 0.055 : 0.075);
           const phase = modulo(rawPhase, cycle);
           const pass = Math.floor(rawPhase / cycle);
           const glyph = motif[modulo(column + row * 2 + pass, motif.length)];
-          const reveal = phase < 0.52 ? Math.max(0.08, phase / 0.52) : 1;
-          const highlight = phase < 0.52
+          const reveal = phase < revealDuration ? Math.max(0.08, phase / revealDuration) : 1;
+          const highlight = phase < fadeStart
             ? 0.95
-            : phase < 2.25
-              ? 0.95 - ((phase - 0.52) / 1.73) * 0.68
-              : 0.16;
-          const greenMix = Math.max(0, 1 - phase / 2.4);
-          const red = Math.round(214 - greenMix * 92);
-          const green = Math.round(229 + greenMix * 8);
-          const blue = Math.round(222 - greenMix * 26);
-          const alpha = Math.min(0.82, highlight * (0.62 + (modulo(row, 3)) * 0.07));
+            : phase < fadeEnd
+              ? 0.95 - ((phase - fadeStart) / (fadeEnd - fadeStart)) * 0.68
+              : light ? 0.22 : 0.16;
+          const greenMix = light
+            ? Math.max(0, 1 - Math.max(0, phase - fadeStart) / 3.1)
+            : Math.max(0, 1 - phase / 2.4);
+          const red = Math.round(light ? 148 - greenMix * 114 : 214 - greenMix * 92);
+          const green = Math.round(light ? 158 - greenMix * 18 : 229 + greenMix * 8);
+          const blue = Math.round(light ? 152 - greenMix * 57 : 222 - greenMix * 26);
+          const waveAlpha = Math.min(0.82, highlight * (0.62 + (modulo(row, 3)) * 0.07));
+          const alpha = light ? Math.max(0.095, waveAlpha * 0.48) : waveAlpha;
 
           drawGlyph(
             context,
@@ -145,7 +163,7 @@ export function BracketWaveField() {
       observer.disconnect();
       if (frame) window.cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [theme]);
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -154,7 +172,9 @@ export function BracketWaveField() {
         className="absolute inset-0 size-full opacity-80"
         style={{ imageRendering: "pixelated" }}
       />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_58%_36%,rgba(110,231,183,0.08),transparent_48%)]" />
+      {theme === "dark" ? (
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_58%_36%,rgba(110,231,183,0.08),transparent_48%)]" />
+      ) : null}
     </div>
   );
 }

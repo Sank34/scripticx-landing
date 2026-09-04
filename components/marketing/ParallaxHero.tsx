@@ -5,30 +5,46 @@ import Link from "next/link";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { useLocale } from "next-intl";
-import { type RefObject, useRef, useState } from "react";
+import { type RefObject, useRef, useState, useSyncExternalStore } from "react";
 
 import { Button } from "@/components/ui/button";
+import { BracketWaveField } from "@/components/events/BracketWaveField";
 import { getMarketingLocale, marketingContent } from "@/lib/marketing-content";
 
 const workshopRoot = "/events/workshops/programming-1-3-july-26";
+const desktopLayoutQuery = "(min-width: 1024px)";
+
+function subscribeDesktopLayout(onChange: () => void) {
+  const query = window.matchMedia(desktopLayoutQuery);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+}
+
+function getDesktopLayoutSnapshot() {
+  return window.matchMedia(desktopLayoutQuery).matches;
+}
+
+function getServerMotionSnapshot() {
+  return false;
+}
 
 type HeroPhoto = {
   src: string;
   className: string;
   speed: number;
   alt: string;
-  desktopOnly?: boolean;
+  mobile?: { width: number; height: number; className: string };
 };
 
 const photos: readonly HeroPhoto[] = [
-  { src: `${workshopRoot}/IMG_1029.jpg`, className: "left-[1%] top-10 h-40 w-60 rotate-3 lg:left-[2%] lg:top-14 lg:h-44 lg:w-64", speed: -112, alt: "A ScripticX mentor explaining a programming activity to workshop participants", desktopOnly: true },
-  { src: `${workshopRoot}/IMG_1119.jpg`, className: "right-[1%] top-16 h-40 w-56 -rotate-4 lg:right-[2%] lg:top-20 lg:h-44 lg:w-64", speed: -96, alt: "A mentor helping a learner work through code on a laptop", desktopOnly: true },
-  { src: `${workshopRoot}/IMG_1126.jpg`, className: "left-[1%] top-[18rem] h-36 w-52 -rotate-3 lg:left-[2%] lg:top-[19rem] lg:h-40 lg:w-60", speed: -58, alt: "Learners programming a small robot during a ScripticX workshop", desktopOnly: true },
-  { src: `${workshopRoot}/IMG_1153.jpg`, className: "right-[1%] top-[17rem] h-48 w-32 rotate-4 lg:right-[3%] lg:top-[18rem] lg:h-56 lg:w-36", speed: -24, alt: "A ScripticX workshop presenter speaking to participants", desktopOnly: true },
-  { src: `${workshopRoot}/IMG_1137.jpg`, className: "left-[2%] top-[31rem] h-40 w-56 -rotate-6 lg:left-[4%] lg:top-[34rem] lg:h-52 lg:w-72", speed: -78, alt: "Children programming with a robot at a ScripticX workshop" },
-  { src: `${workshopRoot}/IMG_1094.jpg`, className: "right-[2%] top-[28rem] h-44 w-64 rotate-5 lg:right-[3%] lg:top-[31rem] lg:h-56 lg:w-80", speed: -42, alt: "ScripticX workshop instructor and projected platform" },
-  { src: `${workshopRoot}/IMG_1174.jpg`, className: "bottom-28 left-[7%] h-40 w-60 rotate-3 lg:bottom-36 lg:left-[11%] lg:h-52 lg:w-80", speed: 54, alt: "ScripticX workshop participants receiving certificates" },
-  { src: `${workshopRoot}/IMG_1003.jpg`, className: "bottom-20 right-[7%] h-44 w-32 -rotate-5 lg:bottom-28 lg:right-[12%] lg:h-56 lg:w-40", speed: 82, alt: "A programming lesson displayed on a laptop" },
+  { src: `${workshopRoot}/IMG_1029.jpg`, className: "left-[1%] top-10 h-40 w-60 rotate-3 lg:left-[2%] lg:top-14 lg:h-44 lg:w-64", speed: -112, alt: "A ScripticX mentor explaining a programming activity to workshop participants" },
+  { src: `${workshopRoot}/IMG_1119.jpg`, className: "right-[1%] top-16 h-40 w-56 -rotate-4 lg:right-[2%] lg:top-20 lg:h-44 lg:w-64", speed: -96, alt: "A mentor helping a learner work through code on a laptop" },
+  { src: `${workshopRoot}/IMG_1126.jpg`, className: "left-[1%] top-[18rem] h-36 w-52 -rotate-3 lg:left-[2%] lg:top-[19rem] lg:h-40 lg:w-60", speed: -58, alt: "Learners programming a small robot during a ScripticX workshop" },
+  { src: `${workshopRoot}/IMG_1153.jpg`, className: "right-[1%] top-[17rem] h-48 w-32 rotate-4 lg:right-[3%] lg:top-[18rem] lg:h-56 lg:w-36", speed: -24, alt: "A ScripticX workshop presenter speaking to participants" },
+  { src: `${workshopRoot}/IMG_1137.jpg`, className: "left-[2%] top-[31rem] h-40 w-56 -rotate-6 lg:left-[4%] lg:top-[34rem] lg:h-52 lg:w-72", speed: -78, alt: "Children programming with a robot at a ScripticX workshop", mobile: { width: 6000, height: 4000, className: "-rotate-2" } },
+  { src: `${workshopRoot}/IMG_1094.jpg`, className: "right-[2%] top-[28rem] h-44 w-64 rotate-5 lg:right-[3%] lg:top-[31rem] lg:h-56 lg:w-80", speed: -42, alt: "ScripticX workshop instructor and projected platform", mobile: { width: 3744, height: 2496, className: "rotate-2" } },
+  { src: `${workshopRoot}/IMG_1174.jpg`, className: "bottom-28 left-[7%] h-40 w-60 rotate-3 lg:bottom-36 lg:left-[11%] lg:h-52 lg:w-80", speed: 54, alt: "ScripticX workshop participants receiving certificates", mobile: { width: 6000, height: 4000, className: "rotate-2" } },
+  { src: `${workshopRoot}/IMG_1003.jpg`, className: "bottom-20 right-[7%] h-44 w-32 -rotate-5 lg:bottom-28 lg:right-[12%] lg:h-56 lg:w-40", speed: 82, alt: "A programming lesson displayed on a laptop", mobile: { width: 3307, height: 4961, className: "w-[48%] -rotate-3" } },
 ] as const;
 
 function FloatingPhoto({
@@ -51,7 +67,7 @@ function FloatingPhoto({
   return (
     <motion.figure
       style={{ y: photoY, zIndex: isActive ? 30 : undefined }}
-      className={`absolute hidden ${photo.desktopOnly ? "lg:block" : "sm:block"} ${photo.className}`}
+      className={`absolute hidden lg:block ${photo.className}`}
     >
       <motion.div
         drag
@@ -80,18 +96,24 @@ export default function ParallaxHero() {
   const collage = useRef<HTMLDivElement>(null);
   const [activePhoto, setActivePhoto] = useState<string | null>(null);
   const reduceMotion = useReducedMotion();
+  const desktopLayout = useSyncExternalStore(subscribeDesktopLayout, getDesktopLayoutSnapshot, getServerMotionSnapshot);
+  const parallaxEnabled = desktopLayout && !reduceMotion;
   const { scrollYProgress } = useScroll({ target, offset: ["start start", "end start"] });
-  const laptopY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 150]);
-  const laptopScale = useTransform(scrollYProgress, [0, 0.75], [1, reduceMotion ? 1 : 0.92]);
-  const introOpacity = useTransform(scrollYProgress, [0, 0.48], [1, reduceMotion ? 1 : 0.12]);
+  const laptopY = useTransform(scrollYProgress, [0, 1], [0, parallaxEnabled ? 150 : 0]);
+  const laptopScale = useTransform(scrollYProgress, [0, 0.75], [1, parallaxEnabled ? 0.92 : 1]);
+  const introOpacity = useTransform(scrollYProgress, [0, 0.48], [1, parallaxEnabled ? 0.12 : 1]);
 
   return (
     <section
       ref={target}
-      className="relative isolate min-h-[67rem] overflow-hidden border-b pt-16 sm:min-h-[80rem] lg:min-h-[89rem]"
+      className="relative isolate overflow-hidden border-b pt-16 lg:min-h-[89rem]"
     >
-      <div className="sx-grid-fade absolute inset-0 -z-20" aria-hidden="true" />
-      <div className="sx-hero-aura absolute inset-x-0 top-0 -z-10 h-[58rem]" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute inset-0 -z-20 [mask-image:linear-gradient(to_bottom,black_0%,rgba(0,0,0,.9)_28%,rgba(0,0,0,.45)_56%,transparent_86%)]"
+        aria-hidden="true"
+      >
+        <BracketWaveField theme="light" />
+      </div>
 
       <motion.div
         style={{ opacity: introOpacity }}
@@ -143,22 +165,23 @@ export default function ParallaxHero() {
         </motion.div>
       </motion.div>
 
-      <div ref={collage} className="relative z-10 mx-auto mt-12 h-[29rem] max-w-[100rem] sm:absolute sm:inset-x-0 sm:top-[39rem] sm:mt-0 sm:h-[51rem] lg:top-[42rem]">
-        {photos.map((photo) => (
+      <div ref={collage} className="relative z-10 mx-auto mt-10 max-w-2xl px-3 pb-12 sm:mt-12 sm:px-6 sm:pb-16 lg:absolute lg:inset-x-0 lg:top-[42rem] lg:mt-0 lg:h-[51rem] lg:max-w-[100rem] lg:p-0">
+        {/* Mount draggable photos only after the desktop layout can be measured. */}
+        {desktopLayout ? photos.map((photo) => (
           <FloatingPhoto
             key={photo.src}
             photo={photo}
             scrollYProgress={scrollYProgress}
-            reduceMotion={reduceMotion}
+            reduceMotion={!parallaxEnabled}
             constraintsRef={collage}
             isActive={activePhoto === photo.src}
             onActivate={() => setActivePhoto(photo.src)}
           />
-        ))}
+        )) : null}
 
         <motion.div
           style={{ y: laptopY, scale: laptopScale }}
-          className="absolute inset-x-[-5rem] top-0 mx-auto w-[calc(100%+10rem)] max-w-[76rem] sm:inset-x-0 sm:top-16 sm:w-[78%] lg:top-0 lg:w-[66%]"
+          className="relative mx-auto w-full max-w-[calc((100svh-6rem)*1.65)] lg:absolute lg:inset-x-0 lg:top-0 lg:w-[66%] lg:max-w-[76rem]"
         >
           <div className="absolute inset-x-[12%] bottom-[2%] -z-10 h-[16%] rounded-full bg-black/25 blur-3xl" aria-hidden="true" />
           <Image
@@ -167,9 +190,34 @@ export default function ParallaxHero() {
             width={3304}
             height={1999}
             priority
-            className="h-auto w-full drop-shadow-[0_36px_50px_rgba(15,23,42,0.2)]"
+            sizes="(max-width: 767px) calc(100vw - 24px), (max-width: 1023px) 624px, 66vw"
+            className="h-auto w-full drop-shadow-[0_14px_24px_rgba(15,23,42,0.14)] lg:drop-shadow-[0_36px_50px_rgba(15,23,42,0.2)]"
           />
         </motion.div>
+
+        <div className="mx-auto mt-8 grid max-w-lg grid-cols-2 items-center justify-items-center gap-5 px-3 sm:mt-10 sm:gap-7 lg:hidden">
+          {photos.map((photo) => photo.mobile ? (
+            <motion.figure
+              key={photo.src}
+              initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              className="w-full"
+            >
+              <div className={`mx-auto rounded-xl border bg-card p-1 shadow-[0_8px_22px_rgba(15,23,42,0.1)] ${photo.mobile.className}`}>
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={photo.mobile.width}
+                  height={photo.mobile.height}
+                  sizes="(max-width: 639px) 44vw, 240px"
+                  className="h-auto w-full rounded-lg"
+                />
+              </div>
+            </motion.figure>
+          ) : null)}
+        </div>
       </div>
 
     </section>

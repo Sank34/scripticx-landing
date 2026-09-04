@@ -17,7 +17,7 @@ export default async function WorkshopGallery() {
     <section id="workshops" className="border-b bg-muted/25 py-20 sm:py-24">
       <div className="mx-auto max-w-[var(--sx-max-content)] px-4 sm:px-6 lg:px-8">
         <Reveal className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
-          <div><p className="text-sm font-medium text-muted-foreground">{content.eyebrow}</p><h2 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">{content.title}</h2></div>
+          <h2 className="text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">{content.title}</h2>
           <div className="lg:pb-1"><p className="max-w-2xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg">{content.description}</p><Link href="/education" className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium hover:underline">{content.action}<ArrowUpRight className="size-4" /></Link></div>
         </Reveal>
         <div className="mt-12 grid auto-rows-[15rem] gap-3 sm:grid-cols-2 lg:grid-cols-12 lg:grid-rows-[16rem_11rem]">

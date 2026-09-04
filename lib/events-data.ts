@@ -87,16 +87,16 @@ const eventSources: readonly EventSource[] = [
     id: "scripticx-back-to-school-2026",
     link: eventSignupForm,
     startAt: "2026-09-14T09:00:00+03:00",
-    endAt: "2026-09-25T18:00:00+03:00",
+    endAt: "2026-10-02T18:00:00+03:00",
     category: "workshop",
     content: {
       en: {
         eyebrow: "Intro to algorithms",
         title: "ScripticX Back to School",
         summary:
-          "Two weeks of introductory algorithms, with dedicated groups for middle school and ninth-grade students.",
+          "Three weeks of introductory algorithms, with dedicated groups for middle school and ninth-grade students.",
         description:
-          "An introductory algorithms workshop held four days a week from 14 to 25 September. The middle-school group will work in MiniScript+, while ninth-grade students will connect the same ideas across MiniScript+ and Python. Each session combines clear explanations with guided practice and practical exercises.",
+          "An introductory algorithms workshop held four days a week from 14 September to 2 October. The middle-school group will work in MiniScript+, while ninth-grade students will connect the same ideas across MiniScript+ and Python. Each session combines clear explanations with guided practice and practical exercises.",
         location: "BJPIBR",
         audience: "Two groups: middle school and 9th grade",
         highlights: [
@@ -109,9 +109,9 @@ const eventSources: readonly EventSource[] = [
         eyebrow: "Introducere în algoritmică",
         title: "ScripticX Back to School",
         summary:
-          "Două săptămâni de algoritmică introductivă, cu grupe dedicate elevilor de gimnaziu și celor de clasa a IX-a.",
+          "Trei săptămâni de algoritmică introductivă, cu grupe dedicate elevilor de gimnaziu și celor de clasa a IX-a.",
         description:
-          "Un workshop introductiv de algoritmică, organizat patru zile pe săptămână în perioada 14–25 septembrie. Grupa de gimnaziu va lucra în MiniScript+, iar elevii de clasa a IX-a vor conecta aceleași idei în MiniScript+ și Python. Fiecare întâlnire combină explicațiile clare cu exerciții practice și lucru ghidat.",
+          "Un workshop introductiv de algoritmică, organizat patru zile pe săptămână în perioada 14 septembrie – 2 octombrie. Grupa de gimnaziu va lucra în MiniScript+, iar elevii de clasa a IX-a vor conecta aceleași idei în MiniScript+ și Python. Fiecare întâlnire combină explicațiile clare cu exerciții practice și lucru ghidat.",
         location: "BJPIBR",
         audience: "Două grupe: gimnaziu și clasa a IX-a",
         highlights: [

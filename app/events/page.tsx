@@ -77,7 +77,7 @@ export default async function EventsPage() {
               <div className="relative z-10 w-full rounded-[16px] border border-white/12 bg-white/[0.035] p-6 backdrop-blur-[5px] sm:p-8">
                 <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-white/45">ScripticX Events</p>
                 <div className="mt-14 flex items-end justify-between gap-6">
-                  <div><p className="text-5xl font-semibold tracking-[-0.05em]">14—25</p><p className="mt-2 text-sm text-white/45">SEP · 2026</p></div>
+                  <div><p className="text-5xl font-semibold tracking-[-0.05em]">14—02</p><p className="mt-2 text-sm text-white/45">SEP—OCT · 2026</p></div>
                   <p className="max-w-[12rem] text-right text-sm leading-6 text-white/50">ScripticX<br />Back to School</p>
                 </div>
               </div>
