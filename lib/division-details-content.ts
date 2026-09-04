@@ -36,6 +36,22 @@ export type EducationGroupsContent = {
   tracks: Record<EducationTrackKey, EducationGroup[]>;
 };
 
+export type EducationRoadmapContent = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  practiceTitle: string;
+  practiceDescription: string;
+  tracks: Record<EducationTrackKey, {
+    description: string;
+    stages: [
+      { label: string; description: string },
+      { label: string; description: string },
+      { label: string; description: string },
+    ];
+  }>;
+};
+
 const workshopGallery = [
   "/events/workshops/programming-1-3-july-26/IMG_1003.jpg",
   "/events/workshops/programming-1-3-july-26/IMG_1094.jpg",
@@ -47,8 +63,8 @@ export const divisionDetailsContent: Record<MarketingLocale, {
   education: {
     program: { eyebrow: string; title: string; description: string; subjects: Array<{ title: string; description: string; topics: string[] }> };
     groups: EducationGroupsContent;
-    roadmap: { eyebrow: string; title: string; description: string; items: Array<{ number: string; title: string; description: string }> };
-    activities: { eyebrow: string; title: string; description: string; openLabel: string; galleryLabel: string; items: ActivityDetail[] };
+    roadmap: EducationRoadmapContent;
+    activities: { eyebrow: string; title: string; description: string; eventsLabel: string; openLabel: string; galleryLabel: string; items: ActivityDetail[] };
     pricing: { eyebrow: string; title: string; description: string; contact: string; items: Array<{ title: string; price: string; cadence: string; description: string; features: string[] }> };
   };
   development: {
@@ -86,7 +102,7 @@ export const divisionDetailsContent: Record<MarketingLocale, {
               audience: "Beginner track",
               format: "MiniScript+ · C++ / Python",
               schedule: "RON 50",
-              duration: "per week · 2 sessions included",
+              duration: "Price per week · includes 2 preparation sessions",
               description: "Follows the school curriculum and builds the programming foundations needed for class and the BAC exam.",
               features: ["School curriculum and CS Unplugged activities", "Separate beginner and advanced cohorts", "Applied algorithms and problem sets", "Standardised progress checks"],
             },
@@ -96,7 +112,7 @@ export const divisionDetailsContent: Record<MarketingLocale, {
               audience: "Intermediate track",
               format: "MiniScript+ · Python",
               schedule: "RON 70",
-              duration: "per week · 2 sessions included",
+              duration: "Price per week · includes 2 preparation sessions",
               description: "Moves from advanced programming foundations to practical work inspired by real IT environments.",
               features: ["Advanced foundations, including OOP", "Choose web, game development or cybersecurity", "Applied algorithms and project work", "Regular course-based evaluation"],
               featured: true,
@@ -106,7 +122,7 @@ export const divisionDetailsContent: Record<MarketingLocale, {
               audience: "Advanced track",
               format: "MiniScript+ · Python / C++",
               schedule: "RON 70",
-              duration: "per week · 2 sessions included",
+              duration: "Price per week · includes 2 preparation sessions",
               description: "A deeper algorithms route for learners ready to study advanced computer science concepts.",
               features: ["Advanced algorithms and CS concepts", "Optional architecture, embedded or new-language track", "Applied problems and project work", "Regular course-based evaluation"],
             },
@@ -117,7 +133,7 @@ export const divisionDetailsContent: Record<MarketingLocale, {
               audience: "Beginner track",
               format: "MiniScript+ · Python",
               schedule: "RON 50",
-              duration: "per week · 2 sessions included",
+              duration: "Price per week · includes 2 preparation sessions",
               description: "A friendly introduction to programming, Python and the core ideas behind machine learning.",
               features: ["Programming and CS Unplugged activities", "Python foundations and an introduction to ML", "Problems, practical applications and projects", "Regular course-based evaluation"],
             },
@@ -127,9 +143,9 @@ export const divisionDetailsContent: Record<MarketingLocale, {
               audience: "Advanced track",
               format: "Python",
               schedule: "RON 70",
-              duration: "per week · 2 sessions included",
+              duration: "Price per week · includes 2 preparation sessions",
               description: "Builds on Intro to ML with advanced algorithms, model mathematics and a specialisation chosen by the learner.",
-              features: ["Intro ML material plus advanced algorithms", "Choose NLP, CV, LLMs, DL or RL", "Model mathematics and a first research paper", "Projects, LaTeX / Markdown and regular evaluation"],
+              features: ["Intro ML material plus advanced algorithms", "Choose NLP, CV, LLMs, DL or RL", "Mathematics and statistics behind the models", "Learn to write your first research paper in LaTeX / Markdown", "Projects and regular evaluation"],
               featured: true,
             },
             {
@@ -137,7 +153,7 @@ export const divisionDetailsContent: Record<MarketingLocale, {
               audience: "Advanced track",
               format: "Python · C++ · MiniScript+ Robotics",
               schedule: "RON 70",
-              duration: "per week · 2 sessions included",
+              duration: "Price per week · includes 2 preparation sessions",
               description: "A robotics-focused route combining machine learning models with hardware and embedded systems.",
               features: ["Computer vision, deep learning, RL and an optional paper", "Robotics with Arduino and embedded programming", "MiniScript+ Robotics concepts and programming", "Applied algorithms, RL robotics, projects and evaluation"],
             },
@@ -146,26 +162,40 @@ export const divisionDetailsContent: Record<MarketingLocale, {
       },
       roadmap: {
         eyebrow: "Learning roadmap",
-        title: "Every concept has a place in the journey.",
-        description: "The roadmap makes progress visible to learners and parents while keeping the next step achievable.",
-        items: [
-          { number: "01", title: "Logic", description: "Break a task into clear, ordered steps." },
-          { number: "02", title: "Programming foundations", description: "Use values, conditions, loops and functions with confidence." },
-          { number: "03", title: "Algorithms", description: "Recognise patterns and choose an efficient approach." },
-          { number: "04", title: "Data structures", description: "Model information and reason about complexity." },
-          { number: "05", title: "Projects and competitions", description: "Apply knowledge in complete, explainable solutions." },
-        ],
+        title: "Different goals. A clear path forward.",
+        description: "Start with the group that fits your experience and what you want to learn. These are possible directions, not a checklist of groups everyone must complete.",
+        practiceTitle: "Practice and feedback at every level.",
+        practiceDescription: "Guided exercises, practical work and regular evaluations are part of the whole course. We use that feedback to revisit concepts, build confidence and decide what comes next.",
+        tracks: {
+          informatics: {
+            description: "With the foundations in place, you can build practical software or go deeper into algorithms, depending on your goals and experience.",
+            stages: [
+              { label: "Build the foundations", description: "Explore logic through CS Unplugged, then follow the school curriculum in MiniScript+ and C++ or Python. Beginner and advanced cohorts work at their own pace." },
+              { label: "Apply your skills", description: "Develop stronger programming foundations, including OOP, then choose web development, game development or cybersecurity and learn through applied projects." },
+              { label: "Go deeper into algorithms", description: "Study advanced algorithms and computer science concepts through applied problems. Optional directions include processor architecture, embedded programming or another language." },
+            ],
+          },
+          machineLearning: {
+            description: "Start with programming and ML foundations, then explore advanced models or put them to work in robotics.",
+            stages: [
+              { label: "Meet programming and ML", description: "Start with CS Unplugged, MiniScript+ and Python, then explore the core ideas of machine learning through problems, practical applications and small projects." },
+              { label: "Understand and explore models", description: "Explore advanced algorithms and the mathematics and statistics behind models. Choose NLP, computer vision, LLMs, deep learning or RL, and learn to write your first research paper in LaTeX or Markdown." },
+              { label: "Connect models to robots", description: "Apply computer vision, deep learning and RL through Arduino, embedded programming and MiniScript+ Robotics. Build and evaluate practical projects; a research paper is optional." },
+            ],
+          },
+        },
       },
       activities: {
         eyebrow: "Activities",
         title: "Learning also happens away from the worksheet.",
         description: "With the support of our partners, we organise free workshops, courses and hands-on activities where learners can explore, experiment and build together.",
+        eventsLabel: "See events",
         openLabel: "View activity",
         galleryLabel: "Activity gallery",
         items: [
-          { id: "workshop", title: "Programming workshops", description: "Small-group sessions where learners build and test a complete idea.", longDescription: "Our workshops combine short explanations with guided practice. Learners work together, compare solutions and leave with a result they can demonstrate and continue improving.", cover: workshopGallery[2], gallery: workshopGallery, meta: ["Small groups", "Hands-on", "Guided feedback"] },
-          { id: "algorithms", title: "Algorithm challenges", description: "Collaborative puzzles that turn abstract reasoning into visible progress.", longDescription: "A challenge is introduced as a concrete problem, then explored through diagrams, examples and code. The emphasis stays on explaining why a solution works—not only obtaining the answer.", cover: workshopGallery[1], gallery: [workshopGallery[1], workshopGallery[0], workshopGallery[3]], meta: ["Problem solving", "Team discussion", "Reflection"] },
-          { id: "projects", title: "Project days", description: "Longer sessions for designing, building and presenting a small project.", longDescription: "Project days connect planning, implementation and presentation. Learners divide a goal into milestones, test their work and explain the final result to the group.", cover: workshopGallery[3], gallery: [workshopGallery[3], workshopGallery[2], workshopGallery[1]], meta: ["Project work", "Presentation", "Iteration"] },
+          { id: "workshops", title: "Workshops & courses", description: "Hands-on workshops and courses that make programming, machine learning and robotics approachable.", longDescription: "Our workshops and courses combine clear explanations with guided practice. Learners explore programming, machine learning and robotics through exercises and small projects, with mentors there to answer questions and help them progress.", cover: workshopGallery[2], gallery: workshopGallery, meta: ["Small groups", "Hands-on", "Guided feedback"] },
+          { id: "competitions", title: "Competitions", description: "Programming challenges that put algorithmic thinking and coding skills to the test.", longDescription: "Our programming competitions give learners a chance to apply what they know, tackle new problems and test their solutions. The event calendar provides the format, schedule and participation details for each competition.", cover: workshopGallery[1], gallery: [workshopGallery[1], workshopGallery[0], workshopGallery[3]], meta: ["Algorithms", "Problem solving", "Programming"] },
+          { id: "events", title: "Events", description: "Hackathons, meetups and conferences for building ideas, sharing knowledge and meeting other curious minds.", longDescription: "From building together at a hackathon to exchanging ideas at meetups and conferences, these events bring people with a shared interest in computing together. Explore the calendar to see what is coming up and how to take part.", cover: workshopGallery[3], gallery: [workshopGallery[3], workshopGallery[2], workshopGallery[1]], meta: ["Hackathons", "Meetups", "Conferences"] },
         ],
       },
       pricing: {
@@ -252,7 +282,7 @@ export const divisionDetailsContent: Record<MarketingLocale, {
               audience: "Traseu pentru începători",
               format: "MiniScript+ · C++ / Python",
               schedule: "50 lei",
-              duration: "pe săptămână · 2 ședințe incluse",
+              duration: "Preț pe săptămână · include 2 ședințe de pregătire",
               description: "Urmează programa școlară și construiește bazele necesare pentru materia de la clasă și examenul de BAC.",
               features: ["Programă școlară și activități CS Unplugged", "Grupe separate pentru începători și avansați", "Probleme și algoritmică aplicată", "Evaluare standardizată a progresului"],
             },
@@ -262,7 +292,7 @@ export const divisionDetailsContent: Record<MarketingLocale, {
               audience: "Traseu intermediar",
               format: "MiniScript+ · Python",
               schedule: "70 lei",
-              duration: "pe săptămână · 2 ședințe incluse",
+              duration: "Preț pe săptămână · include 2 ședințe de pregătire",
               description: "Pornește de la bazele avansate ale programării și ajunge la lucru practic inspirat din industria IT.",
               features: ["Baze avansate, inclusiv OOP", "Track la alegere: web, game development sau cybersecurity", "Algoritmică aplicată și proiecte", "Evaluare periodică pe parcursul cursului"],
               featured: true,
@@ -272,7 +302,7 @@ export const divisionDetailsContent: Record<MarketingLocale, {
               audience: "Traseu avansat",
               format: "MiniScript+ · Python / C++",
               schedule: "70 lei",
-              duration: "pe săptămână · 2 ședințe incluse",
+              duration: "Preț pe săptămână · include 2 ședințe de pregătire",
               description: "Un traseu aprofundat de algoritmică pentru elevii pregătiți să studieze concepte avansate de informatică.",
               features: ["Algoritmică și concepte avansate", "Track opțional: arhitectură, embedded sau un limbaj nou", "Probleme aplicate și proiecte", "Evaluare periodică pe parcursul cursului"],
             },
@@ -283,7 +313,7 @@ export const divisionDetailsContent: Record<MarketingLocale, {
               audience: "Traseu pentru începători",
               format: "MiniScript+ · Python",
               schedule: "50 lei",
-              duration: "pe săptămână · 2 ședințe incluse",
+              duration: "Preț pe săptămână · include 2 ședințe de pregătire",
               description: "O introducere prietenoasă în programare, Python și ideile de bază din spatele machine learning-ului.",
               features: ["Programare și activități CS Unplugged", "Bazele Python și introducere în ML", "Probleme, aplicații practice și proiecte", "Evaluare periodică pe parcursul cursului"],
             },
@@ -293,9 +323,9 @@ export const divisionDetailsContent: Record<MarketingLocale, {
               audience: "Traseu avansat",
               format: "Python",
               schedule: "70 lei",
-              duration: "pe săptămână · 2 ședințe incluse",
+              duration: "Preț pe săptămână · include 2 ședințe de pregătire",
               description: "Continuă materia din Intro ML cu algoritmi avansați, matematica modelelor și o specializare aleasă de elev.",
-              features: ["Materia din Intro ML și algoritmi avansați", "Specializare: NLP, CV, LLMs, DL sau RL", "Matematica modelelor și primul research paper", "Proiecte, LaTeX / Markdown și evaluare periodică"],
+              features: ["Materia din Intro ML și algoritmi avansați", "Specializare: NLP, CV, LLMs, DL sau RL", "Matematica și statistica din spatele modelelor", "Înveți să scrii primul articol de cercetare în LaTeX / Markdown", "Proiecte și evaluare periodică"],
               featured: true,
             },
             {
@@ -303,7 +333,7 @@ export const divisionDetailsContent: Record<MarketingLocale, {
               audience: "Traseu avansat",
               format: "Python · C++ · MiniScript+ Robotics",
               schedule: "70 lei",
-              duration: "pe săptămână · 2 ședințe incluse",
+              duration: "Preț pe săptămână · include 2 ședințe de pregătire",
               description: "Un traseu axat pe robotică, unde modelele ML sunt conectate cu hardware și sisteme embedded.",
               features: ["Computer vision, deep learning, RL și paper opțional", "Robotică cu Arduino și embedded programming", "Concepte și programare prin MiniScript+ Robotics", "Algoritmică aplicată, robotică RL, proiecte și evaluare"],
             },
@@ -312,26 +342,40 @@ export const divisionDetailsContent: Record<MarketingLocale, {
       },
       roadmap: {
         eyebrow: "Roadmap de învățare",
-        title: "Fiecare concept are un loc clar în traseu.",
-        description: "Roadmap-ul face progresul vizibil pentru elevi și părinți și păstrează următorul pas realizabil.",
-        items: [
-          { number: "01", title: "Logică", description: "Descompune o cerință în pași clari și ordonați." },
-          { number: "02", title: "Bazele programării", description: "Folosește valori, condiții, repetări și funcții cu încredere." },
-          { number: "03", title: "Algoritmi", description: "Recunoaște tipare și alege o abordare eficientă." },
-          { number: "04", title: "Structuri de date", description: "Modelează informația și înțelege complexitatea." },
-          { number: "05", title: "Proiecte și concursuri", description: "Aplică informațiile în soluții complete, pe care le poate explica." },
-        ],
+        title: "Obiective diferite. Un traseu clar mai departe.",
+        description: "Pornești din grupa potrivită experienței tale și lucrurilor pe care vrei să le înveți. Acestea sunt direcții posibile, nu o listă de grupe pe care trebuie să le parcurgi pe rând.",
+        practiceTitle: "Practică și feedback la fiecare nivel.",
+        practiceDescription: "Exercițiile ghidate, aplicațiile practice și evaluările periodice fac parte din întregul curs. Pe baza feedbackului, reluăm conceptele neclare, consolidăm ce ai învățat și alegem următorul pas.",
+        tracks: {
+          informatics: {
+            description: "După ce construiești bazele, poți crea aplicații practice sau aprofunda algoritmica, în funcție de experiența și obiectivele tale.",
+            stages: [
+              { label: "Construiești bazele", description: "Descoperi logica prin CS Unplugged, apoi urmezi programa școlară în MiniScript+ și C++ sau Python. Grupele de începători și avansați lucrează în ritmul lor." },
+              { label: "Pui ideile în practică", description: "Aprofundezi programarea, inclusiv OOP, apoi alegi web development, game development sau cybersecurity și înveți prin proiecte aplicate." },
+              { label: "Aprofundezi algoritmica", description: "Studiezi algoritmi și concepte avansate prin probleme aplicate. Poți explora opțional arhitectura procesoarelor, programarea embedded sau un alt limbaj." },
+            ],
+          },
+          machineLearning: {
+            description: "Pornești de la programare și bazele ML, apoi explorezi modele avansate sau le pui la lucru în robotică.",
+            stages: [
+              { label: "Descoperi programarea și ML", description: "Începi cu CS Unplugged, MiniScript+ și Python, apoi explorezi ideile de bază din machine learning prin probleme, aplicații practice și proiecte mici." },
+              { label: "Înțelegi și explorezi modele", description: "Explorezi algoritmi avansați, matematica și statistica din spatele modelelor. Alegi NLP, computer vision, LLMs, deep learning sau RL și înveți să scrii primul articol de cercetare în LaTeX sau Markdown." },
+              { label: "Conectezi modelele cu roboții", description: "Aplici computer vision, deep learning și RL folosind Arduino, programare embedded și MiniScript+ Robotics. Construiești și evaluezi proiecte practice; lucrarea de cercetare este opțională." },
+            ],
+          },
+        },
       },
       activities: {
         eyebrow: "Activități",
         title: "Învățarea continuă și în afara fișei de lucru.",
         description: "Cu sprijinul partenerilor noștri, organizăm gratuit workshop-uri, cursuri și activități practice în care elevii pot explora, experimenta și construi împreună.",
+        eventsLabel: "Vezi evenimentele",
         openLabel: "Vezi activitatea",
         galleryLabel: "Galeria activității",
         items: [
-          { id: "workshop", title: "Workshop-uri de programare", description: "Sesiuni în grupe mici în care elevii construiesc și testează o idee completă.", longDescription: "Workshop-urile combină explicații scurte cu practică ghidată. Elevii lucrează împreună, compară soluții și pleacă acasă cu un rezultat pe care îl pot demonstra și continua.", cover: workshopGallery[2], gallery: workshopGallery, meta: ["Grupe mici", "Practic", "Feedback ghidat"] },
-          { id: "algorithms", title: "Provocări de algoritmică", description: "Puzzle-uri colaborative care transformă raționamentul abstract în progres vizibil.", longDescription: "O provocare pornește de la o problemă concretă și este explorată prin diagrame, exemple și cod. Accentul rămâne pe explicația motivului pentru care o soluție funcționează, nu doar pe rezultat.", cover: workshopGallery[1], gallery: [workshopGallery[1], workshopGallery[0], workshopGallery[3]], meta: ["Problem solving", "Discuție în echipă", "Reflecție"] },
-          { id: "projects", title: "Zile de proiect", description: "Sesiuni mai lungi pentru proiectarea, construirea și prezentarea unui proiect mic.", longDescription: "Zilele de proiect conectează planificarea, implementarea și prezentarea. Elevii împart obiectivul în etape, își testează munca și explică rezultatul final grupei.", cover: workshopGallery[3], gallery: [workshopGallery[3], workshopGallery[2], workshopGallery[1]], meta: ["Proiect", "Prezentare", "Iterație"] },
+          { id: "workshops", title: "Workshop-uri și cursuri", description: "Workshop-uri și cursuri practice care fac programarea, machine learning-ul și robotica mai ușor de înțeles.", longDescription: "Workshop-urile și cursurile noastre combină explicații clare cu practică ghidată. Elevii explorează programarea, machine learning-ul și robotica prin exerciții și proiecte mici, cu mentori care le răspund la întrebări și îi ajută să progreseze.", cover: workshopGallery[2], gallery: workshopGallery, meta: ["Grupe mici", "Practic", "Feedback ghidat"] },
+          { id: "competitions", title: "Competiții", description: "Provocări de programare care pun la încercare gândirea algoritmică și abilitățile de coding.", longDescription: "Competițiile noastre de programare le oferă elevilor ocazia să aplice ce au învățat, să abordeze probleme noi și să-și testeze soluțiile. Formatul, programul și detaliile de participare sunt prezentate în calendarul fiecărei competiții.", cover: workshopGallery[1], gallery: [workshopGallery[1], workshopGallery[0], workshopGallery[3]], meta: ["Algoritmică", "Rezolvare de probleme", "Programare"] },
+          { id: "events", title: "Evenimente", description: "Hackathoane, meetup-uri și conferințe pentru idei noi, schimb de cunoștințe și oameni cu aceeași pasiune.", longDescription: "De la proiecte construite împreună la hackathoane până la discuții la meetup-uri și conferințe, aceste evenimente aduc laolaltă oameni pasionați de informatică. Consultă calendarul pentru a vedea ce urmează și cum poți participa.", cover: workshopGallery[3], gallery: [workshopGallery[3], workshopGallery[2], workshopGallery[1]], meta: ["Hackathoane", "Meetup-uri", "Conferințe"] },
         ],
       },
       pricing: {

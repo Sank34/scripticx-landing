@@ -9,6 +9,9 @@ export type ScripticxEvent = {
   endAt?: string;
   category: EventCategory;
   image?: string;
+  imageFit?: "cover" | "contain";
+  imageBackground?: string;
+  modalImage?: string;
   gallery?: readonly string[];
   title: string;
   eyebrow: string;
@@ -44,6 +47,40 @@ export const DEFAULT_EVENT_MODAL_IMAGE = "/scripticx-bg.png";
 
 const eventSources: readonly EventSource[] = [
   {
+    id: "hacktoberfest-mlh-2026",
+    link: "", // The dedicated registration link is still to be supplied.
+    // Month bounds are for calendar grouping and expiry, not a confirmed event date.
+    startAt: "2026-10-01T00:00:00+03:00",
+    endAt: "2026-10-31T23:59:59+02:00",
+    category: "activity",
+    image: "/hacktoberfest-2026.png",
+    imageFit: "contain",
+    imageBackground: "#3d5e58",
+    modalImage: "/hacktoberfest-bg.webp",
+    content: {
+      en: {
+        eyebrow: "Hacktoberfest · MLH",
+        dateLabel: "October 2026 · Date TBA",
+        title: "Hacktoberfest with MLH",
+        summary: "A community event for students and learners to explore open-source AI, share ideas and learn together.",
+        description: "Join ScripticX and MLH at BJPIBR for Hacktoberfest: a community event for students and learners to explore open-source AI, share ideas and learn together. The exact date and full programme will be announced soon.",
+        location: "BJPIBR",
+        audience: "Students / Learners",
+        highlights: ["Explore open-source AI", "Share ideas and learn together", "Full programme coming soon"],
+      },
+      ro: {
+        eyebrow: "Hacktoberfest · MLH",
+        dateLabel: "Octombrie 2026 · Data va fi anunțată",
+        title: "Hacktoberfest cu MLH",
+        summary: "Un eveniment pentru elevi, studenți și pasionați de învățare, dedicat explorării AI open-source și schimbului de idei.",
+        description: "Alătură-te ScripticX și MLH la BJPIBR pentru Hacktoberfest: un eveniment în care elevii, studenții și pasionații de învățare explorează AI open-source, schimbă idei și învață împreună. Data exactă și programul complet vor fi anunțate în curând.",
+        location: "BJPIBR",
+        audience: "Elevi, studenți / Pasionați de învățare",
+        highlights: ["Explorăm AI open-source", "Schimb de idei și învățare împreună", "Programul complet va fi anunțat"],
+      },
+    },
+  },
+  {
     id: "scripticx-competition-october-2026",
     link: "https://platform.scripticx.org",
     startAt: "2026-10-01T09:00:00+03:00",
@@ -58,7 +95,7 @@ const eventSources: readonly EventSource[] = [
         description:
           "We are preparing a programming competition on the ScripticX platform, where participants will solve challenges and put their algorithmic thinking to the test. We will share the complete format, rules and schedule soon.",
         location: "Online · ScripticX platform",
-        audience: "Students passionate about programming",
+        audience: "Students / Learners",
         highlights: [
           "Programming challenges on the platform",
           "Algorithms and problem solving",

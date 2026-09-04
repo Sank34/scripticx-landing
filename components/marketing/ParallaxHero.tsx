@@ -184,12 +184,14 @@ export default function ParallaxHero() {
           className="relative mx-auto w-full max-w-[calc((100svh-6rem)*1.65)] lg:absolute lg:inset-x-0 lg:top-0 lg:w-[66%] lg:max-w-[76rem]"
         >
           <div className="absolute inset-x-[12%] bottom-[2%] -z-10 h-[16%] rounded-full bg-black/25 blur-3xl" aria-hidden="true" />
+          {/* Serve the original transparent PNG: the optimized variant rendered blank in Arc. */}
           <Image
             src="/scripticx-mac-mockup-new.png"
             alt={content.visualLabel}
             width={3304}
             height={1999}
-            priority
+            preload
+            unoptimized
             sizes="(max-width: 767px) calc(100vw - 24px), (max-width: 1023px) 624px, 66vw"
             className="h-auto w-full drop-shadow-[0_14px_24px_rgba(15,23,42,0.14)] lg:drop-shadow-[0_36px_50px_rgba(15,23,42,0.2)]"
           />

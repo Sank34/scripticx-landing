@@ -49,6 +49,7 @@ const copy = {
     upcomingHighlights: "What you’ll explore",
     eventEnded: "This event has ended",
     signup: "Sign up for this event",
+    signupSoon: "Registration opens soon",
     close: "Close event",
     category: {
       workshop: "Workshop",
@@ -72,6 +73,7 @@ const copy = {
     upcomingHighlights: "Ce vom face",
     eventEnded: "Acest eveniment s-a încheiat",
     signup: "Înscrie-te la acest eveniment",
+    signupSoon: "Înscrierile se deschid în curând",
     close: "Închide evenimentul",
     category: {
       workshop: "Workshop",
@@ -105,7 +107,9 @@ function EventArtwork({ event, priority = false }: { event: ScripticxEvent; prio
       sizes="(max-width: 768px) 100vw, 42vw"
       className={usesDefaultImage
         ? "scale-[1.08] bg-[#f7f7f5] object-contain"
-        : "object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"}
+        : event.imageFit === "contain"
+          ? "object-contain"
+          : "object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"}
     />
   );
 }
@@ -135,7 +139,7 @@ function EventCard({
       aria-label={`${content.details}: ${event.title}`}
       className="group grid w-full overflow-hidden rounded-[16px] border bg-background text-left transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-[0_18px_50px_rgba(15,23,42,.08)] sm:grid-cols-[13rem_1fr]"
     >
-      <div className="relative min-h-[13rem] overflow-hidden bg-muted sm:h-60 sm:min-h-0">
+      <div className="relative min-h-[13rem] overflow-hidden bg-muted sm:h-60 sm:min-h-0" style={{ backgroundColor: event.imageBackground }}>
         <EventArtwork event={event} priority={index === 0} />
         <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
         <div className="absolute bottom-4 left-4 rounded-[10px] border border-white/20 bg-black/55 px-3.5 py-2.5 text-white backdrop-blur-md">
@@ -190,7 +194,7 @@ function EventDialog({
         <div>
           <div className="relative h-32 overflow-hidden bg-muted sm:h-40">
             <Image
-              src={event.image ?? DEFAULT_EVENT_MODAL_IMAGE}
+              src={event.modalImage ?? event.image ?? DEFAULT_EVENT_MODAL_IMAGE}
               alt=""
               fill
               sizes="920px"
@@ -240,12 +244,19 @@ function EventDialog({
           </div>
 
             {upcoming ? (
-              <Button size="lg" className="mt-5 w-full" asChild>
-                <a href={event.link} target="_blank" rel="noreferrer">
-                  {content.signup}
-                  <ArrowRight />
-                </a>
-              </Button>
+              event.link.trim() ? (
+                <Button size="lg" className="mt-5 w-full" asChild>
+                  <a href={event.link} target="_blank" rel="noreferrer">
+                    {content.signup}
+                    <ArrowRight />
+                  </a>
+                </Button>
+              ) : (
+                <Button size="lg" className="mt-5 w-full" disabled>
+                  <Clock3 />
+                  {content.signupSoon}
+                </Button>
+              )
             ) : (
               <div className="mt-5 flex items-center gap-2 rounded-[12px] border bg-muted/30 px-4 py-3 text-sm text-muted-foreground">
                 <Clock3 className="size-4" />

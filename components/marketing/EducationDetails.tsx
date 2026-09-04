@@ -3,6 +3,7 @@ import { ArrowUpRight, Check, Lightbulb, PenLine, RefreshCw } from "lucide-react
 
 import { EducationActivities } from "@/components/marketing/EducationActivities";
 import { EducationGroups } from "@/components/marketing/EducationGroups";
+import { EducationRoadmap } from "@/components/marketing/EducationRoadmap";
 import { Button } from "@/components/ui/button";
 import type { MarketingLocale } from "@/lib/marketing-content";
 import { divisionDetailsContent } from "@/lib/division-details-content";
@@ -46,29 +47,7 @@ export function EducationDetails({ locale }: { locale: MarketingLocale }) {
 
       <EducationGroups content={content.groups} />
 
-      <section className="border-b overflow-hidden">
-        <div className="px-5 py-24 sm:px-8 sm:py-32 lg:px-12 xl:px-16 2xl:px-24">
-          <div className="max-w-3xl">
-            <p className="text-sm font-medium text-muted-foreground">{content.roadmap.eyebrow}</p>
-            <h2 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">{content.roadmap.title}</h2>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground">{content.roadmap.description}</p>
-          </div>
-          <div className="relative mt-16 lg:min-h-[34rem]">
-            <svg className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block" viewBox="0 0 1200 460" fill="none" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M40 208C136 54 280 50 356 182C442 330 545 333 617 182C689 33 821 43 869 194C910 322 1032 340 1160 170" stroke="currentColor" strokeOpacity=".18" strokeWidth="2" strokeDasharray="6 8" />
-            </svg>
-            <div className="relative grid gap-3 lg:grid-cols-5 lg:gap-4">
-              {content.roadmap.items.map((item, index) => (
-                <article key={item.number} className={`relative rounded-[14px] border bg-background p-5 shadow-sm lg:min-h-[13rem] ${index % 2 === 0 ? "lg:mt-5" : "lg:mt-56"}`}>
-                  <div className="flex items-center justify-between"><span className="flex size-8 items-center justify-center rounded-full bg-foreground font-mono text-[11px] text-background">{item.number}</span><span className="size-2 rounded-full bg-emerald-500" /></div>
-                  <h3 className="mt-8 text-lg font-semibold tracking-[-0.02em]">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <EducationRoadmap locale={locale} />
 
       <section className="border-b bg-[#0d0e10] text-white">
         <div className="px-5 pb-12 pt-24 sm:px-8 sm:pb-16 sm:pt-32 lg:px-12 xl:px-16 2xl:px-24">
@@ -76,6 +55,9 @@ export function EducationDetails({ locale }: { locale: MarketingLocale }) {
             <p className="text-sm font-medium text-white/48">{content.activities.eyebrow}</p>
             <h2 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">{content.activities.title}</h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/58">{content.activities.description}</p>
+            <Button variant="secondary" className="mt-8 bg-white text-black hover:bg-white/90" asChild>
+              <Link href="/events">{content.activities.eventsLabel}<ArrowUpRight /></Link>
+            </Button>
           </div>
         </div>
         <EducationActivities items={content.activities.items} openLabel={content.activities.openLabel} galleryLabel={content.activities.galleryLabel} />

@@ -69,7 +69,7 @@ const copy = {
       fields: {
         eyebrow: "Choose what to explore",
         title: "One foundation. Several fascinating directions.",
-        description: "Advanced learners choose an area and study the techniques, mathematics and questions behind it.",
+        description: "Advanced learners choose an area and study its techniques, including the mathematics and statistics behind the models.",
         items: [
           { short: "NLP", title: "Natural language", icon: MessageSquareText },
           { short: "CV", title: "Computer vision", icon: Search },
@@ -78,7 +78,7 @@ const copy = {
           { short: "RL", title: "Reinforcement learning", icon: Target },
         ],
         researchTitle: "Learn to communicate the result, too.",
-        researchDescription: "Learners can write their first research paper and practise documenting experiments with LaTeX and Markdown.",
+        researchDescription: "In Advanced ML, students learn to write their first research paper: structure their ideas, document experiments and explain results using LaTeX and Markdown.",
       },
       robotics: {
         eyebrow: "Applied machine learning",
@@ -159,7 +159,7 @@ const copy = {
       fields: {
         eyebrow: "Alege ce vrei să explorezi",
         title: "O fundație. Mai multe direcții fascinante.",
-        description: "Elevii avansați aleg o arie și studiază tehnicile, matematica și întrebările din spatele ei.",
+        description: "Elevii avansați aleg o arie și studiază tehnicile ei, inclusiv matematica și statistica din spatele modelelor.",
         items: [
           { short: "NLP", title: "Limbaj natural", icon: MessageSquareText },
           { short: "CV", title: "Computer vision", icon: Search },
@@ -168,7 +168,7 @@ const copy = {
           { short: "RL", title: "Reinforcement learning", icon: Target },
         ],
         researchTitle: "Înveți și să comunici rezultatul.",
-        researchDescription: "Elevii pot scrie primul research paper și exersează documentarea experimentelor în LaTeX și Markdown.",
+        researchDescription: "La Advanced ML, elevii învață să scrie primul articol de cercetare: să-și structureze ideile, să documenteze experimentele și să explice rezultatele folosind LaTeX și Markdown.",
       },
       robotics: {
         eyebrow: "Machine learning aplicat",

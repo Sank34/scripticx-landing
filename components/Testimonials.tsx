@@ -43,29 +43,10 @@ const testimonials: Testimonial[] = [
   { user: "@erick", text: "Foarte bun, îmi place!" },
 ];
 
-const avatarStyles = [
-  "bg-emerald-200 text-emerald-950",
-  "bg-sky-200 text-sky-950",
-  "bg-violet-200 text-violet-950",
-  "bg-amber-200 text-amber-950",
-  "bg-rose-200 text-rose-950",
-] as const;
-
 const ease = [0.22, 1, 0.36, 1] as const;
 
 function wrapIndex(index: number) {
   return (index + testimonials.length) % testimonials.length;
-}
-
-function getInitials(user: string) {
-  const cleanUser = user.replace(/^@/, "");
-  const words = cleanUser.split(/[\s_.-]+/).filter(Boolean);
-
-  if (words.length > 1) {
-    return (words[0][0] + words[1][0]).toUpperCase();
-  }
-
-  return cleanUser.slice(0, 2).toUpperCase();
 }
 
 export default function Testimonials() {
@@ -209,20 +190,9 @@ export default function Testimonials() {
                       <blockquote className={cn("max-w-4xl text-pretty font-medium leading-[1.08] tracking-[-0.04em]", quoteSize)}>
                         {activeReview.text}
                       </blockquote>
-                      <div className="mt-9 flex items-center gap-3">
-                        <span
-                          className={cn(
-                            "flex size-10 items-center justify-center rounded-[11px] text-xs font-semibold",
-                            avatarStyles[active % avatarStyles.length],
-                          )}
-                          aria-hidden="true"
-                        >
-                          {getInitials(activeReview.user)}
-                        </span>
-                        <div>
-                          <p className="text-sm font-medium text-white/82">{activeReview.user}</p>
-                          <p className="mt-0.5 text-xs text-white/35">{t("communityMember")}</p>
-                        </div>
+                      <div className="mt-9">
+                        <p className="text-sm font-medium text-white/82">{activeReview.user}</p>
+                        <p className="mt-0.5 text-xs text-white/35">{t("communityMember")}</p>
                       </div>
                     </motion.div>
                   </AnimatePresence>
@@ -280,18 +250,9 @@ export default function Testimonials() {
                         exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
                         transition={{ duration: reduceMotion ? 0 : 0.3, delay: listIndex * 0.035, ease }}
                         onClick={() => selectReview(review.index, 1)}
-                        className="group flex w-full gap-3 rounded-[14px] border border-white/10 bg-white/[0.035] p-4 text-left outline-none transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-white/18 hover:bg-white/[0.06] focus-visible:ring-2 focus-visible:ring-emerald-200"
+                        className="group w-full rounded-[14px] border border-white/10 bg-white/[0.035] p-4 text-left outline-none transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-white/18 hover:bg-white/[0.06] focus-visible:ring-2 focus-visible:ring-emerald-200"
                       >
-                        <span
-                          className={cn(
-                            "flex size-9 shrink-0 items-center justify-center rounded-[10px] text-[10px] font-semibold",
-                            avatarStyles[review.index % avatarStyles.length],
-                          )}
-                          aria-hidden="true"
-                        >
-                          {getInitials(review.user)}
-                        </span>
-                        <span className="min-w-0">
+                        <span className="block min-w-0">
                           <span className="block text-xs font-medium text-white/75">{review.user}</span>
                           <span className="mt-2 line-clamp-3 block text-xs leading-5 text-white/38 transition-colors group-hover:text-white/52">
                             {review.text}
