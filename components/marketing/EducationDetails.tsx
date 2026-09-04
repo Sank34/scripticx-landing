@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, BookOpen, Braces, Check, FolderKanban } from "lucide-react";
+import { ArrowUpRight, Check, Lightbulb, PenLine, RefreshCw } from "lucide-react";
 
 import { EducationActivities } from "@/components/marketing/EducationActivities";
 import { EducationGroups } from "@/components/marketing/EducationGroups";
@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import type { MarketingLocale } from "@/lib/marketing-content";
 import { divisionDetailsContent } from "@/lib/division-details-content";
 
-const subjectIcons = [BookOpen, Braces, FolderKanban];
+const subjectIcons = [Lightbulb, PenLine, RefreshCw];
 
 export function EducationDetails({ locale }: { locale: MarketingLocale }) {
   const content = divisionDetailsContent[locale].education;
@@ -22,13 +22,13 @@ export function EducationDetails({ locale }: { locale: MarketingLocale }) {
               <h2 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">{content.program.title}</h2>
               <p className="mt-5 text-pretty text-base leading-7 text-muted-foreground sm:text-lg">{content.program.description}</p>
             </div>
-            <div className="grid border-l border-t sm:grid-cols-3">
+            <div className="grid overflow-hidden rounded-[14px] border border-b-0 sm:grid-cols-3">
               {content.program.subjects.map((subject, index) => {
                 const Icon = subjectIcons[index];
                 return (
-                  <article key={subject.title} className="flex min-h-[25rem] flex-col border-b border-r p-6 sm:p-7">
+                  <article key={subject.title} className="group flex min-h-[25rem] flex-col border-b bg-background p-6 sm:border-r sm:last:border-r-0 sm:p-7">
                     <div className="flex items-center justify-between">
-                      <span className="flex size-10 items-center justify-center rounded-[10px] border bg-muted/30"><Icon className="size-4.5" /></span>
+                      <span className="flex size-10 items-center justify-center rounded-[10px] border bg-muted/30 transition-colors duration-300 group-hover:bg-foreground group-hover:text-background"><Icon className="size-4.5" /></span>
                       <span className="font-mono text-xs text-muted-foreground">0{index + 1}</span>
                     </div>
                     <h3 className="mt-10 text-xl font-semibold tracking-[-0.025em]">{subject.title}</h3>
@@ -90,7 +90,7 @@ export function EducationDetails({ locale }: { locale: MarketingLocale }) {
               <p className="mt-5 text-base leading-7 text-muted-foreground">{content.pricing.description}</p>
               <Button className="mt-8" asChild><Link href="https://platform.scripticx.org/contact">{content.pricing.contact}<ArrowUpRight /></Link></Button>
             </div>
-            <div className="grid gap-3 md:grid-cols-3">
+            <div className="grid gap-3 md:grid-cols-2">
               {content.pricing.items.map((item, index) => (
                 <article key={item.title} className={`flex min-h-[28rem] flex-col rounded-[14px] border p-6 ${index === 1 ? "bg-foreground text-background" : "bg-card"}`}>
                   <span className={`font-mono text-xs ${index === 1 ? "text-background/55" : "text-muted-foreground"}`}>0{index + 1}</span>

@@ -44,12 +44,14 @@ export const teamMembers: readonly TeamMember[] = [
     name: "Andreea Bobotan",
     roles: ["uiuxResearch", "events"],
     image: "/team/Andreea-Bobotan-new.jpg",
+    email: "bobtan.andreea@cngmm.ro"
   },
   {
     slug: "daria-serban",
     name: "Daria Serban",
     roles: ["graphics", "uiux"],
     image: "/team/Daria-Serban.png",
+    email: "tiredf0x36@gmail.com"
   },
 ];
 

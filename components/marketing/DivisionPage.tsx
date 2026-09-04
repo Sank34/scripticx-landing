@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import { DevelopmentDetails } from "@/components/marketing/DevelopmentDetails";
 import { EducationDetails } from "@/components/marketing/EducationDetails";
+import { EducationIndividualDetails } from "@/components/marketing/EducationIndividualDetails";
 import { Reveal } from "@/components/marketing/Reveal";
 import { Button } from "@/components/ui/button";
 import { divisionContent, getMarketingLocale } from "@/lib/marketing-content";
@@ -18,6 +19,7 @@ const divisionPaths: Record<DivisionKey, string> = {
   education: "/education",
   informatics: "/education/informatics",
   machineLearning: "/education/machine-learning",
+  workshops: "/education/workshops",
   development: "/development",
   webServices: "/development/web-services",
   design: "/development/design",
@@ -45,6 +47,13 @@ const divisionMetadata = {
     description: {
       en: "Practical machine learning courses covering Python, data, model evaluation and applied projects.",
       ro: "Cursuri practice de machine learning cu Python, date, evaluarea modelelor și proiecte aplicate.",
+    },
+  },
+  workshops: {
+    title: { en: "Programming Workshops", ro: "Workshop-uri de programare" },
+    description: {
+      en: "Free hands-on programming, machine learning and robotics activities organised with ScripticX partners.",
+      ro: "Activități practice gratuite de programare, machine learning și robotică, organizate alături de partenerii ScripticX.",
     },
   },
   development: {
@@ -169,7 +178,7 @@ function PlatformVisual() {
 }
 
 function RouteVisual({ division }: { division: DivisionKey }) {
-  if (division === "education" || division === "informatics" || division === "machineLearning") return <EducationVisual />;
+  if (division === "education" || division === "informatics" || division === "machineLearning" || division === "workshops") return <EducationVisual />;
   if (division === "platform") return <PlatformVisual />;
   return <DevelopmentVisual />;
 }
@@ -178,9 +187,60 @@ export default async function DivisionPage({ division }: { division: DivisionKey
   const locale = getMarketingLocale(await getLocale());
   const content = divisionContent[locale][division];
   const isPlatform = division === "platform";
-  const isEducation = division === "education" || division === "informatics" || division === "machineLearning";
+  const isEducation = division === "education" || division === "informatics" || division === "machineLearning" || division === "workshops";
+  const isEducationDetail = division === "informatics" || division === "machineLearning" || division === "workshops";
+  const isDevelopment = division === "development" || division === "webServices" || division === "design" || division === "consulting";
   const sectionTitle = isPlatform ? (locale === "ro" ? "Platforma în practică" : "The platform in practice") : isEducation ? (locale === "ro" ? "Cum învățăm" : "How learning works") : (locale === "ro" ? "Cum putem ajuta" : "How we can help");
   const sectionDescription = isPlatform ? (locale === "ro" ? "Instrumente conectate pentru întregul traseu de programare." : "Connected tools for the complete programming journey.") : isEducation ? (locale === "ro" ? "Structură clară, practică intenționată și feedback constant." : "Clear structure, deliberate practice and consistent feedback.") : (locale === "ro" ? "Servicii clare, construite în jurul rezultatului de care ai nevoie." : "Clear capabilities built around the outcome you need.");
+  const ctaContent = isDevelopment
+    ? locale === "ro"
+      ? {
+          title: "Ai un proiect în minte? Hai să discutăm.",
+          description:
+            "Prima discuție este gratuită. Te ajutăm să clarifici scope-ul, fezabilitatea și pașii următori. Dacă lucrăm împreună, primești o ofertă clară, etape definite și update-uri în portalul dedicat.",
+          action: "Discută proiectul cu noi",
+        }
+      : {
+          title: "Have a project in mind? Let’s talk it through.",
+          description:
+            "The first conversation is free. We’ll help clarify scope, feasibility and next steps. If we work together, you’ll get a clear proposal, defined milestones and updates in your client portal.",
+          action: "Discuss your project",
+        }
+    : division === "workshops"
+      ? locale === "ro"
+        ? {
+            title: "Vrei să organizăm o activitate împreună? Hai să o facem posibilă.",
+            description: "Spune-ne ce comunitate vrei să aduci împreună și ce resurse poți oferi. Noi construim formatul educațional și activitatea potrivită.",
+            action: "Discută un parteneriat",
+          }
+        : {
+            title: "Want to organise an activity together? Let’s make it possible.",
+            description: "Tell us about the community you want to bring together and the resources you can offer. We’ll shape the right educational format and activity.",
+            action: "Discuss a partnership",
+          }
+      : isEducation
+      ? locale === "ro"
+        ? {
+            title: "Nu știi ce grupă ți se potrivește? Te ajutăm noi.",
+            description: "Spune-ne ce vrei să înveți, ce experiență ai și ce obiectiv urmărești. Îți recomandăm grupa și traseul potrivite.",
+            action: "Găsește grupa potrivită",
+          }
+        : {
+            title: "Not sure which group is right for you? We’ll help.",
+            description: "Tell us what you want to learn, your current experience and your goal. We’ll recommend the right group and learning track.",
+            action: "Find the right group",
+          }
+      : locale === "ro"
+      ? {
+          title: "Ai un obiectiv concret? Hai să îl clarificăm.",
+          description: "Spune-ne ce vrei să înveți sau să construiești, iar noi îți recomandăm următorul pas potrivit.",
+          action: "Contactează ScripticX",
+        }
+      : {
+          title: "Have a concrete goal? Let’s make it clear.",
+          description: "Tell us what you want to learn or build and we’ll recommend the right next step.",
+          action: "Contact ScripticX",
+        };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -203,7 +263,7 @@ export default async function DivisionPage({ division }: { division: DivisionKey
           </div>
         </section>
 
-        <section id="capabilities" className="border-b py-24 sm:py-32">
+        {!isEducationDetail ? <section id="capabilities" className="border-b py-24 sm:py-32">
           <div className="px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
             <Reveal className="max-w-2xl"><p className="text-sm font-medium text-muted-foreground">{content.eyebrow}</p><h2 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">{sectionTitle}</h2><p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg">{sectionDescription}</p></Reveal>
             <div className="mt-12 grid gap-3 lg:grid-cols-3">
@@ -214,14 +274,15 @@ export default async function DivisionPage({ division }: { division: DivisionKey
               })}
             </div>
           </div>
-        </section>
+        </section> : null}
 
         {division === "education" ? <EducationDetails locale={locale} /> : null}
+        {isEducationDetail ? <EducationIndividualDetails page={division} locale={locale} /> : null}
         {division === "development" ? <DevelopmentDetails locale={locale} /> : null}
 
         <section className="py-20 sm:py-28">
           <div className="px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
-            <Reveal className="grid gap-8 rounded-[20px] border bg-muted/30 p-7 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:p-14"><div><h2 className="text-balance text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">{locale === "ro" ? "Ai un obiectiv concret? Hai să îl clarificăm." : "Have a concrete goal? Let’s make it clear."}</h2><p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground">{locale === "ro" ? "Spune-ne ce vrei să înveți sau să construiești, iar noi îți recomandăm următorul pas potrivit." : "Tell us what you want to learn or build and we’ll recommend the right next step."}</p></div><Button size="lg" asChild><Link href="https://platform.scripticx.org/contact">{locale === "ro" ? "Contactează ScripticX" : "Contact ScripticX"}<ArrowUpRight /></Link></Button></Reveal>
+            <Reveal className="grid gap-8 rounded-[20px] border bg-muted/30 p-7 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:p-14"><div><h2 className="text-balance text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">{ctaContent.title}</h2><p className="mt-4 max-w-3xl text-base leading-7 text-muted-foreground">{ctaContent.description}</p></div><Button size="lg" asChild><Link href="https://platform.scripticx.org/contact">{ctaContent.action}<ArrowUpRight /></Link></Button></Reveal>
           </div>
         </section>
       </main>

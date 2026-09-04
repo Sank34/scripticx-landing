@@ -288,8 +288,8 @@
   },
   "Team": {
     "eyebrow": "The people behind ScripticX",
-    "title": "Meet our team",
-    "description": "A multidisciplinary team working across engineering, education, design, communication, and events to make programming easier to learn.",
+    "title": "Small team. Plenty of ideas.",
+    "description": "We work across education, engineering, design and communication, bringing different perspectives to everything we build.",
     "viewProfile": "View profile",
     "linkedin": "LinkedIn",
     "email": "Email",
@@ -299,8 +299,6 @@
       "eyebrow": "ScripticX team member",
       "about": "About",
       "contact": "Contact",
-      "contactDescription": "Contact me directly.",
-      "contactFallback": "Personal contact details are published only with the team member's approval. Until then, the ScripticX team can forward your message.",
       "teamEyebrow": "Our team",
       "teamTitle": "Meet the rest of the team",
       "teamDescription": "ScripticX is built by people working across education, engineering, communication, research and design."
@@ -347,8 +345,20 @@
     "description": "We're grateful to the organizations and partners who support ScripticX and help us make programming easier to learn."
   },
   "Testimonials": {
-    "title": "Loved by learners",
-    "description": "See how ScripticX is helping people learn programming faster"
+    "eyebrow": "Real feedback",
+    "title": "What our users say.",
+    "description": "Curious, passionate people tried ScripticX during workshops, courses and other activities. Here’s what they thought.",
+    "messages": "{count} messages",
+    "carouselLabel": "ScripticX community reviews",
+    "goToReview": "Open review {number} from {user}",
+    "reviewPosition": "Review {number} of {count}",
+    "communityMember": "ScripticX community",
+    "upNext": "Up next",
+    "play": "Resume reviews",
+    "pause": "Pause reviews",
+    "previous": "Previous review",
+    "next": "Next review",
+    "interactionHint": "Drag the main message, use the arrow keys or pick any review above."
   },
   "CTA": {
     "badge": "Open source from day one",
@@ -403,6 +413,7 @@
   },
   "MarketingNav": {
     "education": "Education",
+    "events": "Events",
     "development": "Development",
     "platform": "Platform",
     "partners": "Partners",
@@ -415,8 +426,8 @@
   },
   "MarketingFooter": {
     "description": "A modern place to learn programming, practice deliberately, and grow with others.",
-    "contact": "Contact ScripticX",
-    "socials": "Our socials",
+    "contact": "Say hello",
+    "socials": "Find us out there",
     "registered": "Education · Development · Platform",
     "groups": {
       "company": "Company",
@@ -426,6 +437,7 @@
     "links": {
       "about": "About ScripticX",
       "education": "Education Center",
+      "events": "Events & workshops",
       "development": "Development",
       "platform": "Platform",
       "team": "Our team",

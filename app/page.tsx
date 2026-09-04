@@ -1,6 +1,8 @@
 import Footer from "@/components/Footer";
 import TeamSection from "@/components/TeamSection";
+import Testimonials from "@/components/Testimonials";
 import BusinessPillars from "@/components/marketing/BusinessPillars";
+import DevelopmentSpotlight from "@/components/marketing/DevelopmentSpotlight";
 import MarketingCTA from "@/components/marketing/MarketingCTA";
 import ParallaxHero from "@/components/marketing/ParallaxHero";
 import PartnersSection from "@/components/marketing/PartnersSection";
@@ -16,7 +18,9 @@ export default function Page() {
         <BusinessPillars />
         <StoryScroller />
         <PlatformShowcase />
+        <DevelopmentSpotlight />
         <WorkshopGallery />
+        <Testimonials />
         <TeamSection />
         <PartnersSection />
         <MarketingCTA />

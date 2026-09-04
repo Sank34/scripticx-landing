@@ -288,8 +288,8 @@
   },
   "Team": {
     "eyebrow": "Oamenii din spatele ScripticX",
-    "title": "Cunoaște echipa",
-    "description": "O echipă multidisciplinară care lucrează în dezvoltare, educație, design, comunicare și evenimente pentru a face programarea mai ușor de învățat.",
+    "title": "Echipă mică. Idei din plin.",
+    "description": "Lucrăm în educație, dezvoltare, design și comunicare și aducem perspective diferite în tot ce construim.",
     "viewProfile": "Vezi profilul",
     "linkedin": "LinkedIn",
     "email": "Email",
@@ -299,8 +299,6 @@
       "eyebrow": "Membru al echipei ScripticX",
       "about": "Despre",
       "contact": "Contact",
-      "contactDescription": "Contactează-mă direct.",
-      "contactFallback": "Datele personale de contact sunt publicate doar cu acordul membrului echipei. Până atunci, echipa ScripticX poate redirecționa mesajul tău.",
       "teamEyebrow": "Echipa noastră",
       "teamTitle": "Cunoaște restul echipei",
       "teamDescription": "ScripticX este construit de oameni care lucrează în educație, inginerie, comunicare, cercetare și design."
@@ -347,8 +345,20 @@
     "description": "Le mulțumim organizațiilor și partenerilor care susțin ScripticX și ne ajută să facem programarea mai ușor de învățat."
   },
   "Testimonials": {
-    "title": "Apreciat de cursanți",
-    "description": "Vezi cum ScripticX ajută oamenii să învețe programare mai rapid"
+    "eyebrow": "Feedback real",
+    "title": "Ce spun cei care au încercat ScripticX.",
+    "description": "Oameni curioși și pasionați au testat ScripticX la workshop-uri, cursuri și alte activități. Iată ce cred ei despre platformă.",
+    "messages": "{count} mesaje",
+    "carouselLabel": "Review-uri din comunitatea ScripticX",
+    "goToReview": "Deschide review-ul {number} de la {user}",
+    "reviewPosition": "Review-ul {number} din {count}",
+    "communityMember": "Comunitatea ScripticX",
+    "upNext": "Urmează",
+    "play": "Pornește review-urile",
+    "pause": "Oprește review-urile",
+    "previous": "Review-ul anterior",
+    "next": "Review-ul următor",
+    "interactionHint": "Trage mesajul principal, folosește săgețile sau alege orice review de sus."
   },
   "CTA": {
     "badge": "Open source încă din prima zi",
@@ -403,6 +413,7 @@
   },
   "MarketingNav": {
     "education": "Educație",
+    "events": "Evenimente",
     "development": "Development",
     "platform": "Platformă",
     "partners": "Parteneri",
@@ -415,8 +426,8 @@
   },
   "MarketingFooter": {
     "description": "Un loc modern în care înveți programare, exersezi intenționat și evoluezi alături de ceilalți.",
-    "contact": "Contactează ScripticX",
-    "socials": "Rețelele noastre",
+    "contact": "Scrie-ne",
+    "socials": "Ne găsești și aici",
     "registered": "Educație · Development · Platformă",
     "groups": {
       "company": "Companie",
@@ -426,6 +437,7 @@
     "links": {
       "about": "Despre ScripticX",
       "education": "Education Center",
+      "events": "Evenimente și workshop-uri",
       "development": "Development",
       "platform": "Platformă",
       "team": "Echipa noastră",

@@ -186,14 +186,14 @@
 }
 
 @keyframes sx-constellation-pulse {
-  0%, 100% { opacity: 0.22; transform: scale(0.72); }
-  48% { opacity: 0.95; transform: scale(1.35); }
-  68% { opacity: 0.5; transform: scale(0.9); }
+  0%, 100% { opacity: 0.34; transform: scale(0.78); }
+  48% { opacity: 1; transform: scale(1.4); }
+  68% { opacity: 0.62; transform: scale(0.94); }
 }
 
 @keyframes sx-constellation-trace {
-  0%, 100% { opacity: 0.18; stroke-dashoffset: 0; }
-  50% { opacity: 0.52; stroke-dashoffset: -22; }
+  0%, 100% { opacity: 0.3; stroke-dashoffset: 0; }
+  50% { opacity: 0.72; stroke-dashoffset: -22; }
 }
 
 @keyframes sx-education-hero-cycle {
@@ -268,9 +268,9 @@
   }
 
   .sx-constellation-field {
-    opacity: 0.9;
-    mask-image: linear-gradient(to top, black 3%, rgba(0, 0, 0, 0.94) 42%, rgba(0, 0, 0, 0.28) 78%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to top, black 3%, rgba(0, 0, 0, 0.94) 42%, rgba(0, 0, 0, 0.28) 78%, transparent 100%);
+    opacity: 1;
+    mask-image: linear-gradient(to top, black 3%, rgba(0, 0, 0, 0.98) 42%, rgba(0, 0, 0, 0.42) 82%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to top, black 3%, rgba(0, 0, 0, 0.98) 42%, rgba(0, 0, 0, 0.42) 82%, transparent 100%);
   }
 
   .sx-constellation-plane {
@@ -286,7 +286,7 @@
       radial-gradient(circle, rgba(167, 243, 208, 0.38) 0 0.6px, transparent 1px);
     background-position: 18px 24px, 74px 91px, 131px 42px;
     background-size: 137px 157px, 223px 197px, 311px 277px;
-    opacity: 0.42;
+    opacity: 0.58;
     animation: sx-constellation-dust-drift 46s linear infinite;
     will-change: transform;
   }
@@ -300,6 +300,12 @@
   .sx-constellation-line {
     animation: sx-constellation-trace 13s ease-in-out infinite;
     stroke-dasharray: 2 8;
+  }
+
+  .sx-constellation-line-prominent {
+    animation: none;
+    opacity: 0.66;
+    stroke-dasharray: 4 6;
   }
 
   .sx-dot-grid {

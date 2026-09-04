@@ -7,6 +7,7 @@ import { getLocale } from "next-intl/server";
 import Navbar from "@/components/Navbar";
 import {
   absoluteUrl,
+  createSocialImageUrl,
   getSiteDescription,
   siteConfig,
 } from "@/lib/metadata";
@@ -35,6 +36,16 @@ export async function generateMetadata(): Promise<Metadata> {
     ? "ScripticX — Educație și tehnologie"
     : "ScripticX — Education & Technology";
   const description = getSiteDescription(locale);
+  const socialImage = createSocialImageUrl({
+    title: isRomanian
+      ? "Educație, dezvoltare și programare."
+      : "Education, development and programming.",
+    description,
+    section: isRomanian
+      ? "Educație · Development · Platform"
+      : "Education · Development · Platform",
+    path: "/",
+  });
 
   return {
     metadataBase: new URL(siteConfig.url),
@@ -89,9 +100,10 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: absoluteUrl(siteConfig.socialImage),
+          url: socialImage,
           width: 1200,
           height: 630,
+          type: "image/png",
           alt: title,
         },
       ],
@@ -100,7 +112,12 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      images: [absoluteUrl(siteConfig.socialImage)],
+      images: [
+        {
+          url: socialImage,
+          alt: title,
+        },
+      ],
     },
     robots: {
       index: true,
@@ -123,6 +140,18 @@ export default async function RootLayout({
 }) {
   const locale = await getLocale();
   const description = getSiteDescription(locale);
+  const socialImage = createSocialImageUrl({
+    title:
+      locale === "ro"
+        ? "Educație, dezvoltare și programare."
+        : "Education, development and programming.",
+    description,
+    section:
+      locale === "ro"
+        ? "Educație · Development · Platform"
+        : "Education · Development · Platform",
+    path: "/",
+  });
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -176,7 +205,7 @@ export default async function RootLayout({
         operatingSystem: "Any",
         browserRequirements: "Requires a modern web browser",
         inLanguage: ["ro", "en"],
-        image: absoluteUrl(siteConfig.socialImage),
+        image: socialImage,
         offers: {
           "@type": "Offer",
           price: "0",

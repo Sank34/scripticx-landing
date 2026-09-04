@@ -83,10 +83,10 @@ export const partnersContent: Record<MarketingLocale, {
       description: "Explore ScripticX partners, sponsorship options, collaboration models and the benefits of supporting practical programming education.",
     },
     home: {
-      eyebrow: "Partners and sponsors",
-      title: "Progress is built together.",
-      description: "Education, community and creative partners help ScripticX turn workshops and learning initiatives into experiences that reach further.",
-      action: "Meet our partners",
+      eyebrow: "Better with good people around",
+      title: "Good things rarely happen solo.",
+      description: "Schools, community spaces, creators and sponsors help us welcome more curious learners—and put better tools in their hands.",
+      action: "Meet the people helping",
     },
     hero: {
       eyebrow: "ScripticX partnerships",
@@ -190,10 +190,10 @@ export const partnersContent: Record<MarketingLocale, {
       description: "Descoperă partenerii ScripticX, opțiunile de sponsorizare, modelele de colaborare și beneficiile susținerii educației practice în programare.",
     },
     home: {
-      eyebrow: "Parteneri și sponsori",
-      title: "Progresul se construiește împreună.",
-      description: "Partenerii educaționali, comunitari și creativi ajută ScripticX să transforme workshop-urile și inițiativele de învățare în experiențe cu impact mai mare.",
-      action: "Descoperă partenerii",
+      eyebrow: "Mai bine cu oameni buni aproape",
+      title: "Lucrurile bune nu se construiesc singure.",
+      description: "Școlile, spațiile comunitare, creatorii și sponsorii ne ajută să primim mai mulți elevi curioși și să le punem instrumente mai bune în mâini.",
+      action: "Cunoaște oamenii care ne ajută",
     },
     hero: {
       eyebrow: "Parteneriate ScripticX",

@@ -55,7 +55,7 @@ function GroupCards({
                 {group.audience}
               </span>
               <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1.5 ${featured ? "border-background/15" : "bg-muted/30"}`}>
-                <UsersRound className="size-3.5" />
+                <Code2 className="size-3.5" />
                 {group.format}
               </span>
             </div>

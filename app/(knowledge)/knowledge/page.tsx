@@ -34,7 +34,6 @@ export async function generateMetadata(): Promise<Metadata> {
       ro: "Documentație, resurse pentru dezvoltatori, securitate și politici juridice pentru ScripticX.",
       en: "Documentation, developer resources, security guidance, and legal policies for ScripticX.",
     },
-    socialImage: siteConfig.knowledgeSocialImage,
   });
 }
 

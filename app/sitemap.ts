@@ -10,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/education", 0.9],
     ["/education/informatics", 0.8],
     ["/education/machine-learning", 0.8],
+    ["/education/workshops", 0.8],
+    ["/events", 0.85],
     ["/development", 0.9],
     ["/development/web-services", 0.8],
     ["/development/design", 0.8],

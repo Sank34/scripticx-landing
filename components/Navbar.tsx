@@ -23,6 +23,7 @@ const navItems = [
   { href: "/education", key: "education" },
   { href: "/development", key: "development" },
   { href: "/platform", key: "platform" },
+  { href: "/events", key: "events" },
   { href: "/partners", key: "partners" },
   { href: "/knowledge", key: "resources" },
 ] as const;

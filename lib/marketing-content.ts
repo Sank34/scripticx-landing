@@ -7,622 +7,700 @@ export function getMarketingLocale(locale: string): MarketingLocale {
 export const marketingContent = {
   en: {
     hero: {
-      eyebrow: "Education · technology · community",
-      title: "Ideas become",
+      eyebrow: "Learn · build · make it real",
+      title: "Good ideas grow into",
       accent: "skills, products and useful software.",
       description:
-        "ScripticX brings education, software development and a complete programming platform under one focused company.",
-      primary: "Discover ScripticX",
-      secondary: "Open the platform",
+        "Here, curiosity becomes code, projects become products, and good ideas get out of the notebook. Learn, build, or bring us the next thing worth shipping. :)",
+      primary: "See what we’re building",
+      secondary: "Open ScripticX",
       scroll: "Scroll to explore",
       visualLabel: "The ScripticX learning workspace",
     },
     pillars: {
-      eyebrow: "One company, three focused practices",
-      title: "Built around how ideas grow.",
+      eyebrow: "The three parts of ScripticX",
+      title: "We teach. We design. We code.",
       description:
-        "From the first algorithm to a production-ready digital product, every ScripticX division has a clear purpose.",
+        "Behind the name are three distinct parts: our Education Center, our software development studio and a programming platform built for learners and teachers.",
       items: [
         {
           key: "education",
           number: "01",
           title: "Education Center",
           description:
-            "Structured informatics and machine learning education, with workshops and mentorship built around real understanding.",
+            "Informatics and machine learning for curious minds—with clear explanations, hands-on workshops and mentors who welcome every “why?”",
           href: "/education",
-          action: "Explore education",
+          action: "Step inside the classroom",
         },
         {
           key: "development",
           number: "02",
           title: "Development",
           description:
-            "Web products, interface design and practical technology consulting for teams that need reliable execution.",
+            "You bring the idea. We bring product thinking, design and code—plus honest updates while we build it.",
           href: "/development",
-          action: "Explore development",
+          action: "Build something with us",
         },
         {
           key: "platform",
           number: "03",
           title: "Platform",
           description:
-            "A focused workspace for learning programming, solving problems, teaching classes and building projects together.",
+            "Lessons, code, classes, projects and community in one tidy workspace. Fewer lost tabs, more things finished.",
           href: "/platform",
-          action: "Explore the platform",
+          action: "Take the platform tour",
         },
       ],
     },
     story: {
-      eyebrow: "What ScripticX makes possible",
-      title: "A connected path from learning to building.",
+      eyebrow: "A clearer path through programming",
+      title: "From your first lesson to your own programming projects.",
       description:
-        "Each practice stands on its own. Together, they make it easier to turn curiosity into capability.",
-      panelEyebrow: "ScripticX in practice",
+        "Learn the concepts, practise with real problems, write code in the ScripticX editor and keep growing through classes, groups and competitions.",
+      panelEyebrow: "Your learning path",
       items: [
         {
           label: "Learn",
-          title: "Understand the idea, not just the syntax.",
+          title: "Get the idea. Then make it yours.",
           description:
-            "Focused lessons, mentorship and hands-on workshops give learners a durable foundation in computer science.",
-          metric: "Education Center",
+            "Clear lessons, patient mentors and hands-on workshops turn intimidating concepts into things you can actually explain back.",
+          metric: "A place for better questions.",
           meta: "Informatics · Machine learning · Workshops",
         },
         {
           label: "Practice",
-          title: "Turn knowledge into repeatable skill.",
+          title: "Practice until “wait, what?” becomes “oh, got it!”",
           description:
-            "Roadmaps, interactive problems, quizzes and progress insights make practice clear for learners and measurable for teachers.",
-          metric: "ScripticX Platform",
+            "Roadmaps, interactive problems, quizzes and useful progress insights make the next step clear for learners and teachers.",
+          metric: "Progress you can actually see.",
           meta: "Problems · Courses · Progress",
         },
         {
-          label: "Build",
-          title: "Move from exercises to complete projects.",
+          label: "Code",
+          title: "Turn exercises into working projects.",
           description:
-            "A multi-language editor, project files, GitHub workflows and live collaboration keep the whole build process in one place.",
-          metric: "Project workspace",
+            "Write and run code, organise project files, connect GitHub and collaborate through Live Share—all inside your programming workspace.",
+          metric: "A workspace for code that goes further.",
           meta: "Editor · GitHub · Live Share",
         },
         {
-          label: "Deliver",
-          title: "Ship digital work with a reliable partner.",
+          label: "Grow",
+          title: "Keep going, together.",
           description:
-            "ScripticX Development brings product thinking, interface design and engineering together for organizations and teams.",
-          metric: "Development services",
-          meta: "Web · Design · Consulting",
+            "Join classes and groups, enter competitions and follow your progress with rewards that make regular practice feel worthwhile.",
+          metric: "Progress feels better when it’s shared.",
+          meta: "Classes · Groups · Competitions",
         },
       ],
     },
     showcase: {
-      title: "Explore ScripticX by workspace.",
+      title: "All the useful bits. One platform.",
       tabs: [
         {
           key: "editor",
           label: "Editor",
-          title: "Projects, not isolated snippets.",
+          title: "Your code deserves more than a lonely text box.",
           description:
-            "Create files and folders, write MiniScript+, C++ or Python, connect GitHub and collaborate through Live Share.",
+            "Build proper projects in MiniScript+, C++ or Python, connect GitHub and bring a teammate in with Live Share when two cursors are better than one.",
           points: ["Multi-language Monaco editor", "Project tree and GitHub", "Integrated run and terminal"],
         },
         {
           key: "learn",
           label: "Learning",
-          title: "A roadmap that grows with the learner.",
+          title: "A roadmap that remembers where you are.",
           description:
-            "Follow structured lessons, complete quizzes, solve recommended problems and choose the language path that comes next.",
+            "Follow clear lessons, try a quiz, solve the next recommended problem and always know what makes sense to learn next.",
           points: ["Markdown lessons", "Interactive quizzes", "Data-driven language paths"],
         },
         {
           key: "workspaces",
           label: "Home",
-          title: "Your school workspace at a glance.",
+          title: "Everything for school. Zero scavenger hunts.",
           description:
-            "Start the week with upcoming work, learning activity and roadmap progress collected in one student home.",
+            "Upcoming work, recent learning and roadmap progress all meet on one student home—right where you expect them.",
           points: ["Weekly learning overview", "Upcoming assignments and deadlines", "Roadmap progress"],
         },
         {
           key: "planner",
           label: "Planner",
-          title: "Turn the week into a clear plan.",
+          title: "Give every deadline a place to live.",
           description:
-            "Organize learning sessions, classes and deadlines in the student planner, then check off work as it is completed.",
+            "Plan study sessions, classes and deadlines, then enjoy the tiny satisfaction of checking each one off.",
           points: ["Weekly schedule", "Tasks and study sessions", "Deadlines and completion states"],
         },
         {
           key: "notes",
           label: "Notes",
-          title: "Keep explanations next to the practice.",
+          title: "Save the “aha!” before it disappears.",
           description:
-            "Write and organize study notes for algorithms, languages and class material without leaving the student workspace.",
+            "Keep algorithm explanations, code snippets and class notes organized beside the work that made them click.",
           points: ["Organized note folders", "Formatted text and code", "Shareable learning material"],
         },
         {
           key: "whiteboard",
           label: "Whiteboard",
-          title: "Make an idea visible before coding it.",
+          title: "Think messy. Make it make sense.",
           description:
-            "Sketch a solution, arrange notes and connect steps freely on a visual canvas built into the student workspace.",
+            "Sketch the half-formed idea, move the pieces around and connect the steps until the solution finally looks obvious.",
           points: ["Freeform canvas", "Notes and connectors", "Visual problem planning"],
         },
         {
           key: "graphs",
           label: "Graphs",
-          title: "Understand graph algorithms by seeing them run.",
+          title: "Graphs are friendlier when you can poke them.",
           description:
-            "Create vertices and edges, inspect graph structure and follow an algorithm traversal visually.",
+            "Create vertices and edges, inspect the structure and watch an algorithm travel through it instead of only imagining it.",
           points: ["Interactive vertices and edges", "Graph properties", "Algorithm traversal"],
         },
         {
           key: "classes",
           label: "Classes",
-          title: "A shared hub for every class.",
+          title: "One class. One tidy home.",
           description:
-            "Teachers create class spaces and follow student progress, while learners join with an invitation code and keep assignments and resources together.",
+            "Teachers create the space, learners join with a code, and assignments, resources and progress stop wandering off on their own.",
           points: ["Create or join with an invitation code", "Assignments, resources and deadlines", "Student counts and average progress"],
         },
         {
           key: "problems",
           label: "Problems",
-          title: "Practice with feedback that is easy to act on.",
+          title: "Run it. Break it. Learn why. Repeat. :D",
           description:
-            "Open a problem, write and run a solution, inspect test results and keep the best submitted score.",
+            "Write a solution, run the tests, read feedback that helps and keep your best score when everything finally turns green.",
           points: ["Difficulty and localized statements", "Integrated runner and test results", "Submission history and best score"],
         },
         {
           key: "teacherDashboard",
           label: "Dashboard",
-          title: "See the classroom at a glance.",
+          title: "The whole class, minus the spreadsheet maze.",
           description:
-            "Review enrolled students, active classes, average completion, upcoming deadlines and recent submissions from one teacher dashboard.",
+            "See active classes, average completion, upcoming deadlines and recent submissions without stitching the story together yourself.",
           points: ["Students and active classes", "Completion and assignment totals", "Deadlines and recent activity"],
         },
         {
           key: "students",
           label: "Students",
-          title: "Follow every learner from one roster.",
+          title: "See who’s flying—and who needs a hand.",
           description:
-            "Review students across classes, compare progress and open an individual learner when more context is needed.",
+            "Browse every learner across your classes, compare progress and open a profile when the numbers need a little context.",
           points: ["Cross-class student roster", "Individual completion progress", "Direct learner access"],
         },
         {
           key: "assignments",
           label: "Assignments & tests",
-          title: "Keep coursework measurable.",
+          title: "Assignments that don’t vanish into the void.",
           description:
-            "Create assignments from a class, filter them by status and follow deadlines, completed solutions and completion rates.",
+            "Create classwork, filter it by status and follow deadlines, submitted solutions and completion rates from one clear view.",
           points: ["Upcoming, past-due and open-ended work", "Deadlines and class context", "Completion and solution counts"],
         },
         {
           key: "calendar",
           label: "Calendar",
-          title: "Every class deadline, organized by month.",
+          title: "Deadlines, finally behaving themselves.",
           description:
-            "View assignment deadlines across classes in a monthly calendar and open the corresponding work directly.",
+            "See every class deadline in one monthly view and jump straight to the assignment that needs attention.",
           points: ["Monthly class schedule", "Assignment deadlines and times", "Direct links to coursework"],
         },
         {
           key: "analytics",
           label: "Analytics",
-          title: "Know where support is needed.",
+          title: "Spot the wobble before it becomes a problem.",
           description:
-            "Compare class completion, identify students who are on track and find learners with assigned work and low progress.",
+            "Compare class progress, celebrate who is on track and find the learners who could use a well-timed nudge.",
           points: ["Overall and per-class completion", "Students above or below thresholds", "Needs-attention view"],
         },
         {
           key: "personalDashboard",
           label: "Dashboard",
-          title: "Pick up exactly where you left off.",
+          title: "Welcome back. We saved your spot.",
           description:
-            "See your learning streak, reward balance, solved problems and the next activity from the personal dashboard.",
+            "Your streak, reward points, solved problems and next activity are ready before you even ask, “where was I?”",
           points: ["Daily challenge and streak", "Reward points", "Learning and problem progress"],
         },
         {
           key: "search",
           label: "Search",
-          title: "Find the right next step quickly.",
+          title: "Type less. Find the useful thing.",
           description:
-            "Search across platform content and jump into relevant problems, learning material and community spaces.",
+            "Search across ScripticX and jump straight into the problem, lesson or community space you actually wanted.",
           points: ["Unified platform search", "Filtered result types", "Direct links to results"],
         },
         {
           key: "collaboration",
           label: "Live Share",
-          title: "Code together, live.",
+          title: "Two cursors. One idea. Zero screen sharing.",
           description:
-            "Start a Live Share session from the editor, share the project workspace and keep every participant on the same version as changes are made.",
+            "Start Live Share from the editor, invite the team and keep everyone in the same project while the code changes live.",
           points: ["Real-time code and project sync", "Participant presence", "Session links and invitations"],
         },
         {
           key: "groups",
           label: "Groups",
-          title: "Focused spaces for every study group.",
+          title: "A good place for the “silly” question.",
           description:
-            "Create public or private groups with channels, invite members and keep conversations, mentions and file attachments organized.",
+            "Create public or private groups, add channels and keep the conversations, mentions and files your people need close by.",
           points: ["Public and private groups", "Channels, mentions and pinned messages", "Invitations, attachments and member roles"],
         },
         {
           key: "rewards",
           label: "Rewards",
-          title: "Progress becomes part of your profile.",
+          title: "Practice points, but make them yours.",
           description:
-            "Earn reward points from problems and daily challenges, then use them in the shop for profile items you can equip.",
+            "Earn points from problems and daily challenges, then spend them on profile items that make your progress look like yours.",
           points: ["Separate reward-points balance", "Frames, decorations, backgrounds and titles", "Inventory and equipped profile items"],
         },
         {
           key: "competitions",
           label: "Competitions",
-          title: "Practice under real competition conditions.",
+          title: "A little pressure. A lot of progress.",
           description:
-            "Join published coding competitions, solve timed problems and follow the live leaderboard when the organizer enables it.",
+            "Join coding competitions, solve timed problems and watch the live leaderboard when the organizer turns it on.",
           points: ["Timed problem sets", "Saved submissions and best scores", "Live rankings and competition phases"],
         },
         {
           key: "leaderboard",
           label: "Leaderboard",
-          title: "See how consistent practice adds up.",
+          title: "Friendly competition looks good on you.",
           description:
-            "Compare earned points with the community and follow the learners building momentum across the platform.",
+            "Compare points with the community and see how all those small, consistent practice sessions start to add up.",
           points: ["Community ranking", "Accumulated points", "Visible progress milestones"],
         },
         {
           key: "feed",
           label: "Feed",
-          title: "Share progress with the community.",
+          title: "Share the win. Pass the idea on.",
           description:
-            "Post learning milestones and code discoveries, then follow useful activity from other ScripticX members.",
+            "Post a milestone or a neat code discovery, then see what the rest of the ScripticX community is figuring out.",
           points: ["Community posts", "Learning and code updates", "Reactions and replies"],
         },
         {
           key: "documentation",
           label: "Documentation",
-          title: "Reference the language while you build.",
+          title: "For when “I almost remember” isn’t enough.",
           description:
-            "Browse MiniScript+ concepts, syntax and examples in structured documentation connected to the learning experience.",
+            "Look up MiniScript+ concepts, syntax and examples without losing the thread of what you were building.",
           points: ["Structured language reference", "Syntax examples", "Practical guidance"],
         },
         {
           key: "examples",
           label: "Examples",
-          title: "Start from code that already runs.",
+          title: "Good code is easier to start with.",
           description:
-            "Browse practical examples by topic and difficulty, then open one as a starting point for your own project.",
+            "Browse working examples by topic and difficulty, then open one in the editor and turn it into something of your own.",
           points: ["Examples by difficulty", "Multiple programming topics", "Open directly in the editor"],
         },
       ],
     },
     audiences: {
-      switchLabel: "Choose a ScripticX workspace",
+      switchLabel: "Pick your corner of ScripticX",
       tabs: {
         student: "For students",
         teacher: "For teachers",
         personal: "Personal",
       },
     },
-    gallery: {
-      eyebrow: "Learning in the real world",
-      title: "Workshops built around curiosity.",
+    developmentSpotlight: {
+      eyebrow: "ScripticX Development",
+      title: "An idea is a good start. A clear process gets it built.",
       description:
-        "Programming becomes memorable when learners can discuss an idea, test it and see the result together.",
-      action: "Explore the Education Center",
-      captions: ["Build and test", "Learn together", "Celebrate progress", "See ideas run"],
+        "We design and develop digital products for teams that want useful software and no mystery around the process—from the first free conversation to launch.",
+      primary: "Discuss a project",
+      secondary: "See how we work",
+      carouselLabel: "Project process carousel",
+      stepLabel: "Step",
+      previous: "Previous step",
+      next: "Next step",
+      portalNote: "A dedicated client page keeps updates, files, approvals and decisions in one place.",
+      steps: [
+        {
+          title: "Let’s talk",
+          description: "We start with a free 30–45 minute conversation about the idea, audience, goal, budget and timing. You leave with a clearer next step, whether we work together or not.",
+          update: "Goals, constraints and next steps",
+          details: ["Goals & audience", "Constraints & timing", "Early product insights"],
+        },
+        {
+          title: "Plan it clearly",
+          description: "We turn the conversation into a clear scope: deliverables, exclusions, milestones, estimated timing and cost. Everything is written down before work begins.",
+          update: "Scope, timing and pricing agreed",
+          details: ["Scope & deliverables", "Timeline & milestones", "Proposal & pricing"],
+        },
+        {
+          title: "Design & build",
+          description: "After the proposal and contract are approved, we map the experience, design the interface and build in small, reviewable stages—with regular updates and feedback.",
+          update: "Design and build reviews in progress",
+          details: ["Kickoff & content", "UX, UI & prototype", "Development & reviews"],
+        },
+        {
+          title: "Launch & grow",
+          description: "We test the product across devices, prepare the release and hand over the documentation and access. Then we agree on the support that makes sense next.",
+          update: "QA, launch and handover ready",
+          details: ["QA & final approval", "Launch & handover", "Ongoing support"],
+        },
+      ],
+    },
+    gallery: {
+      eyebrow: "No “sit still and just listen” required",
+      title: "Workshops where curiosity gets to make things.",
+      description:
+        "Talk through the idea, test it, break it a little, fix it together. That’s when programming starts to stick.",
+      action: "See how we learn",
+      captions: ["Build it", "Figure it out together", "Celebrate the win", "Watch the idea run"],
     },
     cta: {
-      eyebrow: "Start with the part that fits your goal",
-      title: "Learn, build or launch something useful.",
+      eyebrow: "Now, what about you?",
+      title: "Learn something. Build something. Surprise yourself.",
       description:
-        "Explore the company, open the platform, or contact us about education and development work.",
-      primary: "Open the platform",
-      secondary: "Contact ScripticX",
+        "Open ScripticX and start exploring, or tell us about the idea you’d love to bring to life. We’re listening. :)",
+      primary: "Start exploring",
+      secondary: "Tell us your idea",
     },
   },
   ro: {
     hero: {
-      eyebrow: "Educație · tehnologie · comunitate",
-      title: "Ideile devin",
+      eyebrow: "Învață · construiește · dă-i viață",
+      title: "Ideile bune cresc în",
       accent: "abilități, produse și software util.",
       description:
-        "ScripticX reunește educația, dezvoltarea software și o platformă completă de programare într-o singură companie concentrată.",
-      primary: "Descoperă ScripticX",
-      secondary: "Deschide platforma",
+        "Aici, curiozitatea devine cod, proiectele devin produse, iar ideile bune nu rămân doar în caiet. Învață, construiește sau vino cu următorul lucru care merită lansat. :)",
+      primary: "Vezi ce construim",
+      secondary: "Deschide ScripticX",
       scroll: "Derulează pentru a explora",
       visualLabel: "Spațiul de învățare ScripticX",
     },
     pillars: {
-      eyebrow: "O companie, trei direcții clare",
-      title: "Construite în jurul modului în care cresc ideile.",
+      eyebrow: "Cele trei direcții ScripticX",
+      title: "Predăm. Facem design. Scriem cod.",
       description:
-        "De la primul algoritm la un produs digital gata de lansare, fiecare divizie ScripticX are un scop clar.",
+        "În spatele numelui sunt trei direcții distincte: Education Center, studioul nostru de dezvoltare software și o platformă de programare construită pentru elevi și profesori.",
       items: [
         {
           key: "education",
           number: "01",
           title: "Education Center",
           description:
-            "Pregătire structurată în informatică și machine learning, cu workshop-uri și mentorat bazate pe înțelegere reală.",
+            "Informatică și machine learning pentru minți curioase—cu explicații clare, workshop-uri practice și mentori care au mereu loc pentru încă un „de ce?”",
           href: "/education",
-          action: "Explorează educația",
+          action: "Intră în Education Center",
         },
         {
           key: "development",
           number: "02",
           title: "Development",
           description:
-            "Produse web, design de interfețe și consultanță tehnică practică pentru echipe care au nevoie de execuție solidă.",
+            "Tu vii cu ideea. Noi venim cu gândirea de produs, designul și codul—plus update-uri sincere pe tot parcursul.",
           href: "/development",
-          action: "Explorează development",
+          action: "Construiește ceva cu noi",
         },
         {
           key: "platform",
           number: "03",
           title: "Platform",
           description:
-            "Un workspace concentrat pentru învățarea programării, rezolvarea problemelor, clase și proiecte construite împreună.",
+            "Lecții, cod, clase, proiecte și comunitate într-un singur workspace bine pus la punct. Mai puține tab-uri pierdute, mai multe lucruri terminate.",
           href: "/platform",
-          action: "Explorează platforma",
+          action: "Fă turul platformei",
         },
       ],
     },
     story: {
-      eyebrow: "Ce face ScripticX posibil",
-      title: "Un traseu conectat de la învățare la construcție.",
+      eyebrow: "Un parcurs mai clar prin programare",
+      title: "De la prima lecție la propriile proiecte de programare.",
       description:
-        "Fiecare direcție funcționează independent. Împreună, transformă mai ușor curiozitatea în competență.",
-      panelEyebrow: "ScripticX în practică",
+        "Învață conceptele, exersează cu probleme reale, scrie cod în editorul ScripticX și continuă să crești prin clase, grupuri și competiții.",
+      panelEyebrow: "Parcursul tău",
       items: [
         {
           label: "Învață",
-          title: "Înțelege ideea, nu doar sintaxa.",
+          title: "Prinde ideea. Apoi fă-o a ta.",
           description:
-            "Lecțiile clare, mentoratul și workshop-urile practice oferă o bază solidă și durabilă în informatică.",
-          metric: "Education Center",
+            "Lecțiile clare, mentorii răbdători și workshop-urile practice transformă conceptele intimidante în lucruri pe care le poți explica mai departe.",
+          metric: "Un loc pentru întrebări mai bune.",
           meta: "Informatică · Machine learning · Workshop-uri",
         },
         {
           label: "Exersează",
-          title: "Transformă informația într-o abilitate repetabilă.",
+          title: "Exersează până când „stai, cum?” devine „gata, am prins!”",
           description:
-            "Roadmap-urile, problemele, quiz-urile și statisticile fac practica clară pentru elevi și măsurabilă pentru profesori.",
-          metric: "Platforma ScripticX",
+            "Roadmap-urile, problemele interactive, quiz-urile și statisticile utile fac următorul pas clar pentru elevi și profesori.",
+          metric: "Progres pe care îl poți vedea.",
           meta: "Probleme · Cursuri · Progres",
         },
         {
-          label: "Construiește",
-          title: "Treci de la exerciții la proiecte complete.",
+          label: "Scrie cod",
+          title: "Transformă exercițiile în proiecte care funcționează.",
           description:
-            "Editorul multi-limbaj, fișierele de proiect, GitHub și colaborarea live păstrează tot procesul într-un singur loc.",
-          metric: "Workspace de proiect",
+            "Scrie și rulează cod, organizează fișierele, conectează GitHub și colaborează prin Live Share—direct din workspace-ul tău de programare.",
+          metric: "Un workspace pentru cod care merge mai departe.",
           meta: "Editor · GitHub · Live Share",
         },
         {
-          label: "Livrează",
-          title: "Lansează produse digitale cu un partener de încredere.",
+          label: "Crește",
+          title: "Continuă, alături de ceilalți.",
           description:
-            "ScripticX Development reunește gândirea de produs, designul de interfață și ingineria pentru organizații și echipe.",
-          metric: "Servicii de development",
-          meta: "Web · Design · Consultanță",
+            "Intră în clase și grupuri, participă la competiții și urmărește-ți progresul cu recompense care fac practica constantă mai plăcută.",
+          metric: "Progresul e mai fain când îl împarți cu ceilalți.",
+          meta: "Clase · Grupuri · Competiții",
         },
       ],
     },
     showcase: {
-      title: "Explorează ScripticX pe workspace-uri.",
+      title: "Toate lucrurile utile. O singură platformă.",
       tabs: [
         {
           key: "editor",
           label: "Editor",
-          title: "Proiecte, nu fragmente izolate.",
+          title: "Codul tău merită mai mult decât o casetă goală.",
           description:
-            "Creează fișiere și foldere, scrie MiniScript+, C++ sau Python, conectează GitHub și colaborează prin Live Share.",
+            "Construiește proiecte adevărate în MiniScript+, C++ sau Python, conectează GitHub și cheamă un coleg în Live Share când două cursoare sunt mai bune decât unul.",
           points: ["Editor Monaco multi-limbaj", "Structură de proiect și GitHub", "Run și terminal integrate"],
         },
         {
           key: "learn",
           label: "Învățare",
-          title: "Un roadmap care crește odată cu elevul.",
+          title: "Un roadmap care ține minte unde ai rămas.",
           description:
-            "Urmează lecții structurate, finalizează quiz-uri, rezolvă probleme recomandate și alege următorul traseu de limbaj.",
+            "Urmează lecții clare, încearcă un quiz, rezolvă următoarea problemă recomandată și știi mereu ce are sens să înveți mai departe.",
           points: ["Lecții Markdown", "Quiz-uri interactive", "Trasee data-driven"],
         },
         {
           key: "workspaces",
           label: "Acasă",
-          title: "Workspace-ul pentru școală, dintr-o privire.",
+          title: "Tot ce ține de școală. Fără vânătoare de tab-uri.",
           description:
-            "Începe săptămâna cu temele viitoare, activitatea de învățare și progresul din roadmap reunite în pagina principală a elevului.",
+            "Temele viitoare, activitatea recentă și progresul din roadmap se întâlnesc în aceeași pagină—exact unde te-ai aștepta.",
           points: ["Privire de ansamblu asupra săptămânii", "Teme și deadline-uri viitoare", "Progres în roadmap"],
         },
         {
           key: "planner",
           label: "Planner",
-          title: "Transformă săptămâna într-un plan clar.",
+          title: "Fiecare deadline, la locul lui.",
           description:
-            "Organizează sesiunile de învățare, clasele și deadline-urile în planner-ul elevului, apoi bifează activitățile finalizate.",
+            "Planifică sesiunile de studiu, clasele și deadline-urile, apoi bucură-te puțin de fiecare bifă pusă.",
           points: ["Program săptămânal", "Task-uri și sesiuni de studiu", "Deadline-uri și stări de completare"],
         },
         {
           key: "notes",
           label: "Notițe",
-          title: "Păstrează explicațiile lângă exerciții.",
+          title: "Salvează momentul „a-ha!” înainte să dispară.",
           description:
-            "Scrie și organizează notițe pentru algoritmi, limbaje și materiale de clasă fără să ieși din workspace-ul elevului.",
+            "Ține explicațiile, fragmentele de cod și notițele de la clasă lângă exercițiul care le-a făcut să aibă sens.",
           points: ["Foldere pentru notițe", "Text formatat și cod", "Materiale de studiu partajabile"],
         },
         {
           key: "whiteboard",
           label: "Whiteboard",
-          title: "Fă ideea vizibilă înainte să o codezi.",
+          title: "Gândește dezordonat. Apoi fă ordine.",
           description:
-            "Schițează o soluție, aranjează notițe și conectează pașii liber pe un canvas vizual integrat în workspace.",
+            "Schițează ideea încă neclară, mută piesele și conectează pașii până când soluția începe să pară evidentă.",
           points: ["Canvas liber", "Notițe și conexiuni", "Planificare vizuală a soluției"],
         },
         {
           key: "graphs",
           label: "Grafuri",
-          title: "Înțelege algoritmii pe grafuri văzându-i în acțiune.",
+          title: "Grafurile sunt mai prietenoase când le poți atinge.",
           description:
-            "Creează noduri și muchii, inspectează structura grafului și urmărește vizual parcurgerea unui algoritm.",
+            "Creează noduri și muchii, inspectează structura și urmărește cum o parcurge algoritmul în loc să încerci doar să ți-o imaginezi.",
           points: ["Noduri și muchii interactive", "Proprietăți ale grafului", "Parcurgere vizuală"],
         },
         {
           key: "classes",
           label: "Clase",
-          title: "Un spațiu comun pentru fiecare clasă.",
+          title: "O clasă. Un singur loc pentru tot.",
           description:
-            "Profesorii creează clase și urmăresc progresul elevilor, iar cursanții intră cu un cod de invitație și găsesc temele și resursele în același loc.",
+            "Profesorii creează spațiul, elevii intră cu un cod, iar temele, resursele și progresul nu mai pleacă fiecare în altă direcție.",
           points: ["Creare sau înscriere prin cod de invitație", "Teme, resurse și deadline-uri", "Număr de elevi și progres mediu"],
         },
         {
           key: "problems",
           label: "Probleme",
-          title: "Practică însoțită de feedback clar.",
+          title: "Rulează. Strică. Înțelege. Repetă. :D",
           description:
-            "Deschide o problemă, scrie și rulează soluția, verifică rezultatele testelor și păstrează cel mai bun scor trimis.",
+            "Scrie o soluție, rulează testele, citește feedbackul care chiar te ajută și păstrează cel mai bun scor când totul devine verde.",
           points: ["Dificultate și enunțuri localizate", "Runner și rezultate integrate", "Istoric de submisii și cel mai bun scor"],
         },
         {
           key: "teacherDashboard",
           label: "Dashboard",
-          title: "Vezi situația claselor dintr-o privire.",
+          title: "Toată clasa, fără labirintul de spreadsheet-uri.",
           description:
-            "Urmărește elevii înscriși, clasele active, progresul mediu, deadline-urile viitoare și submisiile recente din dashboard-ul profesorului.",
+            "Vezi clasele active, progresul mediu, deadline-urile viitoare și submisiile recente fără să legi singur toate piesele.",
           points: ["Elevi și clase active", "Progres și număr de teme", "Deadline-uri și activitate recentă"],
         },
         {
           key: "students",
           label: "Elevi",
-          title: "Urmărește fiecare elev dintr-o singură listă.",
+          title: "Vezi cine zboară și cine are nevoie de o mână.",
           description:
-            "Vezi elevii din toate clasele, compară progresul și deschide profilul unui cursant când ai nevoie de mai mult context.",
+            "Găsește fiecare elev din clasele tale, compară progresul și deschide profilul atunci când cifrele au nevoie de puțin context.",
           points: ["Listă de elevi din toate clasele", "Progres individual", "Acces direct la elev"],
         },
         {
           key: "assignments",
           label: "Teme și teste",
-          title: "Păstrează evaluarea ușor de urmărit.",
+          title: "Teme care nu dispar într-un folder misterios.",
           description:
-            "Creează teme într-o clasă, filtrează-le după stare și urmărește deadline-urile, soluțiile finalizate și rata de completare.",
+            "Creează activități, filtrează-le după stare și urmărește deadline-urile, soluțiile trimise și rata de completare dintr-un singur loc.",
           points: ["Teme viitoare, restante sau fără deadline", "Deadline-uri și contextul clasei", "Număr de soluții și progres"],
         },
         {
           key: "calendar",
           label: "Calendar",
-          title: "Toate deadline-urile claselor, organizate lunar.",
+          title: "Deadline-uri care, în sfârșit, stau cuminți.",
           description:
-            "Vezi deadline-urile temelor din toate clasele într-un calendar lunar și deschide direct activitatea corespunzătoare.",
+            "Vezi toate deadline-urile claselor într-un calendar lunar și sari direct la activitatea care are nevoie de atenție.",
           points: ["Program lunar pentru clase", "Deadline-uri și ore", "Acces direct la activități"],
         },
         {
           key: "analytics",
           label: "Analiză",
-          title: "Află unde este nevoie de ajutor.",
+          title: "Observă blocajul înainte să devină o problemă.",
           description:
-            "Compară progresul claselor, identifică elevii care țin pasul și găsește cursanții cu teme alocate și progres scăzut.",
+            "Compară progresul claselor, bucură-te pentru cei care țin pasul și găsește elevii cărora le-ar prinde bine un mic impuls.",
           points: ["Progres general și pe clase", "Elevi peste sau sub praguri", "Listă pentru intervenții"],
         },
         {
           key: "personalDashboard",
           label: "Dashboard",
-          title: "Continuă exact de unde ai rămas.",
+          title: "Bine ai revenit. Ți-am păstrat locul.",
           description:
-            "Vezi seria de zile, punctele reward, problemele rezolvate și următoarea activitate din dashboard-ul personal.",
+            "Seria de zile, punctele reward, problemele rezolvate și următoarea activitate sunt gata înainte să întrebi „unde rămăsesem?”",
           points: ["Daily challenge și streak", "Puncte reward", "Progres la lecții și probleme"],
         },
         {
           key: "search",
           label: "Căutare",
-          title: "Găsește rapid următorul pas potrivit.",
+          title: "Scrie mai puțin. Găsește ce contează.",
           description:
-            "Caută în conținutul platformei și treci direct la probleme, materiale de învățare sau spații din comunitate.",
+            "Caută în toată platforma și sari direct la problema, lecția sau spațiul din comunitate pe care îl voiai de fapt.",
           points: ["Căutare unificată", "Filtre pe tipuri de rezultate", "Acces direct la rezultate"],
         },
         {
           key: "collaboration",
           label: "Live Share",
-          title: "Scrieți cod împreună, live.",
+          title: "Două cursoare. O idee. Fără „dă share la ecran”.",
           description:
-            "Pornește o sesiune Live Share direct din editor, partajează proiectul și păstrează aceeași versiune pentru toți participanții pe măsură ce apar modificări.",
+            "Pornește Live Share din editor, invită echipa și ține pe toată lumea în același proiect în timp ce codul se schimbă live.",
           points: ["Sincronizare live pentru cod și proiect", "Prezența participanților", "Linkuri de sesiune și invitații"],
         },
         {
           key: "groups",
           label: "Grupuri",
-          title: "Spații dedicate fiecărui grup de studiu.",
+          title: "Locul bun pentru întrebarea „oare e prea simplă?”.",
           description:
-            "Creează grupuri publice sau private cu canale, invită membri și organizează conversațiile, mențiunile și fișierele atașate.",
+            "Creează grupuri publice sau private, adaugă canale și ține aproape conversațiile, mențiunile și fișierele de care aveți nevoie.",
           points: ["Grupuri publice și private", "Canale, mențiuni și mesaje fixate", "Invitații, atașamente și roluri"],
         },
         {
           key: "rewards",
           label: "Recompense",
-          title: "Progresul devine parte din profilul tău.",
+          title: "Exersezi. Câștigi. Îți faci profilul al tău.",
           description:
-            "Câștigă puncte de recompensă din probleme și daily challenges, apoi folosește-le în shop pentru obiecte de profil pe care le poți echipa.",
+            "Câștigă puncte din probleme și daily challenges, apoi folosește-le pentru obiecte care fac profilul să semene mai mult cu tine.",
           points: ["Sold separat de puncte reward", "Rame, decorații, fundaluri și titluri", "Inventar și obiecte echipate pe profil"],
         },
         {
           key: "competitions",
           label: "Competiții",
-          title: "Exersează în condiții reale de concurs.",
+          title: "Puțină presiune. Mult progres.",
           description:
-            "Înscrie-te în competiții publicate, rezolvă probleme contra cronometru și urmărește clasamentul live atunci când organizatorul îl activează.",
+            "Intră în competiții de programare, rezolvă probleme contra cronometru și urmărește clasamentul live când organizatorul îl pornește.",
           points: ["Seturi de probleme cronometrate", "Submisii salvate și cel mai bun scor", "Clasamente live și etape de concurs"],
         },
         {
           key: "leaderboard",
           label: "Clasament",
-          title: "Vezi cum se adună practica făcută consecvent.",
+          title: "Competiția prietenoasă îți stă bine.",
           description:
-            "Compară punctele obținute cu comunitatea și urmărește cursanții care construiesc constant progres pe platformă.",
+            "Compară punctele cu restul comunității și vezi cum toate sesiunile mici și constante de practică încep să se adune.",
           points: ["Clasament al comunității", "Puncte acumulate", "Etape de progres vizibile"],
         },
         {
           key: "feed",
           label: "Feed",
-          title: "Împărtășește progresul cu comunitatea.",
+          title: "Arată reușita. Dă ideea mai departe.",
           description:
-            "Publică momente de progres și descoperiri din cod, apoi urmărește activitatea utilă a celorlalți membri ScripticX.",
+            "Publică un milestone sau o descoperire simpatică din cod, apoi vezi ce mai descoperă restul comunității ScripticX.",
           points: ["Postări în comunitate", "Update-uri de învățare și cod", "Reacții și răspunsuri"],
         },
         {
           key: "documentation",
           label: "Documentație",
-          title: "Consultă limbajul în timp ce construiești.",
+          title: "Pentru momentele de „știam eu că era ceva...”.",
           description:
-            "Explorează conceptele, sintaxa și exemplele MiniScript+ într-o documentație structurată și conectată la învățare.",
+            "Caută concepte, sintaxă și exemple MiniScript+ fără să pierzi firul lucrului pe care îl construiai.",
           points: ["Referință structurată a limbajului", "Exemple de sintaxă", "Recomandări practice"],
         },
         {
           key: "examples",
           label: "Exemple",
-          title: "Pornește de la cod care deja rulează.",
+          title: "E mai ușor să începi de la cod care merge.",
           description:
-            "Explorează exemple practice după subiect și dificultate, apoi deschide unul ca punct de pornire pentru propriul proiect.",
+            "Explorează exemple care rulează, după subiect și dificultate, apoi deschide unul în editor și transformă-l în ceva al tău.",
           points: ["Exemple după dificultate", "Mai multe subiecte de programare", "Deschidere directă în editor"],
         },
       ],
     },
     audiences: {
-      switchLabel: "Alege un workspace ScripticX",
+      switchLabel: "Alege colțul tău din ScripticX",
       tabs: {
         student: "Pentru elevi",
         teacher: "Pentru profesori",
         personal: "Personal",
       },
     },
-    gallery: {
-      eyebrow: "Învățare în lumea reală",
-      title: "Workshop-uri construite în jurul curiozității.",
+    developmentSpotlight: {
+      eyebrow: "ScripticX Development",
+      title: "O idee e un început bun. Un proces clar o transformă în produs.",
       description:
-        "Programarea devine memorabilă când elevii pot discuta o idee, o pot testa și pot vedea rezultatul împreună.",
-      action: "Explorează Education Center",
-      captions: ["Construiește și testează", "Învață împreună", "Celebrează progresul", "Vezi ideile în acțiune"],
+        "Proiectăm și dezvoltăm produse digitale pentru echipe care vor software util și un proces fără mistere—de la prima discuție gratuită până la lansare.",
+      primary: "Discută un proiect",
+      secondary: "Vezi cum lucrăm",
+      carouselLabel: "Caruselul procesului de proiect",
+      stepLabel: "Etapa",
+      previous: "Etapa anterioară",
+      next: "Etapa următoare",
+      portalNote: "O pagină dedicată clientului păstrează update-urile, fișierele, aprobările și deciziile într-un singur loc.",
+      steps: [
+        {
+          title: "Povestim despre idee",
+          description: "Începem cu o discuție gratuită de 30–45 de minute despre idee, public, obiectiv, buget și termen. Pleci cu un pas următor mai clar, indiferent dacă lucrăm împreună sau nu.",
+          update: "Obiective, constrângeri și pașii următori",
+          details: ["Obiective și public", "Constrângeri și termen", "Prime observații de produs"],
+        },
+        {
+          title: "Stabilim planul",
+          description: "Transformăm discuția într-un scope clar: livrabile, ce rămâne în afara proiectului, etape, durată estimată și cost. Totul este scris înainte să începem.",
+          update: "Scope, calendar și preț stabilite",
+          details: ["Scope și livrabile", "Calendar și etape", "Ofertă și preț"],
+        },
+        {
+          title: "Proiectăm și construim",
+          description: "După aprobarea ofertei și semnarea contractului, stabilim experiența, proiectăm interfața și dezvoltăm în etape ușor de verificat, cu update-uri și feedback regulate.",
+          update: "Review-uri de design și development în curs",
+          details: ["Kickoff și conținut", "UX, UI și prototip", "Development și review-uri"],
+        },
+        {
+          title: "Lansăm și continuăm",
+          description: "Testăm produsul pe mai multe dispozitive, pregătim lansarea și predăm documentația și accesul. Apoi stabilim împreună suportul potrivit pentru ce urmează.",
+          update: "QA, lansare și predare pregătite",
+          details: ["QA și aprobare finală", "Lansare și predare", "Suport ulterior"],
+        },
+      ],
+    },
+    gallery: {
+      eyebrow: "Fără „stai cuminte și doar ascultă”",
+      title: "Workshop-uri în care curiozitatea pune mâna pe tastatură.",
+      description:
+        "Discută ideea, testeaz-o, strică puțin lucrurile și repară-le împreună. Așa începe programarea să rămână cu tine.",
+      action: "Vezi cum învățăm",
+      captions: ["Construiește-l", "Descoperă împreună", "Sărbătorește reușita", "Privește ideea în acțiune"],
     },
     cta: {
-      eyebrow: "Începe cu direcția potrivită obiectivului tău",
-      title: "Învață, construiește sau lansează ceva util.",
+      eyebrow: "Acum, tu ce zici?",
+      title: "Învață ceva. Construiește ceva. Vezi cât de departe ajungi.",
       description:
-        "Explorează compania, deschide platforma sau contactează-ne pentru proiecte de educație și development.",
-      primary: "Deschide platforma",
-      secondary: "Contactează ScripticX",
+        "Deschide ScripticX și începe să explorezi sau povestește-ne despre ideea pe care vrei s-o aduci la viață. Te ascultăm. :)",
+      primary: "Începe să explorezi",
+      secondary: "Spune-ne ideea ta",
     },
   },
 } as const;
@@ -640,7 +718,7 @@ export const divisionContent = {
       services: [
         { title: "Informatics", description: "Algorithms, data structures and problem-solving taught through clear progression and deliberate practice.", href: "/education/informatics" },
         { title: "Machine learning", description: "A practical introduction to data, models and experimentation for learners ready for the next step.", href: "/education/machine-learning" },
-        { title: "Workshops", description: "Hands-on sessions that make computing tangible through team activities, robots and small projects.", href: "/#workshops" },
+        { title: "Workshops", description: "Hands-on sessions that make computing tangible through team activities, robots and small projects.", href: "/education/workshops" },
       ],
     },
     informatics: {
@@ -667,6 +745,19 @@ export const divisionContent = {
         { title: "Data foundations", description: "Learn to prepare, inspect and understand data before reaching for a model.", href: "/education/machine-learning" },
         { title: "Model building", description: "Explore core approaches through notebooks, visual explanations and small experiments.", href: "/education/machine-learning" },
         { title: "Applied projects", description: "Combine research, implementation and communication in a complete project.", href: "/education/machine-learning" },
+      ],
+    },
+    workshops: {
+      eyebrow: "Education Center · Workshops",
+      title: "Make, test and understand—together.",
+      description: "Free programming, machine learning and robotics activities organised with our partners for curious children and teenagers.",
+      primary: "Organise a workshop with us",
+      secondary: "Explore the activities",
+      highlights: ["Free for participants", "Hands-on and collaborative", "Supported by our partners"],
+      services: [
+        { title: "Programming", description: "Guided coding activities that turn a first idea into something learners can run and explain.", href: "/education/workshops" },
+        { title: "Machine learning", description: "Accessible experiments with Python, data and models—built around questions, not jargon.", href: "/education/workshops" },
+        { title: "Robotics", description: "Small hardware and embedded programming challenges that connect code to the physical world.", href: "/education/workshops" },
       ],
     },
     development: {
@@ -746,7 +837,7 @@ export const divisionContent = {
       services: [
         { title: "Informatică", description: "Algoritmi, structuri de date și problem solving predate prin progresie clară și practică intenționată.", href: "/education/informatics" },
         { title: "Machine learning", description: "O introducere practică în date, modele și experimentare pentru elevii pregătiți de pasul următor.", href: "/education/machine-learning" },
-        { title: "Workshop-uri", description: "Sesiuni practice care fac informatica tangibilă prin activități de echipă, roboți și proiecte mici.", href: "/#workshops" },
+        { title: "Workshop-uri", description: "Sesiuni practice care fac informatica tangibilă prin activități de echipă, roboți și proiecte mici.", href: "/education/workshops" },
       ],
     },
     informatics: {
@@ -773,6 +864,19 @@ export const divisionContent = {
         { title: "Fundamentele datelor", description: "Învață să pregătești, analizezi și înțelegi datele înainte de alegerea unui model.", href: "/education/machine-learning" },
         { title: "Construirea modelelor", description: "Explorează abordările principale prin notebook-uri, explicații vizuale și experimente mici.", href: "/education/machine-learning" },
         { title: "Proiecte aplicate", description: "Combină cercetarea, implementarea și comunicarea într-un proiect complet.", href: "/education/machine-learning" },
+      ],
+    },
+    workshops: {
+      eyebrow: "Education Center · Workshop-uri",
+      title: "Construim, testăm și înțelegem—împreună.",
+      description: "Activități gratuite de programare, machine learning și robotică, organizate alături de partenerii noștri pentru copii și adolescenți curioși.",
+      primary: "Organizează un workshop cu noi",
+      secondary: "Descoperă activitățile",
+      highlights: ["Gratuit pentru participanți", "Practic și colaborativ", "Susținut de partenerii noștri"],
+      services: [
+        { title: "Programare", description: "Activități ghidate care transformă o primă idee într-un program pe care elevii îl pot rula și explica.", href: "/education/workshops" },
+        { title: "Machine learning", description: "Experimente accesibile cu Python, date și modele, construite în jurul întrebărilor, nu al jargonului.", href: "/education/workshops" },
+        { title: "Robotică", description: "Provocări cu hardware și embedded programming care conectează codul cu lumea fizică.", href: "/education/workshops" },
       ],
     },
     development: {

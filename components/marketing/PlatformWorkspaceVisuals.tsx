@@ -50,10 +50,16 @@ export function WhiteboardVisual() {
 
       <div className="relative h-[calc(100%-3.5rem)] overflow-hidden">
         <svg className="pointer-events-none absolute inset-0 size-full" viewBox="0 0 800 440" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M230 118 C305 124 335 154 375 174" fill="none" stroke="rgba(23,23,23,.22)" strokeWidth="2" strokeDasharray="7 8" />
-          <path d="M555 180 C604 213 612 238 565 267" fill="none" stroke="rgba(23,23,23,.22)" strokeWidth="2" strokeDasharray="7 8" />
-          <path d="M425 303 C366 328 326 340 270 350" fill="none" stroke="rgba(23,23,23,.22)" strokeWidth="2" strokeDasharray="7 8" />
-          <path d="M370 170 l-10 -2 l5 9 M570 263 l8 -6 l0 10 M275 346 l10 2 l-6 8" fill="none" stroke="rgba(23,23,23,.34)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <defs>
+            <marker id="whiteboard-arrow" viewBox="0 0 8 8" refX="6.5" refY="4" markerWidth="8" markerHeight="8" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M1 1 L7 4 L1 7" fill="none" stroke="rgba(23,23,23,.38)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </marker>
+          </defs>
+          <g fill="none" stroke="rgba(23,23,23,.24)" strokeWidth="2" strokeDasharray="7 8" strokeLinecap="round" markerEnd="url(#whiteboard-arrow)">
+            <path d="M286 126 C312 132 330 145 348 157" />
+            <path d="M455 205 C447 236 410 256 375 277" />
+            <path d="M350 352 C370 371 381 365 392 351" />
+          </g>
         </svg>
 
         <div className="absolute right-[4%] top-[4%] w-[28%] rotate-[2deg] opacity-80">

@@ -14,14 +14,14 @@ const visualCopy = {
   en: {
     learn: ["Lesson", "Guided example", "Checkpoint"],
     practice: ["Problems", "Quiz", "Progress"],
-    build: ["Project", "main.msp", "Terminal"],
-    deliver: ["Project status", "Milestone review", "Client update"],
+    code: ["Project", "main.msp", "Terminal"],
+    grow: ["Weekly progress", "Group activity", "Competition rank"],
   },
   ro: {
     learn: ["Lecție", "Exemplu ghidat", "Checkpoint"],
     practice: ["Probleme", "Quiz", "Progres"],
-    build: ["Proiect", "main.msp", "Terminal"],
-    deliver: ["Status proiect", "Review etapă", "Update client"],
+    code: ["Proiect", "main.msp", "Terminal"],
+    grow: ["Progres săptămânal", "Activitate în grup", "Loc în competiție"],
   },
 } as const;
 
@@ -49,10 +49,10 @@ function StoryCardVisual({ index, locale }: { index: number; locale: MarketingLo
   if (index === 2) {
     return (
       <div className="h-52 border-t border-white/10 bg-[#0a0b0d] p-4 font-mono text-[10px] text-white/50" aria-hidden="true">
-        <div className="flex items-center gap-2 border-b border-white/10 pb-3"><span className="size-2 rounded-full bg-white/15" /><span className="size-2 rounded-full bg-white/15" /><span className="size-2 rounded-full bg-white/15" /><span className="ml-3 text-white/35">{labels.build[0]}</span></div>
+        <div className="flex items-center gap-2 border-b border-white/10 pb-3"><span className="size-2 rounded-full bg-white/15" /><span className="size-2 rounded-full bg-white/15" /><span className="size-2 rounded-full bg-white/15" /><span className="ml-3 text-white/35">{labels.code[0]}</span></div>
         <div className="grid h-[calc(100%-28px)] grid-cols-[6rem_1fr]">
-          <div className="border-r border-white/10 py-3"><p className="rounded bg-white/7 px-2 py-1.5 text-white/72">{labels.build[1]}</p><p className="px-2 py-1.5">lib</p><p className="px-2 py-1.5">tests</p></div>
-          <div className="p-3 leading-5"><span className="text-sky-300">FUNCTION</span> build()<br /><span className="text-fuchsia-300">&nbsp;&nbsp;PRINT</span> &quot;ScripticX&quot;<br /><span className="text-fuchsia-300">END</span><div className="mt-3 border-t border-white/10 pt-2 text-emerald-300">› {labels.build[2]} · ready</div></div>
+          <div className="border-r border-white/10 py-3"><p className="rounded bg-white/7 px-2 py-1.5 text-white/72">{labels.code[1]}</p><p className="px-2 py-1.5">lib</p><p className="px-2 py-1.5">tests</p></div>
+          <div className="p-3 leading-5"><span className="text-sky-300">FUNCTION</span> build()<br /><span className="text-fuchsia-300">&nbsp;&nbsp;PRINT</span> &quot;ScripticX&quot;<br /><span className="text-fuchsia-300">END</span><div className="mt-3 border-t border-white/10 pt-2 text-emerald-300">› {labels.code[2]} · ready</div></div>
         </div>
       </div>
     );
@@ -60,8 +60,8 @@ function StoryCardVisual({ index, locale }: { index: number; locale: MarketingLo
   return (
     <div className="h-52 border-t border-white/10 bg-black/15 p-5" aria-hidden="true">
       <div className="grid h-full grid-cols-[1fr_8rem] gap-4">
-        <div className="rounded-[10px] border border-white/10 bg-white/[0.035] p-4"><div className="flex items-center justify-between text-[11px] text-white/52"><span>{labels.deliver[0]}</span><span className="rounded-full bg-emerald-300/12 px-2 py-1 text-emerald-200">68%</span></div><div className="mt-5 h-1.5 rounded-full bg-white/8"><div className="h-full w-[68%] rounded-full bg-emerald-300" /></div><div className="mt-5 space-y-2">{labels.deliver.slice(1).map((label) => <div key={label} className="flex items-center gap-2 rounded border border-white/8 px-2.5 py-2 text-[10px] text-white/55"><span className="size-1.5 rounded-full bg-emerald-300" />{label}</div>)}</div></div>
-        <div className="space-y-2">{["PDF", "UI", "API"].map((label, itemIndex) => <div key={label} className="flex h-[calc((100%-1rem)/3)] items-center justify-center rounded-[9px] border border-white/10 bg-white/[0.035] font-mono text-[10px] text-white/42">{String(itemIndex + 1).padStart(2, "0")} · {label}</div>)}</div>
+        <div className="rounded-[10px] border border-white/10 bg-white/[0.035] p-4"><div className="flex items-center justify-between text-[11px] text-white/52"><span>{labels.grow[0]}</span><span className="rounded-full bg-emerald-300/12 px-2 py-1 text-emerald-200">82%</span></div><div className="mt-5 h-1.5 rounded-full bg-white/8"><div className="h-full w-[82%] rounded-full bg-emerald-300" /></div><div className="mt-5 space-y-2">{labels.grow.slice(1).map((label) => <div key={label} className="flex items-center gap-2 rounded border border-white/8 px-2.5 py-2 text-[10px] text-white/55"><span className="size-1.5 rounded-full bg-emerald-300" />{label}</div>)}</div></div>
+        <div className="space-y-2">{["XP", "7 DAYS", "#12"].map((label, itemIndex) => <div key={label} className="flex h-[calc((100%-1rem)/3)] items-center justify-center rounded-[9px] border border-white/10 bg-white/[0.035] font-mono text-[10px] text-white/42">{String(itemIndex + 1).padStart(2, "0")} · {label}</div>)}</div>
       </div>
     </div>
   );
@@ -134,7 +134,7 @@ export default function StoryScroller() {
         <div className="max-w-3xl"><p className="text-sm font-medium text-white/55">{content.eyebrow}</p><h2 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-6xl">{content.title}</h2><p className="mt-5 max-w-2xl text-pretty text-base leading-7 text-white/58 sm:text-lg">{content.description}</p></div>
         <div className="mt-16 grid gap-5 lg:grid-cols-[minmax(0,1.02fr)_minmax(26rem,0.98fr)] lg:items-start lg:gap-8">
           <div ref={stickyPanelRef} className="top-24 overflow-hidden rounded-[20px] border border-white/10 bg-[#111315]/94 shadow-[0_28px_90px_rgba(0,0,0,0.24)] backdrop-blur-sm lg:sticky lg:h-[39rem]">
-            <div className="flex items-center justify-between border-b border-white/10 px-6 py-5"><BrandMark className="text-white [&_img]:invert" /><span className="font-mono text-xs text-white/42">0{active + 1} / 04</span></div>
+            <div className="flex items-center justify-between border-b border-white/10 px-6 py-5"><BrandMark className="text-white [&_img]:invert" /><span className="font-mono text-xs text-white/42">0{active + 1} / {String(content.items.length).padStart(2, "0")}</span></div>
             <div className="relative flex min-h-[33rem] flex-col justify-center overflow-hidden p-7 sm:p-10 lg:h-[calc(39rem-65px)] lg:min-h-0 lg:p-12">
               <div className="sx-story-grid absolute inset-0" aria-hidden="true" /><SparkleField className="opacity-85" />
               <AnimatePresence mode="wait" initial={false}><motion.div key={item.label} initial={reduceMotion ? false : { opacity: 0, y: 28, filter: "blur(8px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} exit={reduceMotion ? undefined : { opacity: 0, y: -14, filter: "blur(5px)" }} transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }} className="relative z-10"><p className="text-sm font-medium text-white/48">{content.panelEyebrow}</p><p className="mt-5 sx-gradient-text-dark text-5xl font-semibold tracking-[-0.055em] sm:text-7xl">{item.label}</p><h3 className="mt-8 max-w-xl text-balance text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">{item.title}</h3><p className="mt-5 max-w-lg text-pretty text-base leading-7 text-white/58">{item.description}</p></motion.div></AnimatePresence>

@@ -16,6 +16,7 @@ const groups = [
     links: [
       ["about", "/#company"],
       ["education", "/education"],
+      ["events", "/events"],
       ["development", "/development"],
       ["platform", "/platform"],
       ["team", "/#team"],
@@ -84,15 +85,7 @@ export default async function Footer() {
             <p className="mt-4 max-w-md text-sm leading-6 text-muted-foreground">
               {t("description")}
             </p>
-            <Link
-              href="https://platform.scripticx.org/contact"
-              className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium hover:underline"
-            >
-              {t("contact")}
-              <ArrowUpRight className="size-4" />
-            </Link>
-
-            <div className="mt-8">
+            <div className="mt-6">
               <h2 className="text-sm font-medium">{t("socials")}</h2>
               <div className="mt-3 flex flex-wrap gap-2.5 text-muted-foreground">
                 {socials.map(({ href, icon, label }) => (
@@ -116,6 +109,14 @@ export default async function Footer() {
                 ))}
               </div>
             </div>
+
+            <Link
+              href="https://platform.scripticx.org/contact"
+              className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium hover:underline"
+            >
+              {t("contact")}
+              <ArrowUpRight className="size-4" />
+            </Link>
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">

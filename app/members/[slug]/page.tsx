@@ -117,12 +117,7 @@ export default async function MemberPage({ params }: MemberPageProps) {
                 <div className="mt-auto pt-12">
                   <div className="border-t pt-8">
                     <h2 className="text-sm font-medium">{t("profile.contact")}</h2>
-                    <p className="mt-2 max-w-lg text-sm leading-6 text-muted-foreground">
-                      {member.email || member.linkedin
-                        ? t("profile.contactDescription")
-                        : t("profile.contactFallback")}
-                    </p>
-                    <div className="mt-5 flex flex-wrap gap-2">
+                    <div className="mt-4 flex flex-wrap gap-2">
                       <Button asChild>
                         <Link href={emailHref}>
                           <Mail />
