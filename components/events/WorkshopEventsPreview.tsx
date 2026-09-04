@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/marketing/Reveal";
 import { Button } from "@/components/ui/button";
 import { DEFAULT_EVENT_IMAGE, getEvents, sortEvents } from "@/lib/events-data";
+import { formatEventDate } from "@/lib/event-dates";
 import type { MarketingLocale } from "@/lib/marketing-content";
 
 const copy = {
@@ -21,16 +22,6 @@ const copy = {
     action: "Vezi toate evenimentele",
   },
 } as const;
-
-function formatDate(startAt: string, endAt: string | undefined, locale: MarketingLocale) {
-  const formatter = new Intl.DateTimeFormat(locale === "ro" ? "ro-RO" : "en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-  const start = new Date(startAt);
-  return endAt ? formatter.formatRange(start, new Date(endAt)) : formatter.format(start);
-}
 
 export function WorkshopEventsPreview({ locale }: { locale: MarketingLocale }) {
   const content = copy[locale];
@@ -71,7 +62,7 @@ export function WorkshopEventsPreview({ locale }: { locale: MarketingLocale }) {
                   <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em]">{event.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">{event.summary}</p>
                   <div className="mt-auto flex flex-wrap gap-x-4 gap-y-2 border-t pt-5 text-xs text-muted-foreground">
-                    <span className="inline-flex items-center gap-1.5"><CalendarDays className="size-3.5" />{formatDate(event.startAt, event.endAt, locale)}</span>
+                    <span className="inline-flex items-center gap-1.5"><CalendarDays className="size-3.5" />{formatEventDate(event, locale)}</span>
                     <span className="inline-flex items-center gap-1.5"><MapPin className="size-3.5" />{event.location}</span>
                   </div>
                 </div>

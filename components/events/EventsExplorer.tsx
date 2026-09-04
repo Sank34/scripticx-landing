@@ -21,6 +21,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { formatEventDate, formatEventMonth, formatEventYear, getEventMonthKey } from "@/lib/event-dates";
 import {
   DEFAULT_EVENT_IMAGE,
   DEFAULT_EVENT_MODAL_IMAGE,
@@ -81,45 +82,11 @@ const copy = {
   },
 } as const;
 
-function capitalize(value: string) {
-  return value.charAt(0).toLocaleUpperCase() + value.slice(1);
-}
-
-function formatMonth(date: Date, locale: MarketingLocale) {
-  return capitalize(
-    new Intl.DateTimeFormat(locale === "ro" ? "ro-RO" : "en-GB", {
-      month: "long",
-    }).format(date),
-  );
-}
-
-function formatYear(date: Date, locale: MarketingLocale) {
-  return new Intl.DateTimeFormat(locale === "ro" ? "ro-RO" : "en-GB", {
-    year: "numeric",
-  }).format(date);
-}
-
-function formatEventDate(event: ScripticxEvent, locale: MarketingLocale) {
-  if (event.dateLabel) return event.dateLabel;
-
-  const formatter = new Intl.DateTimeFormat(locale === "ro" ? "ro-RO" : "en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-  const start = new Date(event.startAt);
-  const end = event.endAt ? new Date(event.endAt) : null;
-
-  if (!end) return formatter.format(start);
-  return formatter.formatRange(start, end);
-}
-
 function groupByMonth(events: ScripticxEvent[]) {
   const groups = new Map<string, ScripticxEvent[]>();
 
   for (const event of events) {
-    const date = new Date(event.startAt);
-    const key = `${date.getFullYear()}-${date.getMonth()}`;
+    const key = getEventMonthKey(event.startAt);
     groups.set(key, [...(groups.get(key) ?? []), event]);
   }
 
@@ -155,7 +122,6 @@ function EventCard({
   onSelect: (event: ScripticxEvent) => void;
 }) {
   const content = copy[locale];
-  const date = new Date(event.startAt);
 
   return (
     <motion.button
@@ -174,7 +140,7 @@ function EventCard({
         <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
         <div className="absolute bottom-4 left-4 rounded-[10px] border border-white/20 bg-black/55 px-3.5 py-2.5 text-white backdrop-blur-md">
           <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/75">
-            {formatMonth(date, locale)}
+            {formatEventMonth(event.startAt, locale)}
           </p>
         </div>
       </div>
@@ -351,14 +317,14 @@ export function EventsExplorer({
             {groups.length ? (
               <div>
                 {groups.map((group, groupIndex) => {
-                  const monthDate = new Date(group[0].startAt);
+                  const monthStart = group[0].startAt;
                   return (
-                    <Fragment key={`${monthDate.getFullYear()}-${monthDate.getMonth()}`}>
+                    <Fragment key={getEventMonthKey(monthStart)}>
                       {groupIndex > 0 ? <hr className="border-border" /> : null}
                       <section className="grid gap-7 py-10 first:pt-0 lg:grid-cols-[11rem_1fr] lg:gap-12">
                         <header>
-                          <p className="text-lg font-semibold">{formatMonth(monthDate, locale)}</p>
-                          <p className="mt-1 font-mono text-xs text-muted-foreground">{formatYear(monthDate, locale)}</p>
+                          <p className="text-lg font-semibold">{formatEventMonth(monthStart, locale)}</p>
+                          <p className="mt-1 font-mono text-xs text-muted-foreground">{formatEventYear(monthStart)}</p>
                         </header>
                         <div className="grid gap-4">
                           {group.map((event, index) => (
