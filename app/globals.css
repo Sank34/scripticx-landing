@@ -1,6 +1,14 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+
+/* Scan application sources only, never generated bundles or cache backups. */
+@source "./";
+@source "../components";
+@source "../lib";
+@source "../content";
+@source "../messages";
+@source "../mdx-components.tsx";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -89,9 +97,9 @@
   --sx-motion-fast: 120ms;
   --sx-motion-base: 200ms;
   --sx-motion-slow: 280ms;
-  --sx-scrollbar-size: 0.625rem;
-  --sx-scrollbar-thumb: color-mix(in oklab, var(--foreground) 18%, transparent);
-  --sx-scrollbar-thumb-hover: color-mix(in oklab, var(--foreground) 32%, transparent);
+  --sx-scrollbar-size: 0.55rem;
+  --sx-scrollbar-thumb: color-mix(in oklab, var(--foreground) 78%, transparent);
+  --sx-scrollbar-thumb-hover: color-mix(in oklab, var(--foreground) 94%, transparent);
 }
 
 .dark {
@@ -126,8 +134,8 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-  --sx-scrollbar-thumb: color-mix(in oklab, var(--foreground) 24%, transparent);
-  --sx-scrollbar-thumb-hover: color-mix(in oklab, var(--foreground) 42%, transparent);
+  --sx-scrollbar-thumb: color-mix(in oklab, var(--foreground) 68%, transparent);
+  --sx-scrollbar-thumb-hover: color-mix(in oklab, var(--foreground) 88%, transparent);
 }
 
 @layer base {
@@ -223,6 +231,32 @@
   50% {
     transform: translate3d(0, -7px, 0) rotate(0.75deg);
   }
+}
+
+@keyframes sx-platform-loop-beam {
+  0% { transform: translateX(-110%); opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { transform: translateX(430%); opacity: 0; }
+}
+
+@keyframes sx-vs-rail-scan {
+  0%, 18% { transform: translateY(-180%); opacity: 0; }
+  32% { opacity: 0.8; }
+  68% { opacity: 0.8; }
+  82%, 100% { transform: translateY(180%); opacity: 0; }
+}
+
+@keyframes sx-miniscript-core-glow {
+  0%, 100% { box-shadow: 0 24px 70px rgba(16, 185, 129, 0.16); }
+  50% { box-shadow: 0 28px 88px rgba(16, 185, 129, 0.3); }
+}
+
+@keyframes sx-ecosystem-flow {
+  0% { transform: translateX(-72%) scaleX(0.5); opacity: 0; }
+  18% { opacity: 0.9; }
+  82% { opacity: 0.9; }
+  100% { transform: translateX(72%) scaleX(0.5); opacity: 0; }
 }
 
 @layer utilities {
@@ -335,6 +369,50 @@
     mask-image: linear-gradient(to top, black 0%, black 36%, transparent 100%);
     -webkit-mask-image: linear-gradient(to top, black 0%, black 36%, transparent 100%);
   }
+
+  .sx-platform-loop-beam {
+    animation: sx-platform-loop-beam 6.5s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  .sx-google-mark {
+    color: transparent;
+    background: conic-gradient(from -35deg, #4285f4 0 25%, #34a853 0 45%, #fbbc05 0 67%, #ea4335 0 82%, #4285f4 0);
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+
+  .sx-vs-rail::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    left: 50%;
+    width: 1px;
+    background: rgba(0, 0, 0, 0.09);
+  }
+
+  .sx-vs-rail::after {
+    content: "";
+    position: absolute;
+    left: calc(50% - 1px);
+    top: 0;
+    width: 3px;
+    height: 42%;
+    border-radius: 999px;
+    background: linear-gradient(to bottom, transparent, #34d399, transparent);
+    animation: sx-vs-rail-scan 4.8s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  .sx-miniscript-core {
+    animation: sx-miniscript-core-glow 4.5s ease-in-out infinite;
+  }
+
+  .sx-ecosystem-flow {
+    animation: sx-ecosystem-flow 4.6s ease-in-out infinite;
+    transform-origin: center;
+    will-change: transform, opacity;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -350,6 +428,18 @@
   .sx-constellation-line,
   .sx-education-hero-frame,
   .sx-mascot-float {
+    animation: none;
+  }
+
+  .sx-platform-loop-beam {
+    animation: none;
+    opacity: 0.7;
+    transform: translateX(150%);
+  }
+
+  .sx-vs-rail::after,
+  .sx-miniscript-core,
+  .sx-ecosystem-flow {
     animation: none;
   }
 

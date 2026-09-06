@@ -27,6 +27,7 @@ const groups = [
     key: "resources",
     links: [
       ["knowledge", "/knowledge"],
+      ["blog", "/blog"],
       ["docs", "/docs"],
       ["trust", "/trust"],
       ["verify", "/verify"],

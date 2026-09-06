@@ -3,8 +3,9 @@ import type { MetadataRoute } from "next";
 import { getKnowledgeArticles } from "@/lib/knowledge-data";
 import { absoluteUrl } from "@/lib/metadata";
 import { teamMembers } from "@/lib/team-data";
+import { getBlogPosts } from "@/lib/blog";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date("2026-08-26T00:00:00.000Z");
   const marketingRoutes = [
     ["/education", 0.9],
@@ -12,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/development", 0.9],
     ["/platform", 0.95],
     ["/partners", 0.8],
+    ["/blog", 0.8],
   ] as const;
   const knowledgeRoutes = getKnowledgeArticles("en").map((article) => ({
     url: absoluteUrl(article.href),
@@ -52,5 +54,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     })),
     ...knowledgeRoutes,
+    ...(await getBlogPosts("en")).map(post => ({url: absoluteUrl(`/blog/${post.slug}`), lastModified: new Date(`${post.date}T00:00:00Z`), changeFrequency: "monthly" as const, priority: 0.7})),
   ];
 }

@@ -25,6 +25,7 @@ import { formatEventDate, formatEventMonth, formatEventYear, getEventMonthKey } 
 import {
   DEFAULT_EVENT_IMAGE,
   DEFAULT_EVENT_MODAL_IMAGE,
+  isOngoingEvent,
   isUpcomingEvent,
   sortEvents,
   type ScripticxEvent,
@@ -37,6 +38,7 @@ const copy = {
   en: {
     upcoming: "Upcoming",
     past: "Past events",
+    ongoing: "Ongoing",
     emptyTitle: "The next date is still taking shape.",
     emptyDescription:
       "We are preparing new activities with our partners. Check back soon or tell us what kind of workshop you would like to join.",
@@ -61,6 +63,7 @@ const copy = {
   ro: {
     upcoming: "Urmează",
     past: "Evenimente trecute",
+    ongoing: "În desfășurare",
     emptyTitle: "Următoarea dată încă prinde contur.",
     emptyDescription:
       "Pregătim activități noi împreună cu partenerii noștri. Revino curând sau spune-ne ce fel de workshop ți-ar plăcea să găsești aici.",
@@ -118,14 +121,17 @@ function EventCard({
   event,
   locale,
   index,
+  now,
   onSelect,
 }: {
   event: ScripticxEvent;
   locale: MarketingLocale;
   index: number;
+  now: Date;
   onSelect: (event: ScripticxEvent) => void;
 }) {
   const content = copy[locale];
+  const ongoing = isOngoingEvent(event, now);
 
   return (
     <motion.button
@@ -150,9 +156,16 @@ function EventCard({
       </div>
       <div className="flex min-h-[15rem] flex-col p-5 sm:h-60 sm:min-h-0">
         <div className="flex items-center justify-between gap-5">
-          <span className="rounded-full border px-2.5 py-1 text-[11px] text-muted-foreground">
-            {content.category[event.category]}
-          </span>
+          <div className="flex min-w-0 flex-wrap items-center gap-2">
+            <span className="rounded-full border px-2.5 py-1 text-[11px] text-muted-foreground">
+              {content.category[event.category]}
+            </span>
+            {ongoing ? (
+              <span className="rounded-full bg-foreground px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-background">
+                {content.ongoing}
+              </span>
+            ) : null}
+          </div>
           <ArrowRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
         </div>
         <div className="mt-auto pt-5">
@@ -184,6 +197,7 @@ function EventDialog({
   if (!event) return null;
 
   const upcoming = isUpcomingEvent(event, now);
+  const ongoing = isOngoingEvent(event, now);
 
   return (
     <Dialog open={Boolean(event)} onOpenChange={onOpenChange}>
@@ -192,7 +206,7 @@ function EventDialog({
         className="max-h-[min(92svh,900px)] w-[min(calc(100vw-1.5rem),920px)] gap-0 overflow-y-auto rounded-[18px] p-0 sm:max-w-none"
       >
         <div>
-          <div className="relative h-32 overflow-hidden bg-muted sm:h-40">
+          <div className="relative h-52 overflow-hidden bg-muted sm:h-64">
             <Image
               src={event.modalImage ?? event.image ?? DEFAULT_EVENT_MODAL_IMAGE}
               alt=""
@@ -202,9 +216,16 @@ function EventDialog({
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-            <p className="absolute bottom-4 left-5 rounded-full border border-white/20 bg-black/55 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md sm:left-7">
-              {content.category[event.category]}
-            </p>
+            <div className="absolute bottom-4 left-5 flex flex-wrap items-center gap-2 sm:left-7">
+              <p className="rounded-full border border-white/20 bg-black/55 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md">
+                {content.category[event.category]}
+              </p>
+              {ongoing ? (
+                <p className="rounded-full bg-white px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-black">
+                  {content.ongoing}
+                </p>
+              ) : null}
+            </div>
           </div>
           <div className="p-5 sm:px-7 sm:py-6">
             <DialogHeader className="pr-8 text-left">
@@ -339,7 +360,7 @@ export function EventsExplorer({
                         </header>
                         <div className="grid gap-4">
                           {group.map((event, index) => (
-                            <EventCard key={event.id} event={event} locale={locale} index={index} onSelect={setSelectedEvent} />
+                            <EventCard key={event.id} event={event} locale={locale} index={index} now={now} onSelect={setSelectedEvent} />
                           ))}
                         </div>
                       </section>

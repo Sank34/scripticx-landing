@@ -1,7 +1,9 @@
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
+import { isValidElement } from "react";
 
 import { Callout } from "@/components/knowledge/Callout";
+import { HighlightedCodeBlock } from "@/components/knowledge/HighlightedCodeBlock";
 import { cn } from "@/lib/utils";
 
 const components: MDXComponents = {
@@ -98,15 +100,24 @@ const components: MDXComponents = {
       {...props}
     />
   ),
-  pre: ({ className, ...props }) => (
-    <pre
+  pre: ({ className, children, ...props }) => {
+    if (isValidElement<{ children?: unknown; className?: string }>(children) && typeof children.props.children === "string") {
+      const language = children.props.className?.match(/(?:^|\s)language-([^\s]+)/)?.[1];
+      const labels: Record<string, string> = {
+        python: "Python", py: "Python", javascript: "JavaScript", js: "JavaScript",
+        typescript: "TypeScript", ts: "TypeScript", cpp: "C++", miniscript: "MiniScript+", msp: "MiniScript+",
+      };
+      return <HighlightedCodeBlock code={children.props.children} languageLabel={language ? labels[language] ?? language : "Code"} />;
+    }
+
+    return <pre
       className={cn(
         "mt-6 overflow-x-auto rounded-xl border bg-zinc-950 p-5 text-sm leading-6 text-zinc-100 shadow-sm [&_code]:bg-transparent [&_code]:p-0 [&_code]:text-inherit",
         className
       )}
       {...props}
-    />
-  ),
+    >{children}</pre>;
+  },
   table: ({ className, ...props }) => (
     <div className="mt-6 overflow-x-auto rounded-xl border">
       <table

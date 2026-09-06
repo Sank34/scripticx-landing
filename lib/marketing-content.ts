@@ -7,7 +7,7 @@ export function getMarketingLocale(locale: string): MarketingLocale {
 export const marketingContent = {
   en: {
     hero: {
-      eyebrow: "Learn · build · make it real",
+      eyebrow: "Learn. Build. Grow.",
       title: "Good ideas grow into",
       accent: "skills, products and useful software.",
       description:
@@ -739,7 +739,7 @@ export const divisionContent = {
     },
     development: {
       eyebrow: "ScripticX Development",
-      title: "Digital products designed to stay useful.",
+      title: "Digital products that stay useful.",
       description: "Product strategy, interface design and modern web engineering for organizations that value clarity and maintainability.",
       primary: "Discuss a project",
       secondary: "See our capabilities",
@@ -768,11 +768,11 @@ export const divisionContent = {
     },
     platform: {
       eyebrow: "ScripticX Platform",
-      title: "A complete workspace for learning and building software.",
+      title: "Learn, build and teach in one workspace.",
       description: "Courses, problems, projects, notes, classes and collaboration tools brought into one focused programming environment.",
       primary: "Open ScripticX Platform",
-      secondary: "Read the documentation",
-      highlights: ["Learner and teacher workspaces", "Multi-language project editor", "Progress, classes and collaboration"],
+      secondary: "Explore the platform",
+      highlights: ["Learn through lessons, roadmaps and problems", "Build projects directly in the browser", "Manage classes, assignments and progress"],
       services: [
         { title: "Learn", description: "Follow structured roadmaps, read interactive lessons and practice with problems matched to your path.", href: "https://platform.scripticx.org/roadmap" },
         { title: "Build", description: "Create complete projects with files, folders, GitHub, code execution and a modern Monaco editor.", href: "https://platform.scripticx.org/editor" },
@@ -812,7 +812,7 @@ export const divisionContent = {
     },
     development: {
       eyebrow: "ScripticX Development",
-      title: "Produse digitale create pentru a rămâne utile.",
+      title: "Produse digitale care rămân utile.",
       description: "Strategie de produs, design de interfață și inginerie web modernă pentru organizații care apreciază claritatea și mentenanța.",
       primary: "Discută un proiect",
       secondary: "Vezi capabilitățile",
@@ -841,11 +841,11 @@ export const divisionContent = {
     },
     platform: {
       eyebrow: "Platforma ScripticX",
-      title: "Un workspace complet pentru învățare și software.",
+      title: "Învață, construiește și predă într-un singur workspace.",
       description: "Cursuri, probleme, proiecte, notițe, clase și instrumente de colaborare reunite într-un mediu concentrat de programare.",
       primary: "Deschide platforma ScripticX",
-      secondary: "Citește documentația",
-      highlights: ["Workspaces pentru elevi și profesori", "Editor de proiecte multi-limbaj", "Progres, clase și colaborare"],
+      secondary: "Explorează platforma",
+      highlights: ["Învață prin lecții, roadmap-uri și probleme", "Construiește proiecte direct în browser", "Gestionează clase, teme și progres"],
       services: [
         { title: "Învață", description: "Urmează roadmap-uri structurate, citește lecții interactive și exersează cu probleme potrivite traseului tău.", href: "https://platform.scripticx.org/roadmap" },
         { title: "Construiește", description: "Creează proiecte complete cu fișiere, foldere, GitHub, execuție și editor Monaco modern.", href: "https://platform.scripticx.org/editor" },

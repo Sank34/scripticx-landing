@@ -40,7 +40,7 @@ type EventSource = Omit<ScripticxEvent, keyof LocalizedEventContent> & {
 };
 
 const workshopRoot = "/events/workshops/programming-1-3-july-26";
-const eventSignupForm = "https://forms.gle/T1sqKSPVyMzpYDSV9";
+const eventSignupForm = "https://forms.gle/BeEBV9FJf9XKt36Z6";
 
 export const DEFAULT_EVENT_IMAGE = "/default-event.png";
 export const DEFAULT_EVENT_MODAL_IMAGE = "/scripticx-bg.png";
@@ -52,43 +52,53 @@ const eventSources: readonly EventSource[] = [
     // Month bounds are for calendar grouping and expiry, not a confirmed event date.
     startAt: "2026-10-01T00:00:00+03:00",
     endAt: "2026-10-31T23:59:59+02:00",
-    category: "activity",
+    category: "competition",
     image: "/hacktoberfest-2026.png",
     imageFit: "contain",
     imageBackground: "#3d5e58",
     modalImage: "/hacktoberfest-bg.webp",
     content: {
       en: {
-        eyebrow: "Hacktoberfest · MLH",
+        eyebrow: "One-day hackathon · MLH",
         dateLabel: "October 2026 · Date TBA",
         title: "Hacktoberfest with MLH",
-        summary: "A community event for students and learners to explore open-source AI, share ideas and learn together.",
-        description: "Join ScripticX and MLH at BJPIBR for Hacktoberfest: a community event for students and learners to explore open-source AI, share ideas and learn together. The exact date and full programme will be announced soon.",
+        summary: "A one-day open-source hackathon with MLH, open to anyone from the Galați–Brăila metropolitan area.",
+        description: "Join ScripticX and MLH at BJPIBR for a one-day Hacktoberfest hackathon focused on building open-source projects, collaborating and learning together. Anyone from the Galați–Brăila metropolitan area can register. The exact date and full programme will be announced soon.",
         location: "BJPIBR",
-        audience: "Students / Learners",
-        highlights: ["Explore open-source AI", "Share ideas and learn together", "Full programme coming soon"],
+        audience: "Anyone from the Galați–Brăila metropolitan area",
+        highlights: [
+          "One-day hackathon with MLH",
+          "Build and collaborate on open-source projects",
+          "Open registration for the metropolitan area",
+        ],
       },
       ro: {
-        eyebrow: "Hacktoberfest · MLH",
+        eyebrow: "Hackathon de o zi · MLH",
         dateLabel: "Octombrie 2026 · Data va fi anunțată",
         title: "Hacktoberfest cu MLH",
-        summary: "Un eveniment pentru elevi, studenți și pasionați de învățare, dedicat explorării AI open-source și schimbului de idei.",
-        description: "Alătură-te ScripticX și MLH la BJPIBR pentru Hacktoberfest: un eveniment în care elevii, studenții și pasionații de învățare explorează AI open-source, schimbă idei și învață împreună. Data exactă și programul complet vor fi anunțate în curând.",
+        summary: "Un hackathon open-source de o zi, organizat alături de MLH și deschis oricui din zona metropolitană Galați–Brăila.",
+        description: "Participă alături de ScripticX și MLH la BJPIBR la un hackathon Hacktoberfest de o zi, dedicat construirii de proiecte open-source, colaborării și învățării. Se poate înscrie oricine din zona metropolitană Galați–Brăila. Data exactă și programul complet vor fi anunțate în curând.",
         location: "BJPIBR",
-        audience: "Elevi, studenți / Pasionați de învățare",
-        highlights: ["Explorăm AI open-source", "Schimb de idei și învățare împreună", "Programul complet va fi anunțat"],
+        audience: "Oricine din zona metropolitană Galați–Brăila",
+        highlights: [
+          "Hackathon de o zi alături de MLH",
+          "Construim și colaborăm la proiecte open-source",
+          "Înscrieri deschise pentru zona metropolitană",
+        ],
       },
     },
   },
   {
-    id: "scripticx-competition-october-2026",
+    id: "scripticx-competition-november-2026",
     link: "https://platform.scripticx.org",
-    startAt: "2026-10-01T09:00:00+03:00",
+    // Month bounds are for calendar grouping and expiry while the date is TBA.
+    startAt: "2026-11-01T00:00:00+02:00",
+    endAt: "2026-11-30T23:59:59+02:00",
     category: "competition",
     content: {
       en: {
         eyebrow: "Programming competition",
-        dateLabel: "October 2026 · Date TBA",
+        dateLabel: "November 2026 · Date TBA",
         title: "ScripticX Competition TBA",
         summary:
           "A new programming competition is coming to the ScripticX platform. The full format and schedule will be announced soon.",
@@ -104,7 +114,7 @@ const eventSources: readonly EventSource[] = [
       },
       ro: {
         eyebrow: "Competiție de programare",
-        dateLabel: "Octombrie 2026 · Data va fi anunțată",
+        dateLabel: "Noiembrie 2026 · Data va fi anunțată",
         title: "ScripticX Competition TBA",
         summary:
           "Pregătim o nouă competiție de programare pe platforma ScripticX. Formatul complet și programul vor fi anunțate în curând.",
@@ -155,6 +165,90 @@ const eventSources: readonly EventSource[] = [
           "Patru zile de workshop pe săptămână",
           "Grupa de gimnaziu · MiniScript+",
           "Clasa a IX-a · MiniScript+ și Python",
+        ],
+      },
+    },
+  },
+  {
+    id: "back-to-school-final-group-1-2026",
+    link: "https://platform.scripticx.org",
+    // October bounds keep the TBA event in the correct calendar section.
+    startAt: "2026-10-03T00:00:00+03:00",
+    endAt: "2026-10-31T23:59:59+02:00",
+    category: "competition",
+    content: {
+      en: {
+        eyebrow: "Back to School final competition",
+        dateLabel: "October 2026 · Date TBA",
+        title: "Back to School Final · Group 1",
+        summary:
+          "The final competition for the middle-school group, hosted on the ScripticX platform.",
+        description:
+          "The middle-school group concludes ScripticX Back to School with a final online competition. Participants will solve introductory algorithmic challenges in MiniScript+ and put into practice what they learned throughout the workshop.",
+        location: "Online · ScripticX platform",
+        audience: "Back to School · Middle-school group",
+        highlights: [
+          "Final challenges for Group 1",
+          "Introductory algorithms in MiniScript+",
+          "Competition hosted on ScripticX",
+        ],
+      },
+      ro: {
+        eyebrow: "Competiția finală Back to School",
+        dateLabel: "Octombrie 2026 · Data va fi anunțată",
+        title: "Finala Back to School · Grupa 1",
+        summary:
+          "Competiția finală pentru grupa de gimnaziu, organizată pe platforma ScripticX.",
+        description:
+          "Grupa de gimnaziu încheie ScripticX Back to School cu o competiție finală online. Participanții vor rezolva provocări introductive de algoritmică în MiniScript+ și vor aplica noțiunile învățate pe parcursul workshop-ului.",
+        location: "Online · Platforma ScripticX",
+        audience: "Back to School · Grupa de gimnaziu",
+        highlights: [
+          "Provocări finale pentru Grupa 1",
+          "Algoritmică introductivă în MiniScript+",
+          "Competiție organizată pe ScripticX",
+        ],
+      },
+    },
+  },
+  {
+    id: "back-to-school-final-group-2-2026",
+    link: "https://platform.scripticx.org",
+    // October bounds keep the TBA event in the correct calendar section.
+    startAt: "2026-10-03T00:00:01+03:00",
+    endAt: "2026-10-31T23:59:59+02:00",
+    category: "competition",
+    content: {
+      en: {
+        eyebrow: "Back to School final competition",
+        dateLabel: "October 2026 · Date TBA",
+        title: "Back to School Final · Group 2",
+        summary:
+          "The final competition for the ninth-grade group, hosted on the ScripticX platform.",
+        description:
+          "The ninth-grade group concludes ScripticX Back to School with a final online competition. Participants will solve algorithmic challenges that connect the ideas practised in MiniScript+ and Python throughout the workshop.",
+        location: "Online · ScripticX platform",
+        audience: "Back to School · 9th-grade group",
+        highlights: [
+          "Final challenges for Group 2",
+          "Algorithms in MiniScript+ and Python",
+          "Competition hosted on ScripticX",
+        ],
+      },
+      ro: {
+        eyebrow: "Competiția finală Back to School",
+        dateLabel: "Octombrie 2026 · Data va fi anunțată",
+        title: "Finala Back to School · Grupa 2",
+        summary:
+          "Competiția finală pentru grupa de clasa a IX-a, organizată pe platforma ScripticX.",
+        description:
+          "Grupa de clasa a IX-a încheie ScripticX Back to School cu o competiție finală online. Participanții vor rezolva provocări de algoritmică ce conectează ideile exersate în MiniScript+ și Python pe parcursul workshop-ului.",
+        location: "Online · Platforma ScripticX",
+        audience: "Back to School · Grupa de clasa a IX-a",
+        highlights: [
+          "Provocări finale pentru Grupa 2",
+          "Algoritmică în MiniScript+ și Python",
+          "Competiție organizată pe ScripticX",
         ],
       },
     },
@@ -218,6 +312,18 @@ export function getEvents(locale: MarketingLocale): ScripticxEvent[] {
 
 export function isUpcomingEvent(event: ScripticxEvent, now: Date) {
   return new Date(event.endAt ?? event.startAt).getTime() >= now.getTime();
+}
+
+export function isOngoingEvent(event: ScripticxEvent, now: Date) {
+  // A bounded, confirmed interval is required. Month-level TBA placeholders
+  // stay upcoming, but must not look like an event that is currently running.
+  if (!event.endAt || event.dateLabel) return false;
+
+  const currentTime = now.getTime();
+  const startTime = new Date(event.startAt).getTime();
+  const endTime = new Date(event.endAt).getTime();
+
+  return currentTime >= startTime && currentTime <= endTime;
 }
 
 export function sortEvents(events: ScripticxEvent[], direction: "ascending" | "descending") {

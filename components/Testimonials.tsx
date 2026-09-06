@@ -121,9 +121,6 @@ export default function Testimonials() {
             <p className="max-w-2xl text-pretty text-base leading-7 text-white/55 sm:text-lg">
               {t("description")}
             </p>
-            <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-emerald-200/65">
-              {t("messages", { count: testimonials.length })}
-            </p>
           </div>
         </Reveal>
 

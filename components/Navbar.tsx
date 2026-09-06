@@ -26,6 +26,7 @@ const navItems = [
   { href: "/events", key: "events" },
   { href: "/partners", key: "partners" },
   { href: "/knowledge", key: "resources" },
+  { href: "/blog", key: "blog" },
 ] as const;
 
 export default function Navbar() {
@@ -37,7 +38,7 @@ export default function Navbar() {
       <div className="mx-auto flex h-16 max-w-[var(--sx-max-content)] items-center gap-5 px-4 sm:px-6 lg:px-8">
         <BrandMark className="text-lg" />
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label={t("ariaLabel")}>
+        <nav className="hidden items-center gap-1 xl:flex" aria-label={t("ariaLabel")}>
           {navItems.map((item) => {
             const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
@@ -55,7 +56,7 @@ export default function Navbar() {
           })}
         </nav>
 
-        <div className="ml-auto hidden items-center gap-2 lg:flex">
+        <div className="ml-auto hidden items-center gap-2 xl:flex">
           <LanguageSwitcher />
           <Button variant="ghost" asChild>
             <Link href="https://platform.scripticx.org/login">{t("login")}</Link>
@@ -68,7 +69,7 @@ export default function Navbar() {
           </Button>
         </div>
 
-        <div className="ml-auto flex items-center gap-2 lg:hidden">
+        <div className="ml-auto flex items-center gap-2 xl:hidden">
           <LanguageSwitcher />
           <Sheet>
             <SheetTrigger asChild>

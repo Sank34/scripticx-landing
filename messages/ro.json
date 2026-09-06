@@ -304,22 +304,22 @@
       "teamDescription": "ScripticX este construit de oameni care lucrează în educație, inginerie, comunicare, cercetare și design."
     },
     "members": {
-      "eric-littau": {
+      "eric": {
         "bio": "Îmi place să transform ideile complicate în explicații simple și utile. La ScripticX mă ocup de comunicare și creez probleme de programare care îi ajută pe cursanți să știe mereu care este următorul pas."
       },
-      "catalina-nedelea": {
+      "catalina": {
         "bio": "Am grijă atât la felul în care comunică ScripticX, cât și la modul în care crește. Îmbin marketingul cu partea financiară pentru ca ideile bune să aibă și un drum clar, sustenabil."
       },
-      "andrei-lascu": {
+      "sanke": {
         "bio": "Îmi place să duc o idee de la prima schiță până la ceva pe care oamenii îl pot folosi cu adevărat. Lucrez la dezvoltare, design de produs, evenimente și conținut educațional—oriunde trebuie legate piesele între ele."
       },
-      "maia-pricop": {
+      "maia": {
         "bio": "Țin mult la detaliile mici care fac o interfață să pară firească. Îmbin dezvoltarea, UI/UX-ul și scrierea de probleme pentru ca învățarea să fie clară de la primul click până la soluția finală."
       },
-      "andreea-bobotan": {
+      "andreea": {
         "bio": "Sunt curioasă cum se simte un produs pentru oameni, nu doar cum arată. Prin cercetare UI/UX și evenimente, transform feedbackul și conversațiile reale într-o experiență ScripticX mai primitoare."
       },
-      "daria-serban": {
+      "daria": {
         "bio": "Îmi place să dau ideilor o identitate vizuală clară și memorabilă. Lucrez la graphic design și UI/UX, conturând detaliile care fac ScripticX să se simtă cu adevărat al nostru."
       }
     },
@@ -348,7 +348,6 @@
     "eyebrow": "Feedback real",
     "title": "Ce spun cei care au încercat ScripticX.",
     "description": "Oameni curioși și pasionați au testat ScripticX la workshop-uri, cursuri și alte activități. Iată ce cred ei despre platformă.",
-    "messages": "{count} mesaje",
     "carouselLabel": "Review-uri din comunitatea ScripticX",
     "goToReview": "Deschide review-ul {number} de la {user}",
     "reviewPosition": "Review-ul {number} din {count}",
@@ -412,6 +411,7 @@
     "copyright": "ScripticX"
   },
   "MarketingNav": {
+    "blog": "Blog",
     "education": "Educație",
     "events": "Evenimente",
     "development": "Development",
@@ -443,6 +443,7 @@
       "team": "Echipa noastră",
       "partners": "Parteneri și sponsori",
       "knowledge": "Knowledge Center",
+      "blog": "Blog",
       "docs": "Documentație",
       "trust": "Încredere și securitate",
       "verify": "Verifică un certificat",

@@ -304,22 +304,22 @@
       "teamDescription": "ScripticX is built by people working across education, engineering, communication, research and design."
     },
     "members": {
-      "eric-littau": {
+      "eric": {
         "bio": "I like turning complicated ideas into language that feels simple and useful. At ScripticX, I work on communication and shape programming problems that help learners know what to try next."
       },
-      "catalina-nedelea": {
+      "catalina": {
         "bio": "I keep one eye on how ScripticX communicates and the other on how it grows. My work connects marketing with finance so good ideas have a clear, sustainable path forward."
       },
-      "andrei-lascu": {
+      "sanke": {
         "bio": "I enjoy taking an idea from an early sketch to something people can actually use. I work across development, product design, events and educational content—wherever the pieces need to come together."
       },
-      "maia-pricop": {
+      "maia": {
         "bio": "I care about the small details that make an interface feel natural. I combine development, UI/UX and problem writing to make learning feel clear from the first click to the final solution."
       },
-      "andreea-bobotan": {
+      "andreea": {
         "bio": "I’m curious about how people experience a product, not just how it looks. Through UI/UX research and events, I turn feedback and real conversations into a more welcoming ScripticX."
       },
-      "daria-serban": {
+      "daria": {
         "bio": "I love giving ideas a visual identity that feels clear and memorable. I work on graphic design and UI/UX, shaping the details that make ScripticX feel unmistakably ours."
       }
     },
@@ -348,7 +348,6 @@
     "eyebrow": "Real feedback",
     "title": "What our users say.",
     "description": "Curious, passionate people tried ScripticX during workshops, courses and other activities. Here’s what they thought.",
-    "messages": "{count} messages",
     "carouselLabel": "ScripticX community reviews",
     "goToReview": "Open review {number} from {user}",
     "reviewPosition": "Review {number} of {count}",
@@ -412,6 +411,7 @@
     "copyright": "ScripticX"
   },
   "MarketingNav": {
+    "blog": "Blog",
     "education": "Education",
     "events": "Events",
     "development": "Development",
@@ -443,6 +443,7 @@
       "team": "Our team",
       "partners": "Partners & sponsors",
       "knowledge": "Knowledge Center",
+      "blog": "Blog",
       "docs": "Documentation",
       "trust": "Trust & security",
       "verify": "Verify certificate",

@@ -13,7 +13,7 @@ import { createPageMetadata } from "@/lib/metadata";
 
 const pageCopy = {
   en: {
-    eyebrow: "ScripticX events",
+    eyebrow: "ScripticX Events",
     title: "Where ideas leave the screen.",
     description:
       "We organise free workshops and courses for anyone curious about computer science, alongside competitions and other events where learning comes to life.",

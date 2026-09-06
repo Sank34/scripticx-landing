@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { BlogTransition } from "@/components/blog/BlogTransition";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const knowledgeRouteRoots = ["/knowledge", "/docs", "/legal", "/trust"];
@@ -15,6 +16,10 @@ function isKnowledgeRoute(pathname: string) {
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const reduceMotion = useReducedMotion();
   const pathname = usePathname();
+
+  if (pathname === "/blog" || pathname.startsWith("/blog/")) {
+    return <BlogTransition>{children}</BlogTransition>;
+  }
 
   if (isKnowledgeRoute(pathname)) {
     return <div className="min-h-full">{children}</div>;

@@ -9,14 +9,14 @@ export type TeamMember = {
 
 export const teamMembers: readonly TeamMember[] = [
   {
-    slug: "eric-littau",
+    slug: "eric",
     name: "Eric Littau",
     roles: ["communications", "problemWriting"],
     image: "/team/Eric-Littau-new.jpg",
     email: "eric@scripticx.org",
   },
   {
-    slug: "catalina-nedelea",
+    slug: "catalina",
     name: "Catalina Nedelea",
     roles: ["marketing", "finance"],
     image: "/team/Catalina-Nedelea.jpg",
@@ -24,7 +24,7 @@ export const teamMembers: readonly TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/c%C4%83t%C4%83lina-ioana-nedelea-a6928a426/"
   },
   {
-    slug: "andrei-lascu",
+    slug: "sanke",
     name: "Andrei Lascu",
     roles: ["development", "publicRelationsEvents", "designScientific"],
     image: "/team/Andrei-Lascu-new.png",
@@ -32,7 +32,7 @@ export const teamMembers: readonly TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/andrei-lascu-ba561a371/"
   },
   {
-    slug: "maia-pricop",
+    slug: "maia",
     name: "Maia Pricop",
     roles: ["development", "uiuxScientific"],
     image: "/team/Maia-Pricop-new.jpg",
@@ -40,14 +40,14 @@ export const teamMembers: readonly TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/maia-pricop-669271320/"
   },
   {
-    slug: "andreea-bobotan",
+    slug: "andreea",
     name: "Andreea Bobotan",
     roles: ["uiuxResearch", "events"],
     image: "/team/Andreea-Bobotan-new.jpg",
     email: "bobtan.andreea@cngmm.ro"
   },
   {
-    slug: "daria-serban",
+    slug: "daria",
     name: "Daria Serban",
     roles: ["graphics", "uiux"],
     image: "/team/Daria-Serban.png",

@@ -60,7 +60,7 @@ export function EducationDetails({ locale }: { locale: MarketingLocale }) {
             </Button>
           </div>
         </div>
-        <EducationActivities items={content.activities.items} openLabel={content.activities.openLabel} galleryLabel={content.activities.galleryLabel} />
+        <EducationActivities items={content.activities.items} />
       </section>
 
       <section className="border-b">
