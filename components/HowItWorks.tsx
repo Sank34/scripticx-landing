@@ -2,22 +2,22 @@ import { Code2, Share2, TrendingUp } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export default function HowItWorks() {
-  const t = useTranslations("HowItWorks");
+  const translate = useTranslations("HowItWorks");
 
   const steps = [
     {
-      title: t("steps.solve.title"),
-      desc: t("steps.solve.desc"),
+      title: translate("steps.solve.title"),
+      desc: translate("steps.solve.desc"),
       icon: <Code2 className="text-foreground" />,
     },
     {
-      title: t("steps.share.title"),
-      desc: t("steps.share.desc"),
+      title: translate("steps.share.title"),
+      desc: translate("steps.share.desc"),
       icon: <Share2 className="text-foreground" />,
     },
     {
-      title: t("steps.track.title"),
-      desc: t("steps.track.desc"),
+      title: translate("steps.track.title"),
+      desc: translate("steps.track.desc"),
       icon: <TrendingUp className="text-foreground" />,
     },
   ];
@@ -27,10 +27,10 @@ export default function HowItWorks() {
 
       <div className="text-center mb-14 sm:mb-20">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight">
-          {t("title")}
+          {translate("title")}
         </h2>
         <p className="text-muted-foreground mt-3 text-sm sm:text-base">
-          {t("description")}
+          {translate("description")}
         </p>
       </div>
 

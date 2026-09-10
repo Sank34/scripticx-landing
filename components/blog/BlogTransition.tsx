@@ -19,11 +19,31 @@ export function BlogTransition({ children }: { children: React.ReactNode }) {
     let recovery: ReturnType<typeof setTimeout> | undefined;
 
     const onClick = (event: MouseEvent) => {
-      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      const anchor = event.target instanceof Element ? event.target.closest("a[href]") : null;
-      if (!(anchor instanceof HTMLAnchorElement) || anchor.hasAttribute("download") || (anchor.target && anchor.target !== "_self")) return;
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      )
+        return;
+      const anchor =
+        event.target instanceof Element
+          ? event.target.closest("a[href]")
+          : null;
+      if (
+        !(anchor instanceof HTMLAnchorElement) ||
+        anchor.hasAttribute("download") ||
+        (anchor.target && anchor.target !== "_self")
+      )
+        return;
       const url = new URL(anchor.href);
-      if (url.origin !== window.location.origin || url.pathname === window.location.pathname) return;
+      if (
+        url.origin !== window.location.origin ||
+        url.pathname === window.location.pathname
+      )
+        return;
       if (!root.current?.animate) return;
 
       event.preventDefault();
@@ -34,15 +54,19 @@ export function BlogTransition({ children }: { children: React.ReactNode }) {
         easing: "ease-out",
         fill: "forwards",
       });
-      void animation.finished.then(() => {
-        if (disposed) return;
-        router.push(`${url.pathname}${url.search}${url.hash}`);
-        // Slow or failed navigation must never leave the current article hidden.
-        recovery = setTimeout(() => {
-          animation?.cancel();
-          leaving = false;
-        }, 800);
-      }).catch(() => { /* Unmounting cancels the animation. */ });
+      void animation.finished
+        .then(() => {
+          if (disposed) return;
+          router.push(`${url.pathname}${url.search}${url.hash}`);
+          // Slow or failed navigation must never leave the current article hidden.
+          recovery = setTimeout(() => {
+            animation?.cancel();
+            leaving = false;
+          }, 800);
+        })
+        .catch(() => {
+          /* Unmounting cancels the animation. */
+        });
     };
 
     document.addEventListener("click", onClick, true);
@@ -60,7 +84,10 @@ export function BlogTransition({ children }: { children: React.ReactNode }) {
       key={pathname}
       initial={reduceMotion ? false : { opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: reduceMotion ? 0 : 0.62, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: reduceMotion ? 0 : 0.62,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className="min-h-full"
     >
       {children}

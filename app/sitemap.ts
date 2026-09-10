@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { getKnowledgeArticles } from "@/lib/knowledge-data";
 import { absoluteUrl } from "@/lib/metadata";
-import { teamMembers } from "@/lib/team-data";
+import { teamMembers } from "@/config/team";
 import { getBlogPosts } from "@/lib/blog";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

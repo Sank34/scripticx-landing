@@ -7,7 +7,7 @@ import Image from "next/image";
 import { siGithub, siGoogle } from "simple-icons";
 
 import { Reveal } from "@/components/marketing/Reveal";
-import type { MarketingLocale } from "@/lib/marketing-content";
+import type { SiteLocale } from "@/config/languages";
 
 const copy = {
   en: {
@@ -151,7 +151,7 @@ function ToolMark({ id }: { id: string }) {
   return <Image src="/msp-logo.svg" alt="" width={216} height={260} className="h-6 w-auto" />;
 }
 
-export function PlatformEcosystem({ locale }: { locale: MarketingLocale }) {
+export function PlatformEcosystem({ locale }: { locale: SiteLocale }) {
   const content = copy[locale];
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef<HTMLElement | null>(null);

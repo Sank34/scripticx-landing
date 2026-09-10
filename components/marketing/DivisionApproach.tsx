@@ -1,7 +1,8 @@
 import { BrainCircuit, Code2, Compass, Globe2, Palette, School, type LucideIcon } from "lucide-react";
 
 import { Reveal } from "@/components/marketing/Reveal";
-import { divisionContent, type MarketingLocale } from "@/lib/marketing-content";
+import { divisionContent } from "@/config/divisions";
+import type { SiteLocale } from "@/config/languages";
 
 type ApproachDivision = "education" | "development";
 
@@ -10,7 +11,7 @@ const approachIcons: Record<ApproachDivision, LucideIcon[]> = {
   development: [Globe2, Palette, Compass],
 };
 
-export function DivisionApproach({ division, locale }: { division: ApproachDivision; locale: MarketingLocale }) {
+export function DivisionApproach({ division, locale }: { division: ApproachDivision; locale: SiteLocale }) {
   const content = divisionContent[locale][division];
   const icons = approachIcons[division];
 

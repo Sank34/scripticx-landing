@@ -1,3 +1,4 @@
+import { links } from "@/config/links";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +11,8 @@ import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
 import { Reveal } from "@/components/marketing/Reveal";
 import { Button } from "@/components/ui/button";
 import { createPageMetadata } from "@/lib/metadata";
-import { getTeamMember, teamMembers } from "@/lib/team-data";
+import { getTeamMember } from "@/lib/team-data";
+import { teamMembers } from "@/config/team";
 
 type MemberPageProps = {
   params: Promise<{ slug: string }>;
@@ -31,8 +33,8 @@ export async function generateMetadata({ params }: MemberPageProps): Promise<Met
   }
 
   const locale = await getLocale();
-  const t = await getTranslations("Team");
-  const description = t(`members.${member.slug}.bio`);
+  const translate = await getTranslations("Team");
+  const description = translate(`members.${member.slug}.bio`);
 
   return createPageMetadata({
     locale,
@@ -56,11 +58,11 @@ export default async function MemberPage({ params }: MemberPageProps) {
     notFound();
   }
 
-  const t = await getTranslations("Team");
+  const translate = await getTranslations("Team");
   const otherMembers = teamMembers.filter((candidate) => candidate.slug !== member.slug);
   const emailHref = member.email
     ? `mailto:${member.email}`
-    : `https://platform.scripticx.org/contact?member=${member.slug}`;
+    : `${links.contact}?member=${member.slug}`;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -75,7 +77,7 @@ export default async function MemberPage({ params }: MemberPageProps) {
                 className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 <ArrowLeft className="size-4" />
-                {t("profile.back")}
+                {translate("profile.back")}
               </Link>
             </Reveal>
 
@@ -94,7 +96,7 @@ export default async function MemberPage({ params }: MemberPageProps) {
               </Reveal>
 
               <Reveal delay={0.08} className="flex min-h-full flex-col border-b border-r p-6 sm:p-10 lg:p-14" distance={16}>
-                <p className="text-sm font-medium text-muted-foreground">{t("profile.eyebrow")}</p>
+                <p className="text-sm font-medium text-muted-foreground">{translate("profile.eyebrow")}</p>
                 <h1 className="mt-4 text-balance text-5xl font-semibold tracking-[-0.05em] sm:text-6xl lg:text-7xl">
                   {member.name}
                 </h1>
@@ -102,33 +104,33 @@ export default async function MemberPage({ params }: MemberPageProps) {
                 <div className="mt-7 flex flex-wrap gap-2">
                   {member.roles.map((role) => (
                     <span key={role} className="rounded-full border bg-background px-3 py-1.5 text-sm text-muted-foreground">
-                      {t(`roles.${role}`)}
+                      {translate(`roles.${role}`)}
                     </span>
                   ))}
                 </div>
 
                 <div className="mt-10 max-w-2xl border-t pt-8">
-                  <h2 className="text-sm font-medium">{t("profile.about")}</h2>
+                  <h2 className="text-sm font-medium">{translate("profile.about")}</h2>
                   <p className="mt-4 text-pretty text-lg leading-8 text-muted-foreground">
-                    {t(`members.${member.slug}.bio`)}
+                    {translate(`members.${member.slug}.bio`)}
                   </p>
                 </div>
 
                 <div className="mt-auto pt-12">
                   <div className="border-t pt-8">
-                    <h2 className="text-sm font-medium">{t("profile.contact")}</h2>
+                    <h2 className="text-sm font-medium">{translate("profile.contact")}</h2>
                     <div className="mt-4 flex flex-wrap gap-2">
                       <Button asChild>
                         <Link href={emailHref}>
                           <Mail />
-                          {member.email ? t("email") : t("contactMember")}
+                          {member.email ? translate("email") : translate("contactMember")}
                         </Link>
                       </Button>
                       {member.linkedin && (
                         <Button variant="outline" asChild>
                           <Link href={member.linkedin} target="_blank" rel="noreferrer">
                             <LinkedInIcon className="size-4" />
-                            {t("linkedin")}
+                            {translate("linkedin")}
                           </Link>
                         </Button>
                       )}
@@ -143,12 +145,12 @@ export default async function MemberPage({ params }: MemberPageProps) {
         <section className="border-b py-20 sm:py-24">
           <div className="mx-auto max-w-[var(--sx-max-content)] px-4 sm:px-6 lg:px-8">
             <Reveal className="max-w-2xl">
-              <p className="text-sm font-medium text-muted-foreground">{t("profile.teamEyebrow")}</p>
+              <p className="text-sm font-medium text-muted-foreground">{translate("profile.teamEyebrow")}</p>
               <h2 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
-                {t("profile.teamTitle")}
+                {translate("profile.teamTitle")}
               </h2>
               <p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg">
-                {t("profile.teamDescription")}
+                {translate("profile.teamDescription")}
               </p>
             </Reveal>
 
@@ -172,7 +174,7 @@ export default async function MemberPage({ params }: MemberPageProps) {
                       <div>
                         <h3 className="font-medium">{candidate.name}</h3>
                         <p className="mt-1 text-xs leading-5 text-muted-foreground">
-                          {candidate.roles.slice(0, 2).map((role) => t(`roles.${role}`)).join(" · ")}
+                          {candidate.roles.slice(0, 2).map((role) => translate(`roles.${role}`)).join(" · ")}
                         </p>
                       </div>
                       <ArrowUpRight className="mt-0.5 size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

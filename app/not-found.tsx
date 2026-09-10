@@ -1,3 +1,4 @@
+import { links } from "@/config/links";
 import Link from "next/link";
 import { getLocale } from "next-intl/server";
 import {
@@ -49,24 +50,24 @@ const copy = {
 
 export default async function NotFound() {
   const locale = await getLocale();
-  const t = locale === "ro" ? copy.ro : copy.en;
+  const translate = locale === "ro" ? copy.ro : copy.en;
 
   const routes = [
     {
       href: "/education",
-      label: t.education,
+      label: translate.education,
       index: "01",
       icon: GraduationCap,
     },
     {
       href: "/verify",
-      label: t.verify,
+      label: translate.verify,
       index: "02",
       icon: SearchCheck,
     },
     {
-      href: "https://platform.scripticx.org",
-      label: t.platform,
+      href: links.platform,
+      label: translate.platform,
       index: "03",
       icon: ArrowRight,
     },
@@ -82,7 +83,7 @@ export default async function NotFound() {
           <div className="flex min-h-[28rem] flex-col justify-between border-b px-5 py-12 sm:min-h-[36rem] sm:px-8 sm:py-16 lg:min-h-0 lg:border-b-0 lg:border-r lg:px-12 lg:py-20 xl:px-16 2xl:px-24">
             <Reveal distance={16}>
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                ScripticX / {t.eyebrow}
+                ScripticX / {translate.eyebrow}
               </p>
             </Reveal>
 
@@ -96,7 +97,7 @@ export default async function NotFound() {
                 </div>
                 <div className="mt-10 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
                   <span className="size-1.5 bg-foreground" />
-                  {t.label}
+                  {translate.label}
                 </div>
               </div>
             </Reveal>
@@ -105,33 +106,33 @@ export default async function NotFound() {
           <div className="flex items-center bg-background/60 px-5 py-14 backdrop-blur-sm sm:px-8 sm:py-16 lg:px-12 lg:py-20 xl:px-16">
             <Reveal className="w-full max-w-2xl" delay={0.1} distance={18}>
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                {t.noteTitle}
+                {translate.noteTitle}
               </p>
               <h1 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-[-0.045em] sm:text-5xl xl:text-6xl">
-                {t.title}
+                {translate.title}
               </h1>
               <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-                {t.description}
+                {translate.description}
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button size="lg" asChild>
                   <Link href="/">
                     <Home />
-                    {t.home}
+                    {translate.home}
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
                   <Link href="/knowledge">
                     <BookOpen />
-                    {t.knowledge}
+                    {translate.knowledge}
                   </Link>
                 </Button>
               </div>
 
               <div className="mt-12">
                 <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                  {t.routes}
+                  {translate.routes}
                 </div>
                 <div className="divide-y border-y">
                   {routes.map(({ href, label, index, icon: Icon }) => (
@@ -150,7 +151,7 @@ export default async function NotFound() {
                   ))}
                 </div>
                 <p className="mt-5 max-w-xl text-sm leading-6 text-muted-foreground">
-                  {t.note}
+                  {translate.note}
                 </p>
               </div>
             </Reveal>

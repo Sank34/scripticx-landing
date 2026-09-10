@@ -8,7 +8,7 @@ import { BracketWaveField } from "@/components/events/BracketWaveField";
 import { EventsExplorer } from "@/components/events/EventsExplorer";
 import { Reveal } from "@/components/marketing/Reveal";
 import { getEvents } from "@/lib/events-data";
-import { getMarketingLocale } from "@/lib/marketing-content";
+import { getSiteLocale } from "@/config/languages";
 import { createPageMetadata } from "@/lib/metadata";
 
 const pageCopy = {
@@ -47,9 +47,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function EventsPage() {
   await connection();
-  const locale = getMarketingLocale(await getLocale());
+  const locale = getSiteLocale(await getLocale());
   const content = pageCopy[locale];
-  const nowIso = new Date().toISOString();
+  const initialDateTime = new Date().toISOString();
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -94,7 +94,7 @@ export default async function EventsPage() {
               </div>
             </Reveal>
             <Reveal delay={0.08} className="mt-12">
-              <EventsExplorer events={getEvents(locale)} locale={locale} nowIso={nowIso} />
+              <EventsExplorer events={getEvents(locale)} locale={locale} initialDateTime={initialDateTime} />
             </Reveal>
           </div>
         </section>

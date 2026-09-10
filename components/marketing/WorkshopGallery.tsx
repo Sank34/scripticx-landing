@@ -4,13 +4,14 @@ import { ArrowUpRight } from "lucide-react";
 import { getLocale } from "next-intl/server";
 
 import { Reveal } from "@/components/marketing/Reveal";
-import { getMarketingLocale, marketingContent } from "@/lib/marketing-content";
+import { getSiteLocale } from "@/config/languages";
+import { marketingContent } from "@/config/marketing";
 
 const root = "/events/workshops/programming-1-3-july-26";
 const images = ["IMG_1137.jpg", "IMG_1094.jpg", "IMG_1174.jpg", "IMG_1003.jpg"];
 
 export default async function WorkshopGallery() {
-  const locale = getMarketingLocale(await getLocale());
+  const locale = getSiteLocale(await getLocale());
   const content = marketingContent[locale].gallery;
 
   return (

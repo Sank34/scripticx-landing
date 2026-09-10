@@ -1,12 +1,12 @@
 import { Check, FileText, MessageSquareText } from "lucide-react";
 
 import { DevelopmentEngagement } from "@/components/marketing/DevelopmentEngagement";
-import { divisionDetailsContent } from "@/lib/division-details-content";
-import type { MarketingLocale } from "@/lib/marketing-content";
+import { developmentContent } from "@/config/development";
+import type { SiteLocale } from "@/config/languages";
 import { DevelopmentProcess } from "@/components/marketing/DevelopmentProcess";
 
-export function DevelopmentDetails({ locale }: { locale: MarketingLocale }) {
-  const content = divisionDetailsContent[locale].development;
+export function DevelopmentDetails({ locale }: { locale: SiteLocale }) {
+  const content = developmentContent[locale];
 
   return (
     <>

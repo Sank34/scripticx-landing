@@ -1,4 +1,5 @@
 "use client";
+import { links } from "@/config/links";
 
 import { AnimatePresence, motion, type PanInfo, useReducedMotion } from "framer-motion";
 import {
@@ -17,7 +18,8 @@ import { useCallback, useState } from "react";
 
 import { Reveal } from "@/components/marketing/Reveal";
 import { Button } from "@/components/ui/button";
-import { getMarketingLocale, marketingContent } from "@/lib/marketing-content";
+import { getSiteLocale } from "@/config/languages";
+import { marketingContent } from "@/config/marketing";
 import { cn } from "@/lib/utils";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -102,7 +104,7 @@ function ProcessPreview({ index }: { index: number }) {
 }
 
 export default function DevelopmentSpotlight() {
-  const locale = getMarketingLocale(useLocale());
+  const locale = getSiteLocale(useLocale());
   const content = marketingContent[locale].developmentSpotlight;
   const [active, setActive] = useState(0);
   const reduceMotion = useReducedMotion();
@@ -285,7 +287,7 @@ export default function DevelopmentSpotlight() {
               </div>
               <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
                 <Button asChild>
-                  <Link href="https://platform.scripticx.org/contact">
+                  <Link href={links.contact}>
                     {content.primary}
                     <ArrowUpRight />
                   </Link>

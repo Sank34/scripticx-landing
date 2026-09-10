@@ -64,7 +64,7 @@ function normalizeCode(value: string) {
 }
 
 export default function CertificateVerification() {
-  const t = useTranslations("VerifyCertificate");
+  const translate = useTranslations("VerifyCertificate");
   const [code, setCode] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState<VerificationState>({ status: "idle" });
@@ -123,33 +123,33 @@ export default function CertificateVerification() {
   const details = [
     {
       icon: UserRound,
-      label: t("result.valid.fields.recipient"),
+      label: translate("result.valid.fields.recipient"),
       value:
         displayedCertificate?.recipientName ??
-        t("result.valid.demo.recipient"),
+        translate("result.valid.demo.recipient"),
     },
     {
       icon: Trophy,
-      label: t("result.valid.fields.award"),
+      label: translate("result.valid.fields.award"),
       value:
         displayedCertificate?.certificateTitle ??
-        t("result.valid.demo.award"),
+        translate("result.valid.demo.award"),
     },
     {
       icon: FileCheck2,
-      label: t("result.valid.fields.event"),
+      label: translate("result.valid.fields.event"),
       value:
-        displayedCertificate?.eventName ?? t("result.valid.demo.event"),
+        displayedCertificate?.eventName ?? translate("result.valid.demo.event"),
     },
     {
       icon: CalendarDays,
-      label: t("result.valid.fields.issuedAt"),
+      label: translate("result.valid.fields.issuedAt"),
       value:
-        displayedCertificate?.issuedAt ?? t("result.valid.demo.issuedAt"),
+        displayedCertificate?.issuedAt ?? translate("result.valid.demo.issuedAt"),
     },
     {
       icon: Hash,
-      label: t("result.valid.fields.code"),
+      label: translate("result.valid.fields.code"),
       value: displayedCertificate?.code ?? DEMO_CODE,
     },
   ];
@@ -164,13 +164,13 @@ export default function CertificateVerification() {
           <div className="order-1 flex items-center px-5 py-14 sm:px-8 sm:py-16 lg:col-start-1 lg:row-start-1 lg:px-12 lg:py-20 xl:px-16 2xl:px-24">
             <div className="max-w-3xl">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                ScripticX / {t("badge")}
+                ScripticX / {translate("badge")}
               </p>
               <h1 className="mt-6 text-4xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-6xl xl:text-7xl">
-                {t("title")}
+                {translate("title")}
               </h1>
               <p className="mt-7 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-                {t("description")}
+                {translate("description")}
               </p>
             </div>
           </div>
@@ -181,10 +181,10 @@ export default function CertificateVerification() {
                 <div className="flex items-start justify-between gap-6">
                   <div>
                     <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                      {t("badge")} / 01
+                      {translate("badge")} / 01
                     </p>
                     <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
-                      {t("form.title")}
+                      {translate("form.title")}
                     </h2>
                   </div>
                   <div className="flex size-10 shrink-0 items-center justify-center border bg-muted/30">
@@ -195,7 +195,7 @@ export default function CertificateVerification() {
                   id="certificate-code-hint"
                   className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground"
                 >
-                  {t("form.description")}
+                  {translate("form.description")}
                 </p>
               </div>
 
@@ -205,7 +205,7 @@ export default function CertificateVerification() {
                     htmlFor="certificate-code"
                     className="text-sm font-medium"
                   >
-                    {t("form.label")}
+                    {translate("form.label")}
                   </label>
                   <div className="mt-3 grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto]">
                     <Input
@@ -215,7 +215,7 @@ export default function CertificateVerification() {
                         setCode(event.target.value);
                         setResult({ status: "idle" });
                       }}
-                      placeholder={t("form.placeholder")}
+                      placeholder={translate("form.placeholder")}
                       className="h-12 rounded-[var(--sx-radius-control)] bg-background px-4 font-mono tracking-[0.18em] uppercase shadow-none"
                       autoComplete="off"
                       aria-describedby="certificate-code-hint"
@@ -231,7 +231,7 @@ export default function CertificateVerification() {
                       ) : (
                         <Search />
                       )}
-                      {isSubmitting ? t("form.checking") : t("form.submit")}
+                      {isSubmitting ? translate("form.checking") : translate("form.submit")}
                     </Button>
                   </div>
                 </form>
@@ -261,10 +261,10 @@ export default function CertificateVerification() {
                     </span>
                   </div>
                   <h2 className="mt-8 text-sm font-semibold">
-                    {t("trust." + id + ".title")}
+                    {translate("trust." + id + ".title")}
                   </h2>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    {t("trust." + id + ".description")}
+                    {translate("trust." + id + ".description")}
                   </p>
                 </article>
               ))}
@@ -289,7 +289,7 @@ function VerificationResult({
   }>;
   isSubmitting: boolean;
 }) {
-  const t = useTranslations("VerifyCertificate");
+  const translate = useTranslations("VerifyCertificate");
 
   if (isSubmitting) {
     return (
@@ -300,9 +300,9 @@ function VerificationResult({
               <LoaderCircle className="size-4 animate-spin" />
             </div>
             <div>
-              <h3 className="font-semibold">{t("result.loading.title")}</h3>
+              <h3 className="font-semibold">{translate("result.loading.title")}</h3>
               <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                {t("result.loading.description")}
+                {translate("result.loading.description")}
               </p>
             </div>
           </div>
@@ -316,8 +316,8 @@ function VerificationResult({
       <ResultShell resultKey="idle">
         <Alert className="rounded-[var(--sx-radius-card)] bg-muted/30 p-4 shadow-none">
           <ShieldCheck className="size-4" />
-          <AlertTitle>{t("result.idle.title")}</AlertTitle>
-          <AlertDescription>{t("result.idle.description")}</AlertDescription>
+          <AlertTitle>{translate("result.idle.title")}</AlertTitle>
+          <AlertDescription>{translate("result.idle.description")}</AlertDescription>
         </Alert>
       </ResultShell>
     );
@@ -328,9 +328,9 @@ function VerificationResult({
       <ResultShell resultKey="invalid">
         <Alert className="rounded-[var(--sx-radius-card)] border-red-200 bg-red-50 p-4 text-red-950 shadow-none">
           <XCircle className="size-4 text-red-600" />
-          <AlertTitle>{t("result.invalid.title")}</AlertTitle>
+          <AlertTitle>{translate("result.invalid.title")}</AlertTitle>
           <AlertDescription className="text-red-900/75">
-            {t("result.invalid.description", { code: result.code })}
+            {translate("result.invalid.description", { code: result.code })}
           </AlertDescription>
         </Alert>
       </ResultShell>
@@ -342,9 +342,9 @@ function VerificationResult({
       <ResultShell resultKey="error">
         <Alert className="rounded-[var(--sx-radius-card)] border-amber-200 bg-amber-50 p-4 text-amber-950 shadow-none">
           <XCircle className="size-4 text-amber-600" />
-          <AlertTitle>{t("result.error.title")}</AlertTitle>
+          <AlertTitle>{translate("result.error.title")}</AlertTitle>
           <AlertDescription className="text-amber-900/75">
-            {t("result.error.description")}
+            {translate("result.error.description")}
           </AlertDescription>
         </Alert>
       </ResultShell>
@@ -366,15 +366,15 @@ function VerificationResult({
             </motion.div>
             <div>
               <h3 className="font-semibold text-emerald-950">
-                {t("result.valid.title")}
+                {translate("result.valid.title")}
               </h3>
               <p className="mt-1 text-sm leading-6 text-emerald-950/70">
-                {t("result.valid.description")}
+                {translate("result.valid.description")}
               </p>
             </div>
           </div>
           <span className="w-fit border border-emerald-300 bg-white px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-emerald-900">
-            {t("result.valid.badge")}
+            {translate("result.valid.badge")}
           </span>
         </div>
 

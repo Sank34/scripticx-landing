@@ -11,7 +11,7 @@ import { PlatformEcosystem } from "@/components/marketing/PlatformEcosystem";
 import { PlatformEditorExperience } from "@/components/marketing/PlatformEditorExperience";
 import { Reveal } from "@/components/marketing/Reveal";
 import { PlatformSharedProject } from "@/components/marketing/PlatformSharedProject";
-import type { MarketingLocale } from "@/lib/marketing-content";
+import type { SiteLocale } from "@/config/languages";
 
 const copy = {
   en: {
@@ -46,7 +46,7 @@ const copy = {
   },
 } as const;
 
-export function PlatformLearningLoop({ locale }: { locale: MarketingLocale }) {
+export function PlatformLearningLoop({ locale }: { locale: SiteLocale }) {
   const content = copy[locale].loop;
 
   return (
@@ -88,7 +88,7 @@ export function PlatformLearningLoop({ locale }: { locale: MarketingLocale }) {
   );
 }
 
-export function PlatformStorySections({ locale }: { locale: MarketingLocale }) {
+export function PlatformStorySections({ locale }: { locale: SiteLocale }) {
   return (
     <>
       <PlatformSharedProject locale={locale} />

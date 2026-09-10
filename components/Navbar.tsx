@@ -1,4 +1,5 @@
 "use client";
+import { links } from "@/config/links";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -19,18 +20,10 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
-const navItems = [
-  { href: "/education", key: "education" },
-  { href: "/development", key: "development" },
-  { href: "/platform", key: "platform" },
-  { href: "/events", key: "events" },
-  { href: "/partners", key: "partners" },
-  { href: "/knowledge", key: "resources" },
-  { href: "/blog", key: "blog" },
-] as const;
+import { navigationItems } from "@/config/navigation";
 
 export default function Navbar() {
-  const t = useTranslations("MarketingNav");
+  const translate = useTranslations("MarketingNav");
   const pathname = usePathname();
 
   return (
@@ -38,8 +31,8 @@ export default function Navbar() {
       <div className="mx-auto flex h-16 max-w-[var(--sx-max-content)] items-center gap-5 px-4 sm:px-6 lg:px-8">
         <BrandMark className="text-lg" />
 
-        <nav className="hidden items-center gap-1 xl:flex" aria-label={t("ariaLabel")}>
-          {navItems.map((item) => {
+        <nav className="hidden items-center gap-1 xl:flex" aria-label={translate("ariaLabel")}>
+          {navigationItems.map((item) => {
             const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link
@@ -50,7 +43,7 @@ export default function Navbar() {
                   active && "bg-muted text-foreground",
                 )}
               >
-                {t(item.key)}
+                {translate(item.key)}
               </Link>
             );
           })}
@@ -59,11 +52,11 @@ export default function Navbar() {
         <div className="ml-auto hidden items-center gap-2 xl:flex">
           <LanguageSwitcher />
           <Button variant="ghost" asChild>
-            <Link href="https://platform.scripticx.org/login">{t("login")}</Link>
+            <Link href={links.login}>{translate("login")}</Link>
           </Button>
           <Button asChild>
-            <Link href="https://platform.scripticx.org">
-              {t("openPlatform")}
+            <Link href={links.platform}>
+              {translate("openPlatform")}
               <ArrowUpRight />
             </Link>
           </Button>
@@ -73,7 +66,7 @@ export default function Navbar() {
           <LanguageSwitcher />
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" aria-label={t("openMenu")}>
+              <Button variant="outline" size="icon" aria-label={translate("openMenu")}>
                 <Menu />
               </Button>
             </SheetTrigger>
@@ -82,26 +75,26 @@ export default function Navbar() {
                 <SheetTitle>
                   <BrandMark className="text-lg" />
                 </SheetTitle>
-                <SheetDescription>{t("menuDescription")}</SheetDescription>
+                <SheetDescription>{translate("menuDescription")}</SheetDescription>
               </SheetHeader>
-              <nav className="grid gap-1 p-4" aria-label={t("ariaLabel")}>
-                {navItems.map((item) => (
+              <nav className="grid gap-1 p-4" aria-label={translate("ariaLabel")}>
+                {navigationItems.map((item) => (
                   <SheetClose asChild key={item.href}>
                     <Link
                       href={item.href}
                       className="rounded-lg px-3 py-3 text-base font-medium transition-colors hover:bg-muted"
                     >
-                      {t(item.key)}
+                      {translate(item.key)}
                     </Link>
                   </SheetClose>
                 ))}
               </nav>
               <div className="mt-auto grid gap-2 border-t p-4">
                 <Button variant="outline" asChild>
-                  <Link href="https://platform.scripticx.org/login">{t("login")}</Link>
+                  <Link href={links.login}>{translate("login")}</Link>
                 </Button>
                 <Button asChild>
-                  <Link href="https://platform.scripticx.org">{t("openPlatform")}</Link>
+                  <Link href={links.platform}>{translate("openPlatform")}</Link>
                 </Button>
               </div>
             </SheetContent>

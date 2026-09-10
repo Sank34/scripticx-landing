@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { divisionDetailsContent } from "@/lib/division-details-content";
-import type { MarketingLocale } from "@/lib/marketing-content";
+import { developmentContent } from "@/config/development";
+import type { SiteLocale } from "@/config/languages";
 
-export function DevelopmentProcess({ locale }: { locale: MarketingLocale }) {
-  const content = divisionDetailsContent[locale].development.process;
+export function DevelopmentProcess({ locale }: { locale: SiteLocale }) {
+  const content = developmentContent[locale].process;
   const [active, setActive] = useState(0);
   const reducedMotion = useReducedMotion();
   const item = content.items[active];

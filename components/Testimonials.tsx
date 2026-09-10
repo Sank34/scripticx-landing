@@ -50,7 +50,7 @@ function wrapIndex(index: number) {
 }
 
 export default function Testimonials() {
-  const t = useTranslations("Testimonials");
+  const translate = useTranslations("Testimonials");
   const reduceMotion = useReducedMotion();
   const [active, setActive] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -112,14 +112,14 @@ export default function Testimonials() {
       <div className="mx-auto max-w-[var(--sx-max-content)] px-4 sm:px-6 lg:px-8">
         <Reveal className="grid gap-7 border-b border-white/10 pb-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-end lg:pb-12">
           <div>
-            <p className="text-sm font-medium text-white/45">{t("eyebrow")}</p>
+            <p className="text-sm font-medium text-white/45">{translate("eyebrow")}</p>
             <h2 className="mt-4 max-w-2xl text-balance text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">
-              {t("title")}
+              {translate("title")}
             </h2>
           </div>
           <div className="lg:justify-self-end">
             <p className="max-w-2xl text-pretty text-base leading-7 text-white/55 sm:text-lg">
-              {t("description")}
+              {translate("description")}
             </p>
           </div>
         </Reveal>
@@ -129,7 +129,7 @@ export default function Testimonials() {
             className="relative mt-12 overflow-hidden rounded-[22px] border border-white/12 bg-[#111315]/92 shadow-[0_35px_110px_rgba(0,0,0,0.35)]"
             role="region"
             aria-roledescription="carousel"
-            aria-label={t("carouselLabel")}
+            aria-label={translate("carouselLabel")}
             tabIndex={0}
             onMouseEnter={() => setInteractionPaused(true)}
             onMouseLeave={() => setInteractionPaused(false)}
@@ -147,7 +147,7 @@ export default function Testimonials() {
                   type="button"
                   className="group relative h-1.5 min-w-1 flex-1 overflow-hidden rounded-full bg-white/10 outline-none focus-visible:ring-2 focus-visible:ring-emerald-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111315]"
                   onClick={() => selectReview(index, index >= active ? 1 : -1)}
-                  aria-label={t("goToReview", { number: index + 1, user: review.user })}
+                  aria-label={translate("goToReview", { number: index + 1, user: review.user })}
                   aria-current={index === active ? "step" : undefined}
                 >
                   {index === active && (
@@ -179,7 +179,7 @@ export default function Testimonials() {
                       onDragEnd={handleDragEnd}
                       className="touch-pan-y cursor-grab select-none active:cursor-grabbing"
                       aria-live="polite"
-                      aria-label={t("reviewPosition", {
+                      aria-label={translate("reviewPosition", {
                         number: active + 1,
                         count: testimonials.length,
                       })}
@@ -189,7 +189,7 @@ export default function Testimonials() {
                       </blockquote>
                       <div className="mt-9">
                         <p className="text-sm font-medium text-white/82">{activeReview.user}</p>
-                        <p className="mt-0.5 text-xs text-white/35">{t("communityMember")}</p>
+                        <p className="mt-0.5 text-xs text-white/35">{translate("communityMember")}</p>
                       </div>
                     </motion.div>
                   </AnimatePresence>
@@ -202,7 +202,7 @@ export default function Testimonials() {
                     variant="outline"
                     className="rounded-full border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white"
                     onClick={() => setManualPaused((paused) => !paused)}
-                    aria-label={manualPaused ? t("play") : t("pause")}
+                    aria-label={manualPaused ? translate("play") : translate("pause")}
                   >
                     {manualPaused ? <Play /> : <Pause />}
                   </Button>
@@ -213,7 +213,7 @@ export default function Testimonials() {
                       variant="outline"
                       className="rounded-full border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white"
                       onClick={showPrevious}
-                      aria-label={t("previous")}
+                      aria-label={translate("previous")}
                     >
                       <ArrowLeft />
                     </Button>
@@ -223,7 +223,7 @@ export default function Testimonials() {
                       variant="secondary"
                       className="rounded-full"
                       onClick={showNext}
-                      aria-label={t("next")}
+                      aria-label={translate("next")}
                     >
                       <ArrowRight />
                     </Button>
@@ -231,9 +231,9 @@ export default function Testimonials() {
                 </div>
               </div>
 
-              <aside className="bg-white/[0.025] p-5 sm:p-7 lg:p-8" aria-label={t("upNext")}>
+              <aside className="bg-white/[0.025] p-5 sm:p-7 lg:p-8" aria-label={translate("upNext")}>
                 <div className="border-b border-white/10 pb-5">
-                  <p className="text-sm font-medium text-white/72">{t("upNext")}</p>
+                  <p className="text-sm font-medium text-white/72">{translate("upNext")}</p>
                 </div>
                 <div className="mt-4 space-y-3">
                   <AnimatePresence initial={false} mode="popLayout">
@@ -260,7 +260,7 @@ export default function Testimonials() {
                   </AnimatePresence>
                 </div>
                 <p className="mt-5 border-t border-white/10 pt-5 text-xs leading-5 text-white/30">
-                  {t("interactionHint")}
+                  {translate("interactionHint")}
                 </p>
               </aside>
             </div>

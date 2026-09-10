@@ -53,7 +53,8 @@ import {
 } from "@/components/marketing/PlatformWorkspaceVisuals";
 import { Reveal } from "@/components/marketing/Reveal";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getMarketingLocale, marketingContent } from "@/lib/marketing-content";
+import { getSiteLocale } from "@/config/languages";
+import { marketingContent } from "@/config/marketing";
 
 function EditorVisual() {
   return (
@@ -482,7 +483,7 @@ const roleFeatures: Record<AudienceKey, readonly ShowcaseKey[]> = {
 };
 
 export default function PlatformShowcase() {
-  const locale = getMarketingLocale(useLocale());
+  const locale = getSiteLocale(useLocale());
   const content = marketingContent[locale].showcase;
   const audienceContent = marketingContent[locale].audiences;
   const [audience, setAudience] = useState<AudienceKey>("student");

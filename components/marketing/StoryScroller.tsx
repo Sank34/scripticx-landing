@@ -8,7 +8,8 @@ import { useEffect, useRef, useState } from "react";
 import { BrandMark } from "@/components/BrandMark";
 import { ConstellationField } from "@/components/marketing/ConstellationField";
 import { SparkleField } from "@/components/marketing/SparkleField";
-import { getMarketingLocale, marketingContent, type MarketingLocale } from "@/lib/marketing-content";
+import { getSiteLocale, type SiteLocale } from "@/config/languages";
+import { marketingContent } from "@/config/marketing";
 
 const visualCopy = {
   en: {
@@ -25,7 +26,7 @@ const visualCopy = {
   },
 } as const;
 
-function StoryCardVisual({ index, locale }: { index: number; locale: MarketingLocale }) {
+function StoryCardVisual({ index, locale }: { index: number; locale: SiteLocale }) {
   const labels = visualCopy[locale];
 
   if (index === 0) {
@@ -68,7 +69,7 @@ function StoryCardVisual({ index, locale }: { index: number; locale: MarketingLo
 }
 
 export default function StoryScroller() {
-  const locale = getMarketingLocale(useLocale());
+  const locale = getSiteLocale(useLocale());
   const content = marketingContent[locale].story;
   const [active, setActive] = useState(0);
   const stickyPanelRef = useRef<HTMLDivElement>(null);

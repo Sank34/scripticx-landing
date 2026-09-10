@@ -1,3 +1,4 @@
+import { links } from "@/config/links";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
@@ -14,7 +15,8 @@ import PlatformShowcase from "@/components/marketing/PlatformShowcase";
 import { PlatformLearningLoop, PlatformStorySections } from "@/components/marketing/PlatformStorySections";
 import { Reveal } from "@/components/marketing/Reveal";
 import { Button } from "@/components/ui/button";
-import { divisionContent, getMarketingLocale } from "@/lib/marketing-content";
+import { divisionContent } from "@/config/divisions";
+import { getSiteLocale } from "@/config/languages";
 import { createPageMetadata } from "@/lib/metadata";
 
 export type DivisionKey = keyof (typeof divisionContent)["en"];
@@ -145,7 +147,7 @@ function RouteVisual({ division }: { division: DivisionKey }) {
 }
 
 export default async function DivisionPage({ division }: { division: DivisionKey }) {
-  const locale = getMarketingLocale(await getLocale());
+  const locale = getSiteLocale(await getLocale());
   const content = divisionContent[locale][division];
   const isPlatform = division === "platform";
   const isEducation = division === "education";
@@ -200,7 +202,7 @@ export default async function DivisionPage({ division }: { division: DivisionKey
               <h1 className="mt-5 max-w-2xl text-balance text-5xl font-semibold leading-[1.02] tracking-[-0.045em] sm:text-6xl xl:text-[4.25rem]">{content.title}</h1>
               <p className="mt-6 max-w-2xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg">{content.description}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button size="lg" asChild><Link href={isPlatform ? "https://platform.scripticx.org" : "https://platform.scripticx.org/contact"}>{content.primary}<ArrowUpRight /></Link></Button>
+                <Button size="lg" asChild><Link href={isPlatform ? links.platform : links.contact}>{content.primary}<ArrowUpRight /></Link></Button>
                 <Button size="lg" variant="outline" asChild><Link href={isPlatform ? "#platform-showcase" : division === "education" ? "/platform" : "#capabilities"}>{content.secondary}</Link></Button>
               </div>
               <div className="mt-10 grid gap-3 border-t pt-6 sm:grid-cols-3">
@@ -225,8 +227,8 @@ export default async function DivisionPage({ division }: { division: DivisionKey
             <Reveal className="grid gap-8 rounded-[20px] border bg-muted/30 p-7 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:p-14">
               <div><h2 className="text-balance text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">{ctaContent.title}</h2><p className="mt-4 max-w-3xl text-base leading-7 text-muted-foreground">{ctaContent.description}</p></div>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <Button size="lg" asChild><Link href={isPlatform ? "https://platform.scripticx.org" : "https://platform.scripticx.org/contact"}>{ctaContent.action}<ArrowUpRight /></Link></Button>
-                {isPlatform && "secondaryAction" in ctaContent ? <Button size="lg" variant="outline" asChild><Link href="https://platform.scripticx.org/login">{ctaContent.secondaryAction}</Link></Button> : null}
+                <Button size="lg" asChild><Link href={isPlatform ? links.platform : links.contact}>{ctaContent.action}<ArrowUpRight /></Link></Button>
+                {isPlatform && "secondaryAction" in ctaContent ? <Button size="lg" variant="outline" asChild><Link href={links.login}>{ctaContent.secondaryAction}</Link></Button> : null}
               </div>
             </Reveal>
           </div>

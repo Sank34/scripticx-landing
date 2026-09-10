@@ -9,40 +9,40 @@ import {
 import { useTranslations } from "next-intl";
 
 export default function FeatureGrid() {
-  const t = useTranslations("Features");
+  const translate = useTranslations("Features");
 
   const features = [
     {
-      title: t("items.interactive.title"),
-      desc: t("items.interactive.desc"),
+      title: translate("items.interactive.title"),
+      desc: translate("items.interactive.desc"),
       icon: <Brain className="text-foreground" size={20} />,
       big: true,
     },
     {
-      title: t("items.miniscript.title"),
-      desc: t("items.miniscript.desc"),
+      title: translate("items.miniscript.title"),
+      desc: translate("items.miniscript.desc"),
       icon: <Code2 size={20} className="text-foreground"/>,
     },
     {
-      title: t("items.sharing.title"),
-      desc: t("items.sharing.desc"),
+      title: translate("items.sharing.title"),
+      desc: translate("items.sharing.desc"),
       icon: <Users size={20} className="text-foreground"/>,
     },
     {
-      title: t("items.progress.title"),
-      desc: t("items.progress.desc"),
+      title: translate("items.progress.title"),
+      desc: translate("items.progress.desc"),
       icon: <BarChart3 className="text-foreground" size={20} />,
       big: true,
     },
     {
-      title: t("items.community.title"),
-      desc: t("items.community.desc"),
+      title: translate("items.community.title"),
+      desc: translate("items.community.desc"),
       icon: <Users size={20} className="text-foreground"/>,
       big: true,
     },
     {
-      title: t("items.execution.title"),
-      desc: t("items.execution.desc"),
+      title: translate("items.execution.title"),
+      desc: translate("items.execution.desc"),
       icon: <Zap size={20} className="text-foreground"/>,
     },
   ];
@@ -52,10 +52,10 @@ export default function FeatureGrid() {
 
       <div className="text-center mb-12 sm:mb-16">
         <h2 className="text-2xl sm:text-3xl font-semibold">
-          {t("title")}
+          {translate("title")}
         </h2>
         <p className="text-muted-foreground mt-4 text-sm sm:text-base">
-          {t("description")}
+          {translate("description")}
         </p>
       </div>
 

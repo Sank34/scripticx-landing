@@ -7,11 +7,11 @@ import { ArrowUpRight, Check, ImageIcon } from "lucide-react";
 import { Reveal } from "@/components/marketing/Reveal";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { divisionDetailsContent } from "@/lib/division-details-content";
-import type { MarketingLocale } from "@/lib/marketing-content";
+import { developmentContent } from "@/config/development";
+import type { SiteLocale } from "@/config/languages";
 
-export function DevelopmentWork({ locale }: { locale: MarketingLocale }) {
-  const content = divisionDetailsContent[locale].development.work;
+export function DevelopmentWork({ locale }: { locale: SiteLocale }) {
+  const content = developmentContent[locale].work;
   const multipleProjects = content.items.length > 1;
 
   return (

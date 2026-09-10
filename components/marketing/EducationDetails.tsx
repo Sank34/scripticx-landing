@@ -1,3 +1,4 @@
+import { links } from "@/config/links";
 import Link from "next/link";
 import { ArrowUpRight, Check, Lightbulb, PenLine, RefreshCw } from "lucide-react";
 
@@ -5,13 +6,13 @@ import { EducationActivities } from "@/components/marketing/EducationActivities"
 import { EducationGroups } from "@/components/marketing/EducationGroups";
 import { EducationRoadmap } from "@/components/marketing/EducationRoadmap";
 import { Button } from "@/components/ui/button";
-import type { MarketingLocale } from "@/lib/marketing-content";
-import { divisionDetailsContent } from "@/lib/division-details-content";
+import type { SiteLocale } from "@/config/languages";
+import { educationContent } from "@/config/education";
 
 const subjectIcons = [Lightbulb, PenLine, RefreshCw];
 
-export function EducationDetails({ locale }: { locale: MarketingLocale }) {
-  const content = divisionDetailsContent[locale].education;
+export function EducationDetails({ locale }: { locale: SiteLocale }) {
+  const content = educationContent[locale];
 
   return (
     <>
@@ -70,7 +71,7 @@ export function EducationDetails({ locale }: { locale: MarketingLocale }) {
               <p className="text-sm font-medium text-muted-foreground">{content.pricing.eyebrow}</p>
               <h2 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">{content.pricing.title}</h2>
               <p className="mt-5 text-base leading-7 text-muted-foreground">{content.pricing.description}</p>
-              <Button className="mt-8" asChild><Link href="https://platform.scripticx.org/contact">{content.pricing.contact}<ArrowUpRight /></Link></Button>
+              <Button className="mt-8" asChild><Link href={links.contact}>{content.pricing.contact}<ArrowUpRight /></Link></Button>
             </div>
             <div className="grid gap-3 md:grid-cols-2">
               {content.pricing.items.map((item, index) => (

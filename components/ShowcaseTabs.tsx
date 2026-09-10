@@ -18,7 +18,7 @@ const tabs: Tab[] = [
 ];
 
 export default function ShowcaseTabs() {
-  const t = useTranslations("ShowcaseTabs");
+  const translate = useTranslations("ShowcaseTabs");
   const [active, setActive] = useState(tabs[0]);
 
   const handleChange = (tab:Tab) => {
@@ -30,7 +30,7 @@ export default function ShowcaseTabs() {
     <section className="py-20 sm:py-32 px-4 sm:px-6 text-center">
 
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight">
-        {t("title")}
+        {translate("title")}
       </h2>
 
       {/* MOCK UI */}
@@ -248,7 +248,7 @@ export default function ShowcaseTabs() {
                   </motion.button>
 
                   <div className="mt-1 sm:mt-2 bg-gray-100 rounded p-2 sm:p-3 flex-1 space-y-1 sm:space-y-2 overflow-hidden">
-                    {["Running...","Hello World","Done"].map((t,i)=> (
+                    {["Running...","Hello World","Done"].map((translate,i)=> (
                       <motion.div
                         key={i}
                         className="text-[10px] sm:text-xs font-mono text-green-600 truncate"
@@ -256,7 +256,7 @@ export default function ShowcaseTabs() {
                         animate={{ opacity: [0,0,1,1,0] }}
                         transition={{ duration: 2.5, delay: i * 0.8, repeat: Infinity, repeatDelay: 1 }}
                       >
-                        {'>'} {t}
+                        {'>'} {translate}
                       </motion.div>
                     ))}
                   </div>
@@ -284,26 +284,25 @@ export default function ShowcaseTabs() {
 
                   {/* Class header */}
                   <div className="h-14 sm:h-24 rounded-lg sm:rounded-xl bg-gradient-to-r from-gray-800 to-gray-600 p-2 sm:p-4 text-left text-white flex flex-col justify-end">
-                    <div className="text-xs sm:text-lg font-semibold truncate">{t("classes.title")}</div>
-                    <div className="text-[10px] sm:text-xs opacity-80 truncate">{t("classes.teacher")}</div>
+                    <div className="text-xs sm:text-lg font-semibold truncate">{translate("classes.title")}</div>
+                    <div className="text-[10px] sm:text-xs opacity-80 truncate">{translate("classes.teacher")}</div>
                   </div>
 
                   {/* Assignments list */}
                   <div className="space-y-2 sm:space-y-3">
-                    <div className="text-xs sm:text-sm font-medium text-gray-600">{t("classes.assignments")}</div>
+                    <div className="text-xs sm:text-sm font-medium text-gray-600">{translate("classes.assignments")}</div>
                     {[1,2,3,4].map((i)=> (
                       <div key={i} className="flex items-center justify-between border rounded-lg p-2 sm:p-3 gap-2">
                         <div className="space-y-0.5 sm:space-y-1 min-w-0 text-left">
                           <div className="text-[11px] sm:text-sm font-medium text-gray-800 truncate">Assignment {i}</div>
-                          <div className="text-[10px] sm:text-xs text-gray-500 truncate">{t("classes.due")}</div>
+                          <div className="text-[10px] sm:text-xs text-gray-500 truncate">{translate("classes.due")}</div>
                         </div>
-                        <div className="text-[10px] sm:text-xs bg-black text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded shrink-0">{t("classes.open")}</div>
+                        <div className="text-[10px] sm:text-xs bg-black text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded shrink-0">{translate("classes.open")}</div>
                       </div>
                     ))}
                   </div>
 
                 </div>
-
 
               </div>
             </>
@@ -327,16 +326,16 @@ export default function ShowcaseTabs() {
 
                   {/* Header */}
                   <div className="text-left">
-                    <div className="text-base sm:text-2xl font-semibold text-gray-800 truncate">{t("dashboard.title")}</div>
+                    <div className="text-base sm:text-2xl font-semibold text-gray-800 truncate">{translate("dashboard.title")}</div>
                     <div className="text-[10px] sm:text-sm text-gray-500 truncate">sankedev@gmail.com</div>
                   </div>
 
                   {/* Stats */}
                   <div className="grid grid-cols-3 gap-2 sm:gap-4">
                     {[
-                      { label: t("dashboard.problems"), value: "3" },
-                      { label: t("dashboard.score"), value: "3" },
-                      { label: t("dashboard.streak"), value: "100%" }
+                      { label: translate("dashboard.problems"), value: "3" },
+                      { label: translate("dashboard.score"), value: "3" },
+                      { label: translate("dashboard.streak"), value: "100%" }
                     ].map((stat, i) => (
                       <motion.div
                         key={i}
@@ -353,7 +352,7 @@ export default function ShowcaseTabs() {
 
                   {/* Leaderboard */}
                   <div className="border rounded-lg sm:rounded-xl p-2 sm:p-4 text-left space-y-2 sm:space-y-3">
-                    <div className="text-[11px] sm:text-sm font-medium text-gray-600">{t("dashboard.leaderboard")}</div>
+                    <div className="text-[11px] sm:text-sm font-medium text-gray-600">{translate("dashboard.leaderboard")}</div>
                     {["sanke","user2","user1","vesos"].map((u,i)=> (
                       <div key={i} className="flex justify-between items-center">
                         <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
@@ -367,7 +366,7 @@ export default function ShowcaseTabs() {
 
                   {/* Activity */}
                   <div className="border rounded-lg sm:rounded-xl p-2 sm:p-4 text-left space-y-2 sm:space-y-3">
-                    <div className="text-[11px] sm:text-sm font-medium text-gray-600">{t("dashboard.activity")}</div>
+                    <div className="text-[11px] sm:text-sm font-medium text-gray-600">{translate("dashboard.activity")}</div>
                     {[
                       "Sum of two numbers",
                       "Print numbers",
@@ -409,7 +408,7 @@ export default function ShowcaseTabs() {
                     {/* Create post */}
                     <div className="flex items-center justify-between border rounded-lg sm:rounded-xl p-2 sm:p-4 gap-2">
                       <div className="h-3 sm:h-4 w-1/3 bg-gray-200 rounded" />
-                      <div className="px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs bg-black text-white rounded shrink-0">{t("socials.post")}</div>
+                      <div className="px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs bg-black text-white rounded shrink-0">{translate("socials.post")}</div>
                     </div>
 
                     {/* Post card */}
@@ -427,7 +426,7 @@ export default function ShowcaseTabs() {
 
                       <div className="flex items-center gap-2">
                         <div className="flex-1 h-6 sm:h-8 bg-gray-100 rounded min-w-0" />
-                        <div className="px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs bg-black text-white rounded shrink-0">{t("socials.send")}</div>
+                        <div className="px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs bg-black text-white rounded shrink-0">{translate("socials.send")}</div>
                       </div>
                     </div>
                   </motion.div>
@@ -448,7 +447,7 @@ export default function ShowcaseTabs() {
                       }}
                       transition={{ duration: 8, repeat: Infinity, repeatDelay: 2 }}
                     >
-                      <div className="text-sm sm:text-lg font-semibold">{t("socials.create")}</div>
+                      <div className="text-sm sm:text-lg font-semibold">{translate("socials.create")}</div>
 
                       {/* Typing */}
                       <motion.div
@@ -457,7 +456,7 @@ export default function ShowcaseTabs() {
                         animate={{ opacity: [0, 1, 1, 1] }}
                         transition={{ duration: 8, delay: 2, repeat: Infinity, repeatDelay: 2 }}
                       >
-                        {t("socials.typing")}
+                        {translate("socials.typing")}
                       </motion.div>
 
                       {/* Button click */}
@@ -474,7 +473,7 @@ export default function ShowcaseTabs() {
                           repeatDelay: 7.6
                         }}
                       >
-                        {t("socials.post")}
+                        {translate("socials.post")}
                       </motion.button>
 
                       {/* Finished state */}
@@ -484,7 +483,7 @@ export default function ShowcaseTabs() {
                         animate={{ opacity: [0, 0, 0, 1, 1, 0] }}
                         transition={{ duration: 8, delay: 4.5, repeat: Infinity, repeatDelay: 2 }}
                       >
-                        {t("socials.finished")}
+                        {translate("socials.finished")}
                       </motion.div>
                     </motion.div>
                   </motion.div>
@@ -492,7 +491,6 @@ export default function ShowcaseTabs() {
               </div>
             </>
           )}
-
 
           </motion.div>
         </AnimatePresence>
@@ -510,7 +508,7 @@ export default function ShowcaseTabs() {
                 : "hover:bg-muted"}
             `}
           >
-            {t(`tabs.${tab.label}`)}
+            {translate(`tabs.${tab.label}`)}
           </button>
         ))}
       </div>

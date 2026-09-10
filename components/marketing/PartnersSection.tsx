@@ -5,11 +5,12 @@ import { getLocale } from "next-intl/server";
 
 import { Reveal } from "@/components/marketing/Reveal";
 import { Button } from "@/components/ui/button";
-import { getMarketingLocale } from "@/lib/marketing-content";
-import { partners, partnersContent } from "@/lib/partners-content";
+import { getSiteLocale } from "@/config/languages";
+import { partners } from "@/config/partners";
+import { partnersContent } from "@/config/partnerships";
 
 export default async function PartnersSection() {
-  const locale = getMarketingLocale(await getLocale());
+  const locale = getSiteLocale(await getLocale());
   const content = partnersContent[locale].home;
 
   return (

@@ -1,11 +1,12 @@
 "use client";
+import { links } from "@/config/links";
 
 import Link from "next/link";
 import { ArrowUpRight, BrainCircuit, Check, Clock3, Code2, UsersRound } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import type { EducationGroupsContent, EducationTrackKey } from "@/lib/division-details-content";
+import { type EducationGroupsContent, type EducationTrackKey } from "@/types/education";
 
 const trackIcons = {
   informatics: Code2,
@@ -63,7 +64,7 @@ function GroupCards({
             <p className={`mt-6 text-sm leading-6 ${featured ? "text-background/68" : "text-muted-foreground"}`}>{group.description}</p>
 
             <Button className="mt-7 w-full" variant={featured ? "secondary" : "default"} asChild>
-              <Link href="https://platform.scripticx.org/contact">
+              <Link href={links.contact}>
                 {content.contact}
                 <ArrowUpRight />
               </Link>

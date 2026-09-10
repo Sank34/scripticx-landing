@@ -1,3 +1,5 @@
+Pentru modificări manuale ale site-ului, vezi [ghidul de configurare în română](config/README.md). Include linkuri, evenimente, echipă, parteneri, programe și comenzi de verificare.
+
 <div align="center">
 <img src="https://media.discordapp.net/attachments/1495347070654218342/1532703552160399360/logo-github.png?ex=6a71c56b&is=6a7073eb&hm=205ec8d045d7f3321b8b87810d10fa7e56165b634561680f87c59adee5a6fa61&=&format=webp&quality=lossless" alt="logo" width="200"><br>
 <br>

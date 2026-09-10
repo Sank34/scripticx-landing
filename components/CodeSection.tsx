@@ -15,7 +15,7 @@ const lines = [
 ];
 
 export default function CodeSection() {
-  const t = useTranslations("CodeSection");
+  const translate = useTranslations("CodeSection");
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -36,11 +36,11 @@ export default function CodeSection() {
     <section className="py-20 sm:py-32 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-12">
         <h2 className="text-2xl sm:text-3xl font-semibold">
-          {t("title")}
+          {translate("title")}
         </h2>
 
         <p className="text-muted-foreground mt-4 text-sm sm:text-base">
-          {t("description")}
+          {translate("description")}
         </p>
       </div>
 

@@ -1,3 +1,4 @@
+import { links } from "@/config/links";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Mail } from "lucide-react";
@@ -5,23 +6,23 @@ import { getTranslations } from "next-intl/server";
 
 import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
 import { Reveal } from "@/components/marketing/Reveal";
-import { teamMembers } from "@/lib/team-data";
+import { teamMembers } from "@/config/team";
 
 export default async function TeamSection() {
-  const t = await getTranslations("Team");
+  const translate = await getTranslations("Team");
 
   return (
     <section id="team" className="scroll-mt-20 border-b py-20 sm:py-24">
       <div className="mx-auto max-w-[var(--sx-max-content)] px-4 sm:px-6 lg:px-8">
         <Reveal className="grid gap-6 border-b pb-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:pb-12">
           <div>
-            <p className="text-sm font-medium text-muted-foreground">{t("eyebrow")}</p>
+            <p className="text-sm font-medium text-muted-foreground">{translate("eyebrow")}</p>
             <h2 className="mt-4 max-w-2xl text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
-              {t("title")}
+              {translate("title")}
             </h2>
           </div>
           <p className="max-w-2xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg lg:justify-self-end">
-            {t("description")}
+            {translate("description")}
           </p>
         </Reveal>
 
@@ -53,8 +54,8 @@ export default async function TeamSection() {
                           href={member.linkedin}
                           target="_blank"
                           rel="noreferrer"
-                          aria-label={`${t("linkedin")} — ${member.name}`}
-                          title={t("linkedin")}
+                          aria-label={`${translate("linkedin")} — ${member.name}`}
+                          title={translate("linkedin")}
                           className="flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                         >
                           <LinkedInIcon className="size-4" />
@@ -64,18 +65,18 @@ export default async function TeamSection() {
                         href={
                           member.email
                             ? `mailto:${member.email}`
-                            : `https://platform.scripticx.org/contact?member=${member.slug}`
+                            : `${links.contact}?member=${member.slug}`
                         }
-                        aria-label={`${member.email ? t("email") : t("contactMember")} — ${member.name}`}
-                        title={member.email ? t("email") : t("contactMember")}
+                        aria-label={`${member.email ? translate("email") : translate("contactMember")} — ${member.name}`}
+                        title={member.email ? translate("email") : translate("contactMember")}
                         className="flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                       >
                         <Mail className="size-4" />
                       </Link>
                       <Link
                         href={`/members/${member.slug}`}
-                        aria-label={`${t("viewProfile")} — ${member.name}`}
-                        title={t("viewProfile")}
+                        aria-label={`${translate("viewProfile")} — ${member.name}`}
+                        title={translate("viewProfile")}
                         className="flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                       >
                         <ArrowUpRight className="size-4" />
@@ -83,7 +84,7 @@ export default async function TeamSection() {
                     </div>
                   </div>
                   <p className="text-sm leading-6 text-muted-foreground">
-                    {member.roles.map((role) => t(`roles.${role}`)).join(" · ")}
+                    {member.roles.map((role) => translate(`roles.${role}`)).join(" · ")}
                   </p>
                 </div>
               </article>

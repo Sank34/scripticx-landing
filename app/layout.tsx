@@ -1,3 +1,4 @@
+import { links } from "@/config/links";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -179,8 +180,8 @@ export default async function RootLayout({
           height: 512,
         },
         sameAs: [
-          "https://github.com/Sank34/scripticx",
-          "https://www.youtube.com/@scripticx",
+          links.github,
+          links.organizationYoutube,
         ],
         department: [
           {

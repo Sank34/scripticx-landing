@@ -1,3 +1,4 @@
+import { links } from "@/config/links";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,9 +17,10 @@ import Footer from "@/components/Footer";
 import { Reveal } from "@/components/marketing/Reveal";
 import { SponsorshipOptions } from "@/components/marketing/SponsorshipOptions";
 import { Button } from "@/components/ui/button";
-import { getMarketingLocale } from "@/lib/marketing-content";
+import { getSiteLocale } from "@/config/languages";
 import { createPageMetadata } from "@/lib/metadata";
-import { partners, partnersContent } from "@/lib/partners-content";
+import { partners } from "@/config/partners";
+import { partnersContent } from "@/config/partnerships";
 
 const benefitIcons = [
   Eye,
@@ -45,7 +47,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function PartnersPage() {
-  const locale = getMarketingLocale(await getLocale());
+  const locale = getSiteLocale(await getLocale());
   const content = partnersContent[locale];
 
   return (
@@ -65,7 +67,7 @@ export default async function PartnersPage() {
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button size="lg" asChild>
-                  <Link href="https://platform.scripticx.org/contact">
+                  <Link href={links.contact}>
                     {content.hero.primary}
                     <ArrowUpRight />
                   </Link>
@@ -227,7 +229,7 @@ export default async function PartnersPage() {
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button asChild>
-                  <Link href="https://platform.scripticx.org/contact">
+                  <Link href={links.contact}>
                     {content.process.action}
                     <ArrowUpRight />
                   </Link>

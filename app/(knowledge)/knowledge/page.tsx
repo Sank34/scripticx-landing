@@ -1,3 +1,4 @@
+import { links } from "@/config/links";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getLocale } from "next-intl/server";
@@ -229,7 +230,7 @@ export default async function KnowledgePage() {
             </p>
           </div>
           <Button asChild>
-            <a href="https://platform.scripticx.org/contact">
+            <a href={links.contact}>
               {isRomanian ? "Contactează suportul" : "Contact support"}
               <ArrowRight />
             </a>

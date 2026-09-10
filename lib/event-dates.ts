@@ -1,13 +1,40 @@
-import type { MarketingLocale } from "@/lib/marketing-content";
+import { eventSettings } from "../config/events.ts";
+import type { SiteLocale } from "@/config/languages";
 
 const months = {
-  en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-  ro: ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"],
+  en: [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ],
+  ro: [
+    "ianuarie",
+    "februarie",
+    "martie",
+    "aprilie",
+    "mai",
+    "iunie",
+    "iulie",
+    "august",
+    "septembrie",
+    "octombrie",
+    "noiembrie",
+    "decembrie",
+  ],
 } as const;
 
 // Event dates belong to the organiser's calendar, not the viewer's time zone.
 const calendarFormatter = new Intl.DateTimeFormat("en-GB", {
-  timeZone: "Europe/Bucharest",
+  timeZone: eventSettings.timeZone,
   calendar: "gregory",
   numberingSystem: "latn",
   day: "numeric",
@@ -15,36 +42,40 @@ const calendarFormatter = new Intl.DateTimeFormat("en-GB", {
   year: "numeric",
 });
 
-function calendarDate(iso: string) {
-  const parts = calendarFormatter.formatToParts(new Date(iso));
-  const number = (type: Intl.DateTimeFormatPartTypes) =>
+function getCalendarDate(dateTime: string) {
+  const parts = calendarFormatter.formatToParts(new Date(dateTime));
+  const getPartNumber = (type: Intl.DateTimeFormatPartTypes) =>
     Number(parts.find((part) => part.type === type)?.value);
 
-  return { day: number("day"), month: number("month"), year: number("year") };
+  return {
+    day: getPartNumber("day"),
+    month: getPartNumber("month"),
+    year: getPartNumber("year"),
+  };
 }
 
-export function getEventMonthKey(iso: string) {
-  const { year, month } = calendarDate(iso);
+export function getEventMonthKey(dateTime: string) {
+  const { year, month } = getCalendarDate(dateTime);
   return `${year}-${String(month).padStart(2, "0")}`;
 }
 
-export function formatEventMonth(iso: string, locale: MarketingLocale) {
-  const month = months[locale][calendarDate(iso).month - 1];
+export function formatEventMonth(dateTime: string, locale: SiteLocale) {
+  const month = months[locale][getCalendarDate(dateTime).month - 1];
   return month.charAt(0).toUpperCase() + month.slice(1);
 }
 
-export function formatEventYear(iso: string) {
-  return String(calendarDate(iso).year);
+export function formatEventYear(dateTime: string) {
+  return String(getCalendarDate(dateTime).year);
 }
 
 export function formatEventDate(
   event: { startAt: string; endAt?: string; dateLabel?: string },
-  locale: MarketingLocale,
+  locale: SiteLocale,
 ) {
   if (event.dateLabel) return event.dateLabel;
 
-  const start = calendarDate(event.startAt);
-  const end = event.endAt ? calendarDate(event.endAt) : start;
+  const start = getCalendarDate(event.startAt);
+  const end = event.endAt ? getCalendarDate(event.endAt) : start;
   const startMonth = months[locale][start.month - 1];
   const endMonth = months[locale][end.month - 1];
   const startLabel = `${start.day} ${startMonth} ${start.year}`;

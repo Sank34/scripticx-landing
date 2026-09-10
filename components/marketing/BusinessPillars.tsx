@@ -4,12 +4,13 @@ import { getLocale } from "next-intl/server";
 
 import { Reveal } from "@/components/marketing/Reveal";
 import { MascotPeek } from "@/components/marketing/MascotPeek";
-import { getMarketingLocale, marketingContent } from "@/lib/marketing-content";
+import { getSiteLocale } from "@/config/languages";
+import { marketingContent } from "@/config/marketing";
 
 const icons = { education: BookOpen, development: Code2, platform: PanelsTopLeft };
 
 export default async function BusinessPillars() {
-  const locale = getMarketingLocale(await getLocale());
+  const locale = getSiteLocale(await getLocale());
   const content = marketingContent[locale].pillars;
 
   return (

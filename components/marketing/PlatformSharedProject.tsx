@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import Image from "next/image";
 
 import { Reveal } from "@/components/marketing/Reveal";
-import type { MarketingLocale } from "@/lib/marketing-content";
+import type { SiteLocale } from "@/config/languages";
 
 const copy = {
   en: {
@@ -238,7 +238,7 @@ function WorkspaceView({
   );
 }
 
-export function PlatformSharedProject({ locale }: { locale: MarketingLocale }) {
+export function PlatformSharedProject({ locale }: { locale: SiteLocale }) {
   const content = copy[locale];
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef<HTMLElement | null>(null);

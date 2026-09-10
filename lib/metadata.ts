@@ -6,9 +6,11 @@ import {
   type KnowledgeLocale,
 } from "@/lib/knowledge-data";
 
+import { siteConfig as siteSettings } from "@/config/site";
+
 const configuredUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://www.scripticx.org";
+  siteSettings.url;
 
 function getCanonicalSiteUrl(url: string) {
   const parsedUrl = new URL(url);
@@ -20,30 +22,7 @@ function getCanonicalSiteUrl(url: string) {
   return parsedUrl.toString().replace(/\/$/, "");
 }
 
-export const siteConfig = {
-  name: "ScripticX",
-  url: getCanonicalSiteUrl(configuredUrl),
-  logo: "/icons/notification-icon-512.png",
-  descriptions: {
-    ro: "Educație în informatică, dezvoltare software și o platformă completă pentru învățare, proiecte și colaborare.",
-    en: "Informatics education, software development and one platform for learning, projects and collaboration.",
-  },
-  keywords: [
-    "ScripticX",
-    "programare",
-    "învățare programare",
-    "MiniScript+",
-    "coding platform",
-    "learn programming",
-    "interactive coding",
-    "coding exercises",
-    "education",
-    "software development",
-    "web development",
-    "product design",
-    "IT consulting",
-  ],
-} as const;
+export const siteConfig = { ...siteSettings, url: getCanonicalSiteUrl(configuredUrl) };
 
 export function absoluteUrl(path = "/") {
   return new URL(path, siteConfig.url).toString();

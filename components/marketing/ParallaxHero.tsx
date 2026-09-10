@@ -1,4 +1,5 @@
 "use client";
+import { links } from "@/config/links";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +10,8 @@ import { type RefObject, useRef, useState, useSyncExternalStore } from "react";
 
 import { Button } from "@/components/ui/button";
 import { BracketWaveField } from "@/components/events/BracketWaveField";
-import { getMarketingLocale, marketingContent } from "@/lib/marketing-content";
+import { getSiteLocale } from "@/config/languages";
+import { marketingContent } from "@/config/marketing";
 
 const workshopRoot = "/events/workshops/programming-1-3-july-26";
 const desktopLayoutQuery = "(min-width: 1024px)";
@@ -90,7 +92,7 @@ function FloatingPhoto({
 }
 
 export default function ParallaxHero() {
-  const locale = getMarketingLocale(useLocale());
+  const locale = getSiteLocale(useLocale());
   const content = marketingContent[locale].hero;
   const target = useRef<HTMLElement>(null);
   const collage = useRef<HTMLDivElement>(null);
@@ -157,7 +159,7 @@ export default function ParallaxHero() {
             </Link>
           </Button>
           <Button size="lg" variant="outline" asChild>
-            <Link href="https://platform.scripticx.org">
+            <Link href={links.platform}>
               {content.secondary}
               <ArrowUpRight />
             </Link>

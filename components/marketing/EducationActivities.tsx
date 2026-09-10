@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import type { ActivityDetail } from "@/lib/division-details-content";
+import type { ActivityDetail } from "@/types/education";
 
 export function EducationActivities({
   items,
@@ -16,7 +16,6 @@ export function EducationActivities({
   function openActivity(activity: ActivityDetail) {
     setSelected(activity);
   }
-
 
   return (
     <>

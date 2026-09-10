@@ -1,4 +1,5 @@
 "use client";
+import { links } from "@/config/links";
 
 import Link from "next/link";
 import {
@@ -12,7 +13,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import type { SponsorshipContent } from "@/lib/partners-content";
+import type { SponsorshipContent } from "@/types/partners";
 
 const inKindIcons = [Boxes, Building2, UsersRound] as const;
 
@@ -115,7 +116,7 @@ export function SponsorshipOptions({ content }: { content: SponsorshipContent })
                       variant={featured ? "secondary" : "default"}
                       asChild
                     >
-                      <Link href="https://platform.scripticx.org/contact">
+                      <Link href={links.contact}>
                         {content.action}
                         <ArrowUpRight />
                       </Link>
@@ -208,7 +209,7 @@ export function SponsorshipOptions({ content }: { content: SponsorshipContent })
 
             <div className="mt-8 flex justify-center">
               <Button asChild>
-                <Link href="https://platform.scripticx.org/contact">
+                <Link href={links.contact}>
                   {content.action}
                   <ArrowUpRight />
                 </Link>

@@ -22,7 +22,7 @@ import {
 } from "simple-icons";
 
 import { Reveal } from "@/components/marketing/Reveal";
-import type { MarketingLocale } from "@/lib/marketing-content";
+import type { SiteLocale } from "@/config/languages";
 
 const languageMarks = [siPython, siCplusplus, siJavascript, siTypescript, siOpenjdk, siGo, siRust];
 
@@ -173,7 +173,7 @@ function LanguageOrbit({ reducedMotion }: { reducedMotion: boolean }) {
   );
 }
 
-function CodeExample({ locale, reducedMotion }: { locale: MarketingLocale; reducedMotion: boolean }) {
+function CodeExample({ locale, reducedMotion }: { locale: SiteLocale; reducedMotion: boolean }) {
   const [selected, setSelected] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
   const example = examples[selected];
@@ -255,7 +255,7 @@ function ComparisonCell({ children, strong = false }: { children: ReactNode; str
   );
 }
 
-export function PlatformEditorExperience({ locale }: { locale: MarketingLocale }) {
+export function PlatformEditorExperience({ locale }: { locale: SiteLocale }) {
   const content = copy[locale];
   const reducedMotion = Boolean(useReducedMotion());
 
