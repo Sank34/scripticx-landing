@@ -1,28 +1,252 @@
 import { HighlightedCodeBlock } from "@/components/knowledge/HighlightedCodeBlock";
 
 <Callout title="Învață modificând exemplele">
-  Rulează fiecare exemplu în editor, schimbă o valoare și încearcă să prezici
-  rezultatul înainte de următoarea rulare.
+  Rulează fiecare exemplu în editorul ScripticX, apoi schimbă o singură valoare
+  și încearcă să prezici rezultatul înainte de a-l rula din nou. Fiecare program
+  de pe această pagină a fost executat cu interpretorul MiniScript+, iar
+  rezultatele afișate sunt cele reale.
 </Callout>
 
-MiniScript+ păstrează sintaxa compactă, astfel încât începătorii să se poată
-concentra pe logică și rezolvarea problemelor.
+MiniScript+ (`.msp`) este limbajul de învățare integrat în ScripticX. Sintaxa
+lui este intenționat compactă, ca începătorii să se poată concentra pe
+raționament și pe rezolvarea problemelor, nu pe punctuație.
 
-<h2 id="valori-si-variabile">Valori și variabile</h2>
+Tot limbajul înseamnă șapte instrucțiuni: `PRINT`, `INPUT`, atribuirea, `IF`,
+`ELSE`, `END`, `WHILE`, plus expresii. Nu există tablouri și nici funcții
+definite de tine (în curând :>).
 
-Variabilele păstrează valori care pot fi refolosite sau modificate:
+## Cum rulează un program
+
+Un program este o listă de linii, citită de sus în jos. **O linie de cod
+înseamnă întotdeauna exact o instrucțiune**, inclusiv liniile goale și cele de
+comentariu. Interpretorul ține un pointer către linia curentă, o execută și
+trece mai departe. Buclele și condițiile funcționează mutând acel pointer în
+altă parte.
+
+<HighlightedCodeBlock code={`total = 0
+total = total + 5
+PRINT total`} />
+
+```text
+5
+```
+
+Atribuirea nu afișează nimic de una singură. Doar `PRINT` scrie în consolă.
+
+Editorul îți dă două moduri de a rula asta:
+
+| Acțiune | Ce face |
+| --- | --- |
+| **Rulează** | Execută până la finalul programului, până la o eroare sau până când `INPUT` cere o valoare |
+| **Pas** | Execută exact o instrucțiune, apoi se oprește ca să poți inspecta panoul Variabile |
+
+Rularea pas cu pas este cel mai rapid mod de a înțelege o buclă: urmărește cum
+sare pointerul de la `END` înapoi la `WHILE` și cum se schimbă contorul pe drum.
+
+<Callout type="info" title="Starea este globală și plată">
+  Există un singur set de variabile pentru tot programul. O variabilă creată în
+  corpul unei bucle rămâne citibilă și după ce bucla se termină.
+</Callout>
+
+## Reguli de sintaxă
+
+**O singură instrucțiune pe linie.** Nu există separator de instrucțiuni.
+`x = 1 PRINT x` nu înseamnă două instrucțiuni, ci este o eroare.
+
+**Cuvintele cheie se scriu cu MAJUSCULE.** `PRINT`, `INPUT`, `IF`, `THEN`,
+`ELSE`, `END`, `WHILE`, `AND`, `OR`, `NOT`, `DIV`, `MOD`. Dacă scrii `print x`,
+programul se oprește cu `Unknown instruction "print x"`. Două lucruri *nu* țin
+cont de majuscule: literalii `TRUE`/`FALSE` și numele funcțiilor predefinite,
+`abs(-4)` funcționează. Numele variabilelor țin cont de majuscule, așa că
+`total`, `Total` și `TOTAL` sunt trei variabile diferite.
+
+**`END` se scrie mereu singur.** `END IF` și `END WHILE` nu sunt valide.
+
+**Comentariile încep cu `#`,** fie pe o linie separată, fie după cod. `//` nu
+este comentariu (`x = 5 // 2` dă eroare).
+
+<HighlightedCodeBlock code={`# Calculează scorul final
+baza = 80
+bonus = 10  # acordat pentru viteză
+PRINT baza + bonus`} />
+
+```text
+90
+```
+
+<Callout type="warning" title="Evită # și : în text">
+  Interpretorul elimină comentariile și un eventual două puncte înainte să se
+  uite la ghilimele, așa că ambele caractere strică textele care le conțin:
+  `PRINT "a#b"` afișează `a`, iar `PRINT "a:b"` afișează `ab`. Ține `#` și `:`
+  în afara valorilor tale de tip text.
+</Callout>
+
+## Valori și variabile
+
+Există trei tipuri și niciun mod de a declara unul: o variabilă apare la prima
+atribuire și preia tipul valorii pe care o ține.
+
+| Tip | Exemple | Observații |
+| --- | --- | --- |
+| Număr | `42`, `3.14`, `-7` | Un singur tip numeric; `/` poate da zecimale |
+| Text | `"salut"` | Doar ghilimele duble drepte |
+| Boolean | `TRUE`, `FALSE` | Rezultă și din orice comparație |
 
 <HighlightedCodeBlock code={`nume = "Ana"
 scor = 10
+promovat = scor >= 5
 
 PRINT nume
-PRINT scor`} />
+PRINT scor
+PRINT promovat`} />
 
-Textele folosesc ghilimele, iar numerele pot fi utilizate direct în calcule.
+```text
+Ana
+10
+true
+```
 
-<h2 id="conditii">Condiții</h2>
+Valorile boolean se afișează cu litere mici, ca `true` și `false`, de aceea
+arată altfel decât `TRUE` pe care îl scrii tu.
 
-Condițiile permit programului să aleagă ce execută:
+Numele trebuie să înceapă cu o literă sau cu `_` și pot conține apoi litere,
+cifre și `_`. Dacă citești o variabilă căreia nu i-ai atribuit nimic, programul
+se oprește cu `Variable "x" is not defined`.
+
+O variabilă își poate schimba tipul oricând. Partea din dreapta se evaluează
+prima, iar rezultatul înlocuiește valoarea veche, exact mecanismul care face
+contoarele să funcționeze:
+
+<HighlightedCodeBlock code={`contor = 1
+contor = contor + 1
+contor = "gata"
+PRINT contor`} />
+
+```text
+gata
+```
+
+## Expresii și operatori
+
+Operatorii sunt listați de la cei mai slabi la cei mai puternici. Ce se află mai
+sus în tabel se evaluează după ce se află mai jos.
+
+| Nivel | Operatori | Observații |
+| --- | --- | --- |
+| 1 | `OR` | |
+| 2 | `AND` | |
+| 3 | `<` `>` `<=` `>=` `==` `!=` | |
+| 4 | `+` `-` | |
+| 5 | `*` `/` `%` `DIV` `MOD` | |
+| 6 | `NOT` `-` `+` (unari) | |
+
+Parantezele au prioritate peste tot, așa că `2 + 3 * 4` dă `14`, dar
+`(2 + 3) * 4` dă `20`.
+
+**Aritmetică.** `/` este împărțirea obișnuită și poate da zecimale. `DIV` este
+împărțirea întreagă, care trunchiază spre zero, iar `MOD` (sau `%`) dă restul.
+
+<HighlightedCodeBlock code={`PRINT 7 / 2
+PRINT 7 DIV 2
+PRINT 7 MOD 2
+PRINT -7 DIV 2`} />
+
+```text
+3.5
+3
+1
+-3
+```
+
+Împărțirea sau restul la zero opresc programul cu
+`Division by zero is not allowed`, respectiv `Modulo by zero is not allowed`.
+
+**`+` are două roluri.** Dacă una dintre părți este text, ambele devin text și
+se lipesc. Altfel este adunare. Toți ceilalți operatori aritmetici merg doar cu
+numere și raportează `Operator - can only be used with numbers`.
+
+<HighlightedCodeBlock code={`PRINT "Scor " + 10
+PRINT 3 + 4`} />
+
+```text
+Scor 10
+7
+```
+
+**Comparații.** `<`, `>`, `<=` și `>=` merg doar cu numere! Comparând text cu
+ele obții eroare. `==` și `!=` merg cu orice două valori și compară și valoarea,
+și tipul, așa că `1 == "1"` este `false`.
+
+**Logică.** `AND`, `OR` și `NOT` își tratează operanzii ca adevărat sau fals și
+întorc mereu un boolean. Textul gol și `0` contează ca fals.
+
+<Callout type="info" title="Un singur = merge într-o condiție">
+  Într-o condiție `IF` sau `WHILE`, un `=` cu spații în jur este citit ca `==`,
+  deci `IF x = 5 THEN` se comportă ca `IF x == 5 THEN`. Obiceiul mai clar rămâne
+  să scrii `==` peste tot, fiindcă în orice altă poziție `=` înseamnă atribuire.
+</Callout>
+
+## Funcții predefinite
+
+Există cinci funcții. Argumentele trebuie să fie numere, iar numele nu țin cont
+de majuscule.
+
+| Apel | Rezultat | Exemplu |
+| --- | --- | --- |
+| `INT(x)` | Trunchiază spre zero | `INT(-2.7)` → `-2` |
+| `TRUNC(x)` | Identic cu `INT` | `TRUNC(2.7)` → `2` |
+| `FLOOR(x)` | Rotunjește în jos | `FLOOR(-2.7)` → `-3` |
+| `ROUND(x)` | Cel mai apropiat întreg, jumătățile urcă | `ROUND(2.5)` → `3` |
+| `ROUND(x, d)` | Rotunjește la `d` zecimale | `ROUND(2 / 3, 2)` → `0.67` |
+| `ABS(x)` | Valoarea absolută | `ABS(-4)` → `4` |
+
+Apelurile se pot imbrica și se combină cu operatori ca orice altă expresie, așa
+că `PRINT ABS(INT(-9.7) + 2)` afișează `7`.
+
+<Callout type="warning" title="Unele nume sunt colorate, dar nu există">
+  Editorul colorează `SQRT`, `CEIL`, `MIN` și `MAX` ca funcții, însă
+  interpretorul nu le definește. Un apel eșuează cu `Unknown function "SQRT"`.
+  Calculează-le singur: `MAX` cu un `IF`, iar radicalul întreg cu o buclă
+  `WHILE`.
+</Callout>
+
+## Input și output
+
+`PRINT` primește exact o expresie și scrie câte o linie la fiecare apel. Ca să
+etichetezi o valoare, lipește-o cu `+`.
+
+<HighlightedCodeBlock code={`total = 12
+PRINT "Total " + total`} />
+
+```text
+Total 12
+```
+
+`INPUT nume` oprește programul și reține ce tastezi. Editorul transformă în
+număr ceea ce arată a număr și în boolean valorile `true`/`false`; orice
+altceva rămâne text. Dacă trimiți căsuța goală, primești `0`.
+
+<HighlightedCodeBlock code={`INPUT varsta
+IF varsta >= 18 THEN
+  PRINT "Adult"
+ELSE
+  PRINT "Minor"
+END`} />
+
+Cu `20` tastat, programul afișează `Adult`.
+
+<Callout type="info" title="Citește toate valorile trimise de exercițiu">
+  Problemele evaluate trimit datele într-o ordine fixă, câte una pentru fiecare
+  `INPUT`. Dacă ceri mai puține valori decât trimite testul, restul rămân
+  necitite; dacă ceri mai multe, rularea se oprește. Respectă exact numărul din
+  enunț.
+</Callout>
+
+## Condiții
+
+Un bloc `IF` își execută corpul doar când condiția este adevărată și se închide
+mereu cu `END`. `THEN` este obligatoriu, dacă îl uiți primești
+`Missing THEN in IF statement`.
 
 <HighlightedCodeBlock code={`scor = 80
 
@@ -32,12 +256,45 @@ ELSE
   PRINT "Mai încearcă"
 END`} />
 
-Instrucțiunile dintre `IF` și `END` sunt executate în funcție de rezultatul
-condiției.
+```text
+Admis
+```
 
-<h2 id="bucle">Bucle</h2>
+`ELSE` este opțional, iar un bloc poate conține cel mult unul. Indentarea este
+doar pentru lizibilitate. Interpretorul potrivește `IF` cu `END` numărând
+blocurile, nu uitându-se la spații.
 
-Buclele repetă un bloc de instrucțiuni:
+Condițiile se pot imbrica oricât, și așa construiești o alegere cu mai multe
+ramuri:
+
+<HighlightedCodeBlock code={`nota = 7
+
+IF nota >= 9 THEN
+  PRINT "Excelent"
+ELSE
+  IF nota >= 5 THEN
+    PRINT "Promovat"
+  ELSE
+    PRINT "Respins"
+  END
+END`} />
+
+```text
+Promovat
+```
+
+<Callout type="warning" title="Nu există ELSE IF">
+  `ELSE IF x == 1 THEN` nu este recunoscut ca ramură. Și nici nu raportează vreo
+  eroare. Interpretorul îl citește în tăcere ca altceva, iar ramura pur și
+  simplu nu rulează niciodată, ceea ce face greșeala greu de observat. Imbrică
+  un al doilea `IF` în `ELSE`, ca mai sus.
+</Callout>
+
+## Bucle
+
+`WHILE` verifică condiția înainte de fiecare trecere. Când condiția este falsă,
+pointerul sare dincolo de `END`-ul pereche; când corpul se termină, `END` trimite
+pointerul înapoi sus, la reverificare.
 
 <HighlightedCodeBlock code={`numar = 1
 
@@ -46,17 +303,92 @@ WHILE numar <= 5
   numar = numar + 1
 END`} />
 
-Condiția trebuie să devină falsă la un moment dat; altfel bucla poate continua
-la nesfârșit.
+```text
+1
+2
+3
+4
+5
+```
 
-<h2 id="intrare-si-iesire">Intrare și ieșire</h2>
+Trei lucruri trebuie să se potrivească pentru ca o buclă să se termine: un
+contor care pornește de undeva, o condiție care poate deveni falsă și un corp
+care chiar schimbă contorul. Uitarea celui de-al treilea este cauza obișnuită a
+unei bucle care nu se mai oprește.
 
-Folosește input pentru a primi o valoare și output pentru a afișa un rezultat:
+Buclele se pot imbrica, iar bucla interioară rulează complet la fiecare trecere
+a celei exterioare:
 
-<HighlightedCodeBlock code={`INPUT nume
-PRINT "Salut, " + nume`} />
+<HighlightedCodeBlock code={`rand = 1
 
-<Callout title="Sintaxa evoluează">
-  MiniScript+ este dezvoltat activ. Editorul și instrucțiunile exercițiului sunt
-  sursa corectă pentru sintaxa disponibilă în prezent.
-</Callout>
+WHILE rand <= 3
+  coloana = 1
+  WHILE coloana <= 3
+    PRINT rand * coloana
+    coloana = coloana + 1
+  END
+  rand = rand + 1
+END`} />
+
+O buclă poate și să citească până întâlnește o valoare-santinelă, în loc să
+numere:
+
+<HighlightedCodeBlock code={`total = 0
+INPUT valoare
+
+WHILE valoare != 0
+  total = total + valoare
+  INPUT valoare
+END
+
+PRINT "Suma " + total`} />
+
+Observă forma: citești o dată înainte de buclă, apoi citești din nou la finalul
+corpului. Așa condiția are mereu o valoare proaspătă de testat.
+
+## Erori și limite
+
+**Un program poate executa cel mult 1000 de instrucțiuni.** Peste această
+limită, rularea se oprește cu `Possible infinite loop detected`. O buclă simplă
+de numărare consumă aproximativ trei instrucțiuni per trecere, deci plafonul
+este pe la 330 de repetări.
+
+Erorile indică linia care a eșuat. Cele mai frecvente:
+
+| Mesaj | Cauză |
+| --- | --- |
+| `Unknown instruction "…"` | Un cuvânt cheie scris cu litere mici, `END IF` sau două instrucțiuni pe o linie |
+| `Variable "x" is not defined` | Citită înainte să primească vreo valoare / verifică scrierea și majusculele |
+| `Missing THEN in IF statement` | Lipsește `THEN` de pe linia `IF` |
+| `Missing END for IF statement` | Un bloc a fost deschis și niciodată închis |
+| `END without matching block` | Un `END` în plus |
+| `ELSE without matching IF` | `ELSE` în afara unui bloc sau după `END`-ul care l-a închis |
+| `Operator < can only be used with numbers` | Text comparat cu `<`, `>`, `<=` sau `>=` |
+| `Division by zero is not allowed` | Un împărțitor a ajuns `0`! Protejează-l cu un `IF` |
+| `Possible infinite loop detected` | Condiția nu a devenit niciodată falsă |
+| `Unknown function "SQRT"` | Există doar `INT`, `TRUNC`, `FLOOR`, `ROUND` și `ABS` |
+
+Când rezultatul este greșit, dar nu apare nicio eroare, treci de la **Rulează**
+la **Pas** și urmărește panoul Variabile. Aproape orice eroare de logică apare
+ca o variabilă care ține o valoare neașteptată, cu o trecere mai devreme decât
+locul în care te uitai.
+
+## Referință rapidă
+
+| Instrucțiune | Formă |
+| --- | --- |
+| Afișare | `PRINT expresie` |
+| Citire | `INPUT variabila` |
+| Atribuire | `variabila = expresie` |
+| Condiție | `IF conditie THEN` … `ELSE` … `END` |
+| Buclă | `WHILE conditie` … `END` |
+| Comentariu | `# text` |
+
+| În loc de | Scrie |
+| --- | --- |
+| `ELSE IF` | Un `IF` imbricat în `ELSE` |
+| `END IF`, `ENDWHILE` | `END` simplu |
+| Comentarii `//` | `#` |
+| `FUNCTION`, `RETURN` | Codul scris direct în loc |
+| Tablouri, bucle `FOR` | O buclă `WHILE` peste un contor |
+| `SQRT`, `CEIL`, `MIN`, `MAX` | Un `IF` sau un `WHILE` scris de tine |

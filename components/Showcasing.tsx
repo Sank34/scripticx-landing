@@ -2,9 +2,9 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export default function Showcasing() {
-  const t = useTranslations("Showcasing");
+  const translate = useTranslations("Showcasing");
 
-  const features = t.raw("features") as string[];
+  const features = translate.raw("features") as string[];
 
   return (
     <section className="py-20 sm:py-32 px-4 sm:px-6 max-w-6xl mx-auto">
@@ -12,12 +12,12 @@ export default function Showcasing() {
       {/* Header */}
       <div className="max-w-3xl mb-10 sm:mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold leading-tight">
-          {t("title1")} <br />
-          {t("title2")}
+          {translate("title1")} <br />
+          {translate("title2")}
         </h2>
 
         <p className="text-muted-foreground mt-4 text-sm sm:text-base">
-          {t("description")}
+          {translate("description")}
         </p>
       </div>
 

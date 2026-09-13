@@ -49,7 +49,7 @@ async function getSponsors() {
 }
 
 export default async function SponsorsSection() {
-  const t = await getTranslations("Sponsors");
+  const translate = await getTranslations("Sponsors");
   const sponsors = await getSponsors();
 
   if (sponsors.length === 0) {
@@ -61,12 +61,12 @@ export default async function SponsorsSection() {
       <div className="relative mx-auto max-w-7xl rounded-3xl bg-background px-6 pb-6 sm:px-10 sm:pb-8">
         <div className="relative z-10">
           <div className="mx-auto mb-14 max-w-2xl text-center sm:mb-16">
-            <p className="text-sm font-medium text-green-800">{t("eyebrow")}</p>
+            <p className="text-sm font-medium text-green-800">{translate("eyebrow")}</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-              {t("title")}
+              {translate("title")}
             </h2>
             <p className="mt-4 leading-7 text-muted-foreground">
-              {t("description")}
+              {translate("description")}
             </p>
           </div>
 

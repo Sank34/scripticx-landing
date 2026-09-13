@@ -6,9 +6,11 @@ import {
   type KnowledgeLocale,
 } from "@/lib/knowledge-data";
 
+import { siteConfig as siteSettings } from "@/config/site";
+
 const configuredUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://www.scripticx.org";
+  siteSettings.url;
 
 function getCanonicalSiteUrl(url: string) {
   const parsedUrl = new URL(url);
@@ -20,28 +22,7 @@ function getCanonicalSiteUrl(url: string) {
   return parsedUrl.toString().replace(/\/$/, "");
 }
 
-export const siteConfig = {
-  name: "ScripticX",
-  url: getCanonicalSiteUrl(configuredUrl),
-  logo: "/icons/notification-icon-512.png",
-  socialImage: "/icons/social-card.png",
-  knowledgeSocialImage: "/icons/social-card-knowledge.png",
-  descriptions: {
-    ro: "Învață programare interactiv cu exerciții, MiniScript+, feedback instant și o comunitate creată pentru progres real.",
-    en: "Learn programming interactively with practical exercises, MiniScript+, instant feedback, and a community built for real progress.",
-  },
-  keywords: [
-    "ScripticX",
-    "programare",
-    "învățare programare",
-    "MiniScript+",
-    "coding platform",
-    "learn programming",
-    "interactive coding",
-    "coding exercises",
-    "education",
-  ],
-} as const;
+export const siteConfig = { ...siteSettings, url: getCanonicalSiteUrl(configuredUrl) };
 
 export function absoluteUrl(path = "/") {
   return new URL(path, siteConfig.url).toString();
@@ -53,25 +34,76 @@ export function getSiteDescription(locale: string) {
 
 type LocalizedText = Record<KnowledgeLocale, string>;
 
+function withoutTrailingBrand(title: string) {
+  return title.replace(/\s*(?:\||—|-)\s*ScripticX\s*$/i, "").trim();
+}
+
+function getSocialSection(path: string, locale: KnowledgeLocale) {
+  if (
+    path.startsWith("/knowledge") ||
+    path.startsWith("/docs") ||
+    path.startsWith("/legal") ||
+    path.startsWith("/trust")
+  ) {
+    return "Knowledge Center";
+  }
+
+  if (path.startsWith("/education")) return "Education Center";
+  if (path.startsWith("/events")) return locale === "ro" ? "Evenimente" : "Events";
+  if (path.startsWith("/development")) return "Development";
+  if (path.startsWith("/platform")) return "Platform";
+  if (path.startsWith("/members")) return locale === "ro" ? "Echipa" : "Our team";
+  if (path.startsWith("/partners")) return locale === "ro" ? "Parteneri" : "Partners";
+  if (path.startsWith("/verify")) return locale === "ro" ? "Certificate" : "Certificates";
+
+  return locale === "ro"
+    ? "Educație · Development · Platform"
+    : "Education · Development · Platform";
+}
+
+export function createSocialImageUrl({
+  title,
+  description,
+  section,
+  path = "/",
+}: {
+  title: string;
+  description: string;
+  section: string;
+  path?: string;
+}) {
+  const url = new URL("/api/social-image", siteConfig.url);
+  url.searchParams.set("title", title);
+  url.searchParams.set("description", description);
+  url.searchParams.set("section", section);
+  url.searchParams.set("path", path);
+  return url.toString();
+}
+
 export function createPageMetadata({
   locale,
   path,
   title,
   description,
   type = "website",
-  socialImage = siteConfig.socialImage,
 }: {
   locale: string;
   path: string;
   title: LocalizedText;
   description: LocalizedText;
   type?: "website" | "article";
-  socialImage?: string;
 }): Metadata {
   const normalized = normalizeKnowledgeLocale(locale);
-  const pageTitle = title[normalized];
+  const pageTitle = withoutTrailingBrand(title[normalized]);
   const pageDescription = description[normalized];
   const canonical = absoluteUrl(path);
+  const socialTitle = `${pageTitle} | ${siteConfig.name}`;
+  const socialImage = createSocialImageUrl({
+    title: pageTitle,
+    description: pageDescription,
+    section: getSocialSection(path, normalized),
+    path,
+  });
 
   return {
     title: pageTitle,
@@ -80,7 +112,7 @@ export function createPageMetadata({
       canonical,
     },
     openGraph: {
-      title: pageTitle,
+      title: socialTitle,
       description: pageDescription,
       url: canonical,
       siteName: siteConfig.name,
@@ -89,21 +121,24 @@ export function createPageMetadata({
       type,
       images: [
         {
-          url: absoluteUrl(socialImage),
+          url: socialImage,
           width: 1200,
           height: 630,
-          alt:
-            socialImage === siteConfig.knowledgeSocialImage
-              ? "ScripticX Knowledge Center"
-              : "ScripticX - Learn programming interactively",
+          type: "image/png",
+          alt: socialTitle,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: pageTitle,
+      title: socialTitle,
       description: pageDescription,
-      images: [absoluteUrl(socialImage)],
+      images: [
+        {
+          url: socialImage,
+          alt: socialTitle,
+        },
+      ],
     },
   };
 }
@@ -135,6 +170,5 @@ export function createKnowledgeArticleMetadata(href: string, locale: string) {
           : getArticleMeta(href, "ro")!.description,
     },
     type: "article",
-    socialImage: siteConfig.knowledgeSocialImage,
   });
 }

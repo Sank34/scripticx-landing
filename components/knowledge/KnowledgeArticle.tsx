@@ -42,8 +42,8 @@ export function KnowledgeArticle({
     headline: article.title,
     description: article.description,
     url: absoluteUrl(article.href),
-    datePublished: "2026-06-13",
-    dateModified: "2026-06-13",
+    datePublished: article.updatedIso,
+    dateModified: article.updatedIso,
     inLanguage: isRomanian ? "ro" : "en",
     author: {
       "@type": "Organization",
@@ -66,14 +66,14 @@ export function KnowledgeArticle({
   };
 
   return (
-    <div className="min-w-0 flex-1">
+    <main className="min-w-0">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
         }}
       />
-      <Breadcrumb className="mb-8">
+      <Breadcrumb className="mb-10">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
@@ -82,18 +82,18 @@ export function KnowledgeArticle({
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>{article.sectionLabel}</BreadcrumbPage>
+            <BreadcrumbPage>{article.section}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
 
-      <div className="grid min-w-0 gap-12 xl:grid-cols-[minmax(0,720px)_200px]">
-        <article className="min-w-0">
+      <div className="grid min-w-0 gap-14 xl:grid-cols-[minmax(0,48rem)_14rem] xl:justify-between">
+        <article className="min-w-0 max-w-3xl">
           <header>
-            <div className="mb-3 text-sm font-medium text-green-700">
-              {article.sectionLabel}
+            <div className="mb-4 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              ScripticX / {article.section}
             </div>
-            <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+            <h1 className="text-4xl font-semibold leading-[1.02] tracking-[-0.045em] sm:text-5xl lg:text-6xl">
               {article.title}
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">
@@ -102,7 +102,7 @@ export function KnowledgeArticle({
             <div className="mt-6 flex flex-wrap gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5">
                 <CalendarDays className="size-4" />
-                {isRomanian ? "Actualizat" : "Updated"} {article.updated}
+                Updated {article.updated}
               </span>
               <span className="flex items-center gap-1.5">
                 <Clock3 className="size-4" />
@@ -111,7 +111,7 @@ export function KnowledgeArticle({
             </div>
           </header>
 
-          <Separator className="my-9" />
+          <Separator className="my-10" />
 
           <div className="knowledge-prose">{children}</div>
 
@@ -124,11 +124,11 @@ export function KnowledgeArticle({
             {previous ? (
               <Link
                 href={previous.href}
-                className="group rounded-xl border p-4 transition hover:border-foreground/20 hover:bg-muted/40"
+                className="group border p-5 transition-colors hover:bg-muted/40"
               >
                 <div className="flex items-center gap-1 text-xs text-muted-foreground">
                   <ArrowLeft className="size-3.5 transition group-hover:-translate-x-0.5" />
-                  {isRomanian ? "Anterior" : "Previous"}
+                  Previous
                 </div>
                 <div className="mt-2 font-medium">{previous.title}</div>
               </Link>
@@ -138,10 +138,10 @@ export function KnowledgeArticle({
             {next && (
               <Link
                 href={next.href}
-                className="group rounded-xl border p-4 text-right transition hover:border-foreground/20 hover:bg-muted/40"
+                className="group border p-5 text-right transition-colors hover:bg-muted/40"
               >
                 <div className="flex items-center justify-end gap-1 text-xs text-muted-foreground">
-                  {isRomanian ? "Următorul" : "Next"}
+                  Next
                   <ArrowRight className="size-3.5 transition group-hover:translate-x-0.5" />
                 </div>
                 <div className="mt-2 font-medium">{next.title}</div>
@@ -150,11 +150,11 @@ export function KnowledgeArticle({
           </nav>
         </article>
 
-        <aside className="sticky top-36 hidden h-fit xl:block">
-          <div className="mb-3 text-sm font-medium">
-            {isRomanian ? "Pe această pagină" : "On this page"}
+        <aside className="sticky top-36 hidden h-fit max-h-[calc(100svh-11rem)] overflow-y-auto border-t pt-4 xl:block">
+          <div className="mb-4 font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+            On this page
           </div>
-          <nav className="space-y-2 border-l pl-4 text-sm">
+          <nav className="space-y-3 border-l pl-4 text-sm">
             {article.headings.map((heading) => (
               <a
                 key={heading.id}
@@ -167,6 +167,6 @@ export function KnowledgeArticle({
           </nav>
         </aside>
       </div>
-    </div>
+    </main>
   );
 }

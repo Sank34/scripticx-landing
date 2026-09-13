@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 
+import { KnowledgeContentTransition } from "@/components/knowledge/KnowledgeContentTransition";
 import { KnowledgeHeader } from "@/components/knowledge/KnowledgeHeader";
 import { KnowledgeSidebar } from "@/components/knowledge/KnowledgeSidebar";
-import Navbar from "@/components/Navbar";
 
 export default function KnowledgeLayout({
   children,
@@ -11,12 +11,15 @@ export default function KnowledgeLayout({
 }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
       <div className="pt-16">
         <KnowledgeHeader />
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 sm:px-6 lg:flex-row lg:gap-8 lg:py-12">
+        <div className="flex min-h-[calc(100svh-7.5rem)] items-start">
           <KnowledgeSidebar />
-          {children}
+          <div className="min-w-0 flex-1 px-5 py-8 sm:px-8 lg:px-10 lg:py-12 xl:px-14 2xl:px-20">
+            <KnowledgeContentTransition>
+              {children}
+            </KnowledgeContentTransition>
+          </div>
         </div>
       </div>
     </div>

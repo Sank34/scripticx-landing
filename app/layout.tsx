@@ -1,11 +1,14 @@
+import { links } from "@/config/links";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 
+import Navbar from "@/components/Navbar";
 import {
   absoluteUrl,
+  createSocialImageUrl,
   getSiteDescription,
   siteConfig,
 } from "@/lib/metadata";
@@ -31,9 +34,19 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const isRomanian = locale === "ro";
   const title = isRomanian
-    ? "ScripticX | Învață programare interactiv"
-    : "ScripticX | Learn programming interactively";
+    ? "ScripticX — Educație și tehnologie"
+    : "ScripticX — Education & Technology";
   const description = getSiteDescription(locale);
+  const socialImage = createSocialImageUrl({
+    title: isRomanian
+      ? "Educație, dezvoltare și programare."
+      : "Education, development and programming.",
+    description,
+    section: isRomanian
+      ? "Educație · Development · Platform"
+      : "Education · Development · Platform",
+    path: "/",
+  });
 
   return {
     metadataBase: new URL(siteConfig.url),
@@ -47,7 +60,7 @@ export async function generateMetadata(): Promise<Metadata> {
     authors: [{ name: "ScripticX Team", url: siteConfig.url }],
     creator: "ScripticX",
     publisher: "ScripticX",
-    category: "education",
+    category: "technology",
     alternates: {
       canonical: "/",
     },
@@ -88,10 +101,11 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: absoluteUrl(siteConfig.socialImage),
+          url: socialImage,
           width: 1200,
           height: 630,
-          alt: "ScripticX - Learn programming interactively",
+          type: "image/png",
+          alt: title,
         },
       ],
     },
@@ -99,7 +113,12 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      images: [absoluteUrl(siteConfig.socialImage)],
+      images: [
+        {
+          url: socialImage,
+          alt: title,
+        },
+      ],
     },
     robots: {
       index: true,
@@ -122,6 +141,18 @@ export default async function RootLayout({
 }) {
   const locale = await getLocale();
   const description = getSiteDescription(locale);
+  const socialImage = createSocialImageUrl({
+    title:
+      locale === "ro"
+        ? "Educație, dezvoltare și programare."
+        : "Education, development and programming.",
+    description,
+    section:
+      locale === "ro"
+        ? "Educație · Development · Platform"
+        : "Education · Development · Platform",
+    path: "/",
+  });
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -149,21 +180,33 @@ export default async function RootLayout({
           height: 512,
         },
         sameAs: [
-          "https://github.com/Sank34/scripticx",
-          "https://www.youtube.com/@scripticx",
+          links.github,
+          links.organizationYoutube,
+        ],
+        department: [
+          {
+            "@type": "EducationalOrganization",
+            name: "ScripticX Education Center",
+            url: absoluteUrl("/education"),
+          },
+          {
+            "@type": "Organization",
+            name: "ScripticX Development",
+            url: absoluteUrl("/development"),
+          },
         ],
       },
       {
         "@type": "SoftwareApplication",
         name: siteConfig.name,
         alternateName: "Platforma ScripticX",
-        url: siteConfig.url,
+        url: absoluteUrl("/platform"),
         description,
         applicationCategory: "EducationalApplication",
         operatingSystem: "Any",
         browserRequirements: "Requires a modern web browser",
         inLanguage: ["ro", "en"],
-        image: absoluteUrl(siteConfig.socialImage),
+        image: socialImage,
         offers: {
           "@type": "Offer",
           price: "0",
@@ -184,6 +227,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
@@ -197,6 +241,7 @@ export default async function RootLayout({
           }}
         />
         <NextIntlClientProvider>
+          <Navbar />
           {children}
         </NextIntlClientProvider>
       </body>

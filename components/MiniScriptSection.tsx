@@ -31,7 +31,7 @@ PRINT "Hello " + name`,
 ];
 
 export default function MiniScriptSection() {
-  const t = useTranslations("MiniScript");
+  const translate = useTranslations("MiniScript");
   const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -51,19 +51,19 @@ export default function MiniScriptSection() {
         {/* LEFT TEXT */}
         <div>
           <h2 className="text-3xl sm:text-4xl font-semibold leading-tight">
-            {t("title1")}
+            {translate("title1")}
             <br />
             <span className="text-muted-foreground">
-              {t("title2")}
+              {translate("title2")}
             </span>
           </h2>
 
           <p className="mt-5 sm:mt-6 text-muted-foreground max-w-md">
-            {t("description")}
+            {translate("description")}
           </p>
 
           <div className="mt-6 space-y-3 text-sm">
-            {(t.raw("bullets") as string[]).map((text, i) => (
+            {(translate.raw("bullets") as string[]).map((text, i) => (
               <div key={i} className="flex items-center gap-2">
                 <Check size={16} className="text-green-500 shrink-0" />
                 <span>{text}</span>

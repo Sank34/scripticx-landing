@@ -1,8 +1,9 @@
+import { links } from "@/config/links";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 
 export default function Hero() {
-  const t = useTranslations("Hero");
+  const translate = useTranslations("Hero");
 
   return (
     <section className="relative py-20 sm:py-28 px-4 sm:px-6 text-center overflow-hidden">
@@ -21,7 +22,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-3xl mx-auto">
 
         <p className="text-sm text-muted-foreground mb-4">
-          {t("badge")}
+          {translate("badge")}
         </p>
 
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight leading-tight">
@@ -29,30 +30,30 @@ export default function Hero() {
             className="text-transparent"
             style={{ WebkitTextStroke: "1.5px rgba(0,0,0,0.85)", textShadow: "0 1px 0 rgba(0,0,0,0.05)" }}
           >
-            {t("titleLine1")}
+            {translate("titleLine1")}
           </span>
           <br />
           <span className="text-black">
-            {t("titleLine2")}
+            {translate("titleLine2")}
           </span>
         </h1>
 
         <p className="text-muted-foreground mt-5 text-base sm:text-lg">
-          {t("description")}
+          {translate("description")}
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-8">
           <Button size="lg" className="bg-black text-white hover:bg-black/90 w-full sm:w-auto" asChild>
-            <a href="https://platform.scripticx.org/">{t("primaryCta")}</a>
+            <a href={links.platform}>{translate("primaryCta")}</a>
           </Button>
 
           <Button size="lg" variant="outline" className="w-full sm:w-auto" asChild>
-            <a href="https://platform.scripticx.org/examples">{t("secondaryCta")}</a>
+            <a href={links.examples}>{translate("secondaryCta")}</a>
           </Button>
         </div>
 
         <div className="mt-10 sm:mt-12 text-xs text-muted-foreground">
-          {t("trust")}
+          {translate("trust")}
         </div>
 
       </div>

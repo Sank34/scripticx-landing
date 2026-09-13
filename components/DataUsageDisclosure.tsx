@@ -10,22 +10,22 @@ import { useTranslations } from "next-intl";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function DataUsageDisclosure() {
-  const t = useTranslations("DataUsageDisclosure");
+  const translate = useTranslations("DataUsageDisclosure");
   const items = [
     {
       icon: ShieldCheck,
-      title: t("items.data.title"),
-      description: t("items.data.description"),
+      title: translate("items.data.title"),
+      description: translate("items.data.description"),
     },
     {
       icon: KeyRound,
-      title: t("items.google.title"),
-      description: t("items.google.description"),
+      title: translate("items.google.title"),
+      description: translate("items.google.description"),
     },
     {
       icon: Trash2,
-      title: t("items.control.title"),
-      description: t("items.control.description"),
+      title: translate("items.control.title"),
+      description: translate("items.control.description"),
     },
   ];
 
@@ -34,22 +34,22 @@ export default function DataUsageDisclosure() {
       <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl border bg-gradient-to-br from-green-50 via-background to-background p-6 sm:p-10">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.4fr] lg:items-start">
           <div className="lg:self-center">
-            <p className="text-sm font-medium text-green-700">{t("eyebrow")}</p>
+            <p className="text-sm font-medium text-green-700">{translate("eyebrow")}</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-              {t("title")}
+              {translate("title")}
             </h2>
             <p className="mt-4 leading-7 text-muted-foreground">
-              {t("description")}
+              {translate("description")}
             </p>
             <div className="mt-5 flex items-start gap-2 text-sm text-muted-foreground">
               <Check className="mt-0.5 size-4 shrink-0 text-green-600" />
-              <span>{t("noAccess")}</span>
+              <span>{translate("noAccess")}</span>
             </div>
             <Link
               href="https://www.scripticx.org/legal/privacy"
               className="mt-6 inline-flex text-sm font-medium underline underline-offset-4"
             >
-              {t("privacyLink")}
+              {translate("privacyLink")}
             </Link>
           </div>
 

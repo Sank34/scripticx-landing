@@ -1,11 +1,12 @@
 "use client";
+import { links } from "@/config/links";
 
 import { Button } from "@/components/ui/button";
 import { siGithub } from "simple-icons";
 import { useTranslations } from "next-intl";
 
 export default function CTA() {
-  const t = useTranslations("CTA");
+  const translate = useTranslations("CTA");
   return (
     <section className="py-20 sm:py-32 px-4 sm:px-6 text-center relative overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-black/5 to-transparent" />
@@ -14,17 +15,17 @@ export default function CTA() {
 
         {/* open source label */}
         <p className="text-sm text-muted-foreground mb-4">
-          {t("badge")}
+          {translate("badge")}
         </p>
 
         {/* main title */}
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-tight">
-          {t("title")}
+          {translate("title")}
         </h2>
 
         {/* subtitle */}
         <p className="text-muted-foreground mt-5 text-base sm:text-lg">
-          {t("description")}
+          {translate("description")}
         </p>
 
         {/* buttons */}
@@ -34,7 +35,7 @@ export default function CTA() {
             className="bg-black text-white hover:bg-black/90 shadow-lg w-full sm:w-auto"
             asChild
           >
-            <a href="https://github.com/Sank34/scripticx">{t("primary")}</a>
+            <a href={links.github}>{translate("primary")}</a>
           </Button>
 
           <Button
@@ -43,7 +44,7 @@ export default function CTA() {
             className="border hover:bg-muted w-full sm:w-auto"
             asChild
           >
-            <a href="https://platform.scripticx.org">{t("secondary")}</a>
+            <a href={links.platform}>{translate("secondary")}</a>
           </Button>
         </div>
 
@@ -61,7 +62,7 @@ export default function CTA() {
             </svg>
             <span>@scripticx</span>
             <span className="text-muted-foreground">•</span>
-            <span>{t("openSource")}</span>
+            <span>{translate("openSource")}</span>
           </div>
         </div>
 

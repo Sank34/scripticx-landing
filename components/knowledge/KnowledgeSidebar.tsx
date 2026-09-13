@@ -2,7 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, Code2, FileText, Menu, ShieldCheck } from "lucide-react";
+import {
+  BookOpen,
+  Code2,
+  FileText,
+  LayoutGrid,
+  Menu,
+  ShieldCheck,
+} from "lucide-react";
 import { useLocale } from "next-intl";
 
 import { Button } from "@/components/ui/button";
@@ -11,6 +18,7 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -29,15 +37,47 @@ function SidebarContent({ closeOnSelect = false }: { closeOnSelect?: boolean }) 
   const pathname = usePathname();
   const locale = useLocale();
   const articles = getKnowledgeArticles(locale);
-  const sections = getKnowledgeSections(locale);
+  // Navigation chrome stays English; only article titles follow the locale.
+  const sections = getKnowledgeSections("en");
 
   return (
-    <nav aria-label="Knowledge Center navigation" className="space-y-7">
+    <nav aria-label="Knowledge Center navigation" className="space-y-8">
+      <div>
+        {closeOnSelect ? (
+          <SheetClose asChild>
+            <Link
+              href="/knowledge"
+              className={cn(
+                "flex items-center gap-2 border-l-2 px-3 py-2 text-sm transition-colors",
+                pathname === "/knowledge"
+                  ? "border-foreground bg-muted/70 font-medium text-foreground"
+                  : "border-transparent text-muted-foreground hover:border-border hover:text-foreground"
+              )}
+            >
+              <LayoutGrid className="size-3.5" />
+              Overview
+            </Link>
+          </SheetClose>
+        ) : (
+          <Link
+            href="/knowledge"
+            className={cn(
+              "flex items-center gap-2 border-l-2 px-3 py-2 text-sm transition-colors",
+              pathname === "/knowledge"
+                ? "border-foreground bg-muted/70 font-medium text-foreground"
+                : "border-transparent text-muted-foreground hover:border-border hover:text-foreground"
+            )}
+          >
+            <LayoutGrid className="size-3.5" />
+            Overview
+          </Link>
+        )}
+      </div>
       {sections.map((section) => {
         const Icon = sectionIcons[section.id];
         return (
           <div key={section.id}>
-            <div className="mb-2 flex items-center gap-2 px-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+            <div className="mb-2 flex items-center gap-2 px-3 font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
               <Icon className="size-3.5" />
               {section.title}
             </div>
@@ -49,11 +89,12 @@ function SidebarContent({ closeOnSelect = false }: { closeOnSelect?: boolean }) 
                   const link = (
                     <Link
                       href={article.href}
+                      aria-current={isActive ? "page" : undefined}
                       className={cn(
-                        "block rounded-lg px-3 py-2 text-sm transition-colors hover:bg-muted hover:text-foreground",
+                        "block border-l-2 px-3 py-2 text-sm transition-colors",
                         isActive
-                          ? "bg-muted font-medium text-foreground"
-                          : "text-muted-foreground"
+                          ? "border-foreground bg-muted/70 font-medium text-foreground"
+                          : "border-transparent text-muted-foreground hover:border-border hover:text-foreground"
                       )}
                     >
                       {article.title}
@@ -77,33 +118,46 @@ function SidebarContent({ closeOnSelect = false }: { closeOnSelect?: boolean }) 
 }
 
 export function KnowledgeSidebar() {
-  const locale = useLocale();
-  const isRomanian = locale === "ro";
-
   return (
-    <>
-      <aside className="sticky top-32 hidden h-[calc(100vh-9rem)] w-60 shrink-0 border-r pr-6 lg:block">
-        <ScrollArea className="h-full pb-10">
+    <aside className="sticky top-[7.5rem] hidden h-[calc(100svh-7.5rem)] w-[17rem] shrink-0 self-start border-r bg-muted/[0.16] lg:block xl:w-[18rem]">
+      <div className="h-full px-5 py-8 xl:px-7">
+        <ScrollArea className="h-full pb-8">
           <SidebarContent />
         </ScrollArea>
-      </aside>
+      </div>
+    </aside>
+  );
+}
 
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="outline" size="sm" className="lg:hidden">
-            <Menu className="size-4" />
-            {isRomanian ? "Răsfoiește" : "Browse"}
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="left" className="w-[310px]">
-          <SheetHeader className="border-b">
-            <SheetTitle>ScripticX Knowledge Center</SheetTitle>
-          </SheetHeader>
-          <ScrollArea className="flex-1 px-4 pb-8">
-            <SidebarContent closeOnSelect />
-          </ScrollArea>
-        </SheetContent>
-      </Sheet>
-    </>
+export function KnowledgeMobileNavigation() {
+  return (
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button
+          variant="outline"
+          size="sm"
+          className="h-9 px-2.5 lg:hidden"
+          aria-label="Open navigation"
+        >
+          <Menu className="size-4" />
+          <span className="hidden sm:inline">
+            Browse
+          </span>
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="left" className="w-[min(88vw,330px)] p-0">
+        <SheetHeader className="border-b">
+          <SheetTitle>
+            Knowledge Center
+          </SheetTitle>
+          <SheetDescription className="sr-only">
+            Browse ScripticX guides and policies.
+          </SheetDescription>
+        </SheetHeader>
+        <ScrollArea className="flex-1 px-5 py-6">
+          <SidebarContent closeOnSelect />
+        </ScrollArea>
+      </SheetContent>
+    </Sheet>
   );
 }

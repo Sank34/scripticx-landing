@@ -28,9 +28,9 @@ export function KnowledgeSearch() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const locale = useLocale();
-  const isRomanian = locale === "ro";
   const knowledgeArticles = getKnowledgeArticles(locale);
-  const sections = getKnowledgeSections(locale);
+  // Search chrome stays English; only article titles follow the locale.
+  const sections = getKnowledgeSections("en");
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -53,12 +53,14 @@ export function KnowledgeSearch() {
     <>
       <Button
         variant="outline"
-        className="h-9 w-full justify-start gap-2 bg-background text-muted-foreground shadow-none sm:w-64"
+        size="sm"
+        aria-label="Search the Knowledge Center"
+        className="h-9 w-9 justify-center gap-2 bg-background px-0 text-muted-foreground shadow-none sm:w-64 sm:justify-start sm:px-3"
         onClick={() => setOpen(true)}
       >
         <Search className="size-4" />
-        <span className="flex-1 text-left">
-          {isRomanian ? "Caută în Knowledge" : "Search knowledge"}
+        <span className="hidden flex-1 text-left sm:inline">
+          Search knowledge
         </span>
         <kbd className="hidden rounded border bg-muted px-1.5 py-0.5 font-mono text-[10px] sm:inline">
           ⌘ K
@@ -68,18 +70,14 @@ export function KnowledgeSearch() {
       <CommandDialog
         open={open}
         onOpenChange={setOpen}
-        title={isRomanian ? "Caută în ScripticX Knowledge" : "Search ScripticX Knowledge"}
-        description={
-          isRomanian
-            ? "Caută în documentație, securitate și articole juridice."
-            : "Search documentation, trust, and legal articles."
-        }
+        title="Search ScripticX Knowledge"
+        description="Search documentation, trust, and legal articles."
       >
         <Command>
-          <CommandInput placeholder={isRomanian ? "Caută articole..." : "Search articles..."} />
+          <CommandInput placeholder="Search articles..." />
           <CommandList>
             <CommandEmpty>
-              {isRomanian ? "Niciun articol găsit." : "No article found."}
+              No article found.
             </CommandEmpty>
             {sections.map(
               (section) => (

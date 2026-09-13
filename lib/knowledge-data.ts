@@ -7,7 +7,7 @@ export type KnowledgeArticleMeta = {
   title: string;
   description: string;
   section: KnowledgeSection;
-  sectionLabel: string;
+  updatedIso: string;
   updated: string;
   readingTime: string;
   headings: { id: string; title: string }[];
@@ -15,15 +15,15 @@ export type KnowledgeArticleMeta = {
 
 type ArticleDefinition = Omit<
   KnowledgeArticleMeta,
-  "title" | "description" | "sectionLabel" | "updated" | "readingTime" | "headings"
+  "title" | "description" | "updated" | "readingTime" | "headings"
 > & {
   en: Pick<
     KnowledgeArticleMeta,
-    "title" | "description" | "sectionLabel" | "updated" | "readingTime" | "headings"
+    "title" | "description" | "updated" | "readingTime" | "headings"
   >;
   ro: Pick<
     KnowledgeArticleMeta,
-    "title" | "description" | "sectionLabel" | "updated" | "readingTime" | "headings"
+    "title" | "description" | "updated" | "readingTime" | "headings"
   >;
 };
 
@@ -47,10 +47,10 @@ const articles: ArticleDefinition[] = [
     slug: "getting-started",
     href: "/docs",
     section: "Learn",
+    updatedIso: "2026-06-13",
     en: {
       title: "Getting started",
       description: "Understand ScripticX and begin your first learning session.",
-      sectionLabel: sectionLabels.en.Learn,
       updated: "June 13, 2026",
       readingTime: "4 min read",
       headings: [
@@ -63,7 +63,6 @@ const articles: ArticleDefinition[] = [
     ro: {
       title: "Primii pași",
       description: "Descoperă ScripticX și începe prima sesiune de învățare.",
-      sectionLabel: sectionLabels.ro.Learn,
       updated: "13 iunie 2026",
       readingTime: "4 min de citit",
       headings: [
@@ -78,30 +77,41 @@ const articles: ArticleDefinition[] = [
     slug: "miniscript",
     href: "/docs/miniscript",
     section: "Learn",
+    updatedIso: "2026-09-01",
     en: {
       title: "MiniScript+ basics",
       description: "Learn the core syntax of the language used on ScripticX.",
-      sectionLabel: sectionLabels.en.Learn,
-      updated: "June 13, 2026",
-      readingTime: "6 min read",
+      updated: "September 1, 2026",
+      readingTime: "13 min read",
       headings: [
+        { id: "how-a-program-runs", title: "How a program runs" },
+        { id: "syntax-rules", title: "Syntax rules" },
         { id: "values-and-variables", title: "Values and variables" },
+        { id: "expressions-and-operators", title: "Expressions and operators" },
+        { id: "built-in-functions", title: "Built-in functions" },
+        { id: "output-and-input", title: "Output and input" },
         { id: "conditions", title: "Conditions" },
         { id: "loops", title: "Loops" },
-        { id: "input-and-output", title: "Input and output" },
+        { id: "errors-and-limits", title: "Errors and limits" },
+        { id: "quick-reference", title: "Quick reference" },
       ],
     },
     ro: {
       title: "Bazele MiniScript+",
       description: "Învață sintaxa de bază a limbajului folosit pe ScripticX.",
-      sectionLabel: sectionLabels.ro.Learn,
-      updated: "13 iunie 2026",
-      readingTime: "6 min de citit",
+      updated: "1 septembrie 2026",
+      readingTime: "13 min de citit",
       headings: [
+        { id: "cum-ruleaza-un-program", title: "Cum rulează un program" },
+        { id: "reguli-de-sintaxa", title: "Reguli de sintaxă" },
         { id: "valori-si-variabile", title: "Valori și variabile" },
+        { id: "expresii-si-operatori", title: "Expresii și operatori" },
+        { id: "functii-predefinite", title: "Funcții predefinite" },
+        { id: "input-si-output", title: "Input și output" },
         { id: "conditii", title: "Condiții" },
         { id: "bucle", title: "Bucle" },
-        { id: "intrare-si-iesire", title: "Intrare și ieșire" },
+        { id: "erori-si-limite", title: "Erori și limite" },
+        { id: "referinta-rapida", title: "Referință rapidă" },
       ],
     },
   },
@@ -109,10 +119,10 @@ const articles: ArticleDefinition[] = [
     slug: "api",
     href: "/docs/api",
     section: "Developers",
+    updatedIso: "2026-06-13",
     en: {
       title: "API overview",
       description: "Plan integrations with the future ScripticX public API.",
-      sectionLabel: sectionLabels.en.Developers,
       updated: "June 13, 2026",
       readingTime: "3 min read",
       headings: [
@@ -125,7 +135,6 @@ const articles: ArticleDefinition[] = [
     ro: {
       title: "Prezentare API",
       description: "Planifică integrări cu viitorul API public ScripticX.",
-      sectionLabel: sectionLabels.ro.Developers,
       updated: "13 iunie 2026",
       readingTime: "3 min de citit",
       headings: [
@@ -140,10 +149,10 @@ const articles: ArticleDefinition[] = [
     slug: "security",
     href: "/trust",
     section: "Trust",
+    updatedIso: "2026-06-13",
     en: {
       title: "Security at ScripticX",
       description: "How we approach platform safety and vulnerability reports.",
-      sectionLabel: sectionLabels.en.Trust,
       updated: "June 13, 2026",
       readingTime: "4 min read",
       headings: [
@@ -156,7 +165,6 @@ const articles: ArticleDefinition[] = [
     ro: {
       title: "Securitatea la ScripticX",
       description: "Cum abordăm siguranța platformei și raportarea vulnerabilităților.",
-      sectionLabel: sectionLabels.ro.Trust,
       updated: "13 iunie 2026",
       readingTime: "4 min de citit",
       headings: [
@@ -171,10 +179,10 @@ const articles: ArticleDefinition[] = [
     slug: "privacy-principles",
     href: "/trust/privacy",
     section: "Trust",
+    updatedIso: "2026-06-13",
     en: {
       title: "Privacy principles",
       description: "The principles guiding how ScripticX treats personal data.",
-      sectionLabel: sectionLabels.en.Trust,
       updated: "June 13, 2026",
       readingTime: "4 min read",
       headings: [
@@ -187,7 +195,6 @@ const articles: ArticleDefinition[] = [
     ro: {
       title: "Principii de confidențialitate",
       description: "Principiile după care ScripticX tratează datele personale.",
-      sectionLabel: sectionLabels.ro.Trust,
       updated: "13 iunie 2026",
       readingTime: "4 min de citit",
       headings: [
@@ -202,10 +209,10 @@ const articles: ArticleDefinition[] = [
     slug: "privacy",
     href: "/legal/privacy",
     section: "Legal",
+    updatedIso: "2026-06-14",
     en: {
       title: "Privacy Policy",
       description: "How ScripticX collects, uses, and protects personal data.",
-      sectionLabel: sectionLabels.en.Legal,
       updated: "June 14, 2026",
       readingTime: "9 min read",
       headings: [
@@ -221,7 +228,6 @@ const articles: ArticleDefinition[] = [
     ro: {
       title: "Politica de confidențialitate",
       description: "Cum colectează, folosește și protejează ScripticX datele personale.",
-      sectionLabel: sectionLabels.ro.Legal,
       updated: "14 iunie 2026",
       readingTime: "9 min de citit",
       headings: [
@@ -229,7 +235,10 @@ const articles: ArticleDefinition[] = [
         { id: "autentificare-google", title: "Autentificare Google" },
         { id: "cum-folosim-informatiile", title: "Cum folosim informațiile" },
         { id: "partajare-si-furnizori", title: "Partajare și furnizori" },
-        { id: "pastrare-si-stergere", title: "Păstrarea și ștergerea datelor" },
+        {
+          id: "pastrarea-si-stergerea-datelor",
+          title: "Păstrarea și ștergerea datelor",
+        },
         { id: "drepturile-tale", title: "Drepturile tale" },
         { id: "contact", title: "Contact" },
       ],
@@ -239,10 +248,10 @@ const articles: ArticleDefinition[] = [
     slug: "terms",
     href: "/legal/terms",
     section: "Legal",
+    updatedIso: "2026-06-13",
     en: {
       title: "Terms of Service",
       description: "The terms that apply when using ScripticX.",
-      sectionLabel: sectionLabels.en.Legal,
       updated: "June 13, 2026",
       readingTime: "8 min read",
       headings: [
@@ -256,7 +265,6 @@ const articles: ArticleDefinition[] = [
     ro: {
       title: "Termeni și condiții",
       description: "Termenii aplicabili atunci când folosești ScripticX.",
-      sectionLabel: sectionLabels.ro.Legal,
       updated: "13 iunie 2026",
       readingTime: "8 min de citit",
       headings: [
@@ -272,10 +280,10 @@ const articles: ArticleDefinition[] = [
     slug: "cookies",
     href: "/legal/cookies",
     section: "Legal",
+    updatedIso: "2026-06-13",
     en: {
       title: "Cookie Policy",
       description: "What cookies ScripticX uses and why.",
-      sectionLabel: sectionLabels.en.Legal,
       updated: "June 13, 2026",
       readingTime: "4 min read",
       headings: [
@@ -288,7 +296,6 @@ const articles: ArticleDefinition[] = [
     ro: {
       title: "Politica privind cookie-urile",
       description: "Ce cookie-uri folosește ScripticX și de ce.",
-      sectionLabel: sectionLabels.ro.Legal,
       updated: "13 iunie 2026",
       readingTime: "4 min de citit",
       headings: [
@@ -303,10 +310,10 @@ const articles: ArticleDefinition[] = [
     slug: "acceptable-use",
     href: "/legal/acceptable-use",
     section: "Legal",
+    updatedIso: "2026-06-13",
     en: {
       title: "Acceptable Use Policy",
       description: "Rules that keep ScripticX safe and useful for everyone.",
-      sectionLabel: sectionLabels.en.Legal,
       updated: "June 13, 2026",
       readingTime: "5 min read",
       headings: [
@@ -319,7 +326,6 @@ const articles: ArticleDefinition[] = [
     ro: {
       title: "Politica de utilizare acceptabilă",
       description: "Reguli care păstrează ScripticX sigur și util pentru toți.",
-      sectionLabel: sectionLabels.ro.Legal,
       updated: "13 iunie 2026",
       readingTime: "5 min de citit",
       headings: [

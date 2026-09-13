@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-05",
+  "author": "ScripticX",
+  "tags": ["scripticx", "learning"],
+  "draft": false,
+  "en": {
+    "title": "Welcome to the ScripticX blog",
+    "description": "A place for programming ideas, learning notes and a closer look at what we build."
+  },
+  "ro": {
+    "title": "Bun venit pe blogul ScripticX",
+    "description": "Un loc pentru idei despre programare, notițe de învățare și o privire mai atentă asupra proiectelor noastre."
+  }
+}

@@ -60,7 +60,7 @@ function EventCard({
   event: EventItem;
   onOpen: (event: EventItem) => void;
 }) {
-  const t = useTranslations("Events");
+  const translate = useTranslations("Events");
   const [first, second, third] = event.gallery;
 
   return (
@@ -72,7 +72,7 @@ function EventCard({
       <div className="relative h-[320px] overflow-hidden rounded-[1.55rem] bg-green-50 sm:h-[380px]">
         <Image
           src={event.cover}
-          alt={t(`items.${event.id}.title`)}
+          alt={translate(`items.${event.id}.title`)}
           fill
           sizes="(min-width: 1024px) 720px, 100vw"
           className="object-cover transition duration-700 group-hover/card:scale-105"
@@ -86,20 +86,20 @@ function EventCard({
               className="border-white/35 bg-white/85 text-green-950 backdrop-blur"
               variant="outline"
             >
-              {t(`tags.${tag}`)}
+              {translate(`tags.${tag}`)}
             </Badge>
           ))}
         </div>
 
         <div className="absolute bottom-4 left-4 right-4">
           <p className="text-sm font-medium text-white/80">
-            {t(`items.${event.id}.eyebrow`)}
+            {translate(`items.${event.id}.eyebrow`)}
           </p>
           <h3 className="mt-2 max-w-xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            {t(`items.${event.id}.title`)}
+            {translate(`items.${event.id}.title`)}
           </h3>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-white/82 sm:text-base">
-            {t(`items.${event.id}.description`)}
+            {translate(`items.${event.id}.description`)}
           </p>
         </div>
       </div>
@@ -116,7 +116,7 @@ function EventCard({
           >
             <Image
               src={image}
-              alt={t(`items.${event.id}.galleryAlt`, { index: index + 1 })}
+              alt={translate(`items.${event.id}.galleryAlt`, { index: index + 1 })}
               fill
               sizes="(min-width: 1024px) 360px, 50vw"
               className="object-cover transition duration-500 group-hover/card:scale-105"
@@ -137,7 +137,7 @@ function EventDialog({
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
-  const t = useTranslations("Events");
+  const translate = useTranslations("Events");
   const [activeImage, setActiveImage] = useState(event?.cover ?? "");
 
   if (!event) return null;
@@ -166,7 +166,7 @@ function EventDialog({
           <div className="relative h-[320px] bg-black lg:h-full">
             <Image
               src={selectedImage}
-              alt={t(`items.${event.id}.title`)}
+              alt={translate(`items.${event.id}.title`)}
               fill
               sizes="(min-width: 1024px) 58vw, 100vw"
               className="object-cover"
@@ -191,7 +191,7 @@ function EventDialog({
                   >
                     <Image
                       src={image}
-                      alt={t(`items.${event.id}.galleryAlt`, {
+                      alt={translate(`items.${event.id}.galleryAlt`, {
                         index: index + 1,
                       })}
                       fill
@@ -213,15 +213,15 @@ function EventDialog({
                     variant="secondary"
                     className="bg-green-100 text-green-900"
                   >
-                    {t(`tags.${tag}`)}
+                    {translate(`tags.${tag}`)}
                   </Badge>
                 ))}
               </div>
               <DialogTitle className="text-2xl font-semibold tracking-tight sm:text-3xl">
-                {t(`items.${event.id}.title`)}
+                {translate(`items.${event.id}.title`)}
               </DialogTitle>
               <DialogDescription className="text-base leading-7">
-                {t(`items.${event.id}.longDescription`)}
+                {translate(`items.${event.id}.longDescription`)}
               </DialogDescription>
             </DialogHeader>
 
@@ -229,27 +229,27 @@ function EventDialog({
               <div className="flex gap-3 rounded-2xl border bg-muted/40 p-4">
                 <CalendarDays className="mt-0.5 size-5 shrink-0 text-green-700" />
                 <div>
-                  <p className="text-sm font-medium">{t("details.date")}</p>
+                  <p className="text-sm font-medium">{translate("details.date")}</p>
                   <p className="text-sm text-muted-foreground">
-                    {t(`items.${event.id}.date`)}
+                    {translate(`items.${event.id}.date`)}
                   </p>
                 </div>
               </div>
               <div className="flex gap-3 rounded-2xl border bg-muted/40 p-4">
                 <MapPin className="mt-0.5 size-5 shrink-0 text-green-700" />
                 <div>
-                  <p className="text-sm font-medium">{t("details.location")}</p>
+                  <p className="text-sm font-medium">{translate("details.location")}</p>
                   <p className="text-sm text-muted-foreground">
-                    {t(`items.${event.id}.location`)}
+                    {translate(`items.${event.id}.location`)}
                   </p>
                 </div>
               </div>
               <div className="flex gap-3 rounded-2xl border bg-muted/40 p-4">
                 <UsersRound className="mt-0.5 size-5 shrink-0 text-green-700" />
                 <div>
-                  <p className="text-sm font-medium">{t("details.audience")}</p>
+                  <p className="text-sm font-medium">{translate("details.audience")}</p>
                   <p className="text-sm text-muted-foreground">
-                    {t(`items.${event.id}.audience`)}
+                    {translate(`items.${event.id}.audience`)}
                   </p>
                 </div>
               </div>
@@ -260,9 +260,9 @@ function EventDialog({
               className="mt-7 w-full cursor-not-allowed rounded-full bg-green-100 text-green-950 hover:bg-green-100"
               disabled
             >
-              {t("suggestEvent")}
+              {translate("suggestEvent")}
               <span className="ml-2 rounded-full bg-white/80 px-2 py-0.5 text-xs text-green-800">
-                {t("comingSoon")}
+                {translate("comingSoon")}
               </span>
             </Button>
           </div>
@@ -273,7 +273,7 @@ function EventDialog({
 }
 
 export default function EventsSection() {
-  const t = useTranslations("Events");
+  const translate = useTranslations("Events");
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null);
   const [renderedEvent, setRenderedEvent] = useState<EventItem | null>(null);
   const closeTimer = useRef<number | null>(null);
@@ -310,12 +310,12 @@ export default function EventsSection() {
     <section className="px-4 py-20 sm:px-6 sm:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
-          <p className="text-sm font-medium text-green-700">{t("eyebrow")}</p>
+          <p className="text-sm font-medium text-green-700">{translate("eyebrow")}</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-5xl">
-            {t("title")}
+            {translate("title")}
           </h2>
           <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-            {t("description")}
+            {translate("description")}
           </p>
         </div>
 
@@ -328,13 +328,13 @@ export default function EventsSection() {
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(22,101,52,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(22,101,52,0.08)_1px,transparent_1px)] bg-[size:34px_34px]" />
             <div className="relative">
               <Badge className="bg-white text-green-900" variant="outline">
-                {t("sideCard.badge")}
+                {translate("sideCard.badge")}
               </Badge>
               <h3 className="mt-5 text-2xl font-semibold tracking-tight">
-                {t("sideCard.title")}
+                {translate("sideCard.title")}
               </h3>
               <p className="mt-3 leading-7 text-muted-foreground">
-                {t("sideCard.description")}
+                {translate("sideCard.description")}
               </p>
               <div className="mt-8 grid gap-3">
                 {["learn", "build", "share"].map((item) => (
@@ -342,7 +342,7 @@ export default function EventsSection() {
                     key={item}
                     className="rounded-2xl border bg-white/80 p-4 text-sm font-medium shadow-sm"
                   >
-                    {t(`sideCard.items.${item}`)}
+                    {translate(`sideCard.items.${item}`)}
                   </div>
                 ))}
               </div>
