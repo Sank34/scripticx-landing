@@ -9,7 +9,7 @@ const geistFont = readFile(
   join(process.cwd(), "node_modules/next/dist/compiled/@vercel/og/Geist-Regular.ttf"),
 );
 const logoFile = readFile(join(process.cwd(), "public/logoSCX.svg"), "utf8");
-const logoTextFile = readFile(join(process.cwd(), "public/logo-text.png"));
+const logoWordmarkFile = readFile(join(process.cwd(), "public/logo-text.svg"), "utf8");
 
 function cleanText(value: string | null, fallback: string, maxLength: number) {
   const cleaned = (value || fallback)
@@ -82,15 +82,15 @@ export async function GET(request: Request) {
   const displayPath = pagePath === "/" ? "scripticx.org" : `scripticx.org${pagePath}`;
   const titleSize = title.length > 68 ? 50 : title.length > 48 ? 58 : 68;
   const theme = getRouteTheme(pagePath);
-  const [fontData, logoSvg, logoText] = await Promise.all([
+  const [fontData, logoSvg, logoWordmark] = await Promise.all([
     geistFont,
     logoFile,
-    logoTextFile,
+    logoWordmarkFile,
   ]);
   const logoDataUrl =
     "data:image/svg+xml;base64," + Buffer.from(logoSvg).toString("base64");
-  const logoTextDataUrl =
-    "data:image/png;base64," + Buffer.from(logoText).toString("base64");
+  const logoWordmarkDataUrl =
+    "data:image/svg+xml;base64," + Buffer.from(logoWordmark).toString("base64");
 
   return new ImageResponse(
     (
@@ -140,18 +140,10 @@ export async function GET(request: Request) {
           <div style={{ display: "flex", alignItems: "center" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              alt=""
-              src={logoTextDataUrl}
-              width={143}
-              height={33}
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              alt=""
-              src={logoDataUrl}
-              width={44}
-              height={31}
-              style={{ marginLeft: 1 }}
+              alt="ScripticX"
+              src={logoWordmarkDataUrl}
+              width={168}
+              height={34}
             />
           </div>
 
