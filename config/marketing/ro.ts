@@ -1,10 +1,10 @@
 export const marketingContent = {
   hero: {
-    eyebrow: "Învață · construiește · dă-i viață",
-    title: "Ideile bune cresc în",
-    accent: "abilități, produse și software util.",
+    eyebrow: "Pregătire la informatică, practică și proiecte",
+    title: "Învață programare prin",
+    accent: "probleme și proiecte reale.",
     description:
-      "Aici, curiozitatea devine cod, proiectele devin produse, iar ideile bune nu rămân doar în caiet. Învață, construiește sau vino cu următorul lucru care merită lansat. :)",
+      "Pregătește-te la informatică, exersează probleme de programare și construiește proiecte într-un spațiu făcut pentru elevi, profesori și echipe curioase. :)",
     primary: "Vezi ce construim",
     secondary: "Deschide ScripticX",
     scroll: "Derulează pentru a explora",

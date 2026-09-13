@@ -19,6 +19,7 @@ import {
 import {
   absoluteUrl,
   createPageMetadata,
+  localizedPath,
   siteConfig,
 } from "@/lib/metadata";
 
@@ -64,7 +65,7 @@ export default async function KnowledgePage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "ScripticX Knowledge Center",
-    url: absoluteUrl("/knowledge"),
+    url: absoluteUrl(localizedPath("/knowledge", isRomanian ? "ro" : "en")),
     description: isRomanian
       ? "Documentație, securitate și politici pentru ScripticX."
       : "Documentation, security guidance, and policies for ScripticX.",

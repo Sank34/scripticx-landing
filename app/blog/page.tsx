@@ -16,8 +16,8 @@ export async function generateMetadata() {
     path: "/blog",
     title: { en: "Blog", ro: "Blog" },
     description: {
-      en: "Notes on programming, learning and building with ScripticX.",
-      ro: "Articole despre programare, învățare și proiectele ScripticX.",
+      en: "Notes on programming, coding problems, learning and building with ScripticX.",
+      ro: "Articole despre programare, probleme de informatică, învățare și proiectele ScripticX.",
     },
   });
 }

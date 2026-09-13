@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
+import { usePathname } from "next/navigation";
 import { languageSettings, type SiteLocale } from "@/config/languages";
 
 import { cn } from "@/lib/utils";
@@ -11,10 +12,17 @@ function persistLocale(locale: SiteLocale) {
 
 export default function LanguageSwitcher() {
   const locale = useLocale();
+  const pathname = usePathname() || "/";
 
   const setLocale = (locale: SiteLocale) => {
     persistLocale(locale);
-    window.location.reload();
+    const segments = pathname.split("/").filter(Boolean);
+    const hasLocalePrefix = languageSettings.supportedLocales.includes(segments[0] as SiteLocale);
+    const pathWithoutLocale = hasLocalePrefix
+      ? `/${segments.slice(1).join("/")}`
+      : pathname;
+    const normalizedPath = pathWithoutLocale === "/" ? "" : pathWithoutLocale;
+    window.location.assign(`/${locale}${normalizedPath}${window.location.search}${window.location.hash}`);
   };
 
   return (

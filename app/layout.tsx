@@ -10,6 +10,8 @@ import {
   absoluteUrl,
   createSocialImageUrl,
   getSiteDescription,
+  localizedAlternates,
+  localizedPath,
   siteConfig,
 } from "@/lib/metadata";
 
@@ -34,8 +36,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const isRomanian = locale === "ro";
   const title = isRomanian
-    ? "ScripticX — Educație și tehnologie"
-    : "ScripticX — Education & Technology";
+    ? "ScripticX — Pregătire la informatică și probleme de programare"
+    : "ScripticX — Programming education and coding practice";
   const description = getSiteDescription(locale);
   const socialImage = createSocialImageUrl({
     title: isRomanian
@@ -62,7 +64,8 @@ export async function generateMetadata(): Promise<Metadata> {
     publisher: "ScripticX",
     category: "technology",
     alternates: {
-      canonical: "/",
+      canonical: absoluteUrl(localizedPath("/", isRomanian ? "ro" : "en")),
+      ...localizedAlternates("/"),
     },
     formatDetection: {
       email: false,
@@ -94,7 +97,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      url: absoluteUrl("/"),
+      url: absoluteUrl(localizedPath("/", isRomanian ? "ro" : "en")),
       siteName: siteConfig.name,
       locale: isRomanian ? "ro_RO" : "en_US",
       alternateLocale: [isRomanian ? "en_US" : "ro_RO"],
@@ -144,8 +147,8 @@ export default async function RootLayout({
   const socialImage = createSocialImageUrl({
     title:
       locale === "ro"
-        ? "Educație, dezvoltare și programare."
-        : "Education, development and programming.",
+        ? "Pregătire la informatică și probleme de programare."
+        : "Programming education and coding practice.",
     description,
     section:
       locale === "ro"
@@ -161,7 +164,7 @@ export default async function RootLayout({
         "@id": `${siteConfig.url}/#website`,
         name: siteConfig.name,
         alternateName: "Platforma ScripticX",
-        url: siteConfig.url,
+        url: absoluteUrl(localizedPath("/", locale === "ro" ? "ro" : "en")),
         description,
         inLanguage: ["ro", "en"],
         publisher: {
@@ -187,12 +190,12 @@ export default async function RootLayout({
           {
             "@type": "EducationalOrganization",
             name: "ScripticX Education Center",
-            url: absoluteUrl("/education"),
+            url: absoluteUrl(localizedPath("/education", locale === "ro" ? "ro" : "en")),
           },
           {
             "@type": "Organization",
             name: "ScripticX Development",
-            url: absoluteUrl("/development"),
+            url: absoluteUrl(localizedPath("/development", locale === "ro" ? "ro" : "en")),
           },
         ],
       },
@@ -200,7 +203,7 @@ export default async function RootLayout({
         "@type": "SoftwareApplication",
         name: siteConfig.name,
         alternateName: "Platforma ScripticX",
-        url: absoluteUrl("/platform"),
+        url: absoluteUrl(localizedPath("/platform", locale === "ro" ? "ro" : "en")),
         description,
         applicationCategory: "EducationalApplication",
         operatingSystem: "Any",

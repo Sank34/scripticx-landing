@@ -5,7 +5,7 @@ import { getLocale } from "next-intl/server";
 import { BlogSidebar } from "@/components/blog/BlogSidebar";
 import { BlogToc } from "@/components/blog/BlogToc";
 import { blogDate, getBlogPosts } from "@/lib/blog";
-import { absoluteUrl, createPageMetadata } from "@/lib/metadata";
+import { absoluteUrl, createPageMetadata, localizedPath } from "@/lib/metadata";
 
 type BlogPostPageProps = { params: Promise<{ slug: string }> };
 export async function generateStaticParams() {
@@ -54,7 +54,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     description: post.description,
     datePublished: post.date,
     author: { "@type": "Organization", name: post.author },
-    url: absoluteUrl(`/blog/${slug}`),
+    url: absoluteUrl(localizedPath(`/blog/${slug}`, locale)),
     inLanguage: locale,
   };
   return (

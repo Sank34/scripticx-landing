@@ -1,10 +1,10 @@
 export const marketingContent = {
   hero: {
-    eyebrow: "Learn. Build. Grow.",
-    title: "Good ideas grow into",
-    accent: "skills, products and useful software.",
+    eyebrow: "Programming education, practice and projects",
+    title: "Learn programming through",
+    accent: "coding problems and real projects.",
     description:
-      "Here, curiosity becomes code, projects become products, and good ideas get out of the notebook. Learn, build, or bring us the next thing worth shipping. :)",
+      "Study informatics, practise coding problems and build projects in a workspace made for learners, teachers and curious teams. :)",
     primary: "See what we’re building",
     secondary: "Open ScripticX",
     scroll: "Scroll to explore",

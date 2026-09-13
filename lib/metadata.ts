@@ -7,6 +7,7 @@ import {
 } from "@/lib/knowledge-data";
 
 import { siteConfig as siteSettings } from "@/config/site";
+import { languageSettings, type SiteLocale } from "@/config/languages";
 
 const configuredUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
@@ -26,6 +27,27 @@ export const siteConfig = { ...siteSettings, url: getCanonicalSiteUrl(configured
 
 export function absoluteUrl(path = "/") {
   return new URL(path, siteConfig.url).toString();
+}
+
+export function localizedPath(path: string, locale: SiteLocale) {
+  const normalizedPath = path === "/" ? "" : path.startsWith("/") ? path : `/${path}`;
+  return `/${locale}${normalizedPath}`;
+}
+
+export function localizedAlternates(path: string) {
+  const languages = Object.fromEntries(
+    languageSettings.supportedLocales.map((locale) => [
+      locale,
+      absoluteUrl(localizedPath(path, locale)),
+    ]),
+  );
+
+  return {
+    languages: {
+      ...languages,
+      "x-default": languages.en,
+    },
+  };
 }
 
 export function getSiteDescription(locale: string) {
@@ -96,7 +118,7 @@ export function createPageMetadata({
   const normalized = normalizeKnowledgeLocale(locale);
   const pageTitle = withoutTrailingBrand(title[normalized]);
   const pageDescription = description[normalized];
-  const canonical = absoluteUrl(path);
+  const canonical = absoluteUrl(localizedPath(path, normalized));
   const socialTitle = `${pageTitle} | ${siteConfig.name}`;
   const socialImage = createSocialImageUrl({
     title: pageTitle,
@@ -110,6 +132,7 @@ export function createPageMetadata({
     description: pageDescription,
     alternates: {
       canonical,
+      ...localizedAlternates(path),
     },
     openGraph: {
       title: socialTitle,

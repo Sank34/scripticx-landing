@@ -15,7 +15,7 @@ import {
   getKnowledgeArticles,
   type KnowledgeArticleMeta,
 } from "@/lib/knowledge-data";
-import { absoluteUrl, siteConfig } from "@/lib/metadata";
+import { absoluteUrl, localizedPath, siteConfig } from "@/lib/metadata";
 
 export function KnowledgeArticle({
   article,
@@ -41,7 +41,7 @@ export function KnowledgeArticle({
     "@type": "Article",
     headline: article.title,
     description: article.description,
-    url: absoluteUrl(article.href),
+    url: absoluteUrl(localizedPath(article.href, isRomanian ? "ro" : "en")),
     datePublished: article.updatedIso,
     dateModified: article.updatedIso,
     inLanguage: isRomanian ? "ro" : "en",
@@ -61,7 +61,7 @@ export function KnowledgeArticle({
     isPartOf: {
       "@type": "WebSite",
       name: "ScripticX Knowledge Center",
-      url: absoluteUrl("/knowledge"),
+      url: absoluteUrl(localizedPath("/knowledge", isRomanian ? "ro" : "en")),
     },
   };
 

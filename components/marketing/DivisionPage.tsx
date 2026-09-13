@@ -29,10 +29,10 @@ const divisionPaths: Record<DivisionKey, string> = {
 
 const divisionMetadata = {
   education: {
-    title: { en: "Education Center", ro: "Centru de pregătire" },
+    title: { en: "Informatics education", ro: "Pregătire la informatică" },
     description: {
-      en: "Informatics and machine learning groups, mentoring and practical workshops for children and teenagers.",
-      ro: "Grupe de informatică și machine learning, mentorat și workshop-uri practice pentru copii și adolescenți.",
+      en: "Informatics education, coding practice and practical workshops for children and teenagers.",
+      ro: "Pregătire la informatică, probleme de programare și workshop-uri practice pentru copii și adolescenți.",
     },
   },
   development: {
@@ -43,10 +43,10 @@ const divisionMetadata = {
     },
   },
   platform: {
-    title: { en: "Learning Platform", ro: "Platformă de programare" },
+    title: { en: "Programming learning platform", ro: "Platformă pentru învățarea programării" },
     description: {
-      en: "A complete workspace for programming courses, problems, projects, classes and live collaboration.",
-      ro: "Un workspace complet pentru cursuri de programare, probleme, proiecte, clase și colaborare live.",
+      en: "A complete workspace for coding problems, programming courses, projects, classes and live collaboration.",
+      ro: "Un workspace pentru probleme de programare, cursuri, proiecte, clase și colaborare live.",
     },
   },
 } satisfies Record<DivisionKey, { title: { en: string; ro: string }; description: { en: string; ro: string } }>;
