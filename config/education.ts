@@ -62,6 +62,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
         informatics: [
           {
             title: "School & BAC preparation",
+            badge: "Coming soon",
             audience: "Beginner track",
             format: "MiniScript+ · C++ / Python",
             schedule: "RON 50",
@@ -82,7 +83,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
           },
           {
             title: "Applied Computer Science",
-            badge: "Recommended",
+            badge: "Coming soon",
             audience: "Intermediate track",
             format: "MiniScript+ · Python",
             schedule: "RON 70",
@@ -104,6 +105,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
           },
           {
             title: "Advanced Algorithms",
+            badge: "Coming soon",
             audience: "Advanced track",
             format: "MiniScript+ · Python / C++",
             schedule: "RON 70",
@@ -126,6 +128,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
         machineLearning: [
           {
             title: "Introduction to ML",
+            badge: "Coming soon",
             audience: "Beginner track",
             format: "MiniScript+ · Python",
             schedule: "RON 50",
@@ -146,7 +149,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
           },
           {
             title: "Advanced Machine Learning",
-            badge: "Recommended",
+            badge: "Coming soon",
             audience: "Advanced track",
             format: "Python",
             schedule: "RON 70",
@@ -169,6 +172,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
           },
           {
             title: "Applied Machine Learning",
+            badge: "Coming soon",
             audience: "Advanced track",
             format: "Python · C++ · MiniScript+ Robotics",
             schedule: "RON 70",
@@ -340,6 +344,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
         informatics: [
           {
             title: "BAC & materia de la clasă",
+            badge: "Coming soon",
             audience: "Traseu pentru începători",
             format: "MiniScript+ · C++ / Python",
             schedule: "50 lei",
@@ -360,7 +365,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
           },
           {
             title: "Applied Computer Science",
-            badge: "Recomandat",
+            badge: "Coming soon",
             audience: "Traseu intermediar",
             format: "MiniScript+ · Python",
             schedule: "70 lei",
@@ -382,6 +387,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
           },
           {
             title: "Advanced Algorithms",
+            badge: "Coming soon",
             audience: "Traseu avansat",
             format: "MiniScript+ · Python / C++",
             schedule: "70 lei",
@@ -404,6 +410,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
         machineLearning: [
           {
             title: "Introducere în ML",
+            badge: "Coming soon",
             audience: "Traseu pentru începători",
             format: "MiniScript+ · Python",
             schedule: "50 lei",
@@ -424,7 +431,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
           },
           {
             title: "Advanced Machine Learning",
-            badge: "Recomandat",
+            badge: "Coming soon",
             audience: "Traseu avansat",
             format: "Python",
             schedule: "70 lei",
@@ -447,6 +454,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
           },
           {
             title: "Applied Machine Learning",
+            badge: "Coming soon",
             audience: "Traseu avansat",
             format: "Python · C++ · MiniScript+ Robotics",
             schedule: "70 lei",

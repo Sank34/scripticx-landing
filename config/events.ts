@@ -12,52 +12,52 @@ const workshopRoot = "/events/workshops/programming-1-3-july-26";
 const eventSignupForm = "https://forms.gle/BeEBV9FJf9XKt36Z6";
 
 export const events: readonly EventDefinition[] = [
-  {
-    id: "hacktoberfest-mlh-2026",
-    link: "", // The dedicated registration link is still to be supplied.
-    // Month bounds are for calendar grouping and expiry, not a confirmed event date.
-    startAt: "2026-10-01T00:00:00+03:00",
-    endAt: "2026-10-31T23:59:59+02:00",
-    category: "competition",
-    image: "/hacktoberfest-2026.png",
-    imageFit: "contain",
-    imageBackground: "#3d5e58",
-    modalImage: "/hacktoberfest-bg.webp",
-    content: {
-      en: {
-        eyebrow: "One-day hackathon · MLH",
-        dateLabel: "October 2026 · Date TBA",
-        title: "Hacktoberfest with MLH",
-        summary:
-          "A one-day open-source hackathon with MLH, open to anyone from the Galați–Brăila metropolitan area.",
-        description:
-          "Join ScripticX and MLH at BJPIBR for a one-day Hacktoberfest hackathon focused on building open-source projects, collaborating and learning together. Anyone from the Galați–Brăila metropolitan area can register. The exact date and full programme will be announced soon.",
-        location: "BJPIBR",
-        audience: "Anyone from the Galați–Brăila metropolitan area",
-        highlights: [
-          "One-day hackathon with MLH",
-          "Build and collaborate on open-source projects",
-          "Open registration for the metropolitan area",
-        ],
-      },
-      ro: {
-        eyebrow: "Hackathon de o zi · MLH",
-        dateLabel: "Octombrie 2026 · Data va fi anunțată",
-        title: "Hacktoberfest cu MLH",
-        summary:
-          "Un hackathon open-source de o zi, organizat alături de MLH și deschis oricui din zona metropolitană Galați–Brăila.",
-        description:
-          "Participă alături de ScripticX și MLH la BJPIBR la un hackathon Hacktoberfest de o zi, dedicat construirii de proiecte open-source, colaborării și învățării. Se poate înscrie oricine din zona metropolitană Galați–Brăila. Data exactă și programul complet vor fi anunțate în curând.",
-        location: "BJPIBR",
-        audience: "Oricine din zona metropolitană Galați–Brăila",
-        highlights: [
-          "Hackathon de o zi alături de MLH",
-          "Construim și colaborăm la proiecte open-source",
-          "Înscrieri deschise pentru zona metropolitană",
-        ],
-      },
-    },
-  },
+  // {
+  //   id: "hacktoberfest-mlh-2026",
+  //   link: "", // The dedicated registration link is still to be supplied.
+  //   // Month bounds are for calendar grouping and expiry, not a confirmed event date.
+  //   startAt: "2026-10-01T00:00:00+03:00",
+  //   endAt: "2026-10-31T23:59:59+02:00",
+  //   category: "competition",
+  //   image: "/hacktoberfest-2026.png",
+  //   imageFit: "contain",
+  //   imageBackground: "#3d5e58",
+  //   modalImage: "/hacktoberfest-bg.webp",
+  //   content: {
+  //     en: {
+  //       eyebrow: "One-day hackathon · MLH",
+  //       dateLabel: "October 2026 · Date TBA",
+  //       title: "Hacktoberfest with MLH",
+  //       summary:
+  //         "A one-day open-source hackathon with MLH, open to anyone from the Galați–Brăila metropolitan area.",
+  //       description:
+  //         "Join ScripticX and MLH at BJPIBR for a one-day Hacktoberfest hackathon focused on building open-source projects, collaborating and learning together. Anyone from the Galați–Brăila metropolitan area can register. The exact date and full programme will be announced soon.",
+  //       location: "BJPIBR",
+  //       audience: "Anyone from the Galați–Brăila metropolitan area",
+  //       highlights: [
+  //         "One-day hackathon with MLH",
+  //         "Build and collaborate on open-source projects",
+  //         "Open registration for the metropolitan area",
+  //       ],
+  //     },
+  //     ro: {
+  //       eyebrow: "Hackathon de o zi · MLH",
+  //       dateLabel: "Octombrie 2026 · Data va fi anunțată",
+  //       title: "Hacktoberfest cu MLH",
+  //       summary:
+  //         "Un hackathon open-source de o zi, organizat alături de MLH și deschis oricui din zona metropolitană Galați–Brăila.",
+  //       description:
+  //         "Participă alături de ScripticX și MLH la BJPIBR la un hackathon Hacktoberfest de o zi, dedicat construirii de proiecte open-source, colaborării și învățării. Se poate înscrie oricine din zona metropolitană Galați–Brăila. Data exactă și programul complet vor fi anunțate în curând.",
+  //       location: "BJPIBR",
+  //       audience: "Oricine din zona metropolitană Galați–Brăila",
+  //       highlights: [
+  //         "Hackathon de o zi alături de MLH",
+  //         "Construim și colaborăm la proiecte open-source",
+  //         "Înscrieri deschise pentru zona metropolitană",
+  //       ],
+  //     },
+  //   },
+  // },
   {
     id: "scripticx-competition-november-2026",
     link: links.platform,
