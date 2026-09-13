@@ -56,6 +56,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
       switchLabel: "Choose a preparation track",
       tabs: { informatics: "Informatics", machineLearning: "Machine learning" },
       contact: "Ask about this group",
+      comingSoon: "Coming soon",
       includesLabel: "The group includes",
       scheduleNote: "The final timetable is agreed with each cohort.",
       tracks: {
@@ -338,13 +339,14 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
       switchLabel: "Alege traseul de pregătire",
       tabs: { informatics: "Informatică", machineLearning: "Machine learning" },
       contact: "Întreabă despre grupă",
+      comingSoon: "În curând",
       includesLabel: "Grupa include",
       scheduleNote: "Programul final este stabilit împreună cu fiecare grupă.",
       tracks: {
         informatics: [
           {
             title: "BAC & materia de la clasă",
-            badge: "Coming soon",
+            badge: "În curând",
             audience: "Traseu pentru începători",
             format: "MiniScript+ · C++ / Python",
             schedule: "50 lei",
@@ -365,7 +367,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
           },
           {
             title: "Applied Computer Science",
-            badge: "Coming soon",
+            badge: "În curând",
             audience: "Traseu intermediar",
             format: "MiniScript+ · Python",
             schedule: "70 lei",
@@ -387,7 +389,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
           },
           {
             title: "Advanced Algorithms",
-            badge: "Coming soon",
+            badge: "În curând",
             audience: "Traseu avansat",
             format: "MiniScript+ · Python / C++",
             schedule: "70 lei",
@@ -410,7 +412,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
         machineLearning: [
           {
             title: "Introducere în ML",
-            badge: "Coming soon",
+            badge: "În curând",
             audience: "Traseu pentru începători",
             format: "MiniScript+ · Python",
             schedule: "50 lei",
@@ -431,7 +433,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
           },
           {
             title: "Advanced Machine Learning",
-            badge: "Coming soon",
+            badge: "În curând",
             audience: "Traseu avansat",
             format: "Python",
             schedule: "70 lei",
@@ -454,7 +456,7 @@ export const educationContent: Record<SiteLocale, EducationContent> = {
           },
           {
             title: "Applied Machine Learning",
-            badge: "Coming soon",
+            badge: "În curând",
             audience: "Traseu avansat",
             format: "Python · C++ · MiniScript+ Robotics",
             schedule: "70 lei",

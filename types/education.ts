@@ -35,6 +35,7 @@ export type EducationGroupsContent = {
   switchLabel: string;
   tabs: Record<EducationTrackKey, string>;
   contact: string;
+  comingSoon: string;
   includesLabel: string;
   scheduleNote: string;
   tracks: Record<EducationTrackKey, EducationGroup[]>;

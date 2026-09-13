@@ -24,6 +24,7 @@ function GroupCards({
     <div className="grid gap-3 lg:grid-cols-3">
       {items.map((group) => {
         const featured = group.featured;
+        const comingSoon = group.badge === "Coming soon" || group.badge === "În curând";
 
         return (
           <article
@@ -63,12 +64,27 @@ function GroupCards({
 
             <p className={`mt-6 text-sm leading-6 ${featured ? "text-background/68" : "text-muted-foreground"}`}>{group.description}</p>
 
-            <Button className="mt-7 w-full" variant={featured ? "secondary" : "default"} asChild>
-              <Link href={links.contact}>
-                {content.contact}
-                <ArrowUpRight />
-              </Link>
-            </Button>
+            {comingSoon ? (
+              <Button
+                className={`mt-7 w-full disabled:opacity-100 ${
+                  featured
+                    ? "border-background/20 bg-background/10 text-background/65"
+                    : "border-dashed border-muted-foreground/35 bg-muted/20 text-muted-foreground"
+                }`}
+                variant={featured ? "secondary" : "outline"}
+                disabled
+                aria-label={`${group.title}: ${content.comingSoon}`}
+              >
+                {content.comingSoon}
+              </Button>
+            ) : (
+              <Button className="mt-7 w-full" variant={featured ? "secondary" : "default"} asChild>
+                <Link href={links.contact}>
+                  {content.contact}
+                  <ArrowUpRight />
+                </Link>
+              </Button>
+            )}
 
             <div className={`mt-7 border-t border-dashed pt-6 ${featured ? "border-background/18" : ""}`}>
               <p className={`text-xs font-semibold uppercase tracking-[0.12em] ${featured ? "text-background/48" : "text-muted-foreground"}`}>
