@@ -108,7 +108,7 @@ export default function ParallaxHero() {
   return (
     <section
       ref={target}
-      className="relative isolate overflow-hidden border-b pt-16 lg:min-h-[89rem]"
+      className="relative isolate overflow-hidden border-b lg:min-h-[89rem]"
     >
       <div
         className="pointer-events-none absolute inset-0 -z-20 [mask-image:linear-gradient(to_bottom,black_0%,rgba(0,0,0,.9)_28%,rgba(0,0,0,.45)_56%,transparent_86%)]"
@@ -195,7 +195,7 @@ export default function ParallaxHero() {
             preload
             unoptimized
             sizes="(max-width: 767px) calc(100vw - 24px), (max-width: 1023px) 624px, 66vw"
-            className="h-auto w-full drop-shadow-[0_14px_24px_rgba(15,23,42,0.14)] lg:drop-shadow-[0_36px_50px_rgba(15,23,42,0.2)]"
+            className="pt-5 h-auto w-full drop-shadow-[0_14px_24px_rgba(15,23,42,0.14)] lg:drop-shadow-[0_36px_50px_rgba(15,23,42,0.2)]"
           />
         </motion.div>
 
