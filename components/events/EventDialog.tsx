@@ -6,7 +6,9 @@ import { eventSettings } from "@/config/events";
 import { eventsContent } from "@/config/events-content";
 import { formatEventDate } from "@/lib/event-dates";
 import Image from "next/image";
+import { useState } from "react";
 import {
+  ArrowLeft,
   ArrowRight,
   CalendarDays,
   Check,
@@ -36,10 +38,30 @@ export function EventDialog({
   onOpenChange: (open: boolean) => void;
 }) {
   const content = eventsContent[locale];
+  const [gallerySelection, setGallerySelection] = useState<{
+    eventId: string;
+    index: number;
+  } | null>(null);
+
   if (!event) return null;
 
   const upcoming = isUpcomingEvent(event, now);
   const ongoing = isOngoingEvent(event, now);
+  const galleryImages = event.gallery?.length
+    ? Array.from(
+        new Set(
+          [event.image, ...event.gallery].filter(
+            (image): image is string => Boolean(image),
+          ),
+        ),
+      )
+    : [event.modalImage ?? event.image ?? eventSettings.defaultModalImage];
+  const galleryIndex = gallerySelection?.eventId === event.id ? gallerySelection.index : 0;
+  const showGallery = !upcoming && galleryImages.length > 1;
+  const activeImage = galleryImages[galleryIndex] ?? galleryImages[0];
+  const updateGalleryIndex = (update: (current: number) => number) => {
+    setGallerySelection({ eventId: event.id, index: update(galleryIndex) });
+  };
 
   return (
     <Dialog open={Boolean(event)} onOpenChange={onOpenChange}>
@@ -50,11 +72,7 @@ export function EventDialog({
         <div>
           <div className="relative h-52 overflow-hidden bg-muted sm:h-64">
             <Image
-              src={
-                event.modalImage ??
-                event.image ??
-                eventSettings.defaultModalImage
-              }
+              src={activeImage}
               alt=""
               fill
               sizes="920px"
@@ -72,6 +90,37 @@ export function EventDialog({
                 </p>
               ) : null}
             </div>
+            {showGallery ? (
+              <div className="absolute bottom-4 right-5 flex items-center gap-1.5 sm:right-7">
+                <Button
+                  type="button"
+                  size="icon"
+                  variant="secondary"
+                  aria-label={`${content.galleryPrevious} (${galleryIndex + 1}/${galleryImages.length})`}
+                  onClick={() =>
+                    updateGalleryIndex(
+                      (current) => (current - 1 + galleryImages.length) % galleryImages.length,
+                    )
+                  }
+                >
+                  <ArrowLeft />
+                </Button>
+                <span className="rounded-md border border-white/20 bg-black/55 px-2.5 py-1.5 font-mono text-[10px] text-white backdrop-blur-md">
+                  {galleryIndex + 1}/{galleryImages.length}
+                </span>
+                <Button
+                  type="button"
+                  size="icon"
+                  variant="secondary"
+                  aria-label={`${content.galleryNext} (${galleryIndex + 1}/${galleryImages.length})`}
+                  onClick={() =>
+                    updateGalleryIndex((current) => (current + 1) % galleryImages.length)
+                  }
+                >
+                  <ArrowRight />
+                </Button>
+              </div>
+            ) : null}
           </div>
           <div className="p-5 sm:px-7 sm:py-6">
             <DialogHeader className="pr-8 text-left">
