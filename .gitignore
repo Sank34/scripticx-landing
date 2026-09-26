@@ -38,6 +38,10 @@ yarn-error.log*
 #readme
 *.md
 !README.md
+!AGENTS.md
+!antislop.md
+!skills/antislop-ui/SKILL.md
+!skills/antislop-layoutmobile/SKILL.md
 # vercel
 .vercel
 

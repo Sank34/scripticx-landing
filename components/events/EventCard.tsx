@@ -17,8 +17,6 @@ function EventArtwork({
   event: ScripticxEvent;
   priority?: boolean;
 }) {
-  const usesDefaultImage = !event.image;
-
   return (
     <Image
       src={event.image ?? eventSettings.defaultImage}
@@ -27,11 +25,9 @@ function EventArtwork({
       priority={priority}
       sizes="(max-width: 768px) 100vw, 42vw"
       className={
-        usesDefaultImage
-          ? "scale-[1.08] bg-[#f7f7f5] object-contain"
-          : event.imageFit === "contain"
-            ? "object-contain"
-            : "object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+        event.imageFit === "contain"
+          ? "object-contain"
+          : "object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
       }
     />
   );

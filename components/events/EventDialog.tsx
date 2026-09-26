@@ -55,7 +55,7 @@ export function EventDialog({
           ),
         ),
       )
-    : [event.modalImage ?? event.image ?? eventSettings.defaultModalImage];
+    : [event.modalImage ?? event.image ?? eventSettings.defaultImage];
   const galleryIndex = gallerySelection?.eventId === event.id ? gallerySelection.index : 0;
   const showGallery = !upcoming && galleryImages.length > 1;
   const activeImage = galleryImages[galleryIndex] ?? galleryImages[0];
@@ -67,10 +67,10 @@ export function EventDialog({
     <Dialog open={Boolean(event)} onOpenChange={onOpenChange}>
       <DialogContent
         aria-label={content.close}
-        className="max-h-[min(92svh,900px)] w-[min(calc(100vw-1.5rem),920px)] gap-0 overflow-y-auto rounded-[18px] p-0 sm:max-w-none"
+        className="max-h-[calc(100svh-1rem)] w-[min(calc(100vw-1.5rem),920px)] gap-0 overflow-hidden rounded-[18px] p-0 sm:max-h-[min(92svh,900px)] sm:overflow-y-auto sm:max-w-none"
       >
         <div>
-          <div className="relative h-52 overflow-hidden bg-muted sm:h-64">
+          <div className="relative h-24 overflow-hidden bg-muted sm:h-64">
             <Image
               src={activeImage}
               alt=""
@@ -122,17 +122,17 @@ export function EventDialog({
               </div>
             ) : null}
           </div>
-          <div className="p-5 sm:px-7 sm:py-6">
+          <div className="p-3 sm:px-7 sm:py-6">
             <DialogHeader className="pr-8 text-left">
-              <DialogTitle className="text-balance text-3xl font-semibold leading-tight tracking-[-0.04em]">
+              <DialogTitle className="text-balance text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-3xl">
                 {event.title}
               </DialogTitle>
-              <DialogDescription className="max-w-3xl text-sm leading-6">
+              <DialogDescription className="max-w-3xl text-xs leading-4 sm:text-sm sm:leading-6">
                 {event.description}
               </DialogDescription>
             </DialogHeader>
 
-            <div className="mt-5 grid gap-px overflow-hidden rounded-[12px] border bg-border sm:grid-cols-3">
+            <div className="mt-3 grid grid-cols-3 gap-px overflow-hidden rounded-[12px] border bg-border sm:mt-5">
               {[
                 {
                   icon: CalendarDays,
@@ -152,18 +152,18 @@ export function EventDialog({
               ].map((item) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.label} className="bg-background p-3.5">
-                    <Icon className="size-4" />
-                    <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.13em] text-muted-foreground">
+                  <div key={item.label} className="bg-background p-2 sm:p-3.5">
+                    <Icon className="size-3.5 sm:size-4" />
+                    <p className="mt-1.5 text-[9px] font-semibold uppercase tracking-[0.1em] text-muted-foreground sm:mt-3 sm:text-[10px] sm:tracking-[0.13em]">
                       {item.label}
                     </p>
-                    <p className="mt-1 text-sm leading-5">{item.value}</p>
+                    <p className="mt-1 text-xs leading-4 sm:text-sm sm:leading-5">{item.value}</p>
                   </div>
                 );
               })}
             </div>
 
-            <div className="mt-5">
+            <div className="mt-3 hidden sm:block sm:mt-5">
               <p className="text-xs font-semibold uppercase tracking-[0.13em] text-muted-foreground">
                 {upcoming ? content.upcomingHighlights : content.highlights}
               </p>
@@ -184,20 +184,20 @@ export function EventDialog({
 
             {upcoming ? (
               event.link.trim() ? (
-                <Button size="lg" className="mt-5 w-full" asChild>
+                <Button size="lg" className="mt-3 min-h-11 w-full sm:mt-5" asChild>
                   <a href={event.link} target="_blank" rel="noreferrer">
                     {content.signup}
                     <ArrowRight />
                   </a>
                 </Button>
               ) : (
-                <Button size="lg" className="mt-5 w-full" disabled>
+                <Button size="lg" className="mt-3 min-h-11 w-full sm:mt-5" disabled>
                   <Clock3 />
                   {content.signupSoon}
                 </Button>
               )
             ) : (
-              <div className="mt-5 flex items-center gap-2 rounded-[12px] border bg-muted/30 px-4 py-3 text-sm text-muted-foreground">
+              <div className="mt-3 flex items-center gap-2 rounded-[12px] border bg-muted/30 px-4 py-2.5 text-xs text-muted-foreground sm:mt-5 sm:py-3 sm:text-sm">
                 <Clock3 className="size-4" />
                 {content.eventEnded}
               </div>

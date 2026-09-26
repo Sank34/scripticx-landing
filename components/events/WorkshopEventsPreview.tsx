@@ -70,9 +70,9 @@ export function WorkshopEventsPreview({ locale }: { locale: SiteLocale }) {
                     fill
                     sizes="(max-width: 1024px) 100vw, 33vw"
                     className={
-                      event.image
-                        ? "object-cover transition-transform duration-700 group-hover:scale-[1.025]"
-                        : "bg-[#f7f7f5] object-contain transition-transform duration-700 group-hover:scale-[1.025]"
+                      event.imageFit === "contain"
+                        ? "object-contain"
+                        : "object-cover transition-transform duration-700 group-hover:scale-[1.025]"
                     }
                   />
                 </div>

@@ -3,8 +3,7 @@ import { links } from "./links.ts";
 
 export const eventSettings = {
   timeZone: "Europe/Bucharest",
-  defaultImage: "/default-event.png",
-  defaultModalImage: "/scripticx-bg.png",
+  defaultImage: "/scripticx-bg.png",
   refreshIntervalMilliseconds: 60_000,
 };
 
