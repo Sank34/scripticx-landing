@@ -103,38 +103,38 @@ export const events: readonly EventDefinition[] = [
   {
     id: "scripticx-back-to-school-2026",
     link: eventSignupForm,
-    startAt: "2026-09-14T09:00:00+03:00",
-    endAt: "2026-10-02T18:00:00+03:00",
+    startAt: "2026-10-05T09:00:00+03:00",
+    endAt: "2026-10-24T18:00:00+03:00",
     category: "workshop",
     content: {
       en: {
         eyebrow: "Intro to algorithms",
         title: "ScripticX Back to School",
         summary:
-          "Three weeks of introductory algorithms, with dedicated groups for middle school and ninth-grade students.",
+          "Three weeks of introductory algorithms, with dedicated groups for middle-school and high-school students.",
         description:
-          "An introductory algorithms workshop held four days a week from 14 September to 2 October. The middle-school group will work in MiniScript+, while ninth-grade students will connect the same ideas across MiniScript+ and Python. Each session combines clear explanations with guided practice and practical exercises.",
+          "An introductory algorithms workshop held three days a week from 5 to 24 October. The middle-school group will work in MiniScript+, while the high-school group will study MiniScript+ and Python. The updated curriculum includes Python for this year's high-school entrants and future cohorts.",
         location: "BJPIBR",
-        audience: "Two groups: middle school and 9th grade",
+        audience: "Two groups: middle school and high school",
         highlights: [
-          "Four workshop days each week",
+          "Three workshop days each week",
           "Middle school group · MiniScript+",
-          "9th grade group · MiniScript+ and Python",
+          "High-school group · MiniScript+ and Python",
         ],
       },
       ro: {
         eyebrow: "Introducere în algoritmică",
         title: "ScripticX Back to School",
         summary:
-          "Trei săptămâni de algoritmică introductivă, cu grupe dedicate elevilor de gimnaziu și celor de clasa a IX-a.",
+          "Trei săptămâni de algoritmică introductivă, cu grupe dedicate elevilor de gimnaziu și liceu.",
         description:
-          "Un workshop introductiv de algoritmică, organizat patru zile pe săptămână în perioada 14 septembrie – 2 octombrie. Grupa de gimnaziu va lucra în MiniScript+, iar elevii de clasa a IX-a vor conecta aceleași idei în MiniScript+ și Python. Fiecare întâlnire combină explicațiile clare cu exerciții practice și lucru ghidat.",
+          "Un workshop introductiv de algoritmică, organizat trei zile pe săptămână în perioada 5–24 octombrie. Grupa de gimnaziu va lucra în MiniScript+, iar grupa de liceu va studia MiniScript+ și Python, conform programei actualizate pentru elevii care au început liceul anul acesta și promoțiile viitoare.",
         location: "BJPIBR",
-        audience: "Două grupe: gimnaziu și clasa a IX-a",
+        audience: "Două grupe: gimnaziu și liceu",
         highlights: [
-          "Patru zile de workshop pe săptămână",
+          "Trei zile de workshop pe săptămână",
           "Grupa de gimnaziu · MiniScript+",
-          "Clasa a IX-a · MiniScript+ și Python",
+          "Liceu · MiniScript+ și Python",
         ],
       },
     },
@@ -142,14 +142,13 @@ export const events: readonly EventDefinition[] = [
   {
     id: "back-to-school-final-group-1-2026",
     link: links.platform,
-    // October bounds keep the TBA event in the correct calendar section.
-    startAt: "2026-10-03T00:00:00+03:00",
-    endAt: "2026-10-31T23:59:59+02:00",
+    startAt: "2026-10-24T00:00:00+03:00",
+    endAt: "2026-10-24T23:59:59+03:00",
     category: "competition",
     content: {
       en: {
         eyebrow: "Back to School final competition",
-        dateLabel: "October 2026 · Date TBA",
+        dateLabel: "24 October 2026",
         title: "Back to School Final · Group 1",
         summary:
           "The final competition for the middle-school group, hosted on the ScripticX platform.",
@@ -165,7 +164,7 @@ export const events: readonly EventDefinition[] = [
       },
       ro: {
         eyebrow: "Competiția finală Back to School",
-        dateLabel: "Octombrie 2026 · Data va fi anunțată",
+        dateLabel: "24 octombrie 2026",
         title: "Finala Back to School · Grupa 1",
         summary:
           "Competiția finală pentru grupa de gimnaziu, organizată pe platforma ScripticX.",
@@ -184,21 +183,20 @@ export const events: readonly EventDefinition[] = [
   {
     id: "back-to-school-final-group-2-2026",
     link: links.platform,
-    // October bounds keep the TBA event in the correct calendar section.
-    startAt: "2026-10-03T00:00:01+03:00",
-    endAt: "2026-10-31T23:59:59+02:00",
+    startAt: "2026-10-24T00:00:00+03:00",
+    endAt: "2026-10-24T23:59:59+03:00",
     category: "competition",
     content: {
       en: {
         eyebrow: "Back to School final competition",
-        dateLabel: "October 2026 · Date TBA",
+        dateLabel: "24 October 2026",
         title: "Back to School Final · Group 2",
         summary:
-          "The final competition for the ninth-grade group, hosted on the ScripticX platform.",
+          "The final competition for the high-school group, hosted on the ScripticX platform.",
         description:
-          "The ninth-grade group concludes ScripticX Back to School with a final online competition. Participants will solve algorithmic challenges that connect the ideas practised in MiniScript+ and Python throughout the workshop.",
+          "The high-school group concludes ScripticX Back to School with a final online competition. Participants will solve algorithmic challenges that connect the ideas practised in MiniScript+ and Python throughout the workshop.",
         location: "Online · ScripticX platform",
-        audience: "Back to School · 9th-grade group",
+        audience: "Back to School · High-school group",
         highlights: [
           "Final challenges for Group 2",
           "Algorithms in MiniScript+ and Python",
@@ -207,14 +205,14 @@ export const events: readonly EventDefinition[] = [
       },
       ro: {
         eyebrow: "Competiția finală Back to School",
-        dateLabel: "Octombrie 2026 · Data va fi anunțată",
+        dateLabel: "24 octombrie 2026",
         title: "Finala Back to School · Grupa 2",
         summary:
-          "Competiția finală pentru grupa de clasa a IX-a, organizată pe platforma ScripticX.",
+          "Competiția finală pentru grupa de liceu, organizată pe platforma ScripticX.",
         description:
-          "Grupa de clasa a IX-a încheie ScripticX Back to School cu o competiție finală online. Participanții vor rezolva provocări de algoritmică ce conectează ideile exersate în MiniScript+ și Python pe parcursul workshop-ului.",
+          "Grupa de liceu încheie ScripticX Back to School cu o competiție finală online. Participanții vor rezolva provocări de algoritmică ce conectează ideile exersate în MiniScript+ și Python pe parcursul workshop-ului.",
         location: "Online · Platforma ScripticX",
-        audience: "Back to School · Grupa de clasa a IX-a",
+        audience: "Back to School · Liceu",
         highlights: [
           "Provocări finale pentru Grupa 2",
           "Algoritmică în MiniScript+ și Python",
