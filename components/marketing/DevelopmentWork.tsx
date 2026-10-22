@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Check, ImageIcon } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Check, Globe, ImageIcon } from "lucide-react";
 
 import { Reveal } from "@/components/marketing/Reveal";
 import { Button } from "@/components/ui/button";
@@ -25,7 +25,7 @@ export function DevelopmentWork({ locale }: { locale: SiteLocale }) {
           </div>
         </Reveal>
 
-        <div className={`mt-12 grid gap-x-8 gap-y-12 ${multipleProjects ? "md:grid-cols-2" : ""}`}>
+        <div className={`mt-12 grid gap-x-8 gap-y-12 ${multipleProjects ? "md:grid-cols-2" : ""} ${content.items.length === 3 ? "xl:grid-cols-3" : ""}`}>
           {content.items.map((project) => (
             <Reveal key={project.key} className="h-full min-w-0">
               <Dialog>
@@ -41,8 +41,8 @@ export function DevelopmentWork({ locale }: { locale: SiteLocale }) {
                           src={project.cover}
                           alt=""
                           fill
-                          sizes={multipleProjects ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 1024px) 100vw, 64vw"}
-                          className="object-contain object-center p-3 transition-transform duration-300 ease-out group-hover:scale-[1.01] motion-reduce:transition-none sm:p-6"
+                          sizes={content.items.length === 3 ? "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw" : multipleProjects ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 1024px) 100vw, 64vw"}
+                          className={`${project.previewDimensions ? "object-cover object-top" : "object-contain object-center p-3 sm:p-6"} transition-transform duration-300 ease-out group-hover:scale-[1.01] motion-reduce:transition-none`}
                         />
                       ) : (
                         <span className="flex size-full items-center justify-center text-muted-foreground/35">
@@ -75,6 +75,33 @@ export function DevelopmentWork({ locale }: { locale: SiteLocale }) {
 
                 <DialogContent className="max-h-[min(92svh,860px)] w-[min(calc(100vw-1.5rem),1180px)] max-w-none overflow-hidden rounded-[20px] p-0 sm:max-w-none">
                   <div className="max-h-[min(92svh,860px)] overflow-y-auto">
+                    {project.cover && project.previewDimensions ? (
+                      <div className="border-b bg-muted/25 p-3 sm:p-6">
+                        <div className="overflow-hidden rounded-lg border bg-background">
+                          <div className="flex min-h-11 flex-wrap items-center justify-between gap-x-4 gap-y-1 border-b bg-muted/40 px-4 py-2 pr-10 text-xs text-muted-foreground">
+                            <span className="inline-flex items-center gap-2"><Globe className="size-3.5" aria-hidden="true" />{project.domain}</span>
+                            <span className="hidden items-center gap-1.5 sm:inline-flex"><ArrowDown className="size-3.5" aria-hidden="true" />{locale === "ro" ? "Derulează pentru a explora pagina" : "Scroll to explore the page"}</span>
+                          </div>
+                          <div
+                            role="region"
+                            aria-label={`${locale === "ro" ? "Previzualizare" : "Preview"}: ${project.name}`}
+                            tabIndex={0}
+                            className="max-h-[min(50svh,460px)] overflow-y-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                          >
+                            <Image
+                              src={project.cover}
+                              alt={`${project.name} ${locale === "ro" ? "pagina principală" : "homepage"}`}
+                              width={project.previewDimensions.width}
+                              height={project.previewDimensions.height}
+                              loading="eager"
+                              unoptimized
+                              sizes="(max-width: 768px) 100vw, 1120px"
+                              className="block h-auto w-full"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
                     <div className="relative h-64 w-full overflow-hidden border-b bg-[#eef0f3] sm:h-[24rem]">
                       {project.cover ? (
                         <Image
@@ -92,6 +119,7 @@ export function DevelopmentWork({ locale }: { locale: SiteLocale }) {
                         </span>
                       )}
                     </div>
+                    )}
 
                     <div className="grid gap-10 p-6 sm:p-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:p-10">
                       <div>

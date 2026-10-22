@@ -1,5 +1,6 @@
 import type { DevelopmentContent } from "../types/development.ts";
 import type { SiteLocale } from "./languages.ts";
+import { developmentClientProjects } from "./development-projects.ts";
 
 export const developmentContent: Record<SiteLocale, DevelopmentContent> = {
   en: {
@@ -98,6 +99,7 @@ export const developmentContent: Record<SiteLocale, DevelopmentContent> = {
           ],
           cover: "/scripticx-mac-mockup-new.png",
         },
+        ...developmentClientProjects.en,
       ],
     },
     process: {
@@ -322,6 +324,7 @@ export const developmentContent: Record<SiteLocale, DevelopmentContent> = {
           ],
           cover: "/scripticx-mac-mockup-new.png",
         },
+        ...developmentClientProjects.ro,
       ],
     },
     process: {

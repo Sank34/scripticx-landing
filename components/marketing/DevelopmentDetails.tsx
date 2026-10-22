@@ -1,6 +1,7 @@
 import { Check, FileText, MessageSquareText } from "lucide-react";
 
 import { DevelopmentEngagement } from "@/components/marketing/DevelopmentEngagement";
+import { DevelopmentCapabilities } from "@/components/marketing/DevelopmentCapabilities";
 import { developmentContent } from "@/config/development";
 import type { SiteLocale } from "@/config/languages";
 import { DevelopmentProcess } from "@/components/marketing/DevelopmentProcess";
@@ -24,32 +25,7 @@ export function DevelopmentDetails({ locale }: { locale: SiteLocale }) {
             </div>
           </div>
 
-          <div className="mt-14 border-t">
-            {content.capabilities.items.map((item, index) => (
-              <details
-                key={item.key}
-                open={index === 0}
-                className="group border-b"
-              >
-                <summary className="flex min-h-24 cursor-pointer list-none items-center gap-5 py-7 focus-visible:outline-2 focus-visible:outline-offset-4 [&::-webkit-details-marker]:hidden sm:gap-10">
-                  <span className="font-mono text-xs text-muted-foreground">0{index + 1}</span>
-                  <h3 className="text-2xl font-semibold tracking-[-0.035em] sm:text-4xl">{item.title}</h3>
-                  <span aria-hidden="true" className="ml-auto text-3xl font-light transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <div className="max-w-3xl pb-9 sm:pl-14">
-                  <p className="text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">{item.description}</p>
-                  <ul className="mt-5 grid gap-3 sm:grid-cols-3">
-                    {item.points.map((point) => (
-                      <li key={point} className="flex items-start gap-2.5 text-sm">
-                        <Check className="mt-0.5 size-4 shrink-0 text-emerald-600" aria-hidden="true" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </details>
-            ))}
-          </div>
+          <DevelopmentCapabilities items={content.capabilities.items} />
         </div>
       </section>
 

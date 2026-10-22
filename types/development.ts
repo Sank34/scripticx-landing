@@ -31,6 +31,7 @@ export type DevelopmentContent = {
       scope: string[];
       techStack: string[];
       cover?: string;
+      previewDimensions?: { width: number; height: number };
     }>;
   };
   process: {

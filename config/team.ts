@@ -22,7 +22,7 @@ export const teamMembers: readonly TeamMember[] = [
     name: "Andrei Lascu",
     roles: ["development", "publicRelationsEvents", "designScientific"],
     image: "/team/Andrei-Lascu-new.png",
-    email: "sanke@scripticx.org",
+    email: "andrei.lascu.info@gmail.com",
     linkedin: "https://www.linkedin.com/in/andrei-lascu-ba561a371/",
   },
   {
