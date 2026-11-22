@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { readdir } from "fs/promises";
 import path from "path";
 import { getTranslations } from "next-intl/server";

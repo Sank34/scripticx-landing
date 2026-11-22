@@ -1,7 +1,7 @@
 "use client";
 import { links } from "@/config/links";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { ArrowUpRight, BrainCircuit, Check, Clock3, Code2, UsersRound } from "lucide-react";
 
 import { Button } from "@/components/ui/button";

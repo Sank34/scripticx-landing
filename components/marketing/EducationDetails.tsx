@@ -1,5 +1,5 @@
 import { links } from "@/config/links";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { ArrowUpRight, Check, Lightbulb, PenLine, RefreshCw } from "lucide-react";
 
 import { EducationActivities } from "@/components/marketing/EducationActivities";

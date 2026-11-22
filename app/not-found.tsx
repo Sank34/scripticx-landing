@@ -1,5 +1,5 @@
 import { links } from "@/config/links";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { getLocale } from "next-intl/server";
 import {
   ArrowRight,

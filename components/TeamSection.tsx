@@ -1,6 +1,6 @@
 import { links } from "@/config/links";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { ArrowUpRight, Mail } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 

@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { stripLocale } from "@/lib/locale-path";
 import { BlogTransition } from "@/components/blog/BlogTransition";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -15,7 +16,7 @@ function isKnowledgeRoute(pathname: string) {
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const reduceMotion = useReducedMotion();
-  const pathname = usePathname();
+  const pathname = stripLocale(usePathname() ?? "/");
 
   if (pathname === "/blog" || pathname.startsWith("/blog/")) {
     return <BlogTransition>{children}</BlogTransition>;

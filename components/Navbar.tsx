@@ -1,8 +1,9 @@
 "use client";
 import { links } from "@/config/links";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { usePathname } from "next/navigation";
+import { stripLocale } from "@/lib/locale-path";
 import { ArrowUpRight, Menu } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -24,7 +25,7 @@ import { navigationItems } from "@/config/navigation";
 
 export default function Navbar() {
   const translate = useTranslations("MarketingNav");
-  const pathname = usePathname();
+  const pathname = stripLocale(usePathname() ?? "/");
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b bg-background shadow-[0_1px_0_rgba(15,23,42,.025)]">

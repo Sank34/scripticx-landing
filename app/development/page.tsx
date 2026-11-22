@@ -1,6 +1,6 @@
 import { links } from "@/config/links";
 import { getLocale } from "next-intl/server";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { ArrowUpRight } from "lucide-react";
 import { createDivisionPageMetadata } from "@/components/marketing/DivisionPage";
 import { DevelopmentHero } from "@/components/marketing/DevelopmentHero";

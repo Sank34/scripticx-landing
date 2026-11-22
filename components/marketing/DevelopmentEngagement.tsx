@@ -2,7 +2,7 @@
 import { links } from "@/config/links";
 
 import { useState } from "react";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Check, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";

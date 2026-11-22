@@ -1,6 +1,6 @@
 import { links } from "@/config/links";
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { getLocale } from "next-intl/server";
 import {
   ArrowRight,

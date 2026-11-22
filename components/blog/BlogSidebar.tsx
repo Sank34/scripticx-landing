@@ -1,5 +1,5 @@
 import { blogSettings } from "@/config/blog";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import type { BlogPost } from "@/lib/blog";
 
 export function BlogSidebar({

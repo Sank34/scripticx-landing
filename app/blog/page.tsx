@@ -3,7 +3,7 @@ import {
   getBlogPageUrl,
   type BlogSearchParameters,
 } from "@/lib/blog-listing";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { getLocale } from "next-intl/server";
 import { ArrowRight, Search } from "lucide-react";
 import { BlogSidebar } from "@/components/blog/BlogSidebar";

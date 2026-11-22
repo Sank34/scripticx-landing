@@ -1,7 +1,7 @@
 import { links } from "@/config/links";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, Mail } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";

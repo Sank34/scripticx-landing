@@ -3,7 +3,7 @@ import { links } from "@/config/links";
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Check, Pause, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";

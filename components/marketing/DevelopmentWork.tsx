@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { ArrowDown, ArrowUpRight, Check, Globe, ImageIcon } from "lucide-react";
 
 import { Reveal } from "@/components/marketing/Reveal";

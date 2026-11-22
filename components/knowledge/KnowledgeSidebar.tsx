@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { usePathname } from "next/navigation";
+import { stripLocale } from "@/lib/locale-path";
 import {
   BookOpen,
   Code2,
@@ -34,7 +35,7 @@ const sectionIcons = {
 };
 
 function SidebarContent({ closeOnSelect = false }: { closeOnSelect?: boolean }) {
-  const pathname = usePathname();
+  const pathname = stripLocale(usePathname() ?? "/");
   const locale = useLocale();
   const articles = getKnowledgeArticles(locale);
   // Navigation chrome stays English; only article titles follow the locale.

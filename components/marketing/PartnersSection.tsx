@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { ArrowUpRight } from "lucide-react";
 import { getLocale } from "next-intl/server";
 

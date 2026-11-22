@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { ArrowLeft, ArrowRight, CalendarDays, Clock3 } from "lucide-react";
 
 import {

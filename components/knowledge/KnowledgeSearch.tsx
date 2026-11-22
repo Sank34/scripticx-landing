@@ -16,6 +16,8 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { getKnowledgeArticles, getKnowledgeSections } from "@/lib/knowledge-data";
+import { localizeHref } from "@/lib/locale-path";
+import type { SiteLocale } from "@/config/languages";
 
 const sectionIcons = {
   Learn: BookOpen,
@@ -46,7 +48,7 @@ export function KnowledgeSearch() {
 
   const selectArticle = (href: string) => {
     setOpen(false);
-    router.push(href);
+    router.push(localizeHref(href, locale as SiteLocale));
   };
 
   return (

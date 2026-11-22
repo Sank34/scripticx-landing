@@ -13,7 +13,7 @@ import {
   Rocket,
 } from "lucide-react";
 import { useLocale } from "next-intl";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useCallback, useState } from "react";
 
 import { Reveal } from "@/components/marketing/Reveal";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getLocale } from "next-intl/server";

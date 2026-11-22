@@ -1,6 +1,6 @@
 import { ArrowRight, CalendarDays, MapPin } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 
 import { Reveal } from "@/components/marketing/Reveal";
 import { Button } from "@/components/ui/button";

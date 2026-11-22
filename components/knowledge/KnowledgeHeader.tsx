@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { KnowledgeSearch } from "@/components/knowledge/KnowledgeSearch";
 import { KnowledgeMobileNavigation } from "@/components/knowledge/KnowledgeSidebar";
 

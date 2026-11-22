@@ -1,5 +1,5 @@
 import type { MDXComponents } from "mdx/types";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { isValidElement } from "react";
 
 import { Callout } from "@/components/knowledge/Callout";
