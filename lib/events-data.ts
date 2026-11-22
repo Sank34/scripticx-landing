@@ -10,6 +10,14 @@ export function getEvents(locale: SiteLocale): ScripticxEvent[] {
   }));
 }
 
+/**
+ * Events whose date is still "TBA" carry placeholder month bounds for the
+ * calendar, so their startAt/endAt are not real dates.
+ */
+export function hasConfirmedDate(event: Pick<ScripticxEvent, "dateLabel">) {
+  return !/TBA|anunțat/i.test(event.dateLabel ?? "");
+}
+
 export function isUpcomingEvent(event: ScripticxEvent, now: Date) {
   return new Date(event.endAt ?? event.startAt).getTime() >= now.getTime();
 }

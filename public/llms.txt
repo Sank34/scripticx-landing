@@ -1,0 +1,32 @@
+# ScripticX
+
+> ScripticX is a Romanian organization from Brăila, founded in February 2026 by Andrei Lascu. It has three parts: the Education Center (informatics and machine learning programs, free workshops), ScripticX Development (websites and apps for clients, with a dedicated client portal), and the ScripticX Platform (a learning workspace built around the MiniScript+ language).
+
+The website is available in English (/en) and Romanian (/ro).
+
+## About
+
+- [About ScripticX](https://www.scripticx.org/en/about): what ScripticX is, its divisions, events, partners and team
+- [Team](https://www.scripticx.org/en#team): the people behind ScripticX
+
+## Education
+
+- [Education Center](https://www.scripticx.org/en/education): informatics and machine learning programs, individual and group mentorship, contest preparation
+- [Events and workshops](https://www.scripticx.org/en/events): free workshops and courses in Brăila and online competitions
+- [Free lessons on YouTube](https://www.youtube.com/@ScripticXLessons): free programming lessons
+
+## Development
+
+- [ScripticX Development](https://www.scripticx.org/en/development): product direction, websites, web and mobile apps, and maintenance for clients. Every client gets a dedicated client portal for updates, approvals, files, contracts and invoices.
+
+## Platform
+
+- [ScripticX Platform](https://www.scripticx.org/en/platform): lessons, programming problems, projects and classes in one browser workspace; supports MiniScript+, C++ and Python
+- [Open the platform](https://platform.scripticx.org)
+- [MiniScript+ basics](https://www.scripticx.org/en/docs/miniscript): the beginner-friendly language used on ScripticX
+
+## More
+
+- [Partners and sponsors](https://www.scripticx.org/en/partners)
+- [Knowledge Center](https://www.scripticx.org/en/knowledge)
+- [Blog](https://www.scripticx.org/en/blog)

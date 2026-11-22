@@ -9,6 +9,7 @@ import { getBlogPosts } from "@/lib/blog";
 const marketingLastModified = new Date("2026-09-13T00:00:00.000Z");
 
 const marketingRoutes = [
+  ["/about", 0.9],
   ["/education", 0.9],
   ["/events", 0.85],
   ["/development", 0.9],

@@ -1,4 +1,3 @@
-import { links } from "@/config/links";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -6,8 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 
 import Navbar from "@/components/Navbar";
-import { teamMembers } from "@/config/team";
-import { getPersonId } from "@/lib/team-data";
+import { JsonLd, siteStructuredData } from "@/lib/structured-data";
 import {
   absoluteUrl,
   createSocialImageUrl,
@@ -38,8 +36,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const isRomanian = locale === "ro";
   const title = isRomanian
-    ? "ScripticX — Pregătire la informatică și probleme de programare"
-    : "ScripticX — Programming education and coding practice";
+    ? "ScripticX: pregătire la informatică, dezvoltare web și platformă de programare"
+    : "ScripticX: programming education, web development and a learning platform";
   const description = getSiteDescription(locale);
   const socialImage = createSocialImageUrl({
     title: isRomanian
@@ -158,86 +156,11 @@ export default async function RootLayout({
         : "Education · Development · Platform",
     path: "/",
   });
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": `${siteConfig.url}/#website`,
-        name: siteConfig.name,
-        alternateName: "Platforma ScripticX",
-        url: absoluteUrl(localizedPath("/", locale === "ro" ? "ro" : "en")),
-        description,
-        inLanguage: ["ro", "en"],
-        publisher: {
-          "@id": `${siteConfig.url}/#organization`,
-        },
-      },
-      {
-        "@type": "Organization",
-        "@id": `${siteConfig.url}/#organization`,
-        name: siteConfig.name,
-        url: siteConfig.url,
-        logo: {
-          "@type": "ImageObject",
-          url: absoluteUrl(siteConfig.logo),
-          width: 512,
-          height: 512,
-        },
-        sameAs: [
-          links.github,
-          links.organizationYoutube,
-          links.linkedin,
-          links.instagram,
-        ],
-        member: teamMembers.map((member) => ({
-          "@type": "Person",
-          "@id": getPersonId(member.slug),
-          name: member.name,
-          url: absoluteUrl(
-            localizedPath(`/members/${member.slug}`, locale === "ro" ? "ro" : "en"),
-          ),
-        })),
-        department: [
-          {
-            "@type": "EducationalOrganization",
-            name: "ScripticX Education Center",
-            url: absoluteUrl(localizedPath("/education", locale === "ro" ? "ro" : "en")),
-          },
-          {
-            "@type": "Organization",
-            name: "ScripticX Development",
-            url: absoluteUrl(localizedPath("/development", locale === "ro" ? "ro" : "en")),
-          },
-        ],
-      },
-      {
-        "@type": "SoftwareApplication",
-        name: siteConfig.name,
-        alternateName: "Platforma ScripticX",
-        url: absoluteUrl(localizedPath("/platform", locale === "ro" ? "ro" : "en")),
-        description,
-        applicationCategory: "EducationalApplication",
-        operatingSystem: "Any",
-        browserRequirements: "Requires a modern web browser",
-        inLanguage: ["ro", "en"],
-        image: socialImage,
-        offers: {
-          "@type": "Offer",
-          price: "0",
-          priceCurrency: "RON",
-        },
-        featureList: [
-          "MiniScript+ learning language",
-          "Interactive programming exercises",
-          "Instant code execution",
-          "Progress tracking",
-          "Classes and assignments",
-          "Community learning",
-        ],
-      },
-    ],
-  };
+  const structuredData = siteStructuredData({
+    locale: locale === "ro" ? "ro" : "en",
+    description,
+    socialImage,
+  });
 
   return (
     <html
@@ -249,12 +172,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.className} min-h-full bg-background text-foreground flex flex-col`}
       >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
-          }}
-        />
+        <JsonLd data={structuredData} />
         <NextIntlClientProvider>
           <Navbar />
           {children}

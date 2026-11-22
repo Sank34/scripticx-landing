@@ -10,6 +10,7 @@ import { Reveal } from "@/components/marketing/Reveal";
 import { getEvents } from "@/lib/events-data";
 import { getSiteLocale } from "@/config/languages";
 import { createPageMetadata } from "@/lib/metadata";
+import { JsonLd, eventsStructuredData } from "@/lib/structured-data";
 
 const pageCopy = {
   en: {
@@ -53,6 +54,7 @@ export default async function EventsPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <JsonLd data={eventsStructuredData(getEvents(locale), locale)} />
       <main className="pt-16">
         <section className="border-b">
           <div className="grid w-full lg:min-h-[calc(100svh-4rem)] lg:grid-cols-[1.1fr_.9fr]">

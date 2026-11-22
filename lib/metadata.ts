@@ -74,6 +74,7 @@ function getSocialSection(path: string, locale: KnowledgeLocale) {
   if (path.startsWith("/events")) return locale === "ro" ? "Evenimente" : "Events";
   if (path.startsWith("/development")) return "Development";
   if (path.startsWith("/platform")) return "Platform";
+  if (path.startsWith("/about")) return locale === "ro" ? "Despre noi" : "About us";
   if (path.startsWith("/members")) return locale === "ro" ? "Echipa" : "Our team";
   if (path.startsWith("/partners")) return locale === "ro" ? "Parteneri" : "Partners";
   if (path.startsWith("/verify")) return locale === "ro" ? "Certificate" : "Certificates";
