@@ -6,6 +6,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 
 import Navbar from "@/components/Navbar";
+import { teamMembers } from "@/config/team";
+import { getPersonId } from "@/lib/team-data";
 import {
   absoluteUrl,
   createSocialImageUrl,
@@ -185,7 +187,17 @@ export default async function RootLayout({
         sameAs: [
           links.github,
           links.organizationYoutube,
+          links.linkedin,
+          links.instagram,
         ],
+        member: teamMembers.map((member) => ({
+          "@type": "Person",
+          "@id": getPersonId(member.slug),
+          name: member.name,
+          url: absoluteUrl(
+            localizedPath(`/members/${member.slug}`, locale === "ro" ? "ro" : "en"),
+          ),
+        })),
         department: [
           {
             "@type": "EducationalOrganization",

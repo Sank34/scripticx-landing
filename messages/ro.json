@@ -299,9 +299,8 @@
       "eyebrow": "Membru al echipei ScripticX",
       "about": "Despre",
       "contact": "Contact",
-      "teamEyebrow": "Echipa noastră",
       "teamTitle": "Cunoaște restul echipei",
-      "teamDescription": "ScripticX este construit de oameni care lucrează în educație, inginerie, comunicare, cercetare și design."
+      "metaDescription": "{name} face parte din echipa ScripticX și lucrează la {roles}. {bio}"
     },
     "members": {
       "eric": {

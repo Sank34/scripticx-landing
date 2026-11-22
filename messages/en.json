@@ -299,9 +299,8 @@
       "eyebrow": "ScripticX team member",
       "about": "About",
       "contact": "Contact",
-      "teamEyebrow": "Our team",
       "teamTitle": "Meet the rest of the team",
-      "teamDescription": "ScripticX is built by people working across education, engineering, communication, research and design."
+      "metaDescription": "{name} is on the ScripticX team, working on {roles}. {bio}"
     },
     "members": {
       "eric": {

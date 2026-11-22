@@ -3,15 +3,15 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "@/components/LocalizedLink";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, Mail } from "lucide-react";
+import { ArrowLeft, Mail } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 
 import Footer from "@/components/Footer";
 import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
 import { Reveal } from "@/components/marketing/Reveal";
 import { Button } from "@/components/ui/button";
-import { createPageMetadata } from "@/lib/metadata";
-import { getTeamMember } from "@/lib/team-data";
+import { absoluteUrl, createPageMetadata, localizedPath, siteConfig } from "@/lib/metadata";
+import { getPersonId, getTeamMember } from "@/lib/team-data";
 import { teamMembers } from "@/config/team";
 
 type MemberPageProps = {
@@ -34,14 +34,20 @@ export async function generateMetadata({ params }: MemberPageProps): Promise<Met
 
   const locale = await getLocale();
   const translate = await getTranslations("Team");
-  const description = translate(`members.${member.slug}.bio`);
+  const roles = member.roles.map((role) => translate(`roles.${role}`));
+  const title = `${member.name} · ${roles.slice(0, 2).join(", ")}`;
+  const description = translate("profile.metaDescription", {
+    name: member.name,
+    roles: roles.join(", "),
+    bio: translate(`members.${member.slug}.bio`),
+  });
 
   return createPageMetadata({
     locale,
     path: `/members/${member.slug}`,
     title: {
-      en: member.name,
-      ro: member.name,
+      en: title,
+      ro: title,
     },
     description: {
       en: description,
@@ -58,14 +64,43 @@ export default async function MemberPage({ params }: MemberPageProps) {
     notFound();
   }
 
+  const locale = (await getLocale()) === "ro" ? "ro" : "en";
   const translate = await getTranslations("Team");
   const otherMembers = teamMembers.filter((candidate) => candidate.slug !== member.slug);
   const emailHref = member.email
     ? `mailto:${member.email}`
     : `${links.contact}?member=${member.slug}`;
 
+  const profileUrl = absoluteUrl(localizedPath(`/members/${member.slug}`, locale));
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": profileUrl,
+    url: profileUrl,
+    name: member.name,
+    inLanguage: locale,
+    isPartOf: { "@id": `${siteConfig.url}/#website` },
+    mainEntity: {
+      "@type": "Person",
+      "@id": getPersonId(member.slug),
+      name: member.name,
+      url: profileUrl,
+      image: absoluteUrl(member.image),
+      jobTitle: member.roles.map((role) => translate(`roles.${role}`)).join(", "),
+      description: translate(`members.${member.slug}.bio`),
+      worksFor: { "@id": `${siteConfig.url}/#organization` },
+      ...(member.linkedin && { sameAs: [member.linkedin] }),
+    },
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
       <main className="pt-16">
         <section className="relative overflow-hidden border-b">
           <div className="sx-grid-fade absolute inset-0 -z-20" aria-hidden="true" />
@@ -142,47 +177,38 @@ export default async function MemberPage({ params }: MemberPageProps) {
           </div>
         </section>
 
-        <section className="border-b py-20 sm:py-24">
+        <section className="border-b py-12 sm:py-14">
           <div className="mx-auto max-w-[var(--sx-max-content)] px-4 sm:px-6 lg:px-8">
-            <Reveal className="max-w-2xl">
-              <p className="text-sm font-medium text-muted-foreground">{translate("profile.teamEyebrow")}</p>
-              <h2 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
-                {translate("profile.teamTitle")}
-              </h2>
-              <p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg">
-                {translate("profile.teamDescription")}
-              </p>
-            </Reveal>
+            <h2 className="text-xl font-semibold tracking-[-0.03em] sm:text-2xl">
+              {translate("profile.teamTitle")}
+            </h2>
 
-            <div className="mt-12 grid border-l border-t sm:grid-cols-2 lg:grid-cols-5">
-              {otherMembers.map((candidate, index) => (
-                <Reveal key={candidate.slug} delay={index * 0.05} className="h-full" distance={14}>
+            <ul className="mt-6 grid border-l border-t sm:grid-cols-2 lg:grid-cols-5">
+              {otherMembers.map((candidate) => (
+                <li key={candidate.slug} className="border-b border-r">
                   <Link
                     href={`/members/${candidate.slug}`}
-                    className="group flex h-full flex-col border-b border-r bg-background p-3 transition-colors hover:bg-muted/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    className="group flex h-full items-center gap-3 bg-background p-3 transition-colors hover:bg-muted/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
                   >
-                    <div className="relative aspect-square overflow-hidden bg-muted">
+                    <div className="relative size-12 shrink-0 overflow-hidden bg-muted">
                       <Image
                         src={candidate.image}
-                        alt={candidate.name}
+                        alt=""
                         fill
-                        sizes="(min-width: 1024px) 20vw, (min-width: 640px) 50vw, 100vw"
-                        className="will-change-transform object-cover object-top grayscale transition-[filter,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04] group-hover:grayscale-0 motion-reduce:transition-none"
+                        sizes="48px"
+                        className="object-cover object-top grayscale transition-[filter] duration-500 group-hover:grayscale-0 motion-reduce:transition-none"
                       />
                     </div>
-                    <div className="flex items-start justify-between gap-3 px-1 pb-2 pt-4">
-                      <div>
-                        <h3 className="font-medium">{candidate.name}</h3>
-                        <p className="mt-1 text-xs leading-5 text-muted-foreground">
-                          {candidate.roles.slice(0, 2).map((role) => translate(`roles.${role}`)).join(" · ")}
-                        </p>
-                      </div>
-                      <ArrowUpRight className="mt-0.5 size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-medium">{candidate.name}</p>
+                      <p className="truncate text-xs leading-5 text-muted-foreground">
+                        {translate(`roles.${candidate.roles[0]}`)}
+                      </p>
                     </div>
                   </Link>
-                </Reveal>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
       </main>

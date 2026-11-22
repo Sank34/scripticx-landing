@@ -4,11 +4,30 @@ import { languageSettings, type SiteLocale } from "@/config/languages";
 
 const localePattern = new RegExp(`^/(${languageSettings.supportedLocales.join("|")})(/.*)?$`);
 
+/**
+ * Unprefixed page URLs (/members/maia) redirect to their locale-prefixed
+ * canonical (/en/members/maia) so each page exists at exactly one URL.
+ * Visitors without a locale cookie, including crawlers, get a permanent 301
+ * to the default locale. A saved cookie gets a temporary 307 so browsers
+ * never cache a redirect that depends on the visitor's language choice.
+ */
+function redirectToLocalizedPath(request: NextRequest) {
+  const savedLocale = request.cookies.get(languageSettings.cookieName)?.value;
+  const hasSavedLocale = languageSettings.supportedLocales.includes(savedLocale as SiteLocale);
+  const locale = hasSavedLocale ? (savedLocale as SiteLocale) : languageSettings.defaultLocale;
+
+  const url = request.nextUrl.clone();
+  const { pathname } = request.nextUrl;
+  url.pathname = `/${locale}${pathname === "/" ? "" : pathname}`;
+
+  return NextResponse.redirect(url, hasSavedLocale ? 307 : 301);
+}
+
 export function proxy(request: NextRequest) {
   const match = request.nextUrl.pathname.match(localePattern);
 
   if (!match) {
-    return NextResponse.next();
+    return redirectToLocalizedPath(request);
   }
 
   const locale = match[1] as SiteLocale;
@@ -40,5 +59,8 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/en/:path*", "/ro/:path*"],
+  // Every page path. Skips Next internals, API routes, metadata files
+  // (sitemap.xml, robots.txt, manifest.webmanifest) and anything with a file
+  // extension, which are all served without a locale prefix.
+  matcher: ["/((?!_next/|api/|.*\\.[^/]+$).*)"],
 };
